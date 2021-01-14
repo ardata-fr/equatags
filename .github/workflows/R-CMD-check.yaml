@@ -56,8 +56,6 @@ jobs:
         with:
           node-version: '12'
           check-latest: true
-      - run: npm install
-      - run: npm test
 
       - name: Query dependencies
         run: |
