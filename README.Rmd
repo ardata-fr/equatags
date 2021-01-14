@@ -1,0 +1,46 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+library(equatags)
+```
+
+# equatags
+
+<!-- badges: start -->
+[![R build status](https://github.com/davidgohel/equatags/workflows/R-CMD-check/badge.svg)](https://github.com/davidgohel/equatags/actions)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+<!-- badges: end -->
+
+The goal of the package is to provide a tool to transform equations expressed in
+`latex`, `MathML` or `ASCIIMathML` into `SVG` format (i.e. as an image) and
+`Office Open XML Math` format (which can be used in a Word or PowerPoint
+document).
+
+## Installation
+
+You can install the development version from GitHub with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("davidgohel/equatags")
+```
+## Example
+
+```{r results='asis', eval=(node_available() && mathjax_npm_available())}
+library(equatags)
+x <- c("(ax^2 + bx + c = 0)",
+       "x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}")
+z <- transform_mathjax(x = x, to = "svg")
+cat(z, sep = "\n\n")
+```
+
