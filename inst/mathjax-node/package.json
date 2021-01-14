@@ -1,0 +1,14 @@
+{
+  "name": "mj",
+  "version": "1.0.0",
+  "description": "an API to call MathJax from Node.js programs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "david.gohel@ardata.fr",
+  "license": "ISC",
+  "dependencies": {
+    "mathjax-node": "^2.1.1"
+  }
+}

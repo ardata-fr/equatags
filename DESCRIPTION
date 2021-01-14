@@ -1,0 +1,17 @@
+Package: equatags
+Type: Package
+Title: Equations to XML
+Version: 0.0.1
+Authors@R: c(
+    person("David", "Gohel", role = c("aut", "cre"),
+    email = "david.gohel@ardata.fr")
+    )
+Description: A set of functions to transform equations 
+ defined using 'MathML', 'LaTeX' or 'ASCIIMathML' notation
+ into format 'SVG' or 'Office Open XML Math'.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: rappdirs, processx, xml2, xslt, utils
