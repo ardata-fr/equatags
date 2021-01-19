@@ -46,7 +46,7 @@ uninstall_mathjax_npm <- function(){
 install_mathjax_npm <- function(force = FALSE){
 
   if(!node_available()){
-    stop("'node-js' is not available or cannot be found.")
+    stop("'node.js' is not available or cannot be found. The 'node.js' software must be available to use the functions of the 'equatags' package.")
   }
 
   app_dir <- user_data_dir("equatags", "ardata")
