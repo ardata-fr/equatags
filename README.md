@@ -37,4 +37,6 @@ writeLines(z[1], "man/figures/eq1.svg", useBytes = TRUE)
 writeLines(z[2], "man/figures/eq2.svg", useBytes = TRUE)
 ```
 
-![equation 1](man/figures/eq1.svg) ![equation 2](man/figures/eq2.svg)
+![equation 1](man/figures/eq1.svg)
+
+![equation 2](man/figures/eq2.svg)

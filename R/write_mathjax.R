@@ -20,14 +20,15 @@ xml_header <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 #' of "MathJax" equations.
 #'
 #' This function can only be used after executing the command
-#' [install_mathjax_npm()] which installs a set of "npm" packages
+#' [mathjax_install()] which installs a set of "npm" packages
 #' on your machine.
 #' @param x MathJax equations
 #' @param to output format, one of 'svg' or 'mml'
 #' @return a character vector that contains 'svg' or 'mml'
 #' codes corresponding to the equations.
 #' @examples
-#' if(node_available() && mathjax_npm_available()){
+#' library(locatexec)
+#' if(exec_available("node") && mathjax_available()){
 #'   x <- c("(ax^2 + bx + c = 0)",
 #'          "x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.")
 #'   z <- transform_mathjax(x = x, to = "svg")
@@ -36,33 +37,49 @@ xml_header <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 #'   cat(z, sep = "\n\n")
 #' }
 #' @importFrom xml2 read_xml xml_children
+#' @importFrom locatexec node_exec
 transform_mathjax <- function(x, to = "svg"){
 
   if(length(x) < 1) return(character(0))
   to <- match.arg(to, choices = c("svg", "mml"), several.ok = FALSE)
 
-  equatags_dir <- user_data_dir("equatags", "ardata")
-
-  if(!dir_exists(equatags_dir)){
+  equatags_dir <- mathjax_npm_root()
+  if(!mathjax_available()){
     stop("'mathjax-node' is not in your user data directory,",
-            " run `install_mathjax_npm()` to install it")
-  }
-  if(!node_available()){
-    stop("'node-js' is not available or cannot be found.")
+         " run `mathjax_install()` to install it")
   }
 
   if("svg" %in% to) {
-    args <- c("svg.js", x)
+    args <- c("svg.js", shQuote(x))
   } else {
-    args <- c("mml.js", x)
+    args <- c("mml.js", shQuote(x))
   }
 
-  syscall <- run(node(), args = args,
-                 wd = equatags_dir, encoding = "UTF-8",
-                 spinner = FALSE, echo_cmd = FALSE)
+  curr_wd <- getwd()
+  setwd(equatags_dir)
+  tryCatch({
+    info <- system2(node_exec(), args = args, stderr = TRUE, stdout = TRUE)
+    },
+    warning = function(e) {
+      success <- FALSE
+    },
+    error = function(e) {
+      success <- FALSE
+    },
+    finally = {
+      setwd(curr_wd)
+    })
+
+  if(length(info) < 1) {
+    success <- FALSE
+    return(success)
+  } else if(grepl("ENOENT", info[1])) {
+    success <- FALSE
+    return(success)
+  }
 
   content <- paste0(
-    c(xml_header, "<set>", syscall$stdout, "</set>"),
+    c(xml_header, "<set>", info, "</set>"),
     collapse = "")
   content <- read_xml(content)
 

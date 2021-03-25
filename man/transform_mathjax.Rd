@@ -20,11 +20,12 @@ Get "SVG" or "MathML" XML codes corresponding to the rendering
 of "MathJax" equations.
 
 This function can only be used after executing the command
-\code{\link[=install_mathjax_npm]{install_mathjax_npm()}} which installs a set of "npm" packages
+\code{\link[=mathjax_install]{mathjax_install()}} which installs a set of "npm" packages
 on your machine.
 }
 \examples{
-if(node_available() && mathjax_npm_available()){
+library(locatexec)
+if(exec_available("node") && mathjax_available()){
   x <- c("(ax^2 + bx + c = 0)",
          "x = {-b \\\\pm \\\\sqrt{b^2-4ac} \\\\over 2a}.")
   z <- transform_mathjax(x = x, to = "svg")

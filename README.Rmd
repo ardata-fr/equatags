@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+library(locatexec)
 library(equatags)
 ```
 
@@ -36,7 +37,7 @@ devtools::install_github("davidgohel/equatags")
 ```
 ## Example
 
-```{r eval=(node_available() && mathjax_npm_available())}
+```{r eval=(exec_available("node") && mathjax_available())}
 library(equatags)
 x <- c("(ax^2 + bx + c = 0)",
        "x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}")
@@ -47,4 +48,5 @@ writeLines(z[2], "man/figures/eq2.svg", useBytes = TRUE)
 ```
 
 ![equation 1](man/figures/eq1.svg)
+
 ![equation 2](man/figures/eq2.svg)
