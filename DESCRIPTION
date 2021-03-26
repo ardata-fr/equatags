@@ -1,10 +1,11 @@
 Package: equatags
 Type: Package
-Title: Equations to XML
-Version: 0.0.1
+Title: Equations to 'XML'
+Version: 0.0.1.001
 Authors@R: c(
     person("David", "Gohel", role = c("aut", "cre"),
-    email = "david.gohel@ardata.fr")
+    email = "david.gohel@ardata.fr"),
+    person(given = "ArData", role = "cph")
     )
 Description: A set of functions to transform equations 
  defined using 'MathML', 'LaTeX' or 'ASCIIMathML' notation
