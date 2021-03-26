@@ -1,7 +1,7 @@
 Package: equatags
 Type: Package
 Title: Equations to 'XML'
-Version: 0.0.1.001
+Version: 0.1.0
 Authors@R: c(
     person("David", "Gohel", role = c("aut", "cre"),
     email = "david.gohel@ardata.fr"),
@@ -9,7 +9,10 @@ Authors@R: c(
     )
 Description: A set of functions to transform equations 
  defined using 'MathML', 'LaTeX' or 'ASCIIMathML' notation
- into format 'SVG' or 'Office Open XML Math'.
+ into format 'SVG' or 'Office Open XML Math'. The 'XML' 
+ result can then be included in 'HTML', 'Micosoft Word' 
+ documents or 'Micosoft PowerPoint' presentations by using 
+ a 'Markdown' document or the R package 'officer'. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
