@@ -15,13 +15,13 @@ xml_header <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 
 
 #' @export
-#' @title "MathJax" equation as "SVG" or "MathML".
-#' @description Get "SVG" or "MathML" XML codes corresponding to the rendering
-#' of "MathJax" equations.
+#' @title 'MathJax' equation as 'SVG' or 'MathML'.
+#' @description Get 'SVG' or 'MathML' XML codes corresponding to the rendering
+#' of 'MathJax' equations.
 #'
-#' This function can only be used after executing the command
-#' [mathjax_install()] which installs a set of "npm" packages
-#' on your machine.
+#' This function can only be used if the command
+#' [mathjax_install()] has been executed once (it installs
+#' a set of "npm" packages on your machine).
 #' @param x MathJax equations
 #' @param to output format, one of 'svg' or 'mml'
 #' @return a character vector that contains 'svg' or 'mml'

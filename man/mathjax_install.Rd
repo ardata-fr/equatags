@@ -18,7 +18,12 @@ a single logical value, TRUE if success.
 }
 \description{
 Downloads and installs 'mathjax-node'
-(APIs to call MathJax from node.js programs) in the user data directory.
+(APIs to call MathJax from node.js programs) in the user-specific data directory.
+
+Please note that the total size of the downloaded files is about 70 MB.
+
+This data directory can be removed from the computer
+with command \code{mathjax_uninstall()}.
 }
 \examples{
 library(locatexec)

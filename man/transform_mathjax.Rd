@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_mathjax.R
 \name{transform_mathjax}
 \alias{transform_mathjax}
-\title{"MathJax" equation as "SVG" or "MathML".}
+\title{'MathJax' equation as 'SVG' or 'MathML'.}
 \usage{
 transform_mathjax(x, to = "svg")
 }
@@ -16,12 +16,12 @@ a character vector that contains 'svg' or 'mml'
 codes corresponding to the equations.
 }
 \description{
-Get "SVG" or "MathML" XML codes corresponding to the rendering
-of "MathJax" equations.
+Get 'SVG' or 'MathML' XML codes corresponding to the rendering
+of 'MathJax' equations.
 
-This function can only be used after executing the command
-\code{\link[=mathjax_install]{mathjax_install()}} which installs a set of "npm" packages
-on your machine.
+This function can only be used if the command
+\code{\link[=mathjax_install]{mathjax_install()}} has been executed once (it installs
+a set of "npm" packages on your machine).
 }
 \examples{
 library(locatexec)

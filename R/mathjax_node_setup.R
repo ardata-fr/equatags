@@ -42,7 +42,12 @@ mathjax_uninstall <- function(){
 #' @export
 #' @title Install 'mathjax-node'
 #' @description Downloads and installs 'mathjax-node'
-#' (APIs to call MathJax from node.js programs) in the user data directory.
+#' (APIs to call MathJax from node.js programs) in the user-specific data directory.
+#'
+#' Please note that the total size of the downloaded files is about 70 MB.
+#'
+#' This data directory can be removed from the computer
+#' with command `mathjax_uninstall()`.
 #' @param force Whether to force to install (override) 'mathjax-node'.
 #' @param verbose should a log be printed in the console, default to TRUE.
 #' @return a single logical value, FALSE if the operation failed, TRUE otherwise.

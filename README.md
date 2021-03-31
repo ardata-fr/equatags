@@ -19,8 +19,8 @@ in a Word or PowerPoint document).
 You can install the development version from GitHub with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("davidgohel/equatags")
+# install.packages("remotes")
+remotes::install_github("davidgohel/equatags")
 ```
 
 {equatags} relies heavily on npm package “mathjax-node”, a node binding
@@ -64,7 +64,7 @@ writeLines(z[2], "man/figures/eq2.svg", useBytes = TRUE)
 ### Add an equation in package manual
 
 This function could be used to add equations in package documentation.
-See `@section illustration:` that illustrates its usage.
+See part `@section illustration:` that illustrates its usage.
 
 ``` r
 #' @export
