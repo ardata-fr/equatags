@@ -13,6 +13,7 @@ Description: Provides function transform_mathjax() to transform equations
  result can then be included in 'HTML', 'Microsoft Word' 
  documents or 'Microsoft PowerPoint' presentations by using 
  a 'Markdown' document or the R package 'officer'. 
+BugReports: https://github.com/ardata-fr/equatags/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
