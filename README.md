@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![R build
-status](https://github.com/davidgohel/equatags/workflows/R-CMD-check/badge.svg)](https://github.com/davidgohel/equatags/actions)
+status](https://github.com/ardata-fr/equatags/workflows/R-CMD-check/badge.svg)](https://github.com/ardata-fr/equatags/actions)
 <!-- badges: end -->
 
 The goal of the package is to provide a tool to transform equations
