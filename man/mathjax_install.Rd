@@ -12,18 +12,18 @@ mathjax_install(force = FALSE, verbose = TRUE)
 \item{verbose}{should a log be printed in the console, default to TRUE.}
 }
 \value{
-a single logical value, FALSE if the operation failed, TRUE otherwise.
-
-a single logical value, TRUE if success.
+a single logical value, FALSE if the operation
+failed, TRUE otherwise.
 }
 \description{
 Downloads and installs 'mathjax-node'
-(APIs to call MathJax from node.js programs) in the user-specific data directory.
+(APIs to call MathJax from node.js programs) in the user-specific
+data directory managed with \code{\link[=user_data_dir]{user_data_dir()}}.
 
 Please note that the total size of the downloaded files is about 70 MB.
 
 This data directory can be removed from the computer
-with command \code{mathjax_uninstall()}.
+with command \code{\link[=mathjax_uninstall]{mathjax_uninstall()}}.
 }
 \examples{
 library(locatexec)

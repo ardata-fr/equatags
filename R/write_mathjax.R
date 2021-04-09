@@ -56,6 +56,10 @@ transform_mathjax <- function(x, to = "svg"){
   }
 
   curr_wd <- getwd()
+  # ensure with an *immediate* call of on.exit() that the
+  # settings are reset when the function is exited
+  on.exit(setwd(curr_wd))
+
   setwd(equatags_dir)
   tryCatch({
     info <- system2(node_exec(), args = args, stderr = TRUE, stdout = TRUE)
@@ -67,7 +71,7 @@ transform_mathjax <- function(x, to = "svg"){
       success <- FALSE
     },
     finally = {
-      setwd(curr_wd)
+      setwd(curr_wd) # redondant with on.exit(setwd(curr_wd)) but kept for healthy paranoia reason
     })
 
   if(length(info) < 1) {
@@ -77,13 +81,22 @@ transform_mathjax <- function(x, to = "svg"){
     success <- FALSE
     return(success)
   }
+  info <- paste0(info, collapse = "\n")
+  if("svg" %in% to){
+    pos_to <- gregexpr("</svg>", info)[[1]]
+    pos_to <- pos_to + attr(pos_to,"match.length")
+    pos_from <- gregexpr("<svg", info)[[1]]
+  } else {
+    pos_to <- gregexpr("</math>", info)[[1]]
+    pos_to <- pos_to + attr(pos_to,"match.length")
+    pos_from <- gregexpr("<math", info)[[1]]
+  }
 
-  content <- paste0(
-    c(xml_header, "<set>", info, "</set>"),
-    collapse = "")
-  content <- read_xml(content)
-
-  out <- as.character(xml_children(content))
+  out <- list()
+  for(i in seq_along(pos_from) ){
+    out[[i]] <- substr(info, start = pos_from[i], stop = pos_to[i])
+  }
+  out <- as.character(unlist(out))
 
   if("mml" %in% to){
     out <- vapply(out, mml_to_ooml, FUN.VALUE = character(1L), USE.NAMES = FALSE)

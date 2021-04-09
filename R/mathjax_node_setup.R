@@ -5,7 +5,11 @@ mathjax_npm_root <- function(){
 }
 
 #' @title Is 'mathjax-node' available
-#' @description Checks if 'mathjax-node' is available within a directory of the user.
+#' @description Checks if 'mathjax-node' is available.
+#'
+#' 'mathjax-node' can be installed with command
+#' [mathjax_install()] and can be removed with
+#' command [mathjax_uninstall()].
 #' @return a single logical value.
 #' @export
 #' @examples
@@ -18,7 +22,8 @@ mathjax_available <- function(){
 #' @export
 #' @title Uninstall 'mathjax-node'
 #' @description Removes 'mathjax-node'.
-#' @return a single logical value, FALSE if the operation failed, TRUE otherwise.
+#' @return a single logical value, FALSE if the operation
+#' failed, TRUE otherwise.
 #' @family tools for 'mathjax-node'
 #' @examples
 #' library(locatexec)
@@ -29,7 +34,6 @@ mathjax_available <- function(){
 #'   mathjax_install()
 #' }
 #' @family tools for 'mathjax-node'
-#' @return a single logical value, TRUE if success.
 mathjax_uninstall <- function(){
   app_dir <- mathjax_npm_root()
   unlink(app_dir, recursive = TRUE, force = TRUE)
@@ -42,15 +46,17 @@ mathjax_uninstall <- function(){
 #' @export
 #' @title Install 'mathjax-node'
 #' @description Downloads and installs 'mathjax-node'
-#' (APIs to call MathJax from node.js programs) in the user-specific data directory.
+#' (APIs to call MathJax from node.js programs) in the user-specific
+#' data directory managed with [user_data_dir()].
 #'
 #' Please note that the total size of the downloaded files is about 70 MB.
 #'
 #' This data directory can be removed from the computer
-#' with command `mathjax_uninstall()`.
+#' with command [mathjax_uninstall()].
 #' @param force Whether to force to install (override) 'mathjax-node'.
 #' @param verbose should a log be printed in the console, default to TRUE.
-#' @return a single logical value, FALSE if the operation failed, TRUE otherwise.
+#' @return a single logical value, FALSE if the operation
+#' failed, TRUE otherwise.
 #' @family tools for 'mathjax-node'
 #' @examples
 #' library(locatexec)
@@ -58,7 +64,6 @@ mathjax_uninstall <- function(){
 #'   mathjax_install()
 #'   mathjax_uninstall()
 #' }
-#' @return a single logical value, TRUE if success.
 mathjax_install <- function(force = FALSE, verbose = TRUE){
 
   exec_available("npm", error = TRUE)
@@ -81,6 +86,10 @@ mathjax_install <- function(force = FALSE, verbose = TRUE){
   success <- TRUE
 
   curr_wd <- getwd()
+  # ensure with an *immediate* call of on.exit() that the
+  # settings are reset when the function is exited
+  on.exit(setwd(curr_wd))
+
   setwd(app_dir)
   tryCatch({
     info <-
@@ -96,7 +105,7 @@ mathjax_install <- function(force = FALSE, verbose = TRUE){
     success <- FALSE
   },
   finally = {
-    setwd(curr_wd)
+    setwd(curr_wd) # redondant with on.exit(setwd(curr_wd)) but kept for healthy paranoia reason
   })
 
   if(length(info) < 1) {
@@ -114,7 +123,7 @@ mathjax_install <- function(force = FALSE, verbose = TRUE){
   svg.js <- system.file(package = "equatags", "mathjax-node", "svg.js")
   mml.js <- system.file(package = "equatags", "mathjax-node", "mml.js")
   file.copy(c(svg.js, mml.js), to = app_dir, overwrite = TRUE)
-  invisible(NULL)
+  invisible(TRUE)
 }
 
 

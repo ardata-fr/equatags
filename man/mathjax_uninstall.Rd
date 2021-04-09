@@ -7,9 +7,8 @@
 mathjax_uninstall()
 }
 \value{
-a single logical value, FALSE if the operation failed, TRUE otherwise.
-
-a single logical value, TRUE if success.
+a single logical value, FALSE if the operation
+failed, TRUE otherwise.
 }
 \description{
 Removes 'mathjax-node'.

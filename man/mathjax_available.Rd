@@ -10,7 +10,11 @@ mathjax_available()
 a single logical value.
 }
 \description{
-Checks if 'mathjax-node' is available within a directory of the user.
+Checks if 'mathjax-node' is available.
+
+'mathjax-node' can be installed with command
+\code{\link[=mathjax_install]{mathjax_install()}} and can be removed with
+command \code{\link[=mathjax_uninstall]{mathjax_uninstall()}}.
 }
 \examples{
 mathjax_available()
