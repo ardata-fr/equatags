@@ -18,7 +18,7 @@ failed, TRUE otherwise.
 \description{
 Downloads and installs 'mathjax-node'
 (APIs to call MathJax from node.js programs) in the user-specific
-data directory managed with \code{\link[=user_data_dir]{user_data_dir()}}.
+data directory managed with \code{\link[=R_user_dir]{R_user_dir()}}.
 
 Please note that the total size of the downloaded files is about 70 MB.
 

@@ -1,6 +1,6 @@
-#' @importFrom rappdirs user_data_dir
+#' @importFrom tools R_user_dir
 mathjax_npm_root <- function(){
-  dir <- user_data_dir("equatags", "ardata")
+  dir <- R_user_dir(package = "equatags", which = "data")
   dir
 }
 
@@ -36,10 +36,8 @@ mathjax_available <- function(){
 #' @family tools for 'mathjax-node'
 mathjax_uninstall <- function(){
   app_dir <- mathjax_npm_root()
-  unlink(app_dir, recursive = TRUE, force = TRUE)
-  invisible(NULL)
+  unlink(app_dir, recursive = TRUE, force = TRUE) %in% 0
 }
-
 
 
 #' @importFrom locatexec npm_exec exec_available
@@ -47,7 +45,7 @@ mathjax_uninstall <- function(){
 #' @title Install 'mathjax-node'
 #' @description Downloads and installs 'mathjax-node'
 #' (APIs to call MathJax from node.js programs) in the user-specific
-#' data directory managed with [user_data_dir()].
+#' data directory managed with [R_user_dir()].
 #'
 #' Please note that the total size of the downloaded files is about 70 MB.
 #'
