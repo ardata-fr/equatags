@@ -12,16 +12,15 @@ a single logical value.
 \description{
 Checks if 'mathjax-node' is available.
 
-'mathjax-node' can be installed with command
-\code{\link[=mathjax_install]{mathjax_install()}} and can be removed with
-command \code{\link[=mathjax_uninstall]{mathjax_uninstall()}}.
+'mathjax-node' should be removed with
+command \code{\link[=mathjax_uninstall]{mathjax_uninstall()}} because it is not used
+anymore thanks to package 'katex'.
 }
 \examples{
 mathjax_available()
 }
 \seealso{
 Other tools for 'mathjax-node': 
-\code{\link{mathjax_install}()},
 \code{\link{mathjax_uninstall}()}
 }
 \concept{tools for 'mathjax-node'}

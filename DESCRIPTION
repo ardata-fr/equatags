@@ -1,15 +1,14 @@
 Package: equatags
 Type: Package
 Title: Equations to 'XML'
-Version: 0.1.1
+Version: 0.2.0.001
 Authors@R: c(
     person("David", "Gohel", role = c("aut", "cre"),
     email = "david.gohel@ardata.fr"),
     person(given = "ArData", role = "cph")
     )
-Description: Provides function transform_mathjax() to transform equations 
- defined using 'MathML', 'LaTeX' or 'ASCIIMathML' notation
- into format 'SVG' or 'Office Open XML Math'. The 'XML' 
+Description: Provides function to transform latex math expressions 
+ into format 'HTML' or 'Office Open XML Math'. The 'XML' 
  result can then be included in 'HTML', 'Microsoft Word' 
  documents or 'Microsoft PowerPoint' presentations by using 
  a 'Markdown' document or the R package 'officer'. 
@@ -17,7 +16,6 @@ BugReports: https://github.com/ardata-fr/equatags/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0
 Depends: R (>= 4.0.0)
-Imports: xml2, xslt, locatexec, tools
-SystemRequirements: Node.js
+Imports: xml2, xslt, tools, katex

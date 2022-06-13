@@ -12,23 +12,21 @@ failed, TRUE otherwise.
 }
 \description{
 Removes 'mathjax-node'.
+
+'mathjax-node' should be removed with
+command \code{\link[=mathjax_uninstall]{mathjax_uninstall()}} because it is not used
+anymore thanks to package 'katex'.
 }
 \examples{
-library(locatexec)
-
-if(exec_available("npm") &&
-   mathjax_available()) {
+if(mathjax_available()) {
   mathjax_uninstall()
-  mathjax_install()
 }
 }
 \seealso{
 Other tools for 'mathjax-node': 
-\code{\link{mathjax_available}()},
-\code{\link{mathjax_install}()}
+\code{\link{mathjax_available}()}
 
 Other tools for 'mathjax-node': 
-\code{\link{mathjax_available}()},
-\code{\link{mathjax_install}()}
+\code{\link{mathjax_available}()}
 }
 \concept{tools for 'mathjax-node'}

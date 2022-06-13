@@ -2,35 +2,28 @@
 % Please edit documentation in R/write_mathjax.R
 \name{transform_mathjax}
 \alias{transform_mathjax}
-\title{'MathJax' equation as 'SVG' or 'MathML'.}
+\title{'MathJax' equation as 'HTML' or 'MathML'.}
 \usage{
-transform_mathjax(x, to = "svg")
+transform_mathjax(x, to = "html")
 }
 \arguments{
 \item{x}{MathJax equations}
 
-\item{to}{output format, one of 'svg' or 'mml'}
+\item{to}{output format, one of 'html' or 'mml'}
 }
 \value{
-a character vector that contains 'svg' or 'mml'
+a character vector that contains 'html' or 'mml'
 codes corresponding to the equations.
 }
 \description{
-Get 'SVG' or 'MathML' XML codes corresponding to the rendering
+Get 'HTML' or 'MathML' XML codes corresponding to the rendering
 of 'MathJax' equations.
-
-This function can only be used if the command
-\code{\link[=mathjax_install]{mathjax_install()}} has been executed once (it installs
-a set of "npm" packages on your machine).
 }
 \examples{
-library(locatexec)
-if(exec_available("node") && mathjax_available()){
-  x <- c("(ax^2 + bx + c = 0)",
-         "x = {-b \\\\pm \\\\sqrt{b^2-4ac} \\\\over 2a}.")
-  z <- transform_mathjax(x = x, to = "svg")
-  cat(z, sep = "\n\n")
-  z <- transform_mathjax(x = x, to = "mml")
-  cat(z, sep = "\n\n")
-}
+x <- c("(ax^2 + bx + c = 0)",
+       "x = {-b \\\\pm \\\\sqrt{b^2-4ac} \\\\over 2a}.")
+z <- transform_mathjax(x = x, to = "html")
+cat(z, sep = "\n\n")
+z <- transform_mathjax(x = x, to = "mml")
+cat(z, sep = "\n\n")
 }
