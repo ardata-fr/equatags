@@ -74,4 +74,4 @@ add equations in the manual pages of your package in a very convenient way.
 * Package [katex](https://cran.r-project.org/package=katex) written by 
 Jeroen Ooms, "Rendering Math to HTML, 'MathML', or R-Documentation Format". 
 'equatags' mainly uses its functions since the release of 'katex' that made 
-possible to get rid of node.js dependancy.
+possible to get rid of node.js dependency.

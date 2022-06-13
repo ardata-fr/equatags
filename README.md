@@ -62,4 +62,4 @@ ft
 -   Package [katex](https://cran.r-project.org/package=katex) written by
     Jeroen Ooms, “Rendering Math to HTML, ‘MathML’, or R-Documentation
     Format”. ‘equatags’ mainly uses its functions since the release of
-    ‘katex’ that made possible to get rid of node.js dependancy.
+    ‘katex’ that made possible to get rid of node.js dependency.
