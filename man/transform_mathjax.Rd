@@ -4,12 +4,15 @@
 \alias{transform_mathjax}
 \title{'MathJax' equation as 'HTML' or 'MathML'.}
 \usage{
-transform_mathjax(x, to = "html")
+transform_mathjax(x, to = "html", display = FALSE)
 }
 \arguments{
 \item{x}{MathJax equations}
 
 \item{to}{output format, one of 'html' or 'mml'}
+
+\item{display}{should the equation be in display (\code{TRUE}) or inline mode
+(\code{FALSE}, by default)}
 }
 \value{
 a character vector that contains 'html' or 'mml'
