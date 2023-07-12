@@ -20,6 +20,8 @@ xml_header <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 #' of 'MathJax' equations.
 #' @param x MathJax equations
 #' @param to output format, one of 'html' or 'mml'
+#' @param display should the equation be in display (`TRUE`) or inline mode
+#' (`FALSE`, by default)
 #' @return a character vector that contains 'html' or 'mml'
 #' codes corresponding to the equations.
 #' @examples
@@ -31,7 +33,7 @@ xml_header <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 #' cat(z, sep = "\n\n")
 #' @importFrom xml2 read_xml xml_children
 #' @importFrom katex katex_mathml katex_html
-transform_mathjax <- function(x, to = "html"){
+transform_mathjax <- function(x, to = "html", display = FALSE){
 
   if(length(x) < 1) return(character(0))
   to <- match.arg(to, choices = c("html", "mml", "svg"), several.ok = FALSE)
@@ -43,7 +45,8 @@ transform_mathjax <- function(x, to = "html"){
     info <- gsub("<span class=\"katex\">", "", info, fixed = TRUE)
     info <- vapply(info, mml_to_ooml, FUN.VALUE = character(1L), USE.NAMES = FALSE)
   } else {
-    info <- vapply(x, katex_html, "", preview = FALSE, include_css = TRUE)
+    info <- vapply(x, katex_html, "", preview = FALSE, include_css = TRUE,
+      displayMode = display)
     names(info) <- NULL
   }
 
