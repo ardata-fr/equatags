@@ -60,18 +60,17 @@ ft
 
 ## Related work
 
-* Packages [texPreview](https://CRAN.R-project.org/package=texPreview) written by 
+- Packages [texPreview](https://CRAN.R-project.org/package=texPreview) written by 
 Jonathan Sidi, "compile snippets of 'LaTeX' directly into 
 images from the R console to view in the 'RStudio' viewer pane, Shiny apps 
 and 'RMarkdown' documents". With this package, you can get images from 
 your 'latex' code. The tool offers a wider functional spectrum than just 
 equation processing and focuses on 'latex' instead of only 'MathJax' equations.
 
-* Package [mathjaxr](https://cran.r-project.org/package=mathjaxr) written by 
+- Package [mathjaxr](https://cran.r-project.org/package=mathjaxr) written by 
 Wolfgang Viechtbauer, "Using 'Mathjax' in Rd Files". This package let you 
 add equations in the manual pages of your package in a very convenient way. 
 
-* Package [katex](https://cran.r-project.org/package=katex) written by 
+- Package [katex](https://cran.r-project.org/package=katex) written by 
 Jeroen Ooms, "Rendering Math to HTML, 'MathML', or R-Documentation Format". 
-'equatags' mainly uses its functions since the release of 'katex' that made 
-possible to get rid of node.js dependency.
+'equatags' mainly uses its functions.
