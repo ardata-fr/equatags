@@ -1,7 +1,7 @@
 Package: equatags
 Type: Package
 Title: Equations to 'XML'
-Version: 0.2.1.002
+Version: 0.2.1
 Authors@R: c(
     person("David", "Gohel", role = c("aut", "cre"),
     email = "david.gohel@ardata.fr"),

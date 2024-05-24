@@ -1,12 +1,12 @@
 ## Test environments
 
-- local OS X install (R 4.2.0)
-- ubuntu 16.04 (release)
+- local OS X install (R 4.4.0)
+- ubuntu 20.04 (release)
 - winbuilder (with release and devel) 
 
 ## R CMD check results
 
-There were no ERROR or WARNING. There were one NOTE:
+There were no ERROR, WARNING or NOTE.
 
 * This is a new release.
 
