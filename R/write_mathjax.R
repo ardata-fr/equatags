@@ -22,6 +22,9 @@ xml_header <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 #' @param to output format, one of 'html' or 'mml'
 #' @param display should the equation be in display (`TRUE`) or inline mode
 #' (`FALSE`, by default)
+#' @param strict KaTeX option.If `"ignore"` (default), allow features that make
+#' writing LaTeX convenient. Other options are `"warn"` or `"error"`. This
+#' happens E;G;, when you use accented characters in your equations.
 #' @return a character vector that contains 'html' or 'mml'
 #' codes corresponding to the equations.
 #' @examples
@@ -33,20 +36,21 @@ xml_header <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 #' cat(z, sep = "\n\n")
 #' @importFrom xml2 read_xml xml_children
 #' @importFrom katex katex_mathml katex_html
-transform_mathjax <- function(x, to = "html", display = FALSE){
+transform_mathjax <- function(x, to = "html", display = FALSE, strict = "ignore"){
 
   if(length(x) < 1) return(character(0))
   to <- match.arg(to, choices = c("html", "mml", "svg"), several.ok = FALSE)
+  strict <- match.arg(strict, choices = c("ignore", "warn", "error"), several.ok = FALSE)
 
   if ("mml" %in% to) {
-    info <- vapply(x, katex_mathml, "", preview = FALSE)
+    info <- vapply(x, katex_mathml, "", preview = FALSE, strict = strict)
     names(info) <- NULL
     info <- gsub("</span>", "", info, fixed = TRUE)
     info <- gsub("<span class=\"katex\">", "", info, fixed = TRUE)
     info <- vapply(info, mml_to_ooml, FUN.VALUE = character(1L), USE.NAMES = FALSE)
   } else {
     info <- vapply(x, katex_html, "", preview = FALSE, include_css = TRUE,
-      displayMode = display)
+      displayMode = display, strict = strict)
     names(info) <- NULL
   }
 

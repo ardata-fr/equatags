@@ -1,3 +1,7 @@
+# equatags 0.2.2
+
+- add a `strict` argument to transform_mathjax() ("ignore" by default) to turn off ennoying warnings when using accented characters in equations.
+
 # equatags 0.2.1
 
 - add a `display` argument to transform_mathjax() to allow generating display or inline equations. It is set to FALSE by default (inline equation). This changes the behaviour that was previously to generate display equations only.

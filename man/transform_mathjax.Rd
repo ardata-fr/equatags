@@ -4,7 +4,7 @@
 \alias{transform_mathjax}
 \title{'MathJax' equation as 'HTML' or 'MathML'.}
 \usage{
-transform_mathjax(x, to = "html", display = FALSE)
+transform_mathjax(x, to = "html", display = FALSE, strict = "ignore")
 }
 \arguments{
 \item{x}{MathJax equations}
@@ -13,6 +13,10 @@ transform_mathjax(x, to = "html", display = FALSE)
 
 \item{display}{should the equation be in display (\code{TRUE}) or inline mode
 (\code{FALSE}, by default)}
+
+\item{strict}{KaTeX option.If \code{"ignore"} (default), allow features that make
+writing LaTeX convenient. Other options are \code{"warn"} or \code{"error"}. This
+happens E;G;, when you use accented characters in your equations.}
 }
 \value{
 a character vector that contains 'html' or 'mml'
