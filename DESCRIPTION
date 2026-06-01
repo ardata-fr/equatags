@@ -1,7 +1,7 @@
 Package: equatags
 Type: Package
 Title: Equations to 'XML'
-Version: 0.2.2
+Version: 0.3.0.001
 Authors@R: c(
     person("David", "Gohel", role = c("aut", "cre"),
     email = "david.gohel@ardata.fr"),
@@ -16,6 +16,6 @@ BugReports: https://github.com/ardata-fr/equatags/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
 Depends: R (>= 4.0.0)
 Imports: xml2, xslt, katex
+Config/roxygen2/version: 8.0.0
