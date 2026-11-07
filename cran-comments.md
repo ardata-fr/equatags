@@ -1,14 +1,12 @@
 ## Test environments
 
-- local OS X install (R 4.5.3)
-- ubuntu 22.04 (release)
-- winbuilder (with release and devel) 
+- local macOS install (R 4.6.1)
+- GitHub Actions: ubuntu-latest and windows-latest (R release)
+- win-builder (R release and devel) TODO
 
 ## R CMD check results
 
 There were no ERROR, WARNING or NOTE.
-
-* This is a new release.
 
 ## Reverse dependency
 

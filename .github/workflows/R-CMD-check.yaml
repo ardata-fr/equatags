@@ -33,29 +33,9 @@ jobs:
           r-version: ${{ matrix.config.r }}
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-pandoc@v2
-
-      - uses: r-lib/actions/setup-tinytex@v2
-        env:
-          # install full prebuilt version
-          TINYTEX_INSTALLER: TinyTeX
-
-      - name: Add some R options for later steps
-        run: |
-          cat("\noptions(tinytex.verbose = TRUE)\n", file = "~/.Rprofile", append = TRUE)
-          cat(readLines("~/.Rprofile"), sep = "\n")
-        shell: Rscript {0}
-
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck, any::rmarkdown
+          extra-packages: any::rcmdcheck
           needs: check
-
-      - name: Pandoc and Tinytex info
-        run: |
-          rmarkdown::find_pandoc()
-          tinytex::tlmgr("--version")
-          tinytex::tl_pkgs()
-        shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2
