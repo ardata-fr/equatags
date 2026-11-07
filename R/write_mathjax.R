@@ -126,6 +126,97 @@ prepare_mathml <- function(doc) {
   read_xml(as.character(doc))
 }
 
+omml_ns <- c(m = "http://schemas.openxmlformats.org/officeDocument/2006/math")
+rpr_ns <- c(
+  w = "http://schemas.openxmlformats.org/wordprocessingml/2006/main",
+  a = "http://schemas.openxmlformats.org/drawingml/2006/main"
+)
+
+# OMML structures, each has a property element (`m:fPr` for `m:f`...) whose
+# last child can be `m:ctrlPr`.
+omml_structures <- c(
+  "acc", "bar", "borderBox", "box", "d", "eqArr", "f", "func", "groupChr",
+  "limLow", "limUpp", "m", "nary", "phant", "rad", "sPre", "sSub", "sSubSup",
+  "sSup"
+)
+
+# Parse run properties given as a string, `<w:rPr>` (Word) or `<a:rPr>`
+# (PowerPoint), the namespace declaration can be omitted.
+#' @importFrom xml2 xml_child xml_ns
+parse_rpr <- function(rpr) {
+  doc <- tryCatch(
+    read_xml(sprintf(
+      "<root xmlns:w=\"%s\" xmlns:a=\"%s\">%s</root>",
+      rpr_ns[["w"]], rpr_ns[["a"]], rpr
+    )),
+    error = function(e) NULL
+  )
+  if (!is.null(doc) && length(xml_children(doc)) == 1L) {
+    node <- xml_child(doc, 1)
+    prefix <- names(rpr_ns)[match(xml_ns_uri(node), rpr_ns)]
+    if (xml_name(node) == "rPr" && !is.na(prefix)) {
+      return(list(node = node, prefix = prefix))
+    }
+  }
+  stop(
+    "`rpr` must be a single `<w:rPr>` or `<a:rPr>` element: ",
+    shQuote(rpr),
+    call. = FALSE
+  )
+}
+
+#' @importFrom xml2 xml_ns
+xml_ns_uri <- function(node) {
+  prefix <- sub(":.*$", "", xml_name(node, ns = rpr_ns))
+  if (prefix %in% names(rpr_ns)) rpr_ns[[prefix]] else NA_character_
+}
+
+# Apply run properties to an OMML equation: in each run (`m:r`), after `m:rPr`,
+# and in the control properties (`m:ctrlPr`) of each structure. Word needs
+# both, the size of the symbols of a structure (fraction bar, sum sign,
+# radical) comes from `m:ctrlPr`; PowerPoint only needs the runs.
+#' @importFrom xml2 xml_root
+set_run_properties <- function(omml, rpr) {
+  props <- parse_rpr(rpr)
+  doc <- read_xml(omml)
+  root <- xml_root(doc)
+  xml_set_attr(
+    root,
+    paste0("xmlns:", props$prefix),
+    rpr_ns[[props$prefix]]
+  )
+
+  for (run in xml_find_all(doc, "//m:r", ns = omml_ns)) {
+    first <- xml_child(run, 1)
+    if (
+      !inherits(first, "xml_missing") &&
+        xml_name(first, ns = omml_ns) == "m:rPr"
+    ) {
+      xml_add_sibling(first, props$node, .where = "after")
+    } else {
+      xml_add_child(run, props$node, .where = 0)
+    }
+  }
+
+  for (structure in omml_structures) {
+    pr_name <- paste0("m:", structure, "Pr")
+    nodes <- xml_find_all(doc, paste0("//m:", structure), ns = omml_ns)
+    for (node in nodes) {
+      pr <- xml_find_first(node, pr_name, ns = omml_ns)
+      if (inherits(pr, "xml_missing")) {
+        pr <- xml_add_child(node, pr_name, .where = 0)
+      }
+      ctrl <- xml_add_child(pr, "m:ctrlPr")
+      xml_add_child(ctrl, props$node)
+    }
+  }
+
+  # parse again to remove the namespace declarations repeated on each copy of
+  # the run properties, then format as the equations without run properties
+  doc <- read_xml(as.character(doc), options = c("NSCLEAN", "NOBLANKS"))
+  gsub(xml_header, "", as.character(doc), fixed = TRUE)
+}
+
 
 #' @export
 #' @title 'MathJax' equation as 'HTML' or 'MathML'.
@@ -138,6 +229,13 @@ prepare_mathml <- function(doc) {
 #' @param strict KaTeX option.If `"ignore"` (default), allow features that make
 #' writing LaTeX convenient. Other options are `"warn"` or `"error"`. This
 #' happens E;G;, when you use accented characters in your equations.
+#' @param rpr run properties to apply to the 'Office Open XML Math' equations,
+#' used only when `to = "mml"`: a `<w:rPr>` element for 'Microsoft Word' or an
+#' `<a:rPr>` element for 'Microsoft PowerPoint', as a string; the namespace
+#' declaration can be omitted. It sets for example the size or the color of
+#' the equations, that otherwise get the default values of the document. One
+#' value for all equations or one value per equation, `NA` for none. With
+#' `NULL` (default), no run properties are written.
 #' @return a character vector that contains 'html' or 'mml'
 #' codes corresponding to the equations.
 #' @examples
@@ -147,13 +245,21 @@ prepare_mathml <- function(doc) {
 #' cat(z, sep = "\n\n")
 #' z <- transform_mathjax(x = x, to = "mml")
 #' cat(z, sep = "\n\n")
+#'
+#' # equations at 16 points in a Word document
+#' z <- transform_mathjax(
+#'   x = x, to = "mml",
+#'   rpr = "<w:rPr><w:sz w:val=\"32\"/><w:szCs w:val=\"32\"/></w:rPr>"
+#' )
+#' cat(z, sep = "\n\n")
 #' @importFrom xml2 read_xml xml_children
 #' @importFrom katex katex_mathml katex_html
 transform_mathjax <- function(
   x,
   to = "html",
   display = FALSE,
-  strict = "ignore"
+  strict = "ignore",
+  rpr = NULL
 ) {
   if (length(x) < 1) {
     return(character(0))
@@ -164,6 +270,15 @@ transform_mathjax <- function(
     choices = c("ignore", "warn", "error"),
     several.ok = FALSE
   )
+  if (!is.null(rpr)) {
+    if (!is.character(rpr) || !length(rpr) %in% c(1L, length(x))) {
+      stop(
+        "`rpr` must be a character vector of length 1 or of the length of `x`.",
+        call. = FALSE
+      )
+    }
+    rpr <- rep_len(rpr, length(x))
+  }
 
   if ("mml" %in% to) {
     info <- vapply(x, katex_mathml, "", preview = FALSE, strict = strict)
@@ -176,6 +291,15 @@ transform_mathjax <- function(
       FUN.VALUE = character(1L),
       USE.NAMES = FALSE
     )
+    if (!is.null(rpr)) {
+      with_rpr <- !is.na(rpr)
+      info[with_rpr] <- mapply(
+        set_run_properties,
+        info[with_rpr],
+        rpr[with_rpr],
+        USE.NAMES = FALSE
+      )
+    }
   } else {
     info <- vapply(
       x,

@@ -1,5 +1,10 @@
 # equatags 0.3.0
 
+- new argument `rpr` of `transform_mathjax()` to apply run properties, such as
+the size or the color, to 'Office Open XML Math' equations, for 'Microsoft
+Word' (`<w:rPr>`) or 'Microsoft PowerPoint' (`<a:rPr>`). Without it,
+equations get the default size of the document.
+
 - In 'Office Open XML Math' output, the argument of sums, products and
 integrals is now written inside the operator: it was written after it, and Word
 showed an empty placeholder in the operator.

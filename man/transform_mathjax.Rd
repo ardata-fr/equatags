@@ -4,7 +4,13 @@
 \alias{transform_mathjax}
 \title{'MathJax' equation as 'HTML' or 'MathML'.}
 \usage{
-transform_mathjax(x, to = "html", display = FALSE, strict = "ignore")
+transform_mathjax(
+  x,
+  to = "html",
+  display = FALSE,
+  strict = "ignore",
+  rpr = NULL
+)
 }
 \arguments{
 \item{x}{MathJax equations}
@@ -17,6 +23,14 @@ transform_mathjax(x, to = "html", display = FALSE, strict = "ignore")
 \item{strict}{KaTeX option.If \code{"ignore"} (default), allow features that make
 writing LaTeX convenient. Other options are \code{"warn"} or \code{"error"}. This
 happens E;G;, when you use accented characters in your equations.}
+
+\item{rpr}{run properties to apply to the 'Office Open XML Math' equations,
+used only when \code{to = "mml"}: a \verb{<w:rPr>} element for 'Microsoft Word' or an
+\verb{<a:rPr>} element for 'Microsoft PowerPoint', as a string; the namespace
+declaration can be omitted. It sets for example the size or the color of
+the equations, that otherwise get the default values of the document. One
+value for all equations or one value per equation, \code{NA} for none. With
+\code{NULL} (default), no run properties are written.}
 }
 \value{
 a character vector that contains 'html' or 'mml'
@@ -32,5 +46,12 @@ x <- c("(ax^2 + bx + c = 0)",
 z <- transform_mathjax(x = x, to = "html")
 cat(z, sep = "\n\n")
 z <- transform_mathjax(x = x, to = "mml")
+cat(z, sep = "\n\n")
+
+# equations at 16 points in a Word document
+z <- transform_mathjax(
+  x = x, to = "mml",
+  rpr = "<w:rPr><w:sz w:val=\"32\"/><w:szCs w:val=\"32\"/></w:rPr>"
+)
 cat(z, sep = "\n\n")
 }
