@@ -59,7 +59,7 @@ test_that("spaces are written with the math font", {
   ns <- c(m = "http://schemas.openxmlformats.org/officeDocument/2006/math")
   expect_match(
     paste(xml2::xml_text(xml2::xml_find_all(doc, "//m:t", ns = ns)), collapse = ""),
-    " ",
+    "\u2009",
     fixed = TRUE
   )
 })
@@ -71,14 +71,14 @@ test_that("text keeps the font of the text", {
 
 test_that("quad spaces are kept", {
   x <- transform_mathjax(c("a\\quad b", "a\\qquad b"), to = "mml")
-  expect_match(x[1], "a b", fixed = TRUE)
-  expect_match(x[2], "a  b", fixed = TRUE)
+  expect_match(x[1], "a\u2003b", fixed = TRUE)
+  expect_match(x[2], "a\u2003\u2003b", fixed = TRUE)
 })
 
 test_that("widths in em are converted to space characters", {
-  expect_equal(equatags:::em_to_spaces("1em"), " ")
-  expect_equal(equatags:::em_to_spaces("2.5em"), "   ")
-  expect_equal(equatags:::em_to_spaces("0.1667em"), " ")
+  expect_equal(equatags:::em_to_spaces("1em"), "\u2003")
+  expect_equal(equatags:::em_to_spaces("2.5em"), "\u2003\u2003\u2002")
+  expect_equal(equatags:::em_to_spaces("0.1667em"), "\u2006")
   expect_equal(equatags:::em_to_spaces("-0.1667em"), "")
   expect_equal(equatags:::em_to_spaces("3pt"), "")
 })

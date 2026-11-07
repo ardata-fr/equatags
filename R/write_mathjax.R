@@ -39,9 +39,9 @@ em_to_spaces <- function(width) {
   }
   n_em <- floor(w + 1e-6)
   rest <- w - n_em
-  spaces <- strrep(" ", n_em)
+  spaces <- strrep("\u2003", n_em)
   if (rest >= 0.08) {
-    sizes <- c(" " = 1 / 2, " " = 1 / 3, " " = 1 / 4, " " = 1 / 6)
+    sizes <- c("\u2002" = 1 / 2, "\u2004" = 1 / 3, "\u2005" = 1 / 4, "\u2006" = 1 / 6)
     spaces <- paste0(spaces, names(sizes)[which.min(abs(sizes - rest))])
   }
   spaces
