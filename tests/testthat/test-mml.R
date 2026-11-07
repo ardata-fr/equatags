@@ -1,6 +1,10 @@
 test_that("the argument of n-ary operators is in the n-ary element", {
   x <- transform_mathjax(
-    c("\\sum_{i=1}^{n} x_i", "\\int_0^\\infty e^{-x^2}\\,dx", "\\prod_i x_i + 1"),
+    c(
+      "\\sum_{i=1}^{n} x_i",
+      "\\int_0^\\infty e^{-x^2}\\,dx",
+      "\\prod_i x_i + 1"
+    ),
     to = "mml"
   )
   for (omml in x) {

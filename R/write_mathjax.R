@@ -1,6 +1,5 @@
 #' @importFrom xslt xml_xslt
-mml_to_ooml <- function(x){
-
+mml_to_ooml <- function(x) {
   z <- c(xml_header, x)
 
   doc <- read_xml(paste0(z, collapse = ""))
@@ -8,7 +7,6 @@ mml_to_ooml <- function(x){
   ooml <- xml_xslt(doc, mml2omml_stylesheet())
   ooml <- gsub(xml_header, "", as.character(ooml), fixed = TRUE)
   ooml
-
 }
 xml_header <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 
@@ -48,11 +46,14 @@ prepare_mathml <- function(doc) {
   for (mrow in rev(fenced)) {
     children <- xml_children(mrow)
     mfenced <- xml_add_sibling(mrow, "mfenced", .where = "before")
-    xml_set_attrs(mfenced, c(
-      open = xml_text(children[[1]]),
-      close = xml_text(children[[length(children)]]),
-      separators = ""
-    ))
+    xml_set_attrs(
+      mfenced,
+      c(
+        open = xml_text(children[[1]]),
+        close = xml_text(children[[length(children)]]),
+        separators = ""
+      )
+    )
     inner <- xml_add_child(mfenced, "mrow")
     for (child in children[-c(1, length(children))]) {
       xml_add_child(inner, child)
@@ -104,24 +105,45 @@ prepare_mathml <- function(doc) {
 #' cat(z, sep = "\n\n")
 #' @importFrom xml2 read_xml xml_children
 #' @importFrom katex katex_mathml katex_html
-transform_mathjax <- function(x, to = "html", display = FALSE, strict = "ignore"){
-
-  if(length(x) < 1) return(character(0))
+transform_mathjax <- function(
+  x,
+  to = "html",
+  display = FALSE,
+  strict = "ignore"
+) {
+  if (length(x) < 1) {
+    return(character(0))
+  }
   to <- match.arg(to, choices = c("html", "mml", "svg"), several.ok = FALSE)
-  strict <- match.arg(strict, choices = c("ignore", "warn", "error"), several.ok = FALSE)
+  strict <- match.arg(
+    strict,
+    choices = c("ignore", "warn", "error"),
+    several.ok = FALSE
+  )
 
   if ("mml" %in% to) {
     info <- vapply(x, katex_mathml, "", preview = FALSE, strict = strict)
     names(info) <- NULL
     info <- gsub("</span>", "", info, fixed = TRUE)
     info <- gsub("<span class=\"katex\">", "", info, fixed = TRUE)
-    info <- vapply(info, mml_to_ooml, FUN.VALUE = character(1L), USE.NAMES = FALSE)
+    info <- vapply(
+      info,
+      mml_to_ooml,
+      FUN.VALUE = character(1L),
+      USE.NAMES = FALSE
+    )
   } else {
-    info <- vapply(x, katex_html, "", preview = FALSE, include_css = TRUE,
-      displayMode = display, strict = strict)
+    info <- vapply(
+      x,
+      katex_html,
+      "",
+      preview = FALSE,
+      include_css = TRUE,
+      displayMode = display,
+      strict = strict
+    )
     names(info) <- NULL
   }
 
   info
 }
-
