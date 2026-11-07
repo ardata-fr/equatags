@@ -23,6 +23,30 @@ mml2omml_stylesheet <- function() {
 
 mml_ns <- c(mml = "http://www.w3.org/1998/Math/MathML")
 
+# A text made of space characters only.
+space_chars_regex <- "^[\\x{0020}\\x{00A0}\\x{2000}-\\x{200B}\\x{202F}\\x{205F}\\x{2060}-\\x{2064}\\x{3000}]+$"
+
+# Space characters for a width in em: em spaces (U+2003), then the closest of
+# the en space (1/2 em), three-per-em (1/3), four-per-em (1/4) and six-per-em
+# (1/6) spaces for the rest. Other units and negative widths give "".
+em_to_spaces <- function(width) {
+  if (!grepl("^[0-9.]+em$", width)) {
+    return("")
+  }
+  w <- as.numeric(sub("em$", "", width))
+  if (is.na(w) || w <= 0) {
+    return("")
+  }
+  n_em <- floor(w + 1e-6)
+  rest <- w - n_em
+  spaces <- strrep(" ", n_em)
+  if (rest >= 0.08) {
+    sizes <- c(" " = 1 / 2, " " = 1 / 3, " " = 1 / 4, " " = 1 / 6)
+    spaces <- paste0(spaces, names(sizes)[which.min(abs(sizes - rest))])
+  }
+  spaces
+}
+
 # The stylesheet (MML2OMML.XSL from Microsoft) expects the MathML written by
 # Word. KaTeX writes some constructs differently, they are rewritten here:
 #
@@ -30,14 +54,34 @@ mml_ns <- c(mml = "http://www.w3.org/1998/Math/MathML")
 #   they are converted to stretchy delimiters (`m:d`);
 # - the argument of an n-ary operator (sum, integral...) is wrapped in an
 #   `<mrow>`, so that it is written in the n-ary element (`m:e`) and not left
-#   empty.
+#   empty;
+# - spaces (`\,`, `\;`, `\ `...) are written by KaTeX as text (`<mtext>`),
+#   converted to normal text runs (`m:nor`) displayed with the font of the
+#   text: they become `<mo>`, displayed with the math font;
+# - `<mspace>` (`\quad`, `\qquad`), ignored by the stylesheet, becomes an
+#   `<mo>` that contains space characters of the same width.
 #
 # Nodes are processed from the last to the first one, so that a node is
 # rewritten before the node that contains it is copied. New nodes are created
 # without namespace: the document is parsed again after each pass.
 #' @importFrom xml2 xml_find_all xml_find_first xml_add_sibling xml_add_child
-#' @importFrom xml2 xml_remove xml_name xml_text xml_set_attrs
+#' @importFrom xml2 xml_remove xml_name xml_text xml_set_attrs xml_attr
+#' @importFrom xml2 xml_set_attr xml_name<- xml_text<-
 prepare_mathml <- function(doc) {
+  for (node in xml_find_all(doc, "//mml:mtext", ns = mml_ns)) {
+    if (grepl(space_chars_regex, xml_text(node), perl = TRUE)) {
+      xml_name(node) <- "mo"
+    }
+  }
+  for (node in xml_find_all(doc, "//mml:mspace[@width]", ns = mml_ns)) {
+    spaces <- em_to_spaces(xml_attr(node, "width"))
+    if (nzchar(spaces)) {
+      xml_name(node) <- "mo"
+      xml_set_attr(node, "width", NULL)
+      xml_text(node) <- spaces
+    }
+  }
+
   fenced <- xml_find_all(
     doc,
     "//mml:mrow[count(*) >= 2][*[1][self::mml:mo][@fence='true']][*[last()][self::mml:mo][@fence='true']]",

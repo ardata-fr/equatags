@@ -49,3 +49,36 @@ test_that("other equations are not changed", {
   expect_no_match(x, "<m:d>", fixed = TRUE)
   expect_no_match(x, "<m:nary>", fixed = TRUE)
 })
+
+test_that("spaces are written with the math font", {
+  x <- transform_mathjax(c("a\\,b", "a\\;b", "a\\ b"), to = "mml")
+  for (omml in x) {
+    expect_no_match(omml, "<m:nor/>", fixed = TRUE)
+  }
+  doc <- xml2::read_xml(x[1])
+  ns <- c(m = "http://schemas.openxmlformats.org/officeDocument/2006/math")
+  expect_match(
+    paste(xml2::xml_text(xml2::xml_find_all(doc, "//m:t", ns = ns)), collapse = ""),
+    " ",
+    fixed = TRUE
+  )
+})
+
+test_that("text keeps the font of the text", {
+  x <- transform_mathjax("x \\text{ if } y", to = "mml")
+  expect_match(x, "<m:nor/>", fixed = TRUE)
+})
+
+test_that("quad spaces are kept", {
+  x <- transform_mathjax(c("a\\quad b", "a\\qquad b"), to = "mml")
+  expect_match(x[1], "a b", fixed = TRUE)
+  expect_match(x[2], "a  b", fixed = TRUE)
+})
+
+test_that("widths in em are converted to space characters", {
+  expect_equal(equatags:::em_to_spaces("1em"), " ")
+  expect_equal(equatags:::em_to_spaces("2.5em"), "   ")
+  expect_equal(equatags:::em_to_spaces("0.1667em"), " ")
+  expect_equal(equatags:::em_to_spaces("-0.1667em"), "")
+  expect_equal(equatags:::em_to_spaces("3pt"), "")
+})

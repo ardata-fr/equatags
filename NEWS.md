@@ -6,6 +6,10 @@ showed an empty placeholder in the operator.
 - In 'Office Open XML Math' output, delimiters such as the parentheses of a
 matrix or `\left( \right)` are now stretchy delimiters: they kept the height of
 a single line.
+- In 'Office Open XML Math' output, `\quad` and `\qquad` are now written as
+spaces: they were dropped.
+- In 'Office Open XML Math' output, spaces such as `\,` or `\;` are no longer
+written as normal text.
 - The XSL stylesheet is read once per session instead of once per equation.
 
 # equatags 0.2.2
