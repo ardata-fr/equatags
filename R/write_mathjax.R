@@ -3,15 +3,83 @@ mml_to_ooml <- function(x){
 
   z <- c(xml_header, x)
 
-  style_doc <- read_xml(system.file(package = "equatags", "mml2omml.xsl"))
-
   doc <- read_xml(paste0(z, collapse = ""))
-  ooml <- xml_xslt(doc, style_doc)
+  doc <- prepare_mathml(doc)
+  ooml <- xml_xslt(doc, mml2omml_stylesheet())
   ooml <- gsub(xml_header, "", as.character(ooml), fixed = TRUE)
   ooml
 
 }
 xml_header <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+
+# The stylesheet is read once per session.
+equatags_cache <- new.env(parent = emptyenv())
+mml2omml_stylesheet <- function() {
+  if (is.null(equatags_cache$stylesheet)) {
+    equatags_cache$stylesheet <- read_xml(
+      system.file(package = "equatags", "mml2omml.xsl")
+    )
+  }
+  equatags_cache$stylesheet
+}
+
+mml_ns <- c(mml = "http://www.w3.org/1998/Math/MathML")
+
+# The stylesheet (MML2OMML.XSL from Microsoft) expects the MathML written by
+# Word. KaTeX writes some constructs differently, they are rewritten here:
+#
+# - delimiters `<mo fence="true">` around content become `<mfenced>`, so that
+#   they are converted to stretchy delimiters (`m:d`);
+# - the argument of an n-ary operator (sum, integral...) is wrapped in an
+#   `<mrow>`, so that it is written in the n-ary element (`m:e`) and not left
+#   empty.
+#
+# Nodes are processed from the last to the first one, so that a node is
+# rewritten before the node that contains it is copied. New nodes are created
+# without namespace: the document is parsed again after each pass.
+#' @importFrom xml2 xml_find_all xml_find_first xml_add_sibling xml_add_child
+#' @importFrom xml2 xml_remove xml_name xml_text xml_set_attrs
+prepare_mathml <- function(doc) {
+  fenced <- xml_find_all(
+    doc,
+    "//mml:mrow[count(*) >= 2][*[1][self::mml:mo][@fence='true']][*[last()][self::mml:mo][@fence='true']]",
+    ns = mml_ns
+  )
+  for (mrow in rev(fenced)) {
+    children <- xml_children(mrow)
+    mfenced <- xml_add_sibling(mrow, "mfenced", .where = "before")
+    xml_set_attrs(mfenced, c(
+      open = xml_text(children[[1]]),
+      close = xml_text(children[[length(children)]]),
+      separators = ""
+    ))
+    inner <- xml_add_child(mfenced, "mrow")
+    for (child in children[-c(1, length(children))]) {
+      xml_add_child(inner, child)
+    }
+    xml_remove(mrow)
+  }
+  doc <- read_xml(as.character(doc))
+
+  scripts <- xml_find_all(
+    doc,
+    "//mml:*[self::mml:munder or self::mml:mover or self::mml:munderover or self::mml:msub or self::mml:msup or self::mml:msubsup][*[1][self::mml:mo]]",
+    ns = mml_ns
+  )
+  for (script in rev(scripts)) {
+    argument <- xml_find_first(script, "following-sibling::*[1]")
+    if (
+      inherits(argument, "xml_missing") ||
+        xml_name(argument) %in% c("mrow", "mstyle")
+    ) {
+      next
+    }
+    mrow <- xml_add_sibling(argument, "mrow", .where = "before")
+    xml_add_child(mrow, argument)
+    xml_remove(argument)
+  }
+  read_xml(as.character(doc))
+}
 
 
 #' @export
