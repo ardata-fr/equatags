@@ -1,35 +1,58 @@
 # equatags 0.3.0
 
-- new argument `rpr` of `transform_mathjax()` to apply run properties, such as
-the size or the color, to 'Office Open XML Math' equations, for 'Microsoft
-Word' (`<w:rPr>`) or 'Microsoft PowerPoint' (`<a:rPr>`). Without it,
-equations get the default size of the document.
+## New features
 
-- In 'Office Open XML Math' output, the argument of sums, products and
-integrals is now written inside the operator: it was written after it, and Word
-showed an empty placeholder in the operator.
-- In 'Office Open XML Math' output, delimiters such as the parentheses of a
-matrix or `\left( \right)` are now stretchy delimiters: they kept the height of
-a single line.
-- In 'Office Open XML Math' output, `\quad` and `\qquad` are now written as
-spaces: they were dropped.
-- In 'Office Open XML Math' output, spaces such as `\,` or `\;` are no longer
-written as normal text.
+- `transform_mathjax()` has a new argument `rpr` to set the run properties of
+'Office Open XML Math' equations, such as their size or color: a `<w:rPr>`
+element for 'Microsoft Word' or an `<a:rPr>` element for 'Microsoft
+PowerPoint'. Without it, equations get the default size of the document.
+
+## Bug fixes
+
+These fixes concern the 'Office Open XML Math' output (`to = "mml"`) used in
+'Microsoft Word' and 'Microsoft PowerPoint':
+
+- The argument of sums, products and integrals is now written inside the
+operator. It was written after it, and Word showed an empty placeholder in the
+operator.
+- Delimiters, such as the parentheses of a matrix or `\left( \right)`, now
+stretch to the height of their content. They kept the height of a single line.
+- `\quad` and `\qquad` are now written as spaces. They were dropped.
+- Spaces such as `\,` or `\;` are no longer written as normal text.
+
+## Performance
+
 - The XSL stylesheet is read once per session instead of once per equation.
 
 # equatags 0.2.2
 
-- add a `strict` argument to transform_mathjax() ("ignore" by default) to turn off ennoying warnings when using accented characters in equations.
+## New features
+
+- `transform_mathjax()` has a new argument `strict` (`"ignore"` by default) to
+turn off the warnings issued when equations contain accented characters.
 
 # equatags 0.2.1
 
-- add a `display` argument to transform_mathjax() to allow generating display or inline equations. It is set to FALSE by default (inline equation). This changes the behaviour that was previously to generate display equations only.
-- delete unused mathjax-npm related tools.
+## New features
+
+- `transform_mathjax()` has a new argument `display` to generate display or
+inline equations.
+
+## Changes
+
+- Equations are now generated inline by default (`display = FALSE`). They used
+to be generated in display mode only.
+- Unused tools related to 'mathjax-npm' are removed.
 
 # equatags 0.2.0
 
--   drop the node.js dependency in favor of package katex.
+## Changes
+
+- The 'node.js' dependency is dropped in favor of the package 'katex'.
 
 # equatags 0.1.1
 
--   use tools::R_user_dir instead of rappdirs::user_data_dir as it's a condition to keep the package on CRAN ("This is using \^\~/.local/share/equatags , prohibited by the CRAN policy. Please replace the use of rappdirs by the allowed procedure documented there.")
+## Changes
+
+- `tools::R_user_dir()` is now used instead of `rappdirs::user_data_dir()`, as
+required by the CRAN policy.
