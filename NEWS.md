@@ -32,6 +32,9 @@ Word displayed them with the spaces of a relation, such as `\mid`.
 equations were always in display style (limits of sums above and below
 them). As documented, the default is the inline style: use `display = TRUE`
 to get the previous result.
+- `transform_mathjax(to = "mml")` failed on a text made of ASCII characters
+only, such as `\text{ab}` ("character code point value in \x{} or \o{} is
+too large").
 
 ## Performance
 

@@ -69,6 +69,15 @@ test_that("text keeps the font of the text", {
   expect_match(x, "<m:nor/>", fixed = TRUE)
 })
 
+test_that("ASCII text and space characters are converted", {
+  x <- transform_mathjax("\\text{ab}", to = "mml")
+  expect_match(x, "<m:nor/>", fixed = TRUE)
+  expect_match(x, ">ab<", fixed = TRUE)
+  # a text of spaces only is a space of the math font, not a text
+  x <- transform_mathjax("a\\text{ }b", to = "mml")
+  expect_no_match(x, "<m:nor/>", fixed = TRUE)
+})
+
 test_that("quad spaces are kept", {
   x <- transform_mathjax(c("a\\quad b", "a\\qquad b"), to = "mml")
   expect_match(x[1], "a\u2003b", fixed = TRUE)

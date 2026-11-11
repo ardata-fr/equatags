@@ -31,7 +31,9 @@ mml2omml_stylesheet <- function() {
 mml_ns <- c(mml = "http://www.w3.org/1998/Math/MathML")
 
 # A text made of space characters only.
-space_chars_regex <- "^[\\x{0020}\\x{00A0}\\x{2000}-\\x{200B}\\x{202F}\\x{205F}\\x{2060}-\\x{2064}\\x{3000}]+$"
+# The characters are written in the R string, not as "\\x{...}" in the pattern:
+# PCRE refuses code points above 255 when the text is ASCII (no UTF-8 mode).
+space_chars_regex <- "^[ \u00a0\u2000-\u200b\u202f\u205f\u2060-\u2064\u3000]+$"
 
 # Space characters for a width in em: em spaces (U+2003), then the closest of
 # the en space (1/2 em), three-per-em (1/3), four-per-em (1/4) and six-per-em
