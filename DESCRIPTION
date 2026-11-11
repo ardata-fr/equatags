@@ -6,13 +6,12 @@ Authors@R: c(
     person("David", "Gohel", , "david.gohel@ardata.fr", role = c("aut", "cre")),
     person("ArData", role = "cph")
   )
-Description: Transform 'LaTeX' math expressions into 'HTML' or
-    'Office Open XML Math', to include them in 'HTML' pages, 'Microsoft
-    Word' documents or 'Microsoft PowerPoint' presentations with a
-    'Markdown' document or the R package 'officer'. Compute the size of
-    equations and draw them with 'grid', with the rules of 'TeX' and the
-    parameters of an 'OpenType' math font, independently of the graphic
-    device.
+Description: Transform 'LaTeX' math expressions into 'HTML' or 'Office
+    Open XML Math', to include them in 'HTML' pages, 'Microsoft Word'
+    documents or 'Microsoft PowerPoint' presentations with a 'Markdown'
+    document or the R package 'officer'. Compute the size of equations and
+    draw them with 'grid', with the rules of 'TeX' and the parameters of
+    an 'OpenType' math font, independently of the graphic device.
 License: MIT + file LICENSE
 URL: https://github.com/ardata-fr/equatags
 BugReports: https://github.com/ardata-fr/equatags/issues
@@ -27,6 +26,8 @@ Imports:
     xslt
 Suggests: 
     testthat (>= 3.0.0)
+Remotes:
+    davidgohel/gdtools
 Config/roxygen2/version: 8.1.1
 Config/testthat/edition: 3
 Encoding: UTF-8
