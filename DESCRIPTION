@@ -1,17 +1,20 @@
 Type: Package
 Package: equatags
-Title: Equations to 'XML'
-Version: 0.3.0
+Title: Convert, Measure and Draw 'LaTeX' Equations
+Version: 0.4.0.001
 Authors@R: c(
     person("David", "Gohel", , "david.gohel@ardata.fr", role = c("aut", "cre")),
     person("ArData", role = "cph")
   )
-Description: Provides function to transform latex math expressions into
-    format 'HTML' or 'Office Open XML Math'. The 'XML' result can then be
-    included in 'HTML', 'Microsoft Word' documents or 'Microsoft
-    PowerPoint' presentations by using a 'Markdown' document or the R
-    package 'officer'.
+Description: Transform 'LaTeX' math expressions into 'HTML' or
+    'Office Open XML Math', to include them in 'HTML' pages, 'Microsoft
+    Word' documents or 'Microsoft PowerPoint' presentations with a
+    'Markdown' document or the R package 'officer'. Compute the size of
+    equations and draw them with 'grid', with the rules of 'TeX' and the
+    parameters of an 'OpenType' math font, independently of the graphic
+    device.
 License: MIT + file LICENSE
+URL: https://github.com/ardata-fr/equatags
 BugReports: https://github.com/ardata-fr/equatags/issues
 Depends: 
     R (>= 4.0.0)

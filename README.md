@@ -9,20 +9,94 @@
 status](https://github.com/ardata-fr/equatags/workflows/R-CMD-check/badge.svg)](https://github.com/ardata-fr/equatags/actions)
 <!-- badges: end -->
 
-The goal of the package is to provide a tool to transform latex math
-expressions into `HTML` format and `Office Open XML Math` format (which
-can be used in a Word or PowerPoint document).
+‘equatags’ transforms LaTeX math expressions:
+
+- into `HTML` and into `Office Open XML Math`, the format of equations
+  in Word and PowerPoint documents, with `transform_mathjax()`;
+- into sizes and drawings: `equation_size()` computes the width, height
+  and depth of equations and `equation_grob()` draws them with ‘grid’.
 
 ## Installation
 
-You can install the development version from GitHub with:
+You can install the released version from CRAN:
+
+``` r
+install.packages("equatags")
+```
+
+or the development version from GitHub:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("davidgohel/equatags")
+remotes::install_github("ardata-fr/equatags")
 ```
 
+## Office Open XML Math and HTML
+
+``` r
+cat(transform_mathjax("x^2", to = "mml"))
+#> 
+#> <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML">
+#>   <m:sSup>
+#>     <m:e>
+#>       <m:r>
+#>         <m:t>x</m:t>
+#>       </m:r>
+#>     </m:e>
+#>     <m:sup>
+#>       <m:r>
+#>         <m:t>2</m:t>
+#>       </m:r>
+#>     </m:sup>
+#>   </m:sSup>
+#> </m:oMath>
+```
+
+With `to = "html"`, the result is the HTML of ‘KaTeX’, to be displayed
+with its CSS. The ‘Office Open XML Math’ output can be inserted in Word
+documents with the package ‘officer’ (or ‘flextable’); see the argument
+`rpr` of `transform_mathjax()` to set the size or the colour of
+equations.
+
+## Size and drawing of equations
+
+Equations are laid out with the rules of TeX and the parameters of the
+‘MATH’ table of an OpenType math font. The default font is ‘STIX Two
+Math’, shipped with ‘gdtools’: the results only depend on this file, not
+on the graphic device or the machine.
+
+``` r
+equation_size(
+  c("\\frac{a+b}{c}", "\\sum_{i=1}^{n} x_i^2", "\\sqrt{x^2 + y^2}"),
+  size = 12, display = TRUE
+)
+#>       width    height     depth
+#> 1 0.4129074 0.2241667 0.1086667
+#> 2 0.3723611 0.2593000 0.1801333
+#> 3 0.6375741 0.1719833 0.0388500
+```
+
+`equation_grob()` draws an equation with ‘grid’ (R \>= 4.3), with the
+size computed:
+
+``` r
+library(grid)
+grid.newpage()
+grid.draw(
+  equation_grob(
+    "f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}",
+    size = 16, display = TRUE
+  )
+)
+```
+
+<img src="man/figures/README-grob-1.png" alt="" width="60%" />
+
 ## Example with flextable
+
+‘flextable’ uses ‘equatags’ to write equations in HTML, Word and
+PowerPoint outputs, and to compute their sizes (`autofit()`,
+`gen_grob()`).
 
 ``` r
 library(flextable)
@@ -32,15 +106,13 @@ eqs <- c(
   "a \\ne 0",
   "x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}")
 df <- data.frame(formula = eqs)
-df
-
 
 ft <- flextable(df)
-ft <- compose(
+ft <- mk_par(
   x = ft, j = "formula",
   value = as_paragraph(as_equation(formula)))
 ft <- align(ft, align = "center", part = "all")
-ft <- width(ft, width = 2, j = "formula")
+ft <- autofit(ft)
 ft
 ```
 
