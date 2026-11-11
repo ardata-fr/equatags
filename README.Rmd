@@ -19,6 +19,7 @@ library(equatags)
 <!-- badges: start -->
 [![R build status](https://github.com/ardata-fr/equatags/workflows/R-CMD-check/badge.svg)](https://github.com/ardata-fr/equatags/actions)
 [![version](https://www.r-pkg.org/badges/version/equatags)](https://CRAN.R-project.org/package=equatags)
+[![test coverage](https://codecov.io/gh/ardata-fr/equatags/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ardata-fr/equatags)
 <!-- badges: end -->
 
 'equatags' transforms LaTeX math expressions:
