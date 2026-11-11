@@ -1,3 +1,15 @@
+# equatags (development version)
+
+## Bug fixes
+
+- In 'Office Open XML Math' (`to = "mml"`), vertical bars used as delimiters
+(`|x|`, `\lvert`, `\lVert`, `\left|`, `\|x\|`) are written as delimiters:
+Word displayed them with the spaces of a relation, such as `\mid`.
+- `transform_mathjax(to = "mml")` now uses the argument `display`: the
+equations were always in display style (limits of sums above and below
+them). As documented, the default is the inline style: use `display = TRUE`
+to get the previous result.
+
 # equatags 0.3.0
 
 ## New features

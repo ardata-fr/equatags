@@ -82,3 +82,21 @@ test_that("widths in em are converted to space characters", {
   expect_equal(equatags:::em_to_spaces("-0.1667em"), "")
   expect_equal(equatags:::em_to_spaces("3pt"), "")
 })
+
+test_that("vertical bars used as delimiters are written as delimiters for Word", {
+  bar <- transform_mathjax(c("|x|", "\\lvert x \\rvert", "\\left| x \\right|"), to = "mml")
+  expect_false(any(grepl("\u2223", bar)))
+  expect_true(all(grepl("|", bar, fixed = TRUE)))
+  dbar <- transform_mathjax("\\lVert x \\rVert", to = "mml")
+  expect_false(grepl("\u2225", dbar))
+  expect_match(dbar, "\u2016")
+  # \mid is a relation
+  expect_match(transform_mathjax("a \\mid b", to = "mml"), "\u2223")
+})
+
+test_that("the argument display sets the style of Office Open XML Math", {
+  inline <- transform_mathjax("\\sum_{i=1}^{n} x_i", to = "mml")
+  display <- transform_mathjax("\\sum_{i=1}^{n} x_i", to = "mml", display = TRUE)
+  expect_match(inline, "<m:limLoc m:val=\"subSup\"/>", fixed = TRUE)
+  expect_match(display, "<m:limLoc m:val=\"undOvr\"/>", fixed = TRUE)
+})

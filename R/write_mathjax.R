@@ -68,6 +68,21 @@ em_to_spaces <- function(width) {
 #' @importFrom xml2 xml_remove xml_name xml_text xml_set_attrs xml_attr
 #' @importFrom xml2 xml_set_attr xml_name<- xml_text<-
 prepare_mathml <- function(doc) {
+  # vertical bars used as delimiters (|x|, \lvert, \left|): KaTeX writes
+  # them with the characters of the relations \mid and \parallel, that Word
+  # spaces as relations; the ASCII bar and the double vertical line are
+  # delimiters for Word. \mid and \parallel (mo without these attributes)
+  # are kept.
+  bars <- c("\u2223" = "|", "\u2225" = "\u2016")
+  for (node in xml_find_all(doc, "//mml:mi | //mml:mo", ns = mml_ns)) {
+    ch <- xml_text(node)
+    if (!ch %in% names(bars)) next
+    if (xml_name(node) == "mi" ||
+      identical(xml_attr(node, "stretchy"), "false") ||
+      identical(xml_attr(node, "fence"), "true")) {
+      xml_text(node) <- bars[[ch]]
+    }
+  }
   for (node in xml_find_all(doc, "//mml:mtext", ns = mml_ns)) {
     if (grepl(space_chars_regex, xml_text(node), perl = TRUE)) {
       xml_name(node) <- "mo"
@@ -281,7 +296,14 @@ transform_mathjax <- function(
   }
 
   if ("mml" %in% to) {
-    info <- vapply(x, katex_mathml, "", preview = FALSE, strict = strict)
+    info <- vapply(
+      x,
+      katex_mathml,
+      "",
+      displayMode = display,
+      preview = FALSE,
+      strict = strict
+    )
     names(info) <- NULL
     info <- gsub("</span>", "", info, fixed = TRUE)
     info <- gsub("<span class=\"katex\">", "", info, fixed = TRUE)
