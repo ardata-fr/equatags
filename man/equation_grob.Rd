@@ -60,6 +60,13 @@ with rectangles, so the size of the drawing is the size computed.
 The graphic device must support the drawing of glyphs (R >= 4.3, see
 \code{dev.capabilities()$glyphs}): 'ragg', 'svglite', \code{pdf()} and \code{cairo_pdf()}
 do.
+
+The size of the grob is computed when it is created, from the font file
+only: \code{widthDetails()}, \code{heightDetails()}, \code{ascentDetails()} and
+\code{descentDetails()} return it in "bigpts" without measuring anything, and
+no graphic device is needed until the grob is drawn. To get the size
+without a device, use \code{\link[=equation_size]{equation_size()}} (inches) or the numeric value of
+these units: \code{\link[grid:convertWidth]{grid::convertWidth()}} opens a device when none is open.
 }
 \examples{
 if (getRversion() >= "4.3.0") {

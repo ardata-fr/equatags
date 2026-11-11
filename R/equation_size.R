@@ -91,6 +91,13 @@ equation_size <- function(
 #' The graphic device must support the drawing of glyphs (R >= 4.3, see
 #' `dev.capabilities()$glyphs`): 'ragg', 'svglite', `pdf()` and `cairo_pdf()`
 #' do.
+#'
+#' The size of the grob is computed when it is created, from the font file
+#' only: `widthDetails()`, `heightDetails()`, `ascentDetails()` and
+#' `descentDetails()` return it in "bigpts" without measuring anything, and
+#' no graphic device is needed until the grob is drawn. To get the size
+#' without a device, use [equation_size()] (inches) or the numeric value of
+#' these units: [grid::convertWidth()] opens a device when none is open.
 #' @inheritParams equation_size
 #' @param x a LaTeX math expression (a single string).
 #' @param x0,y0 position of the equation, numeric values (in `default.units`)
