@@ -234,10 +234,6 @@ math_variant <- function(ch, variant) {
 op_large <- names(math_classes)[math_classes == "op"]
 # Invisible operators of KaTeX (function application, invisible times...).
 op_invisible <- c("\u2061", "\u2062", "\u2063", "\u2064")
-# Operators written with letters whose limits move to scripts outside of the
-# display style (\lim, \max...).
-limit_names <- c("lim", "max", "min", "sup", "inf", "det", "gcd", "Pr",
-  "argmax", "argmin", "lim sup", "lim inf")
 
 # Vertical bars used as delimiters (\lvert, \rvert, \lVert, \bigl|,
 # \left|): KaTeX writes them with the characters of the relations \mid and
@@ -517,13 +513,6 @@ is_large_op <- function(node) {
   xml2::xml_name(node) == "mo" && xml2::xml_text(node) %in% op_large
 }
 
-is_limit_name <- function(node) {
-  if (xml2::xml_name(node) == "mrow") {
-    node <- xml2::xml_children(node)[[1]]
-  }
-  xml2::xml_name(node) == "mi" && xml2::xml_text(node) %in% limit_names
-}
-
 center_on_axis <- function(b, f, st) {
   shift <- (b$h - b$d) / 2 - K(f, st, "axisHeight")
   b <- shift_box(b, 0, -shift)
@@ -690,10 +679,8 @@ layout_scripts <- function(base_node, sub_node, sup_node, f, st) {
 }
 
 layout_underover <- function(base_node, under_node, over_node, f, st) {
-  # outside of the display style, limits of large operators are scripts
-  if ((is_large_op(base_node) || is_limit_name(base_node)) && !st$display) {
-    return(layout_scripts(base_node, under_node, over_node, f, st))
-  }
+  # KaTeX writes scripts (msub, msubsup) for the limits that are not above
+  # and below: munder and munderover are limits in every style (\limits)
   if (is_h_stretchy(base_node)) {
     return(layout_stretched_base(base_node, under_node, over_node, f, st))
   }

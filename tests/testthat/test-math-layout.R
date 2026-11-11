@@ -161,6 +161,13 @@ test_that("limits of names of functions are scripts outside of the display style
   expect_lt(inline$d, display$d)
 })
 
+test_that("limits asked with \\limits stay below in the text style", {
+  f <- stix()
+  limits <- layout_equation("\\lim\\limits_{x} y", f, display = FALSE)
+  display <- layout_equation("\\lim_{x} y", f, display = TRUE)
+  expect_equal(c(limits$w, limits$h, limits$d), c(display$w, display$h, display$d))
+})
+
 test_that("labels under a stretched arrow are placed below it", {
   f <- stix()
   over <- layout_equation("\\xrightarrow{f}", f)
