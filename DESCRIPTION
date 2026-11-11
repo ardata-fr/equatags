@@ -16,7 +16,10 @@ BugReports: https://github.com/ardata-fr/equatags/issues
 Depends: 
     R (>= 4.0.0)
 Imports: 
+    gdtools (>= 0.6.0),
+    grid,
     katex,
+    systemfonts (>= 1.2.0),
     xml2,
     xslt
 Suggests: 
