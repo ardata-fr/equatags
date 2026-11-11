@@ -2,6 +2,88 @@
 # TeXbook, appendix G) and the constants of the OpenType 'MATH' table of the
 # font. Values are in font units at a size of 1 em = units per em.
 #
+# Role of this file
+#
+# It computes where each glyph and each rule of an equation goes. It is used
+# by the two user functions of R/equation_size.R, and by nothing else:
+#
+# - equation_size(): size of the box of each equation (width, height, depth);
+# - equation_grob(): the same box, drawn with grid (glyphs, rules, lines).
+#
+# transform_mathjax() (R/write_mathjax.R) does not use it: Word and
+# PowerPoint lay out the Office Open XML Math themselves.
+#
+# Chain of calls
+#
+#   equation_size() / equation_grob()           R/equation_size.R
+#     math_font()        reads the font file    R/math_font.R
+#     layout_equation()  cache by font, style and expression
+#       layout_tex()     LaTeX -> MathML with katex::katex_mathml()
+#         layout_node()  one MathML element -> one box (recursive),
+#                        then its colour and background
+#           layout_element()  dispatch on the name of the element
+#
+# The TeX class of an operator (binary, relation...) comes from the table of
+# symbols of KaTeX, copied in R/math_classes.R (generated, do not edit).
+#
+# From LaTeX to the layout functions
+#
+# The functions work on the MathML of KaTeX, not on LaTeX. To find the code
+# of a LaTeX construct, look at the MathML KaTeX writes for it
+# (katex::katex_mathml("\\frac{a}{b}")), then at this table. The tests of
+# tests/testthat/test-math-layout.R are named after the LaTeX constructs.
+#
+#   LaTeX                        MathML of KaTeX               function
+#   ---------------------------  ----------------------------  ----------------------
+#   a, x, \alpha, \sin, 12       mi, mn                        token_box()
+#   \text{...}                   mtext                         token_box()
+#   +, =, (, \le                 mo                            layout_mo()
+#   \frac, \dfrac, \tfrac        mfrac                         layout_frac()
+#   \binom                       mfrac linethickness="0px"     layout_stack()
+#   x^2, x_i, x_i^2              msup, msub, msubsup           layout_scripts()
+#   \sum_i^n (display style)     munderover                    layout_underover()
+#   \lim_x (display style),      munder                        layout_underover()
+#   \sum\limits_i
+#   \overbrace, \underbrace      mover, munder + stretchy mo   layout_underover()
+#   \xrightarrow{f}              mover, stretchy base          layout_stretched_base()
+#   \hat, \widehat, \overline,   mover accent="true"           layout_accent()
+#   \overrightarrow
+#   \underline                   munder accentunder="true"     layout_accent_under()
+#   \sqrt, \sqrt[n]              msqrt, mroot                  layout_radical()
+#   \left( \right), \middle      row with fence or stretchy mo layout_row()
+#   \big(, \Big(, \bigg(         mo stretchy minsize maxsize   layout_row() (sizes
+#                                                              not used yet)
+#   matrix, pmatrix, array,      mtable                        layout_table()
+#   aligned, cases
+#   \boxed, \fbox, \cancel,      menclose                      layout_enclose()
+#   frame of an array
+#   \colorbox, \rule, labels of  mpadded                       layout_padded()
+#   \xrightarrow
+#   \quad, \hspace, \,           mspace or mtext of spaces     layout_element(), token_box()
+#   \phantom                     mphantom                      layout_element()
+#   \displaystyle, \color        mstyle                        layout_element(), layout_node()
+#   \overset, \stackrel          mo around an mover            layout_element()
+#   \mathbf, \mathbb, \mathcal   mathvariant                   math_variant()
+#
+# Surprises of KaTeX, handled where they are used
+#
+# - Inline style: limits of large operators are scripts (\sum_i^n is an
+#   msubsup). With \limits, a single limit is an munder or an mover
+#   (\lim\limits_x, \sum\limits_i), but two limits are still an msubsup
+#   (\sum\limits_i^n): the layout can not tell them from scripts.
+# - \dfrac is an mfrac in an mstyle displaystyle="true"; \tfrac is a plain
+#   mfrac.
+# - |x| is written with mi U+2223; \lvert, \left| with mo U+2223 (the
+#   character of the relation \mid), marked stretchy="false" or fence="true"
+#   (see is_bar_delimiter() and hlist()).
+# - \sin, \lim are an mi of several letters followed by an invisible mo
+#   (U+2061, function application): see token_box() and layout_mo().
+# - \rule writes the height and depth of its mpadded without sign, but they
+#   are relative (see layout_padded()); the frame of an array is a menclose
+#   around the mtable with its sides exchanged (see layout_enclose()).
+# - Numbered environments add empty cells around the rows (see
+#   layout_table()).
+#
 # Sources
 #
 # - D. E. Knuth, The TeXbook, appendix G "Generating boxes from formulas":
@@ -60,6 +142,7 @@ empty_box_value <- list(
 )
 empty_box <- function() empty_box_value
 
+# Move all the items of a box (its size does not change).
 shift_box <- function(b, dx, dy) {
   if (nrow(b$glyphs)) {
     b$glyphs$x <- b$glyphs$x + dx
@@ -131,12 +214,20 @@ merge_items <- function(a, b, dx = 0, dy = 0) {
   a
 }
 
+# --- styles -------------------------------------------------------------------
+#
+# The style decides the size of the glyphs (scale_of()) and which constants
+# of the font are used (display or not, cramped or not).
+
+# A copy of the style `st` with some of its values changed.
 with_style <- function(st, ...) {
   new <- list(...)
   st[names(new)] <- new
   st
 }
 
+# Scale of the glyphs: 1 in text and display styles, the percentages of the
+# font for scripts (x^2) and scripts of scripts (x^{2^n}).
 scale_of <- function(f, st) {
   c(
     1,
@@ -148,6 +239,8 @@ scale_of <- function(f, st) {
 K <- function(f, st, name) f$const[[name]] * scale_of(f, st)
 # Size of an em at the size of the style, in font units.
 em_size <- function(f, st) f$upem * scale_of(f, st)
+# Style of the scripts, limits and fractions of a style: one level smaller,
+# never display.
 sub_style <- function(st, cramped = st$cramped) {
   list(level = st$level + 1, display = FALSE, cramped = cramped)
 }
@@ -185,6 +278,8 @@ greek_italic_variants <- c(
   "\u03D6" = 0x1D71B, "\u03F1" = 0x1D71A
 )
 
+# Character of `ch` in the alphabet `variant` (\mathbf{x}, \mathbb{R},
+# \mathcal{A}, italic letters of mi).
 math_variant <- function(ch, variant) {
   if (variant == "normal") {
     return(ch)
@@ -260,6 +355,7 @@ mo_class <- function(ch, node = NULL) {
   if (is.na(cls)) "ord" else unname(cls)
 }
 
+# Box of one glyph: its advance width, the height and depth of its ink.
 glyph_box <- function(f, st, gid) {
   s <- scale_of(f, st)
   ink <- f$ink(gid)
@@ -273,6 +369,8 @@ glyph_box <- function(f, st, gid) {
   b
 }
 
+# Box of characters written side by side, without kerning (names of
+# functions, numbers, \text{...}).
 text_box <- function(f, st, chars) {
   b <- empty_box()
   for (ch in chars) {
@@ -315,6 +413,8 @@ atom_spacing <- matrix(
   dimnames = rep(list(c("ord", "op", "bin", "rel", "open", "close", "punct", "inner")), 2)
 )
 
+# Space between two atoms of classes `left` and `right` (a + b, a = b,
+# f(x), a, b), from atom_spacing.
 atom_space <- function(f, st, left, right) {
   v <- atom_spacing[left, right]
   if (v < 0) {
@@ -339,7 +439,8 @@ em_value <- function(x, f, st) {
   v * em_size(f, st)
 }
 
-# Boxes side by side, with the spaces between atoms.
+# Boxes side by side, with the spaces between atoms: every row of an
+# equation goes through it (via layout_row()).
 hlist <- function(f, st, boxes) {
   boxes <- Filter(function(b) !identical(b$cls, "skip"), boxes)
   if (!length(boxes)) {
@@ -386,6 +487,8 @@ hlist <- function(f, st, boxes) {
 
 # --- elements -----------------------------------------------------------------
 
+# Box of a MathML element, with its colour (\color, \textcolor) and its
+# background (\colorbox). Every element goes through it.
 layout_node <- function(node, f, st) {
   nm <- xml2::xml_name(node)
   kids <- xml2::xml_children(node)
@@ -401,6 +504,11 @@ layout_node <- function(node, f, st) {
   b
 }
 
+# Dispatch on the name of the MathML element: see the table at the top of
+# this file. Small elements are laid out here: mstyle (\displaystyle,
+# \scriptstyle), mphantom (\phantom), mspace (\quad, \hspace, \rule).
+# An element that is not handled is an error: equation_size() turns it into
+# NA with a warning.
 layout_element <- function(node, nm, kids, f, st) {
   if (nm %in% c("mo", "mi", "mn") && length(kids) > 0) {
     # KaTeX wraps some constructs in a token element to give them the class
@@ -482,6 +590,10 @@ token_box <- function(node, f, st, is_mi = FALSE) {
   b
 }
 
+# Operators, relations, delimiters and punctuation (+, =, (, \le, ,):
+# their TeX class decides the spaces around them (see hlist()). Invisible
+# operators of KaTeX take no space. Stretchy delimiters are not laid out
+# here but in layout_row().
 layout_mo <- function(node, f, st) {
   ch <- xml2::xml_text(node)
   if (ch %in% op_invisible) {
@@ -509,10 +621,13 @@ explicit_spaces <- function(b, node, f, st) {
   b
 }
 
+# \sum, \int, \prod, \bigcup...: a bigger glyph in display style.
 is_large_op <- function(node) {
   xml2::xml_name(node) == "mo" && xml2::xml_text(node) %in% op_large
 }
 
+# Box moved so that its middle is on the math axis (the height of the bar of
+# fractions): large operators, delimiters, tables.
 center_on_axis <- function(b, f, st) {
   shift <- (b$h - b$d) / 2 - K(f, st, "axisHeight")
   b <- shift_box(b, 0, -shift)
@@ -565,6 +680,9 @@ base_box <- function(node, f, st) {
   if (is_large_op(node)) large_op(node, f, st) else layout_node(node, f, st)
 }
 
+# Fractions (\frac, \dfrac, \tfrac, \cfrac): numerator and denominator
+# around the bar, on the math axis (TeX, rule 15). A fraction without bar
+# (\binom, \choose) is a stack.
 layout_frac <- function(kids, f, st, node = NULL) {
   lt <- if (is.null(node)) NA else xml2::xml_attr(node, "linethickness")
   if (!is.na(lt) && suppressWarnings(as.numeric(gsub("[a-z]", "", lt))) %in% 0) {
@@ -621,6 +739,9 @@ layout_stack <- function(kids, f, st) {
   b
 }
 
+# Superscripts and subscripts (x^2, x_i, x_i^2), and the limits of large
+# operators outside of the display style (\sum_i^n inline) (TeX, rules 18a
+# to 18f).
 layout_scripts <- function(base_node, sub_node, sup_node, f, st) {
   base <- base_box(base_node, f, st)
   sub <- if (!is.null(sub_node)) layout_node(sub_node, f, sub_style(st, cramped = TRUE))
@@ -678,6 +799,10 @@ layout_scripts <- function(base_node, sub_node, sup_node, f, st) {
   b
 }
 
+# Limits above and below a base (\sum_{i=1}^n and \lim_{x} in display style,
+# \limits), braces (\overbrace, \underbrace), \overset and \underset
+# (TeX, rule 13a). A stretchy arrow as base (\xrightarrow) goes to
+# layout_stretched_base().
 layout_underover <- function(base_node, under_node, over_node, f, st) {
   # KaTeX writes scripts (msub, msubsup) for the limits that are not above
   # and below: munder and munderover are limits in every style (\limits)
@@ -998,6 +1123,11 @@ column_spacing <- function(node, f, st) {
   em_value(if (is.na(v)) "0.8em" else v, f, st)
 }
 
+# Matrices and arrays (matrix, pmatrix, array, aligned, cases, gathered):
+# cells aligned by column, rows at least as high as a strut, lines between
+# columns and rows (array{c|c}, \hline), centered on the math axis. The
+# delimiters of pmatrix or cases are around the table, in layout_row(); its
+# frame (array{|c|}) is in layout_enclose().
 layout_table <- function(node, f, st) {
   rows <- xml2::xml_find_all(node, "./*[local-name()='mtr']")
   # KaTeX writes empty cells around the equations of the environments that
@@ -1228,6 +1358,10 @@ attach_x <- function(f, b) {
   b$w / 2
 }
 
+# Accents over a base: \hat, \tilde, \bar, \dot, \vec... (a glyph placed on
+# the attachment point of the base), \widehat, \widetilde (the widest
+# variant that fits), \overline (a rule), \overrightarrow (an arrow
+# stretched to the width of the base).
 layout_accent <- function(base_node, acc_node, f, st) {
   base <- layout_node(base_node, f, with_style(st, cramped = TRUE))
   ch <- xml2::xml_text(acc_node)
@@ -1285,9 +1419,10 @@ layout_accent <- function(base_node, acc_node, f, st) {
 
 # --- entry point --------------------------------------------------------------
 
-# Box of an equation written in LaTeX, from the MathML of KaTeX. Boxes are in
-# font units and do not depend on the font size: they are kept for the session
-# in the environment of the font, by style and expression. Errors are not kept.
+# Box of an equation written in LaTeX: called by equation_size() and
+# equation_grob() (R/equation_size.R). Boxes are in font units and do not
+# depend on the font size: they are kept for the session in the environment
+# of the font, by style and expression. Errors are not kept.
 layout_equation <- function(tex, f, display = FALSE) {
   key <- paste0(if (display) "D" else "T", tex)
   b <- f$layouts[[key]]
@@ -1298,6 +1433,8 @@ layout_equation <- function(tex, f, display = FALSE) {
   b
 }
 
+# LaTeX -> MathML of KaTeX -> box. KaTeX errors (unknown commands) are
+# raised here.
 layout_tex <- function(tex, f, display) {
   html <- katex_mathml(tex, displayMode = display)
   doc <- xml2::read_html(html)
