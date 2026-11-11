@@ -1,54 +1,45 @@
 # equatags (development version)
 
+## Changes that can modify your documents
+
+- In Word and PowerPoint (`transform_mathjax(to = "mml")`), equations are now
+displayed inline by default, as documented: the argument `display` was
+ignored and every equation was displayed as a block (limits of sums above and
+below, larger fractions). Use `display = TRUE` to keep the previous result.
+
 ## New features
 
-- New function `equation_size()`: width, height and depth of equations
-written in LaTeX. The equations are converted to MathML with 'KaTeX', then
-laid out with the rules of TeX and the 'MATH' table of an OpenType math font.
-The default font is the file of "STIX Two Math" shipped with 'gdtools', so
-that the results are the same on every machine; another font can be given by
-its file or its family name. The size does not depend on a graphic device or
-an application, and is close to the one of 'Microsoft Word' with the same font
-(see the section "Differences with Word and browsers" of `?equation_size`).
-- New function `equation_grob()`: draws an equation with 'grid' (requires
-R >= 4.3), with the same layout.
-- Supported constructs: fractions and binomials, scripts and limits of large
-operators, radicals, stretchy delimiters (`\left`, `\middle`, `\right`, `\big`),
-matrices, arrays (column alignment, lines between columns and rows, frames)
-and other environments of 'KaTeX', accents, horizontal braces and arrows
-(`\overbrace`, `\xrightarrow`), `\overline` and `\underline`, `\overset` and
-`\stackrel`, frames and strikes (`\boxed`, `\cancel`), colours and backgrounds
-(`\color`, `\colorbox`), rules (`\rule`), spaces and phantoms, bold, italic and
-other math alphabets.
-- The layout of an equation is computed once per session and font, for all
-sizes.
+- `equation_size()` gives the width, height and depth of equations written in
+LaTeX, without drawing them and without a graphic device. Use it to size a
+cell, a column or an image before the document is opened. The result is the
+same on every machine, and close to what Word displays with the same font
+(see "Differences with Word and browsers" in `?equation_size`).
+- `equation_grob()` draws an equation in a 'grid' graphic, for example in a
+'ggplot2' plot (R >= 4.3).
+- Both functions use the font "STIX Two Math" by default, shipped with
+'gdtools'; another math font can be given by its name or its file.
+- Fractions, scripts, sums and integrals with their limits, roots, matrices
+and arrays, delimiters such as `\left( \right)`, accents, braces, arrows,
+frames, colours and most other constructs of 'KaTeX' are supported (see
+`?equation_size`). An equation that can not be measured gives `NA` with a
+warning.
 
 ## Bug fixes
 
-- In 'Office Open XML Math' (`to = "mml"`), vertical bars used as delimiters
-(`|x|`, `\lvert`, `\lVert`, `\left|`, `\|x\|`) are written as delimiters:
-Word displayed them with the spaces of a relation, such as `\mid`.
-- `transform_mathjax(to = "mml")` now uses the argument `display`: the
-equations were always in display style (limits of sums above and below
-them). As documented, the default is the inline style: use `display = TRUE`
-to get the previous result.
-- `transform_mathjax(to = "mml")` failed on a text made of ASCII characters
-only, such as `\text{ab}` ("character code point value in \x{} or \o{} is
-too large").
+- In Word, vertical bars around an expression (`|x|`, `\lvert x \rvert`,
+`\left| x \right|`, `\|x\|`) were spaced as the relation "divides": they are
+now displayed as delimiters.
+- `transform_mathjax(to = "mml")` failed on texts made of ASCII characters
+only, such as `\text{ab}`.
 
 ## Performance
 
-- `transform_mathjax(to = "mml")` converts all its equations with a single
-XSL transformation. The package 'xslt' keeps in memory each stylesheet it
-compiles until the end of the session (about 1.7 MB per transformation), and
-equations were converted one by one: a document with 500 equations used
-about 900 MB more. The namespace of MathML is no longer written in the
-result.
+- Documents with many equations are created faster and use much less memory
+(about 1.7 MB per equation before, for the whole R session).
 
 ## Dependencies
 
-- 'equatags' now imports 'gdtools' (>= 0.6.0), for the font "STIX Two Math",
-'systemfonts' (>= 1.2.0), to read the glyphs of fonts, and 'grid'.
+- 'equatags' now needs 'gdtools' (>= 0.6.0) and 'systemfonts' (>= 1.2.0).
 
 # equatags 0.3.0
 
