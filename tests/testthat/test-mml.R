@@ -100,3 +100,13 @@ test_that("the argument display sets the style of Office Open XML Math", {
   expect_match(inline, "<m:limLoc m:val=\"subSup\"/>", fixed = TRUE)
   expect_match(display, "<m:limLoc m:val=\"undOvr\"/>", fixed = TRUE)
 })
+
+test_that("several equations are converted as each one alone", {
+  x <- c("\\frac{a}{b}", "\\sum_{i=1}^n x_i", "|x| + \\color{red}{y}")
+  together <- transform_mathjax(x, to = "mml")
+  alone <- vapply(x, transform_mathjax, "", to = "mml", USE.NAMES = FALSE)
+  expect_identical(together, alone)
+  expect_identical(transform_mathjax(character(), to = "mml"), character())
+  # the namespace of MathML is not written in the result
+  expect_false(any(grepl("xmlns:mml", together, fixed = TRUE)))
+})

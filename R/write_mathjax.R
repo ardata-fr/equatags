@@ -1,12 +1,19 @@
+# MathML to Office Open XML Math. All the equations are transformed by a
+# single call to xml_xslt(), under a common root element "equatags" (see the
+# template of "/" in mml2omml.xsl): each call of xml_xslt() compiles the
+# stylesheet and keeps the memory of the compiled stylesheet until the end
+# of the session (xslt 1.5.1).
 #' @importFrom xslt xml_xslt
+#' @importFrom xml2 xml_new_root
 mml_to_ooml <- function(x) {
-  z <- c(xml_header, x)
-
-  doc <- read_xml(paste0(z, collapse = ""))
+  if (!length(x)) {
+    return(character())
+  }
+  doc <- read_xml(paste0(xml_header, "<equatags>", paste0(x, collapse = ""), "</equatags>"))
   doc <- prepare_mathml(doc)
-  ooml <- xml_xslt(doc, mml2omml_stylesheet())
-  ooml <- gsub(xml_header, "", as.character(ooml), fixed = TRUE)
-  ooml
+  res <- xml_xslt(doc, mml2omml_stylesheet())
+  ooml <- vapply(xml_children(res), function(node) as.character(xml_new_root(node)), "")
+  gsub(xml_header, "", ooml, fixed = TRUE)
 }
 xml_header <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 
@@ -307,12 +314,7 @@ transform_mathjax <- function(
     names(info) <- NULL
     info <- gsub("</span>", "", info, fixed = TRUE)
     info <- gsub("<span class=\"katex\">", "", info, fixed = TRUE)
-    info <- vapply(
-      info,
-      mml_to_ooml,
-      FUN.VALUE = character(1L),
-      USE.NAMES = FALSE
-    )
+    info <- mml_to_ooml(info)
     if (!is.null(rpr)) {
       with_rpr <- !is.na(rpr)
       info[with_rpr] <- mapply(

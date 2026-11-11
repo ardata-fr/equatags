@@ -33,6 +33,15 @@ equations were always in display style (limits of sums above and below
 them). As documented, the default is the inline style: use `display = TRUE`
 to get the previous result.
 
+## Performance
+
+- `transform_mathjax(to = "mml")` converts all its equations with a single
+XSL transformation. The package 'xslt' keeps in memory each stylesheet it
+compiles until the end of the session (about 1.7 MB per transformation), and
+equations were converted one by one: a document with 500 equations used
+about 900 MB more. The namespace of MathML is no longer written in the
+result.
+
 ## Dependencies
 
 - 'equatags' now imports 'gdtools' (>= 0.6.0), for the font "STIX Two Math",

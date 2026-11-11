@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mml="http://www.w3.org/1998/Math/MathML"
-	xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+	xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" exclude-result-prefixes="mml">
   <xsl:output method="xml" encoding="UTF-8" />
 
 
@@ -20,9 +20,23 @@
 		Another catch all template, just passes through 
 	-->
   <xsl:template match="/">
-    <m:oMath>
-      <xsl:apply-templates select="*" />
-    </m:oMath>
+    <xsl:choose>
+      <!-- several equations (equatags): one m:oMath per math element -->
+      <xsl:when test="equatags">
+        <xsl:element name="equatags">
+          <xsl:for-each select="equatags/*">
+            <m:oMath>
+              <xsl:apply-templates select="." />
+            </m:oMath>
+          </xsl:for-each>
+        </xsl:element>
+      </xsl:when>
+      <xsl:otherwise>
+        <m:oMath>
+          <xsl:apply-templates select="*" />
+        </m:oMath>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- %%Template: SReplace
