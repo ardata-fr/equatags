@@ -7,6 +7,7 @@
 
 [![R build
 status](https://github.com/ardata-fr/equatags/workflows/R-CMD-check/badge.svg)](https://github.com/ardata-fr/equatags/actions)
+[![version](https://www.r-pkg.org/badges/version/equatags)](https://CRAN.R-project.org/package=equatags)
 <!-- badges: end -->
 
 ‘equatags’ transforms LaTeX math expressions:
