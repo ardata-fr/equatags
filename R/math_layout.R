@@ -51,8 +51,7 @@
 #   \underline                   munder accentunder="true"     layout_accent_under()
 #   \sqrt, \sqrt[n]              msqrt, mroot                  layout_radical()
 #   \left( \right), \middle      row with fence or stretchy mo layout_row()
-#   \big(, \Big(, \bigg(         mo stretchy minsize maxsize   layout_row() (sizes
-#                                                              not used yet)
+#   \big(, \Big(, \bigg(         mo stretchy minsize maxsize   layout_mo()
 #   matrix, pmatrix, array,      mtable                        layout_table()
 #   aligned, cases
 #   \boxed, \fbox, \cancel,      menclose                      layout_enclose()
@@ -601,6 +600,11 @@ layout_mo <- function(node, f, st) {
     b$cls <- "skip"
     return(b)
   }
+  if (is_fixed_delimiter(node)) {
+    # \big(, \Bigg|: their own size, in a row or as the base of scripts
+    # (\big)^2)
+    return(stretchy_delimiter(node, f, st, 0))
+  }
   b <- text_box(f, st, strsplit(ch, "")[[1]])
   b$cls <- if (is_bar_delimiter(node)) "bar" else mo_class(ch, node)
   explicit_spaces(b, node, f, st)
@@ -996,10 +1000,33 @@ stretch_stack_shift <- function(f, st, base, glyph, over = TRUE) {
   }
 }
 
+# Delimiters of a fixed size: \big, \Big, \bigg and \Bigg are written by
+# KaTeX with minsize = maxsize (1.2, 1.8, 2.4 and 3 em), whatever their
+# content. They are laid out by layout_mo(), not stretched by layout_row().
+is_fixed_delimiter <- function(node) {
+  is_stretchy(node) && !is.na(xml2::xml_attr(node, "minsize"))
+}
+
+# Vertical stretchy delimiter centered on the math axis, with a total size
+# (height + depth) of `target`, kept between its minsize and maxsize
+# (MathML Core, 3.2.4: stretching of operators).
+stretchy_delimiter <- function(node, f, st, target) {
+  lo <- em_value(xml2::xml_attr(node, "minsize"), f, st)
+  hi <- em_value(xml2::xml_attr(node, "maxsize"), f, st)
+  target <- max(target, lo)
+  if (hi > 0) target <- min(target, hi)
+  ch <- xml2::xml_text(node)
+  b <- center_on_axis(stretch_glyph(f, st, ch, target), f, st)
+  b$cls <- if (is_bar_delimiter(node)) "bar" else mo_class(ch, node)
+  # \middle: margins given by KaTeX
+  explicit_spaces(b, node, f, st)
+}
+
 # A row with stretchy delimiters (\left ... \right, matrices): size of the
 # delimiters as in TeX (delimiterfactor 901, delimitershortfall of 0.5 em).
+# Delimiters of a fixed size (\big) are content of the row, as in TeX.
 layout_row <- function(kids, f, st) {
-  stretchy <- vapply(kids, is_stretchy, TRUE)
+  stretchy <- vapply(kids, function(k) is_stretchy(k) && !is_fixed_delimiter(k), TRUE)
   boxes <- vector("list", length(kids))
   for (i in which(!stretchy)) {
     boxes[[i]] <- layout_node(kids[[i]], f, st)
@@ -1014,11 +1041,7 @@ layout_row <- function(kids, f, st) {
     }
     target <- max(2 * delta * 0.901, 2 * delta - 0.5 * em_size(f, st))
     for (i in which(stretchy)) {
-      ch <- xml2::xml_text(kids[[i]])
-      b <- center_on_axis(stretch_glyph(f, st, ch, target), f, st)
-      b$cls <- if (is_bar_delimiter(kids[[i]])) "bar" else mo_class(ch, kids[[i]])
-      # \middle: margins given by KaTeX
-      boxes[[i]] <- explicit_spaces(b, kids[[i]], f, st)
+      boxes[[i]] <- stretchy_delimiter(kids[[i]], f, st, target)
     }
   }
   out <- hlist(f, st, boxes)

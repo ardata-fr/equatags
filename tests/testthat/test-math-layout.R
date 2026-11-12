@@ -189,6 +189,31 @@ test_that("delimiters without assembly use their largest size variant", {
   expect_gt(b$h + b$d, max(v$size, na.rm = TRUE))
 })
 
+test_that("\\big, \\Big, \\bigg and \\Bigg have their own size, whatever the content", {
+  f <- stix()
+  em <- f$upem
+  first_gid <- function(tex) layout_equation(tex, f)$glyphs$gid[1]
+  total <- function(tex) {
+    b <- layout_equation(tex, f)
+    b$h + b$d
+  }
+  # minsize of KaTeX: 1.2, 1.8, 2.4 and 3 em
+  sizes <- c(big = 1.2, Big = 1.8, bigg = 2.4, Bigg = 3)
+  for (cmd in names(sizes)) {
+    expect_gte(total(paste0("\\", cmd, "(")), sizes[[cmd]] * em)
+  }
+  expect_gt(first_gid("\\big( x"), first_gid("( x"))
+  # the content does not change the size
+  expect_equal(first_gid("\\big( \\frac{a}{b}"), first_gid("\\big( x"))
+  expect_equal(first_gid("\\big( \\sum_{i=1}^{n} \\frac{a}{b}"), first_gid("\\big( x"))
+  # as the base of scripts
+  base <- function(tex) layout_equation(tex, f)$glyphs$gid[3]
+  expect_equal(base("\\big( x \\big)^2"), base("\\big( x \\big)"))
+  expect_gt(base("\\big( x \\big)^2"), base("( x )^2"))
+  # content of the row: \left ... \right are stretched around it
+  expect_gte(total("\\left( \\Bigg( x \\right)"), total("\\Bigg( x"))
+})
+
 test_that("empty delimiters have the size of the characters", {
   f <- stix()
   b <- layout_equation("\\left( \\right)", f)
