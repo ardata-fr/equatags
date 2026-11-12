@@ -119,3 +119,11 @@ test_that("several equations are converted as each one alone", {
   # the namespace of MathML is not written in the result
   expect_false(any(grepl("xmlns:mml", together, fixed = TRUE)))
 })
+
+test_that("Word equations: segments are overlines, \\label is removed", {
+  x <- transform_mathjax(c("\\overlinesegment{AB}", "\\overline{AB}"), to = "mml")
+  expect_no_match(x[1], "undefined", fixed = TRUE)
+  expect_equal(x[1], x[2])
+  x <- transform_mathjax(c("\\label{eq: m} y = x", "y = x"), to = "mml")
+  expect_equal(x[1], x[2])
+})

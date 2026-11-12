@@ -243,3 +243,26 @@ test_that("stretchy_under_char(): \\utilde is an munder with a stretchy tilde", 
   # over the base, the same character is the wide accent \widetilde
   expect_equal(xml2::xml_text(find_first("\\widetilde{x}", "//mover/mo")), "~")
 })
+
+test_that("fix_katex_mathml(): \\overlinesegment is an accent written 'undefined'", {
+  # KaTeX has no MathML character for the segments: when it gets one, the
+  # replacement of fix_katex_mathml() can go
+  for (tex in c("\\overlinesegment{AB}", "\\underlinesegment{AB}")) {
+    mo <- find_first(tex, "//mo[@stretchy='true']")
+    expect_equal(xml2::xml_text(mo), "undefined", label = tex)
+  }
+})
+
+test_that("layout_mo(): \\bigl. is an empty mo of fixed size", {
+  mo <- find_first("a \\bigl. b", "//mo[@minsize]")
+  expect_equal(xml2::xml_text(mo), "")
+  expect_equal(xml2::xml_attr(mo, "minsize"), "1.2em")
+})
+
+test_that("layout_accent(): an accent on nothing has an empty base", {
+  for (tex in c("\\text{a\\^{}b}", "\\hat{}")) {
+    base <- find_first(tex, "//mover/*[1]")
+    expect_equal(xml2::xml_name(base), "mrow", label = tex)
+    expect_length(xml2::xml_children(base), 0)
+  }
+})

@@ -612,6 +612,15 @@ layout_mo <- function(node, f, st) {
     return(b)
   }
   if (is_fixed_delimiter(node)) {
+    if (!nzchar(ch)) {
+      # \bigl.: a null delimiter, as in KaTeX (a space, no height). KaTeX
+      # writes \bigl. and \bigr. the same way: an ordinary atom, so that a
+      # binary operator after it keeps its spaces, as after \bigr. in TeX
+      b <- empty_box()
+      b$w <- null_delimiter_space * em_size(f, st)
+      b$cls <- "ord"
+      return(b)
+    }
     # \big(, \Bigg|: their own size, in a row or as the base of scripts
     # (\big)^2)
     return(stretchy_delimiter(node, f, st, 0))
@@ -1435,6 +1444,11 @@ layout_accent <- function(base_node, acc_node, f, st) {
   base <- layout_node(base_node, f, with_style(st, cramped = TRUE))
   ch <- xml2::xml_text(acc_node)
   stretchy <- identical(xml2::xml_attr(acc_node, "stretchy"), "true")
+  if (!stretchy && base$w == 0 && !nrow(base$glyphs) && !nrow(base$rules)) {
+    # accent on nothing (\^{} in a text, \hat{}): the accent character
+    # itself, with its width, as in LaTeX
+    return(text_box(f, st, ch))
+  }
   b <- base
   b$is_char <- FALSE
   if (ch %in% c("\u203E", "\u00AF") && stretchy) {
@@ -1507,7 +1521,7 @@ layout_equation <- function(tex, f, display = FALSE) {
 # LaTeX -> MathML of KaTeX -> box. KaTeX errors (unknown commands) are
 # raised here.
 layout_tex <- function(tex, f, display) {
-  html <- katex_mathml(tex, displayMode = display)
+  html <- fix_katex_mathml(katex_mathml(prepare_tex(tex), displayMode = display))
   doc <- xml2::read_html(html)
   math <- xml2::xml_find_first(doc, "//math")
   sem <- xml2::xml_find_first(math, "./semantics")

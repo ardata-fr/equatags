@@ -446,3 +446,38 @@ test_that("a font without script style keeps the glyphs of the text style", {
   g <- layout_equation("x^{a^b}", f)$glyphs$gid
   expect_equal(g, c(f$gid("\U0001d465"), f$gid("\U0001d44e"), f$gid("\U0001d44f")))
 })
+
+test_that("\\overlinesegment and \\underlinesegment are laid out as \\overline and \\underline", {
+  f <- stix()
+  expect_equal(layout_equation("\\overlinesegment{AB}", f), layout_equation("\\overline{AB}", f))
+  expect_equal(layout_equation("\\underlinesegment{AB}", f), layout_equation("\\underline{AB}", f))
+})
+
+test_that("an empty \\big delimiter is a null delimiter, as in KaTeX", {
+  f <- stix()
+  st <- text_style()
+  with_null <- layout_equation("a \\bigl. b", f)
+  without <- layout_equation("a b", f)
+  expect_equal(with_null$w - without$w, null_delimiter_space * em_size(f, st))
+  expect_equal(c(with_null$h, with_null$d), c(without$h, without$d))
+  # an ordinary atom: a binary operator after it keeps its spaces
+  expect_equal(
+    layout_equation("a \\bigr. + b", f)$w - layout_equation("a \\bigr. b", f)$w,
+    layout_equation("a + b", f)$w - layout_equation("a b", f)$w
+  )
+})
+
+test_that("an accent on nothing is the accent character, with its width", {
+  f <- stix()
+  b <- layout_equation("\\text{a\\^{}b}", f)
+  hat <- f$gid("ˆ")
+  expect_true(hat %in% b$glyphs$gid)
+  expect_equal(b$w, adv(f, "a") + adv(f, "ˆ") + adv(f, "b"))
+  # the accent starts after "a", it is not drawn over it
+  expect_equal(b$glyphs$x[b$glyphs$gid == hat], adv(f, "a"))
+})
+
+test_that("\\label is removed: it shows nothing", {
+  f <- stix()
+  expect_equal(layout_equation("\\label{eq: m} y = x", f), layout_equation("y = x", f))
+})

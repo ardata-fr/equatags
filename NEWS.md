@@ -31,6 +31,12 @@ warning.
 now displayed as delimiters.
 - `transform_mathjax(to = "mml")` failed on texts made of ASCII characters
 only, such as `\text{ab}`.
+- Equations containing `\label{...}`, as written by
+`equatiomatic::extract_eq(label = )`, failed with an error: `\label` is now
+ignored, as it shows nothing.
+- In Word, `\overlinesegment` and `\underlinesegment` showed the word
+"undefined" above or below their content: they are now displayed as
+`\overline` and `\underline`.
 
 ## Performance
 

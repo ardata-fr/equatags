@@ -304,6 +304,7 @@ transform_mathjax <- function(
     rpr <- rep_len(rpr, length(x))
   }
 
+  x <- prepare_tex(x)
   if ("mml" %in% to) {
     info <- vapply(
       x,
@@ -316,6 +317,7 @@ transform_mathjax <- function(
     names(info) <- NULL
     info <- gsub("</span>", "", info, fixed = TRUE)
     info <- gsub("<span class=\"katex\">", "", info, fixed = TRUE)
+    info <- fix_katex_mathml(info)
     info <- mml_to_ooml(info)
     if (!is.null(rpr)) {
       with_rpr <- !is.na(rpr)
@@ -340,4 +342,23 @@ transform_mathjax <- function(
   }
 
   info
+}
+
+# LaTeX given to KaTeX: \label{...} is removed. It shows nothing in LaTeX and
+# KaTeX refuses it; equatiomatic::extract_eq(label = ) writes it.
+prepare_tex <- function(x) {
+  gsub("\\\\label\\{[^{}]*\\}", "", x, perl = TRUE)
+}
+
+# MathML written by KaTeX 0.16.9: \overlinesegment and \underlinesegment have
+# no character and are written as the accent "undefined"; they become the
+# stretchy overline of \overline and \underline (without the ticks at the
+# ends of the segment).
+fix_katex_mathml <- function(x) {
+  gsub(
+    "<mo stretchy=\"true\">undefined</mo>",
+    "<mo stretchy=\"true\">\u203E</mo>",
+    x,
+    fixed = TRUE
+  )
 }
