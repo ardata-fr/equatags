@@ -5,8 +5,9 @@
 # - robustness: each equation is measured and converted to Word, or fails,
 #   as expected (columns size_ok and word_ok); on CRAN, two equations of
 #   each category;
-# - reference results: size of each equation (0.01 point) and digest of its
-#   Word equation, compared with _snaps/corpus/corpus-reference.csv. After an
+# - reference results: size of each equation (0.01 point, compared within
+#   0.02 point) and digest of its Word equation, compared with
+#   _snaps/corpus/corpus-reference.csv. After an
 #   intended change, the diff of this file lists the equations that change;
 #   accept it with testthat::snapshot_accept("corpus").
 #
@@ -43,5 +44,5 @@ test_that("sizes and Word equations of the corpus do not change", {
   )
   path <- tempfile(fileext = ".csv")
   utils::write.csv(reference, path, row.names = FALSE, quote = FALSE)
-  expect_snapshot_file(path, "corpus-reference.csv")
+  expect_snapshot_file(path, "corpus-reference.csv", compare = compare_corpus_reference)
 })

@@ -38,8 +38,10 @@ corpus_check <- function(tex, display) {
   word_ok <- length(omml) == 1 && !is.na(omml) && nzchar(omml)
   md5 <- NA_character_
   if (word_ok) {
+    # digest of the bytes of the equation, with "\n" line endings: a file
+    # written in text mode would have "\r\n" on Windows
     f <- tempfile()
-    writeLines(omml, f, useBytes = TRUE)
+    writeBin(charToRaw(enc2utf8(gsub("\r\n", "\n", omml, fixed = TRUE))), f)
     md5 <- unname(tools::md5sum(f))
     unlink(f)
   }
@@ -59,4 +61,22 @@ corpus_check_all <- function(corpus) {
   out <- do.call(rbind, Map(corpus_check, corpus$tex, corpus$display))
   rownames(out) <- NULL
   out
+}
+
+# Comparison of two reference files (argument `compare` of
+# expect_snapshot_file()): same equations, sizes within 0.02 point, same
+# digests. A tolerance and not an equality of the text: a size close to a
+# limit of rounding (58.035 points) is rounded to 58.04 or 58.03 depending on
+# the processor.
+compare_corpus_reference <- function(old, new) {
+  a <- utils::read.csv(old, colClasses = "character")
+  b <- utils::read.csv(new, colClasses = "character")
+  if (!identical(a$id, b$id)) {
+    return(FALSE)
+  }
+  sizes <- c("width", "height", "depth")
+  gap <- abs(
+    as.numeric(as.matrix(a[sizes])) - as.numeric(as.matrix(b[sizes]))
+  )
+  all(gap <= 0.02 + 1e-9) && identical(a$word_md5, b$word_md5)
 }
