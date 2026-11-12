@@ -295,3 +295,68 @@ test_that("an overline uses the constants of the MATH table without the overline
   expect_equal(r$h, f$const[["overbarRuleThickness"]])
   expect_equal(b$h, r$y + r$h + f$const[["overbarExtraAscender"]])
 })
+
+test_that("\\llap, \\rlap and \\clap take no width and overlap their neighbours", {
+  f <- stix()
+  y <- layout_equation("y", f)
+  for (tex in c("\\llap{x}y", "\\rlap{x}y", "\\clap{x}y")) {
+    expect_equal(layout_equation(tex, f)$w, y$w, info = tex)
+  }
+  w <- adv(f, "\U0001d465") # italic x of mi
+  first_x <- function(tex) layout_equation(tex, f)$glyphs$x[1]
+  expect_equal(first_x("\\mathllap{x}y"), -w)
+  expect_equal(first_x("\\mathrlap{x}y"), 0)
+  expect_equal(first_x("\\mathclap{x}y"), -w / 2)
+})
+
+test_that("spacing accents are drawn with the combining accents of the font", {
+  f <- stix()
+  accents <- c(
+    "\\acute{x}" = "\u0301", "\\grave{x}" = "\u0300", "\\hat{x}" = "\u0302",
+    "\\bar{x}" = "\u0304", "\\check{x}" = "\u030c", "\\breve{x}" = "\u0306",
+    "\\tilde{x}" = "\u0303", "\\dot{x}" = "\u0307", "\\ddot{x}" = "\u0308",
+    "\\mathring{x}" = "\u030a"
+  )
+  for (tex in names(accents)) {
+    g <- layout_equation(tex, f)$glyphs$gid
+    expect_true(f$gid(accents[[tex]]) %in% g, info = tex)
+  }
+})
+
+test_that("hooked arrows are stretched with the assembly of the font", {
+  f <- stix()
+  for (tex in c("\\xhookrightarrow{f}", "\\xhookleftarrow{f}")) {
+    b <- layout_equation(tex, f)
+    # the arrow is made of several parts, 3 em long (minsize) less the side
+    # bearings of its ends; with a long label, as wide as \xrightarrow
+    expect_gt(nrow(b$glyphs), 2, label = tex)
+    expect_gt(b$w, 2.5 * f$upem, label = tex)
+    expect_equal(
+      layout_equation(sub("f}", "abcdefghij}", tex, fixed = TRUE), f)$w,
+      layout_equation(sub("hook", "", sub("f}", "abcdefghij}", tex, fixed = TRUE)), f)$w,
+      tolerance = 0.1, label = tex
+    )
+  }
+})
+
+test_that("group accents use the size variants of the font", {
+  f <- stix()
+  for (ch in c("\u23e0", "\u23e1")) {
+    v <- f$hvariants(f$gid(ch))
+    tex <- paste0(if (ch == "\u23e0") "\\overgroup" else "\\undergroup", "{abc}")
+    g <- layout_equation(tex, f)$glyphs$gid
+    expect_true(any(v$gid[-1] %in% g), label = tex)
+  }
+})
+
+test_that("\\utilde stretches the combining tilde below, \\widetilde the one above", {
+  f <- stix()
+  below <- f$hvariants(f$gid("\u0330"))$gid
+  above <- f$hvariants(f$gid("\u0303"))$gid
+  b <- layout_equation("\\utilde{abc}", f)
+  expect_true(any(below %in% b$glyphs$gid))
+  # placed under the base as \\underbrace, not as a limit at script size
+  expect_lt(b$d, layout_equation("\\underbrace{abc}", f)$d)
+  expect_gt(b$d, layout_equation("abc", f)$d)
+  expect_true(any(above %in% layout_equation("\\widetilde{abc}", f)$glyphs$gid))
+})

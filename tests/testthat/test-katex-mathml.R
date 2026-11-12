@@ -106,7 +106,7 @@ test_that("is_fixed_delimiter(): \\big and its variants have minsize = maxsize",
 
 test_that("layout_accent(): accents are an mover accent with a character of accent_combining", {
   for (tex in c("\\hat{x}", "\\bar{x}", "\\check{x}", "\\breve{x}", "\\tilde{x}",
-                "\\mathring{x}", "\\ddot{x}", "\\dot{x}")) {
+                "\\mathring{x}", "\\ddot{x}", "\\dot{x}", "\\acute{x}", "\\grave{x}")) {
     expect_equal(attr_of(tex, "//mover", "accent"), "true", info = tex)
     ch <- xml2::xml_text(find_first(tex, "//mover/mo"))
     expect_true(ch %in% names(accent_combining), info = tex)
@@ -131,7 +131,8 @@ test_that("layout_accent_under(): \\underline is an munder accentunder with U+20
 test_that("is_h_stretchy(): braces and arrows over or under a base use h_stretchy_chars", {
   for (tex in c("\\overbrace{x}", "\\underbrace{x}", "\\overrightarrow{x}",
                 "\\overleftarrow{x}", "\\overleftrightarrow{x}", "\\Overrightarrow{x}",
-                "\\underrightarrow{x}", "\\overrightharpoon{x}")) {
+                "\\underrightarrow{x}", "\\overrightharpoon{x}",
+                "\\overgroup{x}", "\\undergroup{x}")) {
     node <- find_first(tex, "//mover/mo | //munder/mo")
     expect_true(is_h_stretchy(node), info = tex)
   }
@@ -139,7 +140,8 @@ test_that("is_h_stretchy(): braces and arrows over or under a base use h_stretch
 
 test_that("layout_stretched_base(): extensible arrows have a minsize and a label in an mpadded", {
   for (tex in c("\\xrightarrow{f}", "\\xleftarrow{f}", "\\xRightarrow{f}",
-                "\\xLeftarrow{f}", "\\xleftrightarrow{f}", "\\xmapsto{f}")) {
+                "\\xLeftarrow{f}", "\\xleftrightarrow{f}", "\\xmapsto{f}",
+                "\\xhookrightarrow{f}", "\\xhookleftarrow{f}")) {
     base <- find_first(tex, "//mover/*[1]")
     expect_true(is_h_stretchy(base), info = tex)
     expect_false(is.na(xml2::xml_attr(base, "minsize")), info = tex)
@@ -231,4 +233,13 @@ test_that("layout_padded(): \\llap, \\rlap and \\clap are an mpadded of width 0"
     expect_equal(attr_of(tex, "//mpadded", "width"), "0px", info = tex)
     expect_equal(attr_of(tex, "//mpadded", "lspace"), lspace[[tex]], info = tex)
   }
+})
+
+test_that("stretchy_under_char(): \\utilde is an munder with a stretchy tilde", {
+  node <- find_first("\\utilde{x}", "//munder/mo")
+  expect_equal(xml2::xml_text(node), "~")
+  expect_equal(xml2::xml_attr(node, "stretchy"), "true")
+  expect_true(xml2::xml_text(node) %in% names(under_stretchy_chars))
+  # over the base, the same character is the wide accent \widetilde
+  expect_equal(xml2::xml_text(find_first("\\widetilde{x}", "//mover/mo")), "~")
 })

@@ -44,8 +44,11 @@
 #   \sum_i^n (display style)     munderover                    layout_underover()
 #   \lim_x (display style),      munder                        layout_underover()
 #   \sum\limits_i
-#   \overbrace, \underbrace      mover, munder + stretchy mo   layout_underover()
-#   \xrightarrow{f}              mover, stretchy base          layout_stretched_base()
+#   \overbrace, \underbrace,     mover, munder + stretchy mo   layout_underover()
+#   \overgroup, \undergroup,
+#   \utilde
+#   \xrightarrow{f},             mover, stretchy base          layout_stretched_base()
+#   \xhookrightarrow{f}
 #   \hat, \widehat, \overline,   mover accent="true"           layout_accent()
 #   \overrightarrow
 #   \underline                   munder accentunder="true"     layout_accent_under()
@@ -56,7 +59,8 @@
 #   aligned, cases
 #   \boxed, \fbox, \cancel,      menclose                      layout_enclose()
 #   frame of an array
-#   \colorbox, \rule, labels of  mpadded                       layout_padded()
+#   \colorbox, \rule, \llap,     mpadded                       layout_padded()
+#   \rlap, \clap, labels of
 #   \xrightarrow
 #   \quad, \hspace, \,           mspace or mtext of spaces     layout_element(), token_box()
 #   \phantom                     mphantom                      layout_element()
@@ -817,10 +821,11 @@ layout_underover <- function(base_node, under_node, over_node, f, st) {
   ss <- sub_style(st)
   # a stretchy over or under element (\overbrace, \underbrace) gets the width
   # of the base, at the size of the base
-  under_stretched <- !is.null(under_node) && is_h_stretchy(under_node)
+  under_ch <- if (!is.null(under_node)) stretchy_under_char(under_node)
+  under_stretched <- !is.null(under_ch)
   over_stretched <- !is.null(over_node) && is_h_stretchy(over_node)
   under <- if (under_stretched) {
-    stretch_glyph_h(f, st, xml2::xml_text(under_node), base$w)
+    stretch_glyph_h(f, st, under_ch, base$w)
   } else if (!is.null(under_node)) {
     layout_node(under_node, f, with_style(ss, cramped = TRUE))
   }
@@ -979,13 +984,37 @@ stretch_glyph_h <- function(f, st, ch, target) {
 h_stretchy_chars <- c(
   "\u2192", "\u2190", "\u2194", "\u21D2", "\u21D0", "\u21D4", "\u21A6",
   "\u21C0", "\u21BC", "\u21C1", "\u21BD", "\u23DE", "\u23DF", "\u23B4",
-  "\u23B5", "\u23DC", "\u23DD", "\u203E", "_"
+  "\u23B5", "\u23DC", "\u23DD", "\u203E", "_",
+  # \xhookrightarrow, \xhookleftarrow, \overgroup, \undergroup
+  "\u21AA", "\u21A9", "\u23E0", "\u23E1"
 )
 
 is_h_stretchy <- function(node) {
   xml2::xml_name(node) == "mo" &&
     identical(xml2::xml_attr(node, "stretchy"), "true") &&
     xml2::xml_text(node) %in% h_stretchy_chars
+}
+
+# Characters stretched under a base with another character of the font: the
+# tilde of \utilde, written "~" by KaTeX, is the combining tilde below
+# (U+0330), which has horizontal size variants. "~" is not in
+# h_stretchy_chars: over the base, it is the wide accent \widetilde, laid out
+# by layout_accent().
+under_stretchy_chars <- c("~" = "\u0330")
+
+# Character to stretch under a base for the element `node`, NULL if the
+# element is not stretched.
+stretchy_under_char <- function(node) {
+  ch <- xml2::xml_text(node)
+  if (is_h_stretchy(node)) {
+    return(ch)
+  }
+  if (xml2::xml_name(node) == "mo" &&
+    identical(xml2::xml_attr(node, "stretchy"), "true") &&
+    ch %in% names(under_stretchy_chars)) {
+    return(under_stretchy_chars[[ch]])
+  }
+  NULL
 }
 
 # A stretched glyph placed above (`over = TRUE`) or below a base, with the
@@ -1221,11 +1250,14 @@ layout_table <- function(node, f, st) {
 
 # --- padding and accents under the base -------------------------------------------
 
-# mpadded (KaTeX writes it for the labels of \xrightarrow): `width` is a
-# length in em, absolute or relative to the content ("+0.6em"); `lspace`
-# moves the content to the right inside this width.
+# mpadded (KaTeX writes it for the labels of \xrightarrow, \colorbox,
+# \rule, \llap, \rlap, \clap): `width` is a length in em, absolute or
+# relative to the content ("+0.6em"); `lspace` moves the content to the
+# right inside this width, by a length in em or by a multiple of the width
+# of the content ("-1width" for \llap, "-0.5width" for \clap).
 layout_padded <- function(node, kids, f, st) {
   b <- layout_row(kids, f, st)
+  content_w <- b$w
   # \rule: KaTeX raises the rule with an mpadded whose height and depth are
   # meant to be added to those of the rule (TeX raises the box), but writes
   # them without sign ("0.3em" for "+0.3em"); they are read as relative
@@ -1245,7 +1277,12 @@ layout_padded <- function(node, kids, f, st) {
   b$w <- padded("width", b$w)
   b$h <- padded("height", b$h)
   b$d <- padded("depth", b$d)
-  lspace <- em_value(xml2::xml_attr(node, "lspace"), f, st)
+  ls <- xml2::xml_attr(node, "lspace")
+  lspace <- if (!is.na(ls) && grepl("^[+-]?[0-9.]+width$", ls)) {
+    as.numeric(sub("width$", "", ls)) * content_w
+  } else {
+    em_value(ls, f, st)
+  }
   voffset <- em_value(xml2::xml_attr(node, "voffset"), f, st)
   if (lspace != 0 || voffset != 0) {
     b <- shift_box(b, lspace, voffset)
@@ -1366,7 +1403,9 @@ layout_enclose <- function(node, kids, f, st) {
 accent_combining <- c(
   "^" = "\u0302", "\u02C9" = "\u0304", "\u00AF" = "\u0304", "~" = "\u0303",
   "\u02D9" = "\u0307", "\u00A8" = "\u0308", "\u02C7" = "\u030C",
-  "\u02D8" = "\u0306", "\u00B4" = "\u0301", "`" = "\u0300", "\u02DA" = "\u030A"
+  "\u02D8" = "\u0306", "\u00B4" = "\u0301", "`" = "\u0300", "\u02DA" = "\u030A",
+  # \acute and \grave
+  "\u02CA" = "\u0301", "\u02CB" = "\u0300"
 )
 
 # Attachment point of an accent on a box: the one of its glyph when it has a
