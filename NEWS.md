@@ -34,8 +34,9 @@ only, such as `\text{ab}`.
 
 ## Performance
 
-- Documents with many equations are created faster and use much less memory
-(about 1.7 MB per equation before, for the whole R session).
+- Documents with many equations are created faster and use much less memory:
+each converted equation kept about 1.7 MB of memory until the end of the R
+session.
 
 ## Dependencies
 
