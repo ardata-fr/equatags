@@ -13,7 +13,8 @@ Description: Transform 'LaTeX' math expressions into 'HTML' or 'Office
     draw them with 'grid', with the rules of 'TeX' and the parameters of
     an 'OpenType' math font, independently of the graphic device.
 License: MIT + file LICENSE
-URL: https://github.com/ardata-fr/equatags
+URL: https://ardata-fr.github.io/equatags/,
+    https://github.com/ardata-fr/equatags
 BugReports: https://github.com/ardata-fr/equatags/issues
 Depends: 
     R (>= 4.0.0)
@@ -28,6 +29,7 @@ Suggests:
     testthat (>= 3.0.0)
 Remotes:
     davidgohel/gdtools
+Config/Needs/website: flextable, ggplot2, officer, rmarkdown
 Config/roxygen2/version: 8.1.1
 Config/testthat/edition: 3
 Encoding: UTF-8

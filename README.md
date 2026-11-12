@@ -8,7 +8,8 @@
 [![R build
 status](https://github.com/ardata-fr/equatags/workflows/R-CMD-check/badge.svg)](https://github.com/ardata-fr/equatags/actions)
 [![version](https://www.r-pkg.org/badges/version/equatags)](https://CRAN.R-project.org/package=equatags)
-[![test coverage](https://codecov.io/gh/ardata-fr/equatags/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ardata-fr/equatags)
+[![test
+coverage](https://codecov.io/gh/ardata-fr/equatags/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ardata-fr/equatags)
 <!-- badges: end -->
 
 ‘equatags’ transforms LaTeX math expressions:
@@ -17,6 +18,14 @@ status](https://github.com/ardata-fr/equatags/workflows/R-CMD-check/badge.svg)](
   in Word and PowerPoint documents, with `transform_mathjax()`;
 - into sizes and drawings: `equation_size()` computes the width, height
   and depth of equations and `equation_grob()` draws them with ‘grid’.
+
+The [documentation site](https://ardata-fr.github.io/equatags/) has two
+articles: [Equations in Word, PowerPoint and
+HTML](https://ardata-fr.github.io/equatags/articles/word-powerpoint-html.html)
+(insertion with ‘officer’, inline and display styles, size and colour)
+and [Size and drawing of
+equations](https://ardata-fr.github.io/equatags/articles/size-and-drawing.html)
+(alignment on a baseline, ‘ggplot2’, ‘flextable’).
 
 ## Installation
 
@@ -38,7 +47,7 @@ remotes::install_github("ardata-fr/equatags")
 ``` r
 cat(transform_mathjax("x^2", to = "mml"))
 #> 
-#> <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mml="http://www.w3.org/1998/Math/MathML">
+#> <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
 #>   <m:sSup>
 #>     <m:e>
 #>       <m:r>
@@ -74,8 +83,8 @@ equation_size(
 )
 #>       width    height     depth
 #> 1 0.4129074 0.2241667 0.1086667
-#> 2 0.3723611 0.2593000 0.1801333
-#> 3 0.6375741 0.1719833 0.0388500
+#> 2 0.3778944 0.2637333 0.1801333
+#> 3 0.6443407 0.1735583 0.0372750
 ```
 
 `equation_grob()` draws an equation with ‘grid’ (R \>= 4.3), with the

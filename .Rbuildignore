@@ -6,3 +6,7 @@
 ^cran-comments\.md$
 ^revdep$
 ^data-raw$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^vignettes/articles$

@@ -1,0 +1,57 @@
+url: https://ardata-fr.github.io/equatags/
+
+development:
+  mode: auto
+
+template:
+  bootstrap: 5
+  theme: breeze-light
+  bootswatch: simplex
+  bslib:
+    pkgdown-nav-height: 100px
+    base_font:
+      google: "Open Sans"
+
+home:
+  links:
+  - text: 'Visit ardata website'
+    href: https://www.ardata.fr
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github]
+  components:
+    articles:
+      text: Articles
+      menu:
+      - text: Equations in Word, PowerPoint and HTML
+        href: articles/word-powerpoint-html.html
+      - text: Size and drawing of equations
+        href: articles/size-and-drawing.html
+
+reference:
+  - title: Word, PowerPoint and HTML
+    desc: >
+      Convert LaTeX equations into 'Office Open XML Math', the format of
+      equations in Word and PowerPoint documents, or into the HTML of 'KaTeX'.
+    contents:
+    - transform_mathjax
+
+  - title: Size and drawing
+    desc: >
+      Measure equations and draw them with 'grid', with the rules of TeX and
+      an OpenType math font, independently of the graphic device.
+    contents:
+    - equation_size
+    - equation_grob
+
+footer:
+  structure:
+    left: legal
+  components:
+    legal: proudly brought to you by ardata.
+
+authors:
+  David Gohel:
+    href: https://www.ardata.fr
