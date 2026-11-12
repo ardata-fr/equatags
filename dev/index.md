@@ -1,0 +1,147 @@
+# equatags
+
+‘equatags’ transforms LaTeX math expressions:
+
+- into `HTML` and into `Office Open XML Math`, the format of equations
+  in Word and PowerPoint documents, with
+  [`transform_mathjax()`](https://ardata-fr.github.io/equatags/dev/reference/transform_mathjax.md);
+- into sizes and drawings:
+  [`equation_size()`](https://ardata-fr.github.io/equatags/dev/reference/equation_size.md)
+  computes the width, height and depth of equations and
+  [`equation_grob()`](https://ardata-fr.github.io/equatags/dev/reference/equation_grob.md)
+  draws them with ‘grid’.
+
+The [documentation site](https://ardata-fr.github.io/equatags/) has two
+articles: [Equations in Word, PowerPoint and
+HTML](https://ardata-fr.github.io/equatags/articles/word-powerpoint-html.html)
+(insertion with ‘officer’, inline and display styles, size and colour)
+and [Size and drawing of
+equations](https://ardata-fr.github.io/equatags/articles/size-and-drawing.html)
+(alignment on a baseline, ‘ggplot2’, ‘flextable’).
+
+## Installation
+
+You can install the released version from CRAN:
+
+``` r
+
+install.packages("equatags")
+```
+
+or the development version from GitHub:
+
+``` r
+
+# install.packages("remotes")
+remotes::install_github("ardata-fr/equatags")
+```
+
+## Office Open XML Math and HTML
+
+``` r
+
+cat(transform_mathjax("x^2", to = "mml"))
+#> 
+#> <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+#>   <m:sSup>
+#>     <m:e>
+#>       <m:r>
+#>         <m:t>x</m:t>
+#>       </m:r>
+#>     </m:e>
+#>     <m:sup>
+#>       <m:r>
+#>         <m:t>2</m:t>
+#>       </m:r>
+#>     </m:sup>
+#>   </m:sSup>
+#> </m:oMath>
+```
+
+With `to = "html"`, the result is the HTML of ‘KaTeX’, to be displayed
+with its CSS. The ‘Office Open XML Math’ output can be inserted in Word
+documents with the package ‘officer’ (or ‘flextable’); see the argument
+`rpr` of
+[`transform_mathjax()`](https://ardata-fr.github.io/equatags/dev/reference/transform_mathjax.md)
+to set the size or the colour of equations.
+
+## Size and drawing of equations
+
+Equations are laid out with the rules of TeX and the parameters of the
+‘MATH’ table of an OpenType math font. The default font is ‘STIX Two
+Math’, shipped with ‘gdtools’: the results only depend on this file, not
+on the graphic device or the machine.
+
+``` r
+
+equation_size(
+  c("\\frac{a+b}{c}", "\\sum_{i=1}^{n} x_i^2", "\\sqrt{x^2 + y^2}"),
+  size = 12, display = TRUE
+)
+#>       width    height     depth
+#> 1 0.4129074 0.2241667 0.1086667
+#> 2 0.3778944 0.2637333 0.1801333
+#> 3 0.6443407 0.1735583 0.0372750
+```
+
+[`equation_grob()`](https://ardata-fr.github.io/equatags/dev/reference/equation_grob.md)
+draws an equation with ‘grid’ (R \>= 4.3), with the size computed:
+
+``` r
+
+library(grid)
+grid.newpage()
+grid.draw(
+  equation_grob(
+    "f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}",
+    size = 16, display = TRUE
+  )
+)
+```
+
+![](reference/figures/README-grob-1.png)
+
+## Example with flextable
+
+‘flextable’ uses ‘equatags’ to write equations in HTML, Word and
+PowerPoint outputs, and to compute their sizes
+([`autofit()`](https://davidgohel.github.io/flextable/reference/autofit.html),
+[`gen_grob()`](https://davidgohel.github.io/flextable/reference/gen_grob.html)).
+
+``` r
+
+library(flextable)
+
+eqs <- c(
+  "(ax^2 + bx + c = 0)",
+  "a \\ne 0",
+  "x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}")
+df <- data.frame(formula = eqs)
+
+ft <- flextable(df)
+ft <- mk_par(
+  x = ft, j = "formula",
+  value = as_paragraph(as_equation(formula)))
+ft <- align(ft, align = "center", part = "all")
+ft <- autofit(ft)
+ft
+```
+
+## Related work
+
+- Packages [texPreview](https://CRAN.R-project.org/package=texPreview)
+  written by Jonathan Sidi, “compile snippets of ‘LaTeX’ directly into
+  images from the R console to view in the ‘RStudio’ viewer pane, Shiny
+  apps and ‘RMarkdown’ documents”. With this package, you can get images
+  from your ‘latex’ code. The tool offers a wider functional spectrum
+  than just equation processing and focuses on ‘latex’ instead of only
+  ‘MathJax’ equations.
+
+- Package [mathjaxr](https://cran.r-project.org/package=mathjaxr)
+  written by Wolfgang Viechtbauer, “Using ‘Mathjax’ in Rd Files”. This
+  package let you add equations in the manual pages of your package in a
+  very convenient way.
+
+- Package [katex](https://cran.r-project.org/package=katex) written by
+  Jeroen Ooms, “Rendering Math to HTML, ‘MathML’, or R-Documentation
+  Format”. ‘equatags’ mainly uses its functions.
