@@ -1,0 +1,2496 @@
+"id","source","ref","category","display","tex","size_ok","word_ok","reason","cran"
+"equatiomatic-tests-001","equatiomatic-tests","tests/testthat/_snaps/clm.md: colorizing works #1","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{1} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{1} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{1}}} + {\color{#E6AB02}{\beta}}_{{\color{#7570B3}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#A6761D}{\beta}}_{{\color{#D95F02}{2}}}(\operatorname{contact}_{\operatorname{yes}}) + {\color{#666666}{\beta}}_{{\color{#1B9E77}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{2} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{2} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{2}}} + {\color{#E6AB02}{\beta}}_{{\color{#7570B3}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#A6761D}{\beta}}_{{\color{#D95F02}{2}}}(\operatorname{contact}_{\operatorname{yes}}) + {\color{#666666}{\beta}}_{{\color{#1B9E77}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{3} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{3} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{3}}} + {\color{#E6AB02}{\beta}}_{{\color{#7570B3}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#A6761D}{\beta}}_{{\color{#D95F02}{2}}}(\operatorname{contact}_{\operatorname{yes}}) + {\color{#666666}{\beta}}_{{\color{#1B9E77}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{4} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{4} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{4}}} + {\color{#E6AB02}{\beta}}_{{\color{#7570B3}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#A6761D}{\beta}}_{{\color{#D95F02}{2}}}(\operatorname{contact}_{\operatorname{yes}}) + {\color{#666666}{\beta}}_{{\color{#1B9E77}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})
+\end{aligned}",TRUE,TRUE,"",TRUE
+"equatiomatic-tests-002","equatiomatic-tests","tests/testthat/_snaps/clm.md: Renaming Variables works #2","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{cat}_{\operatorname{b}})\ + \\
+&\quad \beta_{2}(\operatorname{cat}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat}_{\operatorname{Don't\ look\ at\ me\ though}})\ + \\
+&\quad \beta_{4}(\operatorname{cat}_{\operatorname{e}}) + \beta_{5}(\operatorname{continuous})\ + \\
+&\quad \beta_{6}(\operatorname{cat}_{\operatorname{b}} \times \operatorname{continuous}) + \beta_{7}(\operatorname{cat}_{\operatorname{c}} \times \operatorname{continuous})\ + \\
+&\quad \beta_{8}(\operatorname{cat}_{\operatorname{Don't\ look\ at\ me\ though}} \times \operatorname{continuous}) + \beta_{9}(\operatorname{cat}_{\operatorname{e}} \times \operatorname{continuous}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{cat}_{\operatorname{b}})\ + \\
+&\quad \beta_{2}(\operatorname{cat}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat}_{\operatorname{Don't\ look\ at\ me\ though}})\ + \\
+&\quad \beta_{4}(\operatorname{cat}_{\operatorname{e}}) + \beta_{5}(\operatorname{continuous})\ + \\
+&\quad \beta_{6}(\operatorname{cat}_{\operatorname{b}} \times \operatorname{continuous}) + \beta_{7}(\operatorname{cat}_{\operatorname{c}} \times \operatorname{continuous})\ + \\
+&\quad \beta_{8}(\operatorname{cat}_{\operatorname{Don't\ look\ at\ me\ though}} \times \operatorname{continuous}) + \beta_{9}(\operatorname{cat}_{\operatorname{e}} \times \operatorname{continuous})
+\end{aligned}",TRUE,TRUE,"",TRUE
+"equatiomatic-tests-003","equatiomatic-tests","tests/testthat/_snaps/clm.md: Math extraction works #3","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\exp(continuous)}) + \beta_{5}(\operatorname{\log(continuous)}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\exp(continuous)}) + \beta_{5}(\operatorname{\log(continuous)})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-004","equatiomatic-tests","tests/testthat/_snaps/clm.md: Math extraction works #4","models (equatiomatic)",TRUE,"\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\exp(continuous)}) + \beta_{5}(\operatorname{\log(continuous)})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\exp(continuous)}) + \beta_{5}(\operatorname{\log(continuous)})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-005","equatiomatic-tests","tests/testthat/_snaps/clm.md: Ordered models with clm work #5","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-006","equatiomatic-tests","tests/testthat/_snaps/clm.md: Ordered models with clm work #6","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\quad \beta_{2}(\operatorname{continuous\_2}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\quad \beta_{2}(\operatorname{continuous\_2})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-007","equatiomatic-tests","tests/testthat/_snaps/clm.md: Ordered models with clm work #7","models (equatiomatic)",TRUE,"\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-008","equatiomatic-tests","tests/testthat/_snaps/clm.md: Ordered models with clm work #8","models (equatiomatic)",TRUE,"\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\qquad\ \beta_{2}(\operatorname{continuous\_2})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\qquad\ \beta_{2}(\operatorname{continuous\_2})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-009","equatiomatic-tests","tests/testthat/_snaps/clm.md: Ordered models with clm work #9","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= -0.81 + 0.03(\operatorname{continuous\_1}) - 0.03(\operatorname{continuous\_2}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= 0.59 + 0.03(\operatorname{continuous\_1}) - 0.03(\operatorname{continuous\_2})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-010","equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lm #1","models (equatiomatic)",TRUE,"\large
+\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-011","equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lm #2","models (equatiomatic)",TRUE,"\Huge
+\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-012","equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lm #3","models (equatiomatic)",TRUE,"\tiny
+\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-013","equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lmer #4","models (equatiomatic)",TRUE,"\scriptsize
+\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-014","equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lmer #5","models (equatiomatic)",TRUE,"\Large
+\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-015","equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lmer #6","models (equatiomatic)",TRUE,"\huge
+\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-016","equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, arima #7","models (equatiomatic)",TRUE,"\footnotesize
+\begin{aligned}
+(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -\delta\operatorname{t}) = (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-017","equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, arima #8","models (equatiomatic)",TRUE,"\small
+\begin{aligned}
+(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -\delta\operatorname{t}) = (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-018","equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, arima #9","models (equatiomatic)",TRUE,"\LARGE
+\begin{aligned}
+(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -\delta\operatorname{t}) = (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-019","equatiomatic-tests","tests/testthat/_snaps/forecast-arima.md: Basic ARIMA model functions #1","models (equatiomatic)",TRUE,"(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -\delta\operatorname{t}) = (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-020","equatiomatic-tests","tests/testthat/_snaps/forecast-arima.md: Basic ARIMA model functions #2","models (equatiomatic)",TRUE,"(1 -0.004\operatorname{B} )\ (1 -0.39\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -3e-05\operatorname{t}) = (1 -1\operatorname{B} )\ (1 -0.36\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-021","equatiomatic-tests","tests/testthat/_snaps/forecast-arima.md: Regression w/ ARIMA Errors functions #3","models (equatiomatic)",TRUE,"\begin{alignat}{2}
+&\text{let}\quad &&y_{t} = \operatorname{y}_{\operatorname{0}} +\delta\operatorname{t} +\beta_{1}\operatorname{x1}_{\operatorname{t}} +\beta_{2}\operatorname{x2}_{\operatorname{t}} +\eta_{t} \\
+&\text{where}\quad  &&(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) \eta_{t}  \\
+& &&= (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t} \\
+&\text{where}\quad &&\varepsilon_{t} \sim{WN(0, \sigma^{2})}
+\end{alignat}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-022","equatiomatic-tests","tests/testthat/_snaps/forecast-arima.md: Regression w/ ARIMA Errors functions #4","models (equatiomatic)",TRUE,"\begin{alignat}{2}
+&\text{let}\quad &&y_{t} = \operatorname{y}_{\operatorname{0}} -1e-04\operatorname{t} -0.02\operatorname{x1}_{\operatorname{t}} -0.004\operatorname{x2}_{\operatorname{t}} +\eta_{t} \\
+&\text{where}\quad  &&(1 -0.01\operatorname{B} )\ (1 +0.78\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) \eta_{t}  \\
+& &&= (1 -1\operatorname{B} )\ (1 +0.82\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t} \\
+&\text{where}\quad &&\varepsilon_{t} \sim{WN(0, \sigma^{2})}
+\end{alignat}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-023","equatiomatic-tests","tests/testthat/_snaps/glm.md: colorizing works #1","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( {\color{#0073ff}{\operatorname{SEX}}} = {\color{#0073ff}{\operatorname{male}}} ) }{ 1 - P( {\color{#0073ff}{\operatorname{SEX}}} = {\color{#0073ff}{\operatorname{male}}} ) } \right] &= {\color{#1B9E77}{\alpha}} + {\color{#D95F02}{\beta}}_{{\color{blue}{1}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}}) + {\color{#7570B3}{\beta}}_{{\color{blue}{2}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}}) + {\color{#E7298A}{\beta}}_{{\color{blue}{3}}}(\operatorname{bill\_length\_mm})\ + \\
+&\quad {\color{#66A61E}{\beta}}_{{\color{blue}{4}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}} \times \operatorname{bill\_length\_mm}) + {\color{#E6AB02}{\beta}}_{{\color{blue}{5}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}} \times \operatorname{bill\_length\_mm})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-024","equatiomatic-tests","tests/testthat/_snaps/glm.md: colorizing works #2","models (equatiomatic)",TRUE,"\begin{aligned}
+{\color{#0073ff}{\operatorname{SEX}}} &\sim Bernoulli\left(\operatorname{prob}_{{\color{#0073ff}{\operatorname{SEX}}} = {\color{#0073ff}{\operatorname{male}}}}= \hat{P}\right) \\
+ \log\left[ \frac { \hat{P} }{ 1 - \hat{P} } \right] 
+ &= {\color{#1B9E77}{\alpha}} + {\color{#D95F02}{\beta}}_{{\color{blue}{1}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}}) + {\color{#7570B3}{\beta}}_{{\color{blue}{2}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}}) + {\color{#E7298A}{\beta}}_{{\color{blue}{3}}}(\operatorname{bill\_length\_mm})\ + \\
+&\quad {\color{#66A61E}{\beta}}_{{\color{blue}{4}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}} \times \operatorname{bill\_length\_mm}) + {\color{#E6AB02}{\beta}}_{{\color{blue}{5}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}} \times \operatorname{bill\_length\_mm})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-025","equatiomatic-tests","tests/testthat/_snaps/glm.md: colorizing works #3","models (equatiomatic)",TRUE,"\begin{aligned}
+P( {\color{#0073ff}{\operatorname{SEX}}} = {\color{#0073ff}{\operatorname{male}}} ) &= \Phi[{\color{#1B9E77}{\alpha}} + {\color{#D95F02}{\beta}}_{{\color{blue}{1}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}}) + {\color{#7570B3}{\beta}}_{{\color{blue}{2}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}}) + {\color{#E7298A}{\beta}}_{{\color{blue}{3}}}(\operatorname{bill\_length\_mm})\ + \\
+&\qquad\ {\color{#66A61E}{\beta}}_{{\color{blue}{4}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}} \times \operatorname{bill\_length\_mm}) + {\color{#E6AB02}{\beta}}_{{\color{blue}{5}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}} \times \operatorname{bill\_length\_mm})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-026","equatiomatic-tests","tests/testthat/_snaps/glm.md: colorizing works #4","models (equatiomatic)",TRUE,"\begin{aligned}
+{\color{#0073ff}{\operatorname{SEX}}} &\sim Bernoulli\left(\operatorname{prob}_{{\color{#0073ff}{\operatorname{SEX}}} = {\color{#0073ff}{\operatorname{male}}}}= \hat{P}\right) \\
+ \hat{P} 
+ &= \Phi[{\color{#1B9E77}{\alpha}} + {\color{#D95F02}{\beta}}_{{\color{blue}{1}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}}) + {\color{#7570B3}{\beta}}_{{\color{blue}{2}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}}) + {\color{#E7298A}{\beta}}_{{\color{blue}{3}}}(\operatorname{bill\_length\_mm})\ + \\
+&\qquad\ {\color{#66A61E}{\beta}}_{{\color{blue}{4}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}} \times \operatorname{bill\_length\_mm}) + {\color{#E6AB02}{\beta}}_{{\color{blue}{5}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}} \times \operatorname{bill\_length\_mm})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-027","equatiomatic-tests","tests/testthat/_snaps/glm.md: Renaming Variables works #5","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome} = \operatorname{1} ) }{ 1 - P( \operatorname{outcome} = \operatorname{1} ) } \right] &= \alpha + \beta_{1}(\operatorname{cat}_{\operatorname{b}})\ + \\
+&\quad \beta_{2}(\operatorname{cat}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat}_{\operatorname{dddd}})\ + \\
+&\quad \beta_{4}(\operatorname{cat}_{\operatorname{e}}) + \beta_{5}(\operatorname{Continuous\ Variable\ [1]})\ + \\
+&\quad \beta_{6}(\operatorname{continuous\_2}) + \beta_{7}(\operatorname{cat}_{\operatorname{b}} \times \operatorname{Continuous\ Variable\ [1]})\ + \\
+&\quad \beta_{8}(\operatorname{cat}_{\operatorname{c}} \times \operatorname{Continuous\ Variable\ [1]}) + \beta_{9}(\operatorname{cat}_{\operatorname{dddd}} \times \operatorname{Continuous\ Variable\ [1]})\ + \\
+&\quad \beta_{10}(\operatorname{cat}_{\operatorname{e}} \times \operatorname{Continuous\ Variable\ [1]}) + \beta_{11}(\operatorname{cat}_{\operatorname{b}} \times \operatorname{continuous\_2})\ + \\
+&\quad \beta_{12}(\operatorname{cat}_{\operatorname{c}} \times \operatorname{continuous\_2}) + \beta_{13}(\operatorname{cat}_{\operatorname{dddd}} \times \operatorname{continuous\_2})\ + \\
+&\quad \beta_{14}(\operatorname{cat}_{\operatorname{e}} \times \operatorname{continuous\_2}) + \beta_{15}(\operatorname{Continuous\ Variable\ [1]} \times \operatorname{continuous\_2})\ + \\
+&\quad \beta_{16}(\operatorname{cat}_{\operatorname{b}} \times \operatorname{Continuous\ Variable\ [1]} \times \operatorname{continuous\_2}) + \beta_{17}(\operatorname{cat}_{\operatorname{c}} \times \operatorname{Continuous\ Variable\ [1]} \times \operatorname{continuous\_2})\ + \\
+&\quad \beta_{18}(\operatorname{cat}_{\operatorname{dddd}} \times \operatorname{Continuous\ Variable\ [1]} \times \operatorname{continuous\_2}) + \beta_{19}(\operatorname{cat}_{\operatorname{e}} \times \operatorname{Continuous\ Variable\ [1]} \times \operatorname{continuous\_2})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-028","equatiomatic-tests","tests/testthat/_snaps/glm.md: Math extraction works #6","models (equatiomatic)",TRUE,"\log\left[ \frac { P( \operatorname{outcome} = \operatorname{1} ) }{ 1 - P( \operatorname{outcome} = \operatorname{1} ) } \right] = \alpha + \beta_{1}(\operatorname{\log(continuous\_1)}) + \beta_{2}(\operatorname{\exp(continuous\_2)}) + \beta_{3}(\operatorname{continuous\_2}) + \beta_{4}(\operatorname{continuous\_2^2}) + \beta_{5}(\operatorname{continuous\_2^3})",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-029","equatiomatic-tests","tests/testthat/_snaps/glm.md: Math extraction works #7","models (equatiomatic)",TRUE,"P( \operatorname{outcome} = \operatorname{1} ) = \Phi[\alpha + \beta_{1}(\operatorname{\log(continuous\_1)}) + \beta_{2}(\operatorname{\exp(continuous\_2)}) + \beta_{3}(\operatorname{continuous\_2}) + \beta_{4}(\operatorname{continuous\_2^2}) + \beta_{5}(\operatorname{continuous\_2^3})]",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-030","equatiomatic-tests","tests/testthat/_snaps/glm.md: Logistic regression works #8","models (equatiomatic)",TRUE,"\log\left[ \frac { P( \operatorname{outcome} = \operatorname{1} ) }{ 1 - P( \operatorname{outcome} = \operatorname{1} ) } \right] = \alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-031","equatiomatic-tests","tests/testthat/_snaps/glm.md: Probit regression works #9","models (equatiomatic)",TRUE,"P( \operatorname{outcome} = \operatorname{1} ) = \Phi[\alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})]",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-032","equatiomatic-tests","tests/testthat/_snaps/glm.md: Probit regression works #10","models (equatiomatic)",TRUE,"E( \operatorname{mpg} ) = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp})",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-033","equatiomatic-tests","tests/testthat/_snaps/glm.md: Distribution-based equations work #11","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{outcome} &\sim Bernoulli\left(\operatorname{prob}_{\operatorname{outcome} = \operatorname{1}}= \hat{P}\right) \\
+ \log\left[ \frac { \hat{P} }{ 1 - \hat{P} } \right] 
+ &= \alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-034","equatiomatic-tests","tests/testthat/_snaps/glm.md: Distribution-based equations work #12","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{outcome} &\sim Bernoulli\left(\operatorname{prob}_{\operatorname{outcome} = \operatorname{1}}= \hat{P}\right) \\
+ \hat{P} 
+ &= \Phi[\alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-035","equatiomatic-tests","tests/testthat/_snaps/glm.md: Distribution-based equations work #13","models (equatiomatic)",TRUE,"\begin{aligned}
+E( \operatorname{mpg} ) &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-036","equatiomatic-tests","tests/testthat/_snaps/glm.md: non-binomial regression works #14","models (equatiomatic)",TRUE,"\log ({ E( \operatorname{outcome} ) })  = \alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-037","equatiomatic-tests","tests/testthat/_snaps/glm.md: non-binomial regression works #16","models (equatiomatic)",TRUE,"\log ({ E( \operatorname{outcome} ) })  = \alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2}) + \operatorname{offset(rep(1, 300))}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-038","equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: colorizing works #1","models (equatiomatic)",TRUE,"\begin{aligned}
+  {\color{blue}{\operatorname{Stops}}}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\alpha_{j[i]} + \beta_{1}({\color{red}{\operatorname{Ethnicity}}}{\color{purple}{_{\operatorname{hispanic}}}}) + \beta_{2}({\color{red}{\operatorname{Ethnicity}}}{\color{purple}{_{\operatorname{white}}}}) \\
+    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{Total\ Arrests}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-039","equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Renaming Variables works #2","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{stops}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\alpha_{j[i]} + \beta_{1}(\operatorname{Ethnicity}_{\operatorname{Hispanic/Latino}}) + \beta_{2}(\operatorname{Ethnicity}_{\operatorname{White}}) \\
+    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{Total\ Arrests}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-040","equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Standard Poisson regression models work #3","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{stops}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\alpha_{j[i]} + \beta_{1}(\operatorname{eth}_{\operatorname{hispanic}}) + \beta_{2}(\operatorname{eth}_{\operatorname{white}}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-041","equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Standard Poisson regression models work #4","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{stops}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{eth}_{\operatorname{hispanic}}) + \beta_{2j[i]}(\operatorname{eth}_{\operatorname{white}}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{total\_arrests}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{total\_arrests}) \\
+      &\gamma^{\beta_{2}}_{0} + \gamma^{\beta_{2}}_{1}(\operatorname{total\_arrests})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-042","equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Poisson regression models with an offset work #5","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{stops}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\log(\operatorname{arrests}) + \alpha_{j[i]} + \beta_{1}(\operatorname{eth}_{\operatorname{hispanic}}) + \beta_{2}(\operatorname{eth}_{\operatorname{white}}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-043","equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Poisson regression models with an offset work #6","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{stops}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\log(\operatorname{arrests}) + \alpha_{j[i]} + \beta_{1j[i]}(\operatorname{eth}_{\operatorname{hispanic}}) + \beta_{2j[i]}(\operatorname{eth}_{\operatorname{white}}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{total\_arrests}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{total\_arrests}) \\
+      &\gamma^{\beta_{2}}_{0} + \gamma^{\beta_{2}}_{1}(\operatorname{total\_arrests})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-044","equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Binomial Logistic Regression models work #7","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{bush}_{i}  &\sim \operatorname{Binomial}(n = 1, \operatorname{prob}_{\operatorname{bush} = 1} = \widehat{P}) \\
+    \log\left[\frac{\hat{P}}{1 - \hat{P}} \right] &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{black}) + \beta_{2}(\operatorname{female}) + \beta_{3}(\operatorname{edu}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for state j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-045","equatiomatic-tests","tests/testthat/_snaps/lm.md: Overlapping names don't result in an error #1","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{\widehat{body\_mass\_g}} &= -36659.51\ + \\
+&\quad 1813.23(\operatorname{p})\ + \\
+&\quad 197.51(\operatorname{gender\_cat})\ + \\
+&\quad 7.8(\operatorname{ca})\ - \\
+&\quad 8.82(\operatorname{p} \times \operatorname{gender\_cat})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-046","equatiomatic-tests","tests/testthat/_snaps/lm.md: Dropping intercept notation works #2","models (equatiomatic)",TRUE,"\operatorname{bill\_depth\_mm} = \beta_{1}(\operatorname{flipper\_length\_mm}) + \beta_{2}(\operatorname{island}_{\operatorname{Biscoe}}) + \beta_{3}(\operatorname{island}_{\operatorname{Dream}}) + \beta_{4}(\operatorname{island}_{\operatorname{Torgersen}}) + \beta_{5}(\operatorname{flipper\_length\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \beta_{6}(\operatorname{flipper\_length\_mm} \times \operatorname{island}_{\operatorname{Torgersen}}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-047","equatiomatic-tests","tests/testthat/_snaps/lm.md: colorizing works #3","models (equatiomatic)",TRUE,"\begin{aligned}
+{\color{#0f70f7}{\operatorname{bill\_depth\_mm}}} &= {\color{#1B9E77}{\alpha}} + {\color{#D95F02}{\beta}}_{{\color{#E6AB02}{1}}}({\color{#b22222}{\operatorname{Flipper\ Length\ (MM)}}})\ + \\
+&\quad {\color{#7570B3}{\beta}}_{{\color{#66A61E}{2}}}({\color{green}{\operatorname{ISLAND}}}{\color{cyan}{_{\operatorname{super\ dreamy}}}}) + {\color{#E7298A}{\beta}}_{{\color{#E7298A}{3}}}({\color{green}{\operatorname{ISLAND}}}{\color{cyan}{_{\operatorname{Torgersen}}}})\ + \\
+&\quad {\color{#66A61E}{\beta}}_{{\color{#7570B3}{4}}}({\color{#b22222}{\operatorname{Flipper\ Length\ (MM)}}} \times {\color{green}{\operatorname{ISLAND}}}{\color{cyan}{_{\operatorname{super\ dreamy}}}}) + {\color{#E6AB02}{\beta}}_{{\color{#D95F02}{5}}}({\color{#b22222}{\operatorname{Flipper\ Length\ (MM)}}} \times {\color{green}{\operatorname{ISLAND}}}{\color{cyan}{_{\operatorname{Torgersen}}}})\ + \\
+&\quad {\color{#A6761D}{\epsilon}}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-048","equatiomatic-tests","tests/testthat/_snaps/lm.md: Renaming Variables works #4","models (equatiomatic)",TRUE,"\operatorname{body\_mass\_g} = \alpha + \beta_{1}(\operatorname{Bill\ Length\ (MM)}) + \beta_{2}(\operatorname{species}_{\operatorname{chinny\ chin\ chin}}) + \beta_{3}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{4}(\operatorname{Flipper\ Length\ (MM)}) + \beta_{5}(\operatorname{SEX}_{\operatorname{Male}}) + \beta_{6}(\operatorname{Bill\ Length\ (MM)} \times \operatorname{species}_{\operatorname{chinny\ chin\ chin}}) + \beta_{7}(\operatorname{Bill\ Length\ (MM)} \times \operatorname{species}_{\operatorname{Gentoo}}) + \beta_{8}(\operatorname{Flipper\ Length\ (MM)} \times \operatorname{SEX}_{\operatorname{Male}}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-049","equatiomatic-tests","tests/testthat/_snaps/lm.md: Math extraction works #5","models (equatiomatic)",TRUE,"\operatorname{bill\_length\_mm} = \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{bill\_depth\_mm^2}) + \beta_{3}(\operatorname{bill\_depth\_mm^3}) + \beta_{4}(\operatorname{bill\_depth\_mm^4}) + \beta_{5}(\operatorname{bill\_depth\_mm^5}) + \beta_{6}(\operatorname{\log(flipper\_length\_mm)}) + \beta_{7}(\operatorname{\exp(bill\_length\_mm)}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-050","equatiomatic-tests","tests/testthat/_snaps/lm.md: Math extraction works #6","models (equatiomatic)",TRUE,"\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{hp\ >\ 150}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-051","equatiomatic-tests","tests/testthat/_snaps/lm.md: Math extraction works #7","models (equatiomatic)",TRUE,"\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{hp\ <\ 250}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-052","equatiomatic-tests","tests/testthat/_snaps/lm.md: Labeling works #8","models (equatiomatic)",TRUE,"\label{eq: mpg_mod}
+\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-053","equatiomatic-tests","tests/testthat/_snaps/lm.md: Simple lm models work #9","models (equatiomatic)",TRUE,"\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-054","equatiomatic-tests","tests/testthat/_snaps/lm.md: Simple lm models work #10","models (equatiomatic)",TRUE,"\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{gear}_{\operatorname{4}}) + \beta_{3}(\operatorname{gear}_{\operatorname{5}}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-055","equatiomatic-tests","tests/testthat/_snaps/lm.md: Simple lm models work #11","models (equatiomatic)",TRUE,"\operatorname{\widehat{mpg}} = 34.66 - 1.59(\operatorname{cyl}) - 0.02(\operatorname{disp})",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-056","equatiomatic-tests","tests/testthat/_snaps/lm.md: Interactions work #12","models (equatiomatic)",TRUE,"\operatorname{body\_mass\_g} = \alpha + \beta_{1}(\operatorname{bill\_length\_mm}) + \beta_{2}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{3}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{4}(\operatorname{bill\_length\_mm} \times \operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{5}(\operatorname{bill\_length\_mm} \times \operatorname{species}_{\operatorname{Gentoo}}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-057","equatiomatic-tests","tests/testthat/_snaps/lm.md: Interactions work #13","models (equatiomatic)",TRUE,"\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{hp}) + \beta_{2}(\operatorname{wt}) + \beta_{3}(\operatorname{hp} \times \operatorname{wt}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-058","equatiomatic-tests","tests/testthat/_snaps/lm.md: Custom Greek works #14","models (equatiomatic)",TRUE,"\operatorname{mpg} = \alpha + \hat{\beta}_{1}(\operatorname{cyl}) + \hat{\beta}_{2}(\operatorname{disp}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-059","equatiomatic-tests","tests/testthat/_snaps/lm.md: Custom Greek works #15","models (equatiomatic)",TRUE,"\operatorname{mpg} = \zeta + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-060","equatiomatic-tests","tests/testthat/_snaps/lm.md: Hat is escaped correctly #16","models (equatiomatic)",TRUE,"\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{carb}_{\operatorname{.L}}) + \beta_{2}(\operatorname{carb}_{\operatorname{.Q}}) + \beta_{3}(\operatorname{carb}_{\operatorname{.C}}) + \beta_{4}(\operatorname{carb}_{\operatorname{\texttt{\^{}}4}}) + \beta_{5}(\operatorname{carb}_{\operatorname{\texttt{\^{}}5}}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-061","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: colorizing works #1","models (equatiomatic)",TRUE,"\begin{aligned}
+  {\color{#FF00CC}{\operatorname{score}}}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}({\color{blue}{\operatorname{wave}}}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{group}{\color{orange}{_{\operatorname{low}}}}) + \gamma_{2}^{\alpha}(\operatorname{group}{\color{orange}{_{\operatorname{medium}}}}) + \gamma_{3l[i]}^{\alpha}({\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) + \gamma_{4}^{\alpha}(\operatorname{group}{\color{orange}{_{\operatorname{low}}}} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) + \gamma_{5}^{\alpha}(\operatorname{group}{\color{orange}{_{\operatorname{medium}}}} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{group}{\color{orange}{_{\operatorname{low}}}}) + \gamma^{\beta_{1}}_{2}(\operatorname{group}{\color{orange}{_{\operatorname{medium}}}}) + \gamma^{\beta_{1}}_{3}({\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{4}(\operatorname{group}{\color{orange}{_{\operatorname{low}}}} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{5}(\operatorname{group}{\color{orange}{_{\operatorname{medium}}}} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{prop\_low}) + \gamma_{2}^{\alpha}(\operatorname{prop\_low} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{prop\_low}) + \gamma^{\beta_{1}}_{1}(\operatorname{prop\_low} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-062","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Implicit ID variables are handled #2","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i]} + \beta_{1j[i],k[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid k = 1,} \dots \text{,K}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-063","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Renaming Variables works #3","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{Student\ Scores}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{Wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1k[i]}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2k[i]}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3k[i],l[i]}^{\alpha}(\operatorname{treatment}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k} \\
+      &\gamma_{1k} \\
+      &\gamma_{2k} \\
+      &\gamma_{3k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1l[i]}^{\alpha}(\operatorname{P(low\ income)}) \\
+      &\mu_{\beta_{1k}} \\
+      &\mu_{\gamma_{1k}} \\
+      &\mu_{\gamma_{2k}} \\
+      &\mu_{\gamma_{3k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccccc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} & \rho_{\alpha_{k}\gamma_{1k}} & \rho_{\alpha_{k}\gamma_{2k}} & \rho_{\alpha_{k}\gamma_{3k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}} & \rho_{\beta_{1k}\gamma_{1k}} & \rho_{\beta_{1k}\gamma_{2k}} & \rho_{\beta_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{1k}\alpha_{k}} & \rho_{\gamma_{1k}\beta_{1k}} & \sigma^2_{\gamma_{1k}} & \rho_{\gamma_{1k}\gamma_{2k}} & \rho_{\gamma_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{2k}\alpha_{k}} & \rho_{\gamma_{2k}\beta_{1k}} & \rho_{\gamma_{2k}\gamma_{1k}} & \sigma^2_{\gamma_{2k}} & \rho_{\gamma_{2k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{3k}\alpha_{k}} & \rho_{\gamma_{3k}\beta_{1k}} & \rho_{\gamma_{3k}\gamma_{1k}} & \rho_{\gamma_{3k}\gamma_{2k}} & \sigma^2_{\gamma_{3k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l} \\
+      &\gamma_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}} \\
+      &\mu_{\gamma_{1l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} & \rho_{\alpha_{l}\gamma_{1l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} & \rho_{\beta_{1l}\gamma_{1l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}} & \rho_{\gamma_{3l}\gamma_{1l}} \\ 
+     \rho_{\gamma_{1l}\alpha_{l}} & \rho_{\gamma_{1l}\beta_{1l}} & \rho_{\gamma_{1l}\gamma_{3l}} & \sigma^2_{\gamma_{1l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-064","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Categorical variable level parsing works (from issue #140) #4","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{error}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{brochure}_{\operatorname{standard}}) + \beta_{2}(\operatorname{disease}_{\operatorname{DS}}) + \beta_{3}(\operatorname{brochure}_{\operatorname{standard}} \times \operatorname{disease}_{\operatorname{DS}}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for ID j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-065","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unconditional lmer models work #5","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-066","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unconditional lmer models work #6","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-067","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unconditional lmer models work #7","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-068","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Level 1 predictors work #8","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{female}) + \beta_{2}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-069","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Level 1 predictors work #9","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1}(\operatorname{wave}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-070","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Mean separate works as expected #10","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\alpha_{j[i]} + \beta_{1}(\operatorname{female}) + \beta_{2}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-071","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Mean separate works as expected #11","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i],k[i],l[i]} + \beta_{1}(\operatorname{wave}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-072","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Wrapping works as expected #12","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{female})\ + \\
+&\quad \beta_{2}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-073","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unstructured variance-covariances work as expected #13","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{female}) + \beta_{2}(\operatorname{ses}) + \beta_{3j[i]}(\operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{3j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{3j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{3j}} \\ 
+     \rho_{\beta_{3j}\alpha_{j}} & \sigma^2_{\beta_{3j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-074","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unstructured variance-covariances work as expected #14","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{female}) + \beta_{2j[i]}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-075","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unstructured variance-covariances work as expected #15","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{female}) + \beta_{2j[i]}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) + \beta_{4j[i]}(\operatorname{female} \times \operatorname{ses}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j} \\
+      &\beta_{4j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}} \\
+      &\mu_{\beta_{4j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} & \rho_{\alpha_{j}\beta_{4j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} & \rho_{\beta_{1j}\beta_{4j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}} & \rho_{\beta_{2j}\beta_{4j}} \\ 
+     \rho_{\beta_{4j}\alpha_{j}} & \rho_{\beta_{4j}\beta_{1j}} & \rho_{\beta_{4j}\beta_{2j}} & \sigma^2_{\beta_{4j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-076","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unstructured variance-covariances work as expected #16","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{female}) + \beta_{2j[i]}(\operatorname{ses}) + \beta_{3j[i]}(\operatorname{minority}) + \beta_{4j[i]}(\operatorname{female} \times \operatorname{ses}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j} \\
+      &\beta_{3j} \\
+      &\beta_{4j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}} \\
+      &\mu_{\beta_{3j}} \\
+      &\mu_{\beta_{4j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} & \rho_{\alpha_{j}\beta_{3j}} & \rho_{\alpha_{j}\beta_{4j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} & \rho_{\beta_{1j}\beta_{3j}} & \rho_{\beta_{1j}\beta_{4j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}} & \rho_{\beta_{2j}\beta_{3j}} & \rho_{\beta_{2j}\beta_{4j}} \\ 
+     \rho_{\beta_{3j}\alpha_{j}} & \rho_{\beta_{3j}\beta_{1j}} & \rho_{\beta_{3j}\beta_{2j}} & \sigma^2_{\beta_{3j}} & \rho_{\beta_{3j}\beta_{4j}} \\ 
+     \rho_{\beta_{4j}\alpha_{j}} & \rho_{\beta_{4j}\beta_{1j}} & \rho_{\beta_{4j}\beta_{2j}} & \rho_{\beta_{4j}\beta_{3j}} & \sigma^2_{\beta_{4j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-077","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unstructured variance-covariances work as expected #17","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-078","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Group-level predictors work as expected #18","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1k[i]}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2k[i]}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3k[i],l[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k} \\
+      &\gamma_{1k} \\
+      &\gamma_{2k} \\
+      &\gamma_{3k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{1k}} \\
+      &\mu_{\gamma_{1k}} \\
+      &\mu_{\gamma_{2k}} \\
+      &\mu_{\gamma_{3k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccccc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} & \rho_{\alpha_{k}\gamma_{1k}} & \rho_{\alpha_{k}\gamma_{2k}} & \rho_{\alpha_{k}\gamma_{3k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}} & \rho_{\beta_{1k}\gamma_{1k}} & \rho_{\beta_{1k}\gamma_{2k}} & \rho_{\beta_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{1k}\alpha_{k}} & \rho_{\gamma_{1k}\beta_{1k}} & \sigma^2_{\gamma_{1k}} & \rho_{\gamma_{1k}\gamma_{2k}} & \rho_{\gamma_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{2k}\alpha_{k}} & \rho_{\gamma_{2k}\beta_{1k}} & \rho_{\gamma_{2k}\gamma_{1k}} & \sigma^2_{\gamma_{2k}} & \rho_{\gamma_{2k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{3k}\alpha_{k}} & \rho_{\gamma_{3k}\beta_{1k}} & \rho_{\gamma_{3k}\gamma_{1k}} & \rho_{\gamma_{3k}\gamma_{2k}} & \sigma^2_{\gamma_{3k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-079","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Group-level predictors work as expected #19","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1k[i]}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2k[i]}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3k[i],l[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k} \\
+      &\gamma_{1k} \\
+      &\gamma_{2k} \\
+      &\gamma_{3k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1l[i]}^{\alpha}(\operatorname{prop\_low}) \\
+      &\mu_{\beta_{1k}} \\
+      &\mu_{\gamma_{1k}} \\
+      &\mu_{\gamma_{2k}} \\
+      &\mu_{\gamma_{3k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccccc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} & \rho_{\alpha_{k}\gamma_{1k}} & \rho_{\alpha_{k}\gamma_{2k}} & \rho_{\alpha_{k}\gamma_{3k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}} & \rho_{\beta_{1k}\gamma_{1k}} & \rho_{\beta_{1k}\gamma_{2k}} & \rho_{\beta_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{1k}\alpha_{k}} & \rho_{\gamma_{1k}\beta_{1k}} & \sigma^2_{\gamma_{1k}} & \rho_{\gamma_{1k}\gamma_{2k}} & \rho_{\gamma_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{2k}\alpha_{k}} & \rho_{\gamma_{2k}\beta_{1k}} & \rho_{\gamma_{2k}\gamma_{1k}} & \sigma^2_{\gamma_{2k}} & \rho_{\gamma_{2k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{3k}\alpha_{k}} & \rho_{\gamma_{3k}\beta_{1k}} & \rho_{\gamma_{3k}\gamma_{1k}} & \rho_{\gamma_{3k}\gamma_{2k}} & \sigma^2_{\gamma_{3k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l} \\
+      &\gamma_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}} \\
+      &\mu_{\gamma_{1l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} & \rho_{\alpha_{l}\gamma_{1l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} & \rho_{\beta_{1l}\gamma_{1l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}} & \rho_{\gamma_{3l}\gamma_{1l}} \\ 
+     \rho_{\gamma_{1l}\alpha_{l}} & \rho_{\gamma_{1l}\beta_{1l}} & \rho_{\gamma_{1l}\gamma_{3l}} & \sigma^2_{\gamma_{1l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-080","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Group-level predictors work as expected #20","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3k[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k} \\
+      &\gamma_{3k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{prop\_low}) \\
+      &\mu_{\beta_{1k}} \\
+      &\mu_{\gamma_{3k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} & \rho_{\alpha_{k}\gamma_{3k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}} & \rho_{\beta_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{3k}\alpha_{k}} & \rho_{\gamma_{3k}\beta_{1k}} & \sigma^2_{\gamma_{3k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{dist\_mean}) \\
+      &\mu_{\beta_{1l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-081","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Interactions work as expected #21","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{minority}) + \beta_{2}(\operatorname{female}) + \beta_{3}(\operatorname{female} \times \operatorname{minority}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-082","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Interactions work as expected #22","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]}, \sigma^2 \right) \\    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1k[i],l[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) + \gamma_{2l[i]}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{3l[i]}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{4l[i]}^{\alpha}(\operatorname{group}_{\operatorname{low}} \times \operatorname{treatment}_{\operatorname{1}}) + \gamma_{5l[i]}^{\alpha}(\operatorname{group}_{\operatorname{medium}} \times \operatorname{treatment}_{\operatorname{1}}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\gamma_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\gamma_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\gamma_{1k}} \\ 
+     \rho_{\gamma_{1k}\alpha_{k}} & \sigma^2_{\gamma_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\gamma_{1l} \\
+      &\gamma_{2l} \\
+      &\gamma_{3l} \\
+      &\gamma_{4l} \\
+      &\gamma_{5l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\gamma_{1l}} \\
+      &\mu_{\gamma_{2l}} \\
+      &\mu_{\gamma_{3l}} \\
+      &\mu_{\gamma_{4l}} \\
+      &\mu_{\gamma_{5l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\gamma_{1l}} & \rho_{\alpha_{l}\gamma_{2l}} & \rho_{\alpha_{l}\gamma_{3l}} & \rho_{\alpha_{l}\gamma_{4l}} & \rho_{\alpha_{l}\gamma_{5l}} \\ 
+     \rho_{\gamma_{1l}\alpha_{l}} & \sigma^2_{\gamma_{1l}} & \rho_{\gamma_{1l}\gamma_{2l}} & \rho_{\gamma_{1l}\gamma_{3l}} & \rho_{\gamma_{1l}\gamma_{4l}} & \rho_{\gamma_{1l}\gamma_{5l}} \\ 
+     \rho_{\gamma_{2l}\alpha_{l}} & \rho_{\gamma_{2l}\gamma_{1l}} & \sigma^2_{\gamma_{2l}} & \rho_{\gamma_{2l}\gamma_{3l}} & \rho_{\gamma_{2l}\gamma_{4l}} & \rho_{\gamma_{2l}\gamma_{5l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\gamma_{1l}} & \rho_{\gamma_{3l}\gamma_{2l}} & \sigma^2_{\gamma_{3l}} & \rho_{\gamma_{3l}\gamma_{4l}} & \rho_{\gamma_{3l}\gamma_{5l}} \\ 
+     \rho_{\gamma_{4l}\alpha_{l}} & \rho_{\gamma_{4l}\gamma_{1l}} & \rho_{\gamma_{4l}\gamma_{2l}} & \rho_{\gamma_{4l}\gamma_{3l}} & \sigma^2_{\gamma_{4l}} & \rho_{\gamma_{4l}\gamma_{5l}} \\ 
+     \rho_{\gamma_{5l}\alpha_{l}} & \rho_{\gamma_{5l}\gamma_{1l}} & \rho_{\gamma_{5l}\gamma_{2l}} & \rho_{\gamma_{5l}\gamma_{3l}} & \rho_{\gamma_{5l}\gamma_{4l}} & \sigma^2_{\gamma_{5l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-083","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Interactions work as expected #23","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-084","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Interactions work as expected #24","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1}(\operatorname{wave}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) + \gamma_{2}^{\alpha}(\operatorname{treatment}_{\operatorname{1}} \times \operatorname{wave}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-085","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Interactions work as expected #25","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3l[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) + \gamma_{4}^{\alpha}(\operatorname{group}_{\operatorname{low}} \times \operatorname{treatment}_{\operatorname{1}}) + \gamma_{5}^{\alpha}(\operatorname{group}_{\operatorname{medium}} \times \operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{group}_{\operatorname{low}}) + \gamma^{\beta_{1}}_{2}(\operatorname{group}_{\operatorname{medium}}) + \gamma^{\beta_{1}}_{3}(\operatorname{treatment}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{4}(\operatorname{group}_{\operatorname{low}} \times \operatorname{treatment}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{5}(\operatorname{group}_{\operatorname{medium}} \times \operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{prop\_low}) + \gamma_{2}^{\alpha}(\operatorname{prop\_low} \times \operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{2}(\operatorname{prop\_low}) + \gamma^{\beta_{1}}_{1}(\operatorname{prop\_low} \times \operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-086","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Alternate random effect VCV structures work #26","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{minority}) + \beta_{2j[i]}(\operatorname{female}) + \beta_{3j[i]}(\operatorname{female} \times \operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j} \\
+      &\beta_{3j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}} \\
+      &\mu_{\beta_{3j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{j}} & 0 & 0 & 0 \\ 
+     0 & \sigma^2_{\beta_{1j}} & 0 & 0 \\ 
+     0 & 0 & \sigma^2_{\beta_{2j}} & 0 \\ 
+     0 & 0 & 0 & \sigma^2_{\beta_{3j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-087","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Alternate random effect VCV structures work #28","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i],m[i]} + \beta_{1j[i],k[i],m[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & 0 \\ 
+     0 & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for school.1 l = 1,} \dots \text{,L} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{m} \\
+      &\beta_{1m}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{m}} \\
+      &\mu_{\beta_{1m}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{m}} & 0 \\ 
+     0 & \sigma^2_{\beta_{1m}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district m = 1,} \dots \text{,M}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-088","equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Nested model syntax works #29","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for school:sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for sid k = 1,} \dots \text{,K}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-089","equatiomatic-tests","tests/testthat/_snaps/polr.md: colorizing works #1","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{1} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{1} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{1}}} + {\color{#D95F02}{\beta}}_{{\color{#A6761D}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#7570B3}{\beta}}_{{\color{#E6AB02}{2}}}(\operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) + {\color{#E7298A}{\beta}}_{{\color{#66A61E}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{2} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{2} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{2}}} + {\color{#D95F02}{\beta}}_{{\color{#A6761D}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#7570B3}{\beta}}_{{\color{#E6AB02}{2}}}(\operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) + {\color{#E7298A}{\beta}}_{{\color{#66A61E}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{3} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{3} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{3}}} + {\color{#D95F02}{\beta}}_{{\color{#A6761D}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#7570B3}{\beta}}_{{\color{#E6AB02}{2}}}(\operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) + {\color{#E7298A}{\beta}}_{{\color{#66A61E}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{4} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{4} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{4}}} + {\color{#D95F02}{\beta}}_{{\color{#A6761D}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#7570B3}{\beta}}_{{\color{#E6AB02}{2}}}(\operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) + {\color{#E7298A}{\beta}}_{{\color{#66A61E}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}{\color{orange}{_{\operatorname{yes}}}})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-090","equatiomatic-tests","tests/testthat/_snaps/polr.md: Renaming Variables works #2","models (equatiomatic)",TRUE,"\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{catty}_{\operatorname{b}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{catty}_{\operatorname{c}}) + \beta_{3}(\operatorname{catty}_{\operatorname{do\ do\ do}})\ + \\
+&\qquad\ \beta_{4}(\operatorname{catty}_{\operatorname{e}}) + \beta_{5}(\operatorname{Cont\ Var})\ + \\
+&\qquad\ \beta_{6}(\operatorname{catty}_{\operatorname{b}} \times \operatorname{Cont\ Var}) + \beta_{7}(\operatorname{catty}_{\operatorname{c}} \times \operatorname{Cont\ Var})\ + \\
+&\qquad\ \beta_{8}(\operatorname{catty}_{\operatorname{do\ do\ do}} \times \operatorname{Cont\ Var}) + \beta_{9}(\operatorname{catty}_{\operatorname{e}} \times \operatorname{Cont\ Var})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{catty}_{\operatorname{b}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{catty}_{\operatorname{c}}) + \beta_{3}(\operatorname{catty}_{\operatorname{do\ do\ do}})\ + \\
+&\qquad\ \beta_{4}(\operatorname{catty}_{\operatorname{e}}) + \beta_{5}(\operatorname{Cont\ Var})\ + \\
+&\qquad\ \beta_{6}(\operatorname{catty}_{\operatorname{b}} \times \operatorname{Cont\ Var}) + \beta_{7}(\operatorname{catty}_{\operatorname{c}} \times \operatorname{Cont\ Var})\ + \\
+&\qquad\ \beta_{8}(\operatorname{catty}_{\operatorname{do\ do\ do}} \times \operatorname{Cont\ Var}) + \beta_{9}(\operatorname{catty}_{\operatorname{e}} \times \operatorname{Cont\ Var})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-091","equatiomatic-tests","tests/testthat/_snaps/polr.md: Math extraction works #3","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\log(continuous)}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\log(continuous)})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-092","equatiomatic-tests","tests/testthat/_snaps/polr.md: Math extraction works #4","models (equatiomatic)",TRUE,"\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\log(continuous)})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\log(continuous)})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-093","equatiomatic-tests","tests/testthat/_snaps/polr.md: Ordered logistic regression works #9","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= 1.09 + 0.03(\operatorname{continuous\_1}) - 0.03(\operatorname{continuous\_2}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= 2.48 + 0.03(\operatorname{continuous\_1}) - 0.03(\operatorname{continuous\_2})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-094","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with numeric coefficients #1","models (equatiomatic)",TRUE,"\operatorname{\widehat{disp}} = \underset{(116.748)}{67.8}  + \underset{(9.962)}{45.56(\operatorname{cyl})} - \underset{(2.952)}{5.92(\operatorname{mpg})}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-095","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with numeric coefficients #2","models (equatiomatic)",TRUE,"E( \operatorname{disp} ) = \underset{(116.748)}{\alpha} + \underset{(9.962)}{\beta_{1}(\operatorname{cyl})} + \underset{(2.952)}{\beta_{2}(\operatorname{mpg})}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-096","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with numeric coefficients #3","models (equatiomatic)",TRUE,"\log\left[ \frac { P( \operatorname{am} = \operatorname{1} ) }{ 1 - P( \operatorname{am} = \operatorname{1} ) } \right] = \underset{(12.194)}{\alpha} + \underset{(0.239)}{\beta_{1}(\operatorname{mpg})} + \underset{(2.547)}{\beta_{2}(\operatorname{wt})}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-097","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with wrapping #4","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{\widehat{disp}} &= \underset{(119.073)}{60.8}\  + \\
+&\quad \underset{(11.801)}{42.46(\operatorname{cyl})}\ - \\
+&\quad \underset{(3.073)}{5.56(\operatorname{mpg})}\ + \\
+&\quad \underset{(0.255)}{0.13(\operatorname{hp})}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-098","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with wrapping #5","models (equatiomatic)",TRUE,"\begin{aligned}
+\widehat{E( \operatorname{disp} )} &= \underset{(116.748)}{67.8}\  + \\
+&\quad \underset{(9.962)}{45.56(\operatorname{cyl})}\ - \\
+&\quad \underset{(2.952)}{5.92(\operatorname{mpg})}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-099","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with wrapping #7","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { \widehat{P( \operatorname{am} = \operatorname{1} )} }{ 1 - \widehat{P( \operatorname{am} = \operatorname{1} )} } \right] &= \underset{(12.194)}{25.89}\  - \\
+&\quad \underset{(0.239)}{0.32(\operatorname{mpg})}\ - \\
+&\quad \underset{(2.547)}{6.42(\operatorname{wt})}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-100","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with Greek letter terms #8","models (equatiomatic)",TRUE,"\operatorname{disp} = \underset{(119.073)}{\alpha} + \underset{(11.801)}{\beta_{1}(\operatorname{cyl})} + \underset{(3.073)}{\beta_{2}(\operatorname{mpg})} + \underset{(0.255)}{\beta_{3}(\operatorname{hp})} + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-101","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with Greek letter terms #9","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{disp} &= \underset{(119.073)}{\alpha}\ + \\
+&\quad \underset{(11.801)}{\beta_{1}(\operatorname{cyl})}\ + \\
+&\quad \underset{(3.073)}{\beta_{2}(\operatorname{mpg})}\ + \\
+&\quad \underset{(0.255)}{\beta_{3}(\operatorname{hp})}\ + \\
+&\quad \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-102","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with Greek letter terms #10","models (equatiomatic)",TRUE,"\begin{aligned}
+E( \operatorname{disp} ) &= \underset{(116.748)}{\alpha}\ + \\
+&\quad \underset{(9.962)}{\beta_{1}(\operatorname{cyl})}\ + \\
+&\quad \underset{(2.952)}{\beta_{2}(\operatorname{mpg})}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-103","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with Greek letter terms #11","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{am} = \operatorname{1} ) }{ 1 - P( \operatorname{am} = \operatorname{1} ) } \right] &= \underset{(12.194)}{\alpha}\ + \\
+&\quad \underset{(0.239)}{\beta_{1}(\operatorname{mpg})}\ + \\
+&\quad \underset{(2.547)}{\beta_{2}(\operatorname{wt})}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-104","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with transformed variables #12","models (equatiomatic)",TRUE,"\operatorname{\widehat{disp}} = \underset{(226.662)}{481.42}  + \underset{(10.942)}{37.32(\operatorname{cyl})} - \underset{(59.243)}{165.48(\operatorname{\log(mpg)})} + \underset{(0.241)}{0.05(\operatorname{hp})}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-105","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with transformed variables #13","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{\widehat{disp}} &= \underset{(226.662)}{481.42}\  + \\
+&\quad \underset{(10.942)}{37.32(\operatorname{cyl})}\ - \\
+&\quad \underset{(59.243)}{165.48(\operatorname{\log(mpg)})}\ + \\
+&\quad \underset{(0.241)}{0.05(\operatorname{hp})}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-106","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with transformed variables #14","models (equatiomatic)",TRUE,"\widehat{E( \operatorname{disp} )} = \underset{(226.662)}{481.42}  + \underset{(10.942)}{37.32(\operatorname{cyl})} - \underset{(59.243)}{165.48(\operatorname{\log(mpg)})} + \underset{(0.241)}{0.05(\operatorname{hp})}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-107","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with transformed variables #15","models (equatiomatic)",TRUE,"\begin{aligned}
+\widehat{E( \operatorname{disp} )} &= \underset{(226.662)}{481.42}\  + \\
+&\quad \underset{(10.942)}{37.32(\operatorname{cyl})}\ - \\
+&\quad \underset{(59.243)}{165.48(\operatorname{\log(mpg)})}\ + \\
+&\quad \underset{(0.241)}{0.05(\operatorname{hp})}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-108","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts works with factor variable #16","models (equatiomatic)",TRUE,"\widehat{E( \operatorname{disp} )} = \underset{(224.642)}{427.66}  + \underset{(12.253)}{21.95(\operatorname{cyl})} - \underset{(61.235)}{120.45(\operatorname{\log(mpg)})} + \underset{(0.32)}{0.38(\operatorname{hp})} - \underset{(26.627)}{58.06(\operatorname{factor(gear)}_{\operatorname{4}})} - \underset{(35.762)}{66.88(\operatorname{factor(gear)}_{\operatorname{5}})}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-109","equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts works with factor variable #17","models (equatiomatic)",TRUE,"E( \operatorname{disp} ) = \underset{(224.642)}{\alpha} + \underset{(12.253)}{\beta_{1}(\operatorname{cyl})} + \underset{(61.235)}{\beta_{2}(\operatorname{\log(mpg)})} + \underset{(0.32)}{\beta_{3}(\operatorname{hp})} + \underset{(26.627)}{\beta_{4}(\operatorname{factor(gear)}_{\operatorname{4}})} + \underset{(35.762)}{\beta_{5}(\operatorname{factor(gear)}_{\operatorname{5}})}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-110","equatiomatic-tests","tests/testthat/_snaps/wrapping-formatting.md: Coefficient digits work correctly #1","models (equatiomatic)",TRUE,"\operatorname{\widehat{mpg}} = 34.661 - 1.5873(\operatorname{cyl}) - 0.0206(\operatorname{disp})",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-111","equatiomatic-tests","tests/testthat/_snaps/wrapping-formatting.md: Coefficient digits work correctly #2","models (equatiomatic)",TRUE,"\operatorname{\widehat{mpg}} = 34.66 + -1.59(\operatorname{cyl}) + -0.02(\operatorname{disp})",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-112","equatiomatic-tests","tests/testthat/_snaps/wrapping-formatting.md: Wrapping works correctly #3","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \beta_{3}(\operatorname{hp})\ + \\
+&\quad \beta_{4}(\operatorname{drat}) + \beta_{5}(\operatorname{wt}) + \beta_{6}(\operatorname{qsec}) + \beta_{7}(\operatorname{vs})\ + \\
+&\quad \beta_{8}(\operatorname{am}) + \beta_{9}(\operatorname{gear}) + \beta_{10}(\operatorname{carb}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-tests-113","equatiomatic-tests","tests/testthat/_snaps/wrapping-formatting.md: Wrapping works correctly #4","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl})\ + \\
+&\quad \beta_{2}(\operatorname{disp}) + \beta_{3}(\operatorname{hp})\ + \\
+&\quad \beta_{4}(\operatorname{drat}) + \beta_{5}(\operatorname{wt})\ + \\
+&\quad \beta_{6}(\operatorname{qsec}) + \beta_{7}(\operatorname{vs})\ + \\
+&\quad \beta_{8}(\operatorname{am}) + \beta_{9}(\operatorname{gear})\ + \\
+&\quad \beta_{10}(\operatorname{carb}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-001","equatiomatic-docs","vignettes/colors.Rmd","models (equatiomatic)",TRUE,"{\color{cornflowerblue}{\operatorname{bill\_length\_mm}}} = \alpha + \beta_{1}({\color{firebrick}{\operatorname{body\_mass\_g}}}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-002","equatiomatic-docs","vignettes/colors.Rmd","models (equatiomatic)",TRUE,"{\color{cornflowerblue}{\operatorname{bill\_length\_mm}}} = {\color{#3bd100}{\alpha}} + {\color{black}{\beta}}_{1}({\color{firebrick}{\operatorname{body\_mass\_g}}}) + {\color{black}{\epsilon}}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-003","equatiomatic-docs","vignettes/colors.Rmd","models (equatiomatic)",TRUE,"{\color{cornflowerblue}{\operatorname{bill\_length\_mm}}} = {\color{#1b9e77}{\alpha}} + {\color{#d95f02}{\beta}}_{1}({\color{firebrick}{\operatorname{body\_mass\_g}}}) + {\color{#7570b3}{\epsilon}}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-004","equatiomatic-docs","vignettes/colors.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{bill\_length\_mm} &= {\color{black}{\alpha}} + {\color{#3A21B3}{\beta}}_{1}({\color{#ffa91f}{\operatorname{body\_mass\_g}}}) + {\color{#58A1D9}{\beta}}_{2}({\color{#00d1ab}{\operatorname{flipper\_length\_mm}}})\ + \\
+&\quad {\color{#FF7582}{\beta}}_{3}({\color{#ffa91f}{\operatorname{body\_mass\_g}}} \times {\color{#00d1ab}{\operatorname{flipper\_length\_mm}}}) + {\color{black}{\epsilon}}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-005","equatiomatic-docs","vignettes/colors.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{bill\_length\_mm} &= {\color{black}{\alpha}} + {\color{#3A21B3}{\beta}}_{{\color{#3A21B3}{1}}}({\color{#ffa91f}{\operatorname{body\_mass\_g}}}) + {\color{#58A1D9}{\beta}}_{{\color{#58A1D9}{2}}}({\color{#00d1ab}{\operatorname{flipper\_length\_mm}}})\ + \\
+&\quad {\color{#FF7582}{\beta}}_{{\color{#FF7582}{3}}}({\color{#ffa91f}{\operatorname{body\_mass\_g}}} \times {\color{#00d1ab}{\operatorname{flipper\_length\_mm}}}) + {\color{black}{\epsilon}}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-006","equatiomatic-docs","vignettes/colors.Rmd","models (equatiomatic)",TRUE,"\operatorname{bill\_length\_mm} = \alpha + \beta_{1}({\color{#FB2C4B}{\operatorname{species}}}{\color{#0274B2}{_{\operatorname{Chinstrap}}}}) + \beta_{2}({\color{#FB2C4B}{\operatorname{species}}}{\color{#0274B2}{_{\operatorname{Gentoo}}}}) + \beta_{3}({\color{#643B77}{\operatorname{island}}}{\color{#FBA640}{_{\operatorname{Dream}}}}) + \beta_{4}({\color{#643B77}{\operatorname{island}}}{\color{#FBA640}{_{\operatorname{Torgersen}}}}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-007","equatiomatic-docs","vignettes/colors.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{Bill\ Length\ [mm]} &= \alpha + \beta_{1}({\color{cornflowerblue}{\operatorname{Body\ Mass\ [g])}}}) + \beta_{2}({\color{firebrick}{\operatorname{Flipper\ Length\ [mm]}}})\ + \\
+&\quad \beta_{3}({\color{cornflowerblue}{\operatorname{Body\ Mass\ [g])}}} \times {\color{firebrick}{\operatorname{Flipper\ Length\ [mm]}}}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-008","equatiomatic-docs","vignettes/colors.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{Bill\ Length\ [mm]} &= \alpha + \beta_{1}({\color{#FB2C4B}{\operatorname{Species}}}{\color{#0274B2}{_{\operatorname{little\ buddy}}}}) + \beta_{2}({\color{#FB2C4B}{\operatorname{Species}}}{\color{#0274B2}{_{\operatorname{happy\ feet}}}})\ + \\
+&\quad \beta_{3}({\color{#643B77}{\operatorname{Island}}}{\color{#FBA640}{_{\operatorname{Dream}}}}) + \beta_{4}({\color{#643B77}{\operatorname{Island}}}{\color{#FBA640}{_{\operatorname{Torgersen}}}}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-009","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\operatorname{bill\_length\_mm} = \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-010","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\operatorname{bill\_length\_mm} = \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{flipper\_length\_mm}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-011","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\operatorname{bill\_length\_mm} = \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{island}_{\operatorname{Dream}}) + \beta_{3}(\operatorname{island}_{\operatorname{Torgersen}}) + \beta_{4}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \beta_{5}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-012","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{bill\_length\_mm} &= \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{island}_{\operatorname{Dream}}) + \beta_{3}(\operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad \beta_{4}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \beta_{5}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-013","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{bill\_length\_mm} &= \alpha + \beta_{1}(\operatorname{bill\_depth\_mm})\ + \\
+&\quad \beta_{2}(\operatorname{island}_{\operatorname{Dream}}) + \beta_{3}(\operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad \beta_{4}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \beta_{5}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-014","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{bill\_length\_mm} &= \beta_{0} + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{island}_{\operatorname{Dream}}) + \beta_{3}(\operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad \beta_{4}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \beta_{5}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-015","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+bill\_length\_mm &= \alpha + \beta_{1}(bill\_depth\_mm) + \beta_{2}(island_{Dream}) + \beta_{3}(island_{Torgersen})\ + \\
+&\quad \beta_{4}(bill\_depth\_mm \times island_{Dream}) + \beta_{5}(bill\_depth\_mm \times island_{Torgersen}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-016","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{bill\_length\_mm} &= \hat{\phi} + \hat{\gamma}_{1}(\operatorname{bill\_depth\_mm}) + \hat{\gamma}_{2}(\operatorname{island}_{\operatorname{Dream}}) + \hat{\gamma}_{3}(\operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad \hat{\gamma}_{4}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \hat{\gamma}_{5}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}}) + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-017","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{\widehat{bill\_length\_mm}} &= 63.72 - 1.16(\operatorname{bill\_depth\_mm}) - 54.12(\operatorname{island}_{\operatorname{Dream}}) - 35.13(\operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad 3.05(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + 1.73(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-018","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{sex} = \operatorname{male} ) }{ 1 - P( \operatorname{sex} = \operatorname{male} ) } \right] &= \alpha + \beta_{1}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{2}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{3}(\operatorname{bill\_length\_mm})\ + \\
+&\quad \beta_{4}(\operatorname{species}_{\operatorname{Chinstrap}} \times \operatorname{bill\_length\_mm}) + \beta_{5}(\operatorname{species}_{\operatorname{Gentoo}} \times \operatorname{bill\_length\_mm})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-019","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{sex} &\sim Bernoulli\left(\operatorname{prob}_{\operatorname{sex} = \operatorname{male}}= \hat{P}\right) \\
+ \log\left[ \frac { \hat{P} }{ 1 - \hat{P} } \right] 
+ &= \alpha + \beta_{1}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{2}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{3}(\operatorname{bill\_length\_mm})\ + \\
+&\quad \beta_{4}(\operatorname{species}_{\operatorname{Chinstrap}} \times \operatorname{bill\_length\_mm}) + \beta_{5}(\operatorname{species}_{\operatorname{Gentoo}} \times \operatorname{bill\_length\_mm})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-020","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+P( \operatorname{sex} = \operatorname{male} ) &= \Phi[\alpha + \beta_{1}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{2}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{3}(\operatorname{bill\_length\_mm})\ + \\
+&\qquad\ \beta_{4}(\operatorname{species}_{\operatorname{Chinstrap}} \times \operatorname{bill\_length\_mm}) + \beta_{5}(\operatorname{species}_{\operatorname{Gentoo}} \times \operatorname{bill\_length\_mm})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-021","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{sex} &\sim Bernoulli\left(\operatorname{prob}_{\operatorname{sex} = \operatorname{male}}= \hat{P}\right) \\
+ \hat{P} 
+ &= \Phi[\alpha + \beta_{1}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{2}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{3}(\operatorname{bill\_length\_mm})\ + \\
+&\qquad\ \beta_{4}(\operatorname{species}_{\operatorname{Chinstrap}} \times \operatorname{bill\_length\_mm}) + \beta_{5}(\operatorname{species}_{\operatorname{Gentoo}} \times \operatorname{bill\_length\_mm})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-022","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{1} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{1} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{2} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{2} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{3} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{3} ) } \right] &= \alpha_{3} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{4} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{4} ) } \right] &= \alpha_{4} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-023","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+P( \operatorname{rating}  \leq  \operatorname{1} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})] \\
+P( \operatorname{rating}  \leq  \operatorname{2} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})] \\
+P( \operatorname{rating}  \leq  \operatorname{3} ) &= \Phi[\alpha_{3} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})] \\
+P( \operatorname{rating}  \leq  \operatorname{4} ) &= \Phi[\alpha_{4} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})]
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-024","equatiomatic-docs","vignettes/equatiomatic.Rmd","models (equatiomatic)",TRUE,"\operatorname{Sepal.Length} = \alpha + \beta_{1}(\operatorname{Sepal.Width}) + \epsilon
+\operatorname{Sepal.Length} = \alpha + \beta_{1}(\operatorname{Sepal.Width}) + \beta_{2}(\operatorname{Petal.Length}) + \epsilon
+\operatorname{Sepal.Length} = \alpha + \beta_{1}(\operatorname{Sepal.Width}) + \beta_{2}(\operatorname{Petal.Length}) + \beta_{3}(\operatorname{Sepal.Width} \times \operatorname{Petal.Length}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-025","equatiomatic-docs","vignettes/lme4-lmer.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-026","equatiomatic-docs","vignettes/lme4-lmer.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{prop\_low}) \\
+      &\mu_{\beta_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{dist\_mean}) \\
+      &\mu_{\beta_{1l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-027","equatiomatic-docs","vignettes/lme4-lmer.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{meanses}) + \gamma_{2}^{\alpha}(\operatorname{sector}) + \gamma_{3}^{\alpha}(\operatorname{meanses} \times \operatorname{sector}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-028","equatiomatic-docs","vignettes/lme4-lmer.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3l[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) + \gamma_{4}^{\alpha}(\operatorname{group}_{\operatorname{low}} \times \operatorname{treatment}_{\operatorname{1}}) + \gamma_{5}^{\alpha}(\operatorname{group}_{\operatorname{medium}} \times \operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{group}_{\operatorname{low}}) + \gamma^{\beta_{1}}_{2}(\operatorname{group}_{\operatorname{medium}}) + \gamma^{\beta_{1}}_{3}(\operatorname{treatment}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{4}(\operatorname{group}_{\operatorname{low}} \times \operatorname{treatment}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{5}(\operatorname{group}_{\operatorname{medium}} \times \operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{prop\_low}) + \gamma_{2}^{\alpha}(\operatorname{prop\_low} \times \operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{prop\_low}) + \gamma^{\beta_{1}}_{1}(\operatorname{prop\_low} \times \operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-029","equatiomatic-docs","vignettes/lme4-lmer.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i],k[i]} + \beta_{1j[i]}(\operatorname{minority}) + \beta_{2k[i]}(\operatorname{female}) + \beta_{3}(\operatorname{female} \times \operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{2k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{2k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{2k}} \\ 
+     \rho_{\beta_{2k}\alpha_{k}} & \sigma^2_{\beta_{2k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id.1 k = 1,} \dots \text{,K}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-030","equatiomatic-docs","vignettes/lme4-lmer.Rmd","models (equatiomatic)",TRUE,"\begin{aligned}
+  \operatorname{\widehat{score}}_{i}  &\sim N \left(-20.6_{\alpha_{j[i],k[i],l[i]}} + 0.17_{\beta_{1j[i],k[i],l[i]}}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &-5.23_{\gamma_{1}^{\alpha}}(\operatorname{group}_{\operatorname{low}}) - 4.03_{\gamma_{2}^{\alpha}}(\operatorname{group}_{\operatorname{medium}}) - 1.97_{\gamma_{3}^{\alpha}}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &0
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     9.29 & -0.2 \\ 
+     -0.2 & 0.29
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &12.81_{\gamma_{1}^{\alpha}}(\operatorname{prop\_low}) \\
+      &0
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     2.84 & 1 \\ 
+     1 & 0
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &1.21_{\gamma_{1}^{\alpha}}(\operatorname{dist\_mean}) \\
+      &0
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     0 & -1 \\ 
+     -1 & 0
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-031","equatiomatic-docs","vignettes/markdown-quarto.Rmd","models (equatiomatic)",TRUE,"\operatorname{Sepal.Length} = \alpha + \beta_{1}(\operatorname{Sepal.Width}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-032","equatiomatic-docs","vignettes/plotting-integration.Rmd","models (equatiomatic)",TRUE,"\operatorname{\widehat{body\_mass\_g}} = 362.31 + 87.42(\operatorname{bill\_length\_mm})",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-033","equatiomatic-docs","vignettes/plotting-integration.Rmd","models (equatiomatic)",TRUE,"\widehat{body\_mass\_g} = 362.31 + 87.42(bill\_length\_mm)",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-034","equatiomatic-docs","man/extract_eq.Rd","models (equatiomatic)",TRUE,"\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \beta_{3}(\operatorname{hp}) + \beta_{4}(\operatorname{drat}) + \beta_{5}(\operatorname{wt}) + \beta_{6}(\operatorname{qsec}) + \beta_{7}(\operatorname{vs}) + \beta_{8}(\operatorname{am}) + \beta_{9}(\operatorname{gear}) + \beta_{10}(\operatorname{carb}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-035","equatiomatic-docs","man/extract_eq.Rd","models (equatiomatic)",TRUE,"\operatorname{body\_mass\_g} = \alpha + \beta_{1}(\operatorname{bill\_length\_mm}) + \beta_{2}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{3}(\operatorname{species}_{\operatorname{Gentoo}}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-036","equatiomatic-docs","man/extract_eq.Rd","models (equatiomatic)",TRUE,"\operatorname{out} = \alpha + \beta_{1}(\operatorname{cat1}_{\operatorname{b}}) + \beta_{2}(\operatorname{cat1}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat2}_{\operatorname{B}}) + \beta_{4}(\operatorname{cat2}_{\operatorname{C}}) + \beta_{5}(\operatorname{cont1}) + \beta_{6}(\operatorname{cont2}) + \epsilon",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-037","equatiomatic-docs","man/extract_eq.Rd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{\widehat{mpg}} &= 12.3 - 0.11(\operatorname{cyl})\ + \\
+&\quad 0.01(\operatorname{disp}) - 0.02(\operatorname{hp})\ + \\
+&\quad 0.79(\operatorname{drat}) - 3.72(\operatorname{wt})\ + \\
+&\quad 0.82(\operatorname{qsec}) + 0.32(\operatorname{vs})\ + \\
+&\quad 2.52(\operatorname{am}) + 0.66(\operatorname{gear})\ - \\
+&\quad 0.2(\operatorname{carb})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-038","equatiomatic-docs","man/extract_eq.Rd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{\widehat{mpg}} &= 12.3 + -0.11(\operatorname{cyl}) + 0.01(\operatorname{disp}) + -0.02(\operatorname{hp})\ + \\
+&\quad 0.79(\operatorname{drat}) + -3.72(\operatorname{wt}) + 0.82(\operatorname{qsec}) + 0.32(\operatorname{vs})\ + \\
+&\quad 2.52(\operatorname{am}) + 0.66(\operatorname{gear}) + -0.2(\operatorname{carb})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-039","equatiomatic-docs","man/extract_eq.Rd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{mpg} &= \alpha + \operatorname{cyl} + \operatorname{disp} + \operatorname{hp}\ + \\
+&\quad \operatorname{drat} + \operatorname{wt} + \operatorname{qsec} + \operatorname{vs}\ + \\
+&\quad \operatorname{am} + \operatorname{gear} + \operatorname{carb} + \epsilon
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-040","equatiomatic-docs","man/extract_eq.Rd","models (equatiomatic)",TRUE,"\begin{aligned}
+\log\left[ \frac { P( \operatorname{out} = \operatorname{1} ) }{ 1 - P( \operatorname{out} = \operatorname{1} ) } \right] &= \alpha + \beta_{1}(\operatorname{cat1}_{\operatorname{b}}) + \beta_{2}(\operatorname{cat1}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat2}_{\operatorname{B}})\ + \\
+&\quad \beta_{4}(\operatorname{cat2}_{\operatorname{C}}) + \beta_{5}(\operatorname{cont1}) + \beta_{6}(\operatorname{cont2})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"equatiomatic-docs-041","equatiomatic-docs","man/extract_eq.Rd","models (equatiomatic)",TRUE,"\begin{aligned}
+\operatorname{logit}\left[ P(\operatorname{out}) \right] &= \alpha + \beta_{1}(\operatorname{cat1}_{\operatorname{b}}) + \beta_{2}(\operatorname{cat1}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat2}_{\operatorname{B}})\ + \\
+&\quad \beta_{4}(\operatorname{cat2}_{\operatorname{C}}) + \beta_{5}(\operatorname{cont1}) + \beta_{6}(\operatorname{cont2})
+\end{aligned}",TRUE,TRUE,"",FALSE
+"katex-tests-001","katex-tests","ss_data.yaml: Accents","katex features",FALSE,"\vec{A}\vec{x}\vec x^2\vec{x}_2^2\vec{A}^2\vec{xA}^2\; \underbar{X}",TRUE,TRUE,"",TRUE
+"katex-tests-002","katex-tests","ss_data.yaml: AccentsText","katex features",FALSE,"\begin{array}{lccccc}
+\text{\'\i} & \text{\.\i} & \text{\`\i} & \text{\""\i} & \text{\H\i} & \text{\r\i} \\
+\text{\'\j} & \text{\.\j} & \text{\`\j} & \text{\""\j} & \text{\H\j} & \text{\r\j} \\
+\text{\'a} & \text{\.a} & \text{\`a} & \text{\""a} & \text{\H{a}} & \text{\r{a}} \\
+\text{\'A} & \text{\.A} & \text{\`A} & \text{\""A} & \text{\H{A}} & \text{\r{A}} \\
+\text{\.I İ} & \text{\H e e̋} & \text{\i ı}
+\end{array}",TRUE,TRUE,"",TRUE
+"katex-tests-003","katex-tests","ss_data.yaml: Align","katex features",TRUE,"\begin{align}
+  a &= 1 & b &= 2 \\
+  3a &= 3 & 17b &= 34 \\
+  \tag{$\ast$} a &\neq b \\
+  \nonumber a &={}? & b &={}? \\
+\end{align}",TRUE,TRUE,"",FALSE
+"katex-tests-004","katex-tests","ss_data.yaml: Aligned","katex features",FALSE,"\begin{aligned}
+    a &= 1 & b &= 2 \\
+    3a &= 3 & 17b &= 34
+\end{aligned}",TRUE,TRUE,"",FALSE
+"katex-tests-005","katex-tests","ss_data.yaml: Alignedat","katex features",FALSE,"\begin{alignedat}{3}
+    a &= 1 & b &= 2 &\quad c &= 3\\
+    3a &= 3 & 17b &= 34 &\quad 400c &= 1200
+\end{alignedat}",TRUE,TRUE,"",FALSE
+"katex-tests-006","katex-tests","ss_data.yaml: Arrays","katex features",FALSE,"\left(\begin{array}{|rl:c||}
+    1&2&3\\ \hline
+    1+1&2+1&3+1\cr1\over2&\scriptstyle 1/2&\frac12\\[1ex] \hline \hdashline
+    \begin{pmatrix}x\\y\end{pmatrix}&0&\begin{vmatrix}a&b\\c&d\end{vmatrix}
+\end{array}\right] \\
+\begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \;\;
+\begin{subarray}{c}a \\ b\end{subarray}",TRUE,TRUE,"",FALSE
+"katex-tests-007","katex-tests","ss_data.yaml: ArrayMode","katex features",TRUE,"\begin{matrix}
+    \frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1\,\partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_1\,\partial x_n} \\
+    \frac{\partial^2 f}{\partial x_2\,\partial x_1} & \frac{\partial^2 f}{\partial x_2^2} & \cdots & \frac{\partial^2 f}{\partial x_2\,\partial x_n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \frac{\partial^2 f}{\partial x_n\,\partial x_1} & \frac{\partial^2 f}{\partial x_n\,\partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
+\end{matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-008","katex-tests","ss_data.yaml: ArrayType","katex features",FALSE,"1\begin{array}{c}2\\3\end{array}4",TRUE,TRUE,"",FALSE
+"katex-tests-009","katex-tests","ss_data.yaml: ArrayRemoveEmptyLine","katex features",FALSE,"\begin{pmatrix}
+    1 \\
+    2 \\
+\end{pmatrix}",TRUE,TRUE,"",FALSE
+"katex-tests-010","katex-tests","ss_data.yaml: Baseline","katex features",FALSE,"a+b-c\cdot d/e",TRUE,TRUE,"",FALSE
+"katex-tests-011","katex-tests","ss_data.yaml: BasicTest","katex features",FALSE,"a",TRUE,TRUE,"",FALSE
+"katex-tests-012","katex-tests","ss_data.yaml: BinCancellation","katex features",FALSE,"\begin{array}{cccc}
+    +1 & 1+ & 1+1 & (,) \\
+    1++1 & 3\times) & 1+, & \left(,\right)
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-013","katex-tests","ss_data.yaml: BinomTest","katex features",FALSE,"\dbinom{a}{b}\tbinom{a}{b}^{\binom{a}{b}+17}{\scriptscriptstyle \binom a b}",TRUE,TRUE,"",FALSE
+"katex-tests-014","katex-tests","ss_data.yaml: BoldSpacing","katex features",FALSE,"\mathbf{A}^2+\mathbf{B}_3*\mathscr{C}'",TRUE,TRUE,"",FALSE
+"katex-tests-015","katex-tests","ss_data.yaml: BoldSymbol","katex features",FALSE,"\sum_{\boldsymbol{\alpha}}^{\boldsymbol{\beta}} \boldsymbol{\omega}+ \boldsymbol{\int_\alpha^\beta} \boldsymbol{\Omega + {}} \\
+\boldsymbol{\lim_{x \to \infty} \log Ax2k\omega\Omega\imath+} \\
+x \boldsymbol{+} y \boldsymbol{=} z",TRUE,TRUE,"",FALSE
+"katex-tests-016","katex-tests","ss_data.yaml: Boxed","katex features",FALSE,"\begin{array}{l}
+  \boxed{F=ma} \quad \boxed{ac}\color{magenta}{\boxed{F}}\boxed{F=mg} \\[2em]
+  A_{\angl n} + B_{\angl g} + C_\angln
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-017","katex-tests","ss_data.yaml: Cases","katex features",FALSE,"f(a,b)=\begin{cases}
+    a+1&\text{if }b\text{ is odd} \\
+    a&\text{if }b=0 \\
+    a-1&\text{otherwise}
+\end{cases} \\
+\begin{rcases}
+    a &\text{if } b \\
+    c &\text{if } d
+\end{rcases}⇒…",TRUE,TRUE,"",FALSE
+"katex-tests-018","katex-tests","ss_data.yaml: CD","katex features",TRUE,"\begin{CD} A @<a<< B @>>b> C \\ @| @AcAA @VVdV \\ D @= E @>>> F \end{CD}",TRUE,TRUE,"",FALSE
+"katex-tests-019","katex-tests","ss_data.yaml: Colors","katex features",FALSE,"\blue{a}\textcolor{#0f0}{b}\textcolor{red}{c}",TRUE,TRUE,"",FALSE
+"katex-tests-020","katex-tests","ss_data.yaml: ColorImplicit","katex features",FALSE,"\begin{array}{l} bl{ack\color{red}red\textcolor{green}{green}red\color{blue}blue}black \\ black\left(black\color{red}red\right)black \end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-021","katex-tests","ss_data.yaml: ColorSpacing","katex features",FALSE,"\textcolor{red}{\displaystyle \int x} + 1",TRUE,TRUE,"",FALSE
+"katex-tests-022","katex-tests","ss_data.yaml: Colorbox","katex features",FALSE,"a \colorbox{teal} B \fcolorbox{blue}{red}{C} e+\colorbox{teal}x",TRUE,TRUE,"",FALSE
+"katex-tests-023","katex-tests","ss_data.yaml: DashesAndQuotes","katex features",FALSE,"\begin{array}{l}
+    \text{``a'' b---c -- d----`e'-{-}-f} -- \\
+    \text{\it ``a'' b---c -- d----`e'-{-}-f} ``x'' \\
+    \text{\tt ``a''---} \texttt{``a''---} \mathtt{--} \\
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-024","katex-tests","ss_data.yaml: DeepFontSizing","katex features",FALSE,"a^{\big| x^{\big(}}_{\Big\uparrow} +
+i^{i^{\Huge x}_y}_{\Huge z} +
+\dfrac{\Huge x}{y}",TRUE,TRUE,"",FALSE
+"katex-tests-025","katex-tests","ss_data.yaml: DelimiterSizing","katex features",FALSE,"\bigl\uparrow\Bigl\downarrow\biggl\updownarrow
+\Biggl\Uparrow\Biggr\Downarrow\biggr\langle\Bigr\}\bigr\rfloor\; \Set{ x | x<\frac 1 2 } \\
+\begin{pmatrix}
+    a & b & c\\
+    a & b & c\\
+    a & b & c\\
+\end{pmatrix}\; \begin{bmatrix}
+    a & b & c\\
+    a & b & c\\
+    a & b & c\\
+\end{bmatrix} \\
+\Braket{ ϕ | \frac{∂^2}{∂ t^2} | ψ } \\",TRUE,TRUE,"",FALSE
+"katex-tests-026","katex-tests","ss_data.yaml: DisplayMode","katex features",TRUE,"\sum_{i=0}^\infty \frac{1}{i}",TRUE,TRUE,"",FALSE
+"katex-tests-027","katex-tests","ss_data.yaml: DisplayStyle","katex features",FALSE,"{\displaystyle\sqrt{x}}{\sqrt{x}}
+{\displaystyle \frac12}{\frac12}{\displaystyle x^1_2}{x^1_2}",TRUE,TRUE,"",FALSE
+"katex-tests-028","katex-tests","ss_data.yaml: Dots","katex features",FALSE,"\begin{array}{l}
+  \cdots;\dots+\dots\int\dots,\dots \\
+  \cdots{};\ldots+\ldots\int\ldots,\ldots
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-029","katex-tests","ss_data.yaml: Equation","katex features",TRUE,"\begin{equation}\begin{split}a& =b+c-d \\ & \quad +e-f \\ & =g+h \\ & =i \end{split}\end{equation}",TRUE,TRUE,"",FALSE
+"katex-tests-030","katex-tests","ss_data.yaml: Exponents","katex features",FALSE,"a^{a^a_a}_{a^a_a}",TRUE,TRUE,"",FALSE
+"katex-tests-031","katex-tests","ss_data.yaml: ExtensibleArrows","katex features",FALSE,"\begin{array}{l}
+    \xrightarrow[ab]{ABC} + \xRightarrow{ABC} \\
+    \xrightleftharpoons[ab]{ABC} + \xhookrightarrow[ab]{ABC} \\
+    \xtwoheadrightarrow{ABC} + \frac{\xrightarrow[ab]{ABC}}{\xrightarrow[ab]{ABC}} + \left\lvert\xrightarrow[ab]{ABC}\right\rvert
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-032","katex-tests","ss_data.yaml: FractionTest","katex features",FALSE,"\begin{array}{l}
+    \dfrac{a}{b}\frac{a}{b}\tfrac{a}{b}\;-\dfrac12\;1\tfrac12\;{1 \atop 2} 
+    \; {a \brace b} \; {a \brack b} \\[1em]
+    \genfrac \{ ]{0.8pt}{0}{a}{b} \; {a \above1.0pt b} \; \cfrac{1}{1+\cfrac{1}{x}} 
+     \xrightarrow[\dfrac g h]{\displaystyle\frac g h} \; \xrightarrow [2.\, \dfrac c d] {1.\, \displaystyle\frac c d}
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-033","katex-tests","ss_data.yaml: Functions","katex features",FALSE,"\sin\cos\tan\ln\log",TRUE,TRUE,"",FALSE
+"katex-tests-034","katex-tests","ss_data.yaml: Gather","katex features",TRUE,"\begin{gather} a=\frac 1 2 \\ e=b+c \end{gather}",TRUE,TRUE,"",FALSE
+"katex-tests-035","katex-tests","ss_data.yaml: Gathered","katex features",FALSE,"\begin{gathered}
+  x = \frac{1}{2} \\
+  y = \sum_{i=1}^n i
+\end{gathered} \approx
+\begin{array}{c}
+  x = \frac{1}{2} \\
+  y = \sum_{i=1}^n i
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-036","katex-tests","ss_data.yaml: GreekLetters","katex features",FALSE,"\alpha\beta\gamma\omega",TRUE,TRUE,"",FALSE
+"katex-tests-037","katex-tests","ss_data.yaml: GreekUnicode","katex features",FALSE,"\frac{αβγδεϵζηθϑικλμνξοπϖρϱςστυφϕχψω}{ΓΔΘΞΠΣΦΨΩϝ\mathbf{Ω}\mathbf{\Omega}}",TRUE,TRUE,"",FALSE
+"katex-tests-038","katex-tests","ss_data.yaml: GroupMacros","katex features",FALSE,"\startExp a+b\endExp",FALSE,FALSE,"macros defined by the KaTeX test",FALSE
+"katex-tests-039","katex-tests","ss_data.yaml: HorizontalBraces","katex features",FALSE,"\overbrace{\displaystyle{\oint_S{\vec E\cdot\hat n\,\mathrm d a}}}^\text{emf} = \underbrace{\frac{q_{\text{enc}}}{\varepsilon_0}}_{\text{charge}}",TRUE,TRUE,"",FALSE
+"katex-tests-040","katex-tests","ss_data.yaml: HorizontalBrackets","katex features",FALSE,"\overbracket{\displaystyle{a+b+c}}^{\text{note}} = \underbracket{x+y+z}_{\text{label}}",FALSE,FALSE,"command added to KaTeX after 0.16.9",FALSE
+"katex-tests-041","katex-tests","ss_data.yaml: HTML","katex features",FALSE,"\htmlId{a}{a+}b\htmlStyle{color:red;}{+c}",FALSE,TRUE,"HTML extension of KaTeX, disabled",FALSE
+"katex-tests-042","katex-tests","ss_data.yaml: Includegraphics","katex features",FALSE,"\def\logo{\includegraphics[height=0.8em, totalheight=0.9em, width=0.9em, alt=KA logo]{../../website/static/img/khan-academy.png}}
+\def\logoB{\includegraphics[height=0.4em, totalheight=0.9em, width=0.9em, alt=KA logo]{../../website/static/img/khan-academy.png}}
+\begin{array}{l}
+    \underline{A\logo} + \sqrt{\logo} + \tfrac{A\logo}{\logo}\\[1em]
+    \underline{A\logoB} + \sqrt{x\logoB} + \tfrac{A\logoB}{\logoB}
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-043","katex-tests","ss_data.yaml: Integrands","katex features",FALSE,"\begin{array}{l}
+    \displaystyle \int + \oint + \iint + \oiint_i^n \\[0.6em]
+    \displaystyle \iiint + \oiiint + \textstyle \int + \oint_i^n \\[0.6em]
+    \iint + \oiint + \iiint + \oiiint \\[0.6em]
+    \int\limits^x_{y + 4 - a} \int\limits^x_{y + 4 - a}
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-044","katex-tests","ss_data.yaml: KaTeX","katex features",FALSE,"\KaTeX, \large \KaTeX",TRUE,TRUE,"",FALSE
+"katex-tests-045","katex-tests","ss_data.yaml: Kern","katex features",FALSE,"\frac{a\kern{1em}b}{c}a\kern{1em}b\kern{1ex}c\kern{-0.25em}d",TRUE,TRUE,"",FALSE
+"katex-tests-046","katex-tests","ss_data.yaml: Lap","katex features",FALSE,"\begin{array}{l}
+    ab\mathllap{f}cd\mathrlap{g}hij\mathclap{k}lm \; ab\llap{f}cd\rlap{g}hij\clap{k}lm \\
+    \mathrlap{\frac a b} \frac a b \\
+    \mathrlap{\overbrace{\phantom{a_0+a_1+a_2}}^m}a_0+a_1+a_2
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-047","katex-tests","ss_data.yaml: LargeRuleNumerator","katex features",FALSE,"\frac{\textcolor{blue}{\rule{1em}{2em}}}{x}",TRUE,TRUE,"",FALSE
+"katex-tests-048","katex-tests","ss_data.yaml: LaTeX","katex features",FALSE,"\text{\LaTeX}, \text{\TeX}, \large \text{\LaTeX}, \text{\TeX}",TRUE,TRUE,"",FALSE
+"katex-tests-049","katex-tests","ss_data.yaml: LeftRight","katex features",FALSE,"\left( x^2 \right) \left\{ x^{x^{x^{x^x}}} \right.",TRUE,TRUE,"",FALSE
+"katex-tests-050","katex-tests","ss_data.yaml: LeftRightListStyling","katex features",FALSE,"a+\left(x+y\right)-x",TRUE,TRUE,"",FALSE
+"katex-tests-051","katex-tests","ss_data.yaml: LeftRightMiddle","katex features",FALSE,"\left( x^2 \middle/ \right) \left\{ x^{x^{x^{x^x}}} \middle/ y \right.\left(x\middle|y\,\middle|\,z\right)",TRUE,TRUE,"",FALSE
+"katex-tests-052","katex-tests","ss_data.yaml: LeftRightStyleSizing","katex features",FALSE,"+\left\{\rule{0.1em}{1em}\right.
+x^{+\left\{\rule{0.1em}{1em}\right.
+x^{+\left\{\rule{0.1em}{1em}\right.}}",TRUE,TRUE,"",FALSE
+"katex-tests-053","katex-tests","ss_data.yaml: LimitControls","katex features",FALSE,"\displaystyle\int\limits_2^3 3x^2\,dx + \sum\nolimits^n_{i=1}i +
+\textstyle\int\limits_x^y z",TRUE,TRUE,"",FALSE
+"katex-tests-054","katex-tests","ss_data.yaml: LineBreak","katex features",FALSE,"\frac{x^2}{y^2} + z^2 =
+z^2 + \frac{x^2}{y^2} =
+\frac{x^2}{y^2} +\nobreak z^2 =
+z^2 + \frac{x^2}{y^2} =
+\frac{x^2}{y^2} + ~ z^2 =
+z^2 + \frac{x^2}{y^2} =
+\frac{x^2}{y^2} + \hspace{1em} z^2 =
+z^2 + \frac{x^2}{y^2} =
+\frac{x^2}{y^2} + z^2 = \hspace*{1em}
+z^2 + \frac{x^2}{y^2} =
+\frac{x^2}{y^2} + z^2 =
+hi \allowbreak there =
+hi \allowbreak there",TRUE,TRUE,"",FALSE
+"katex-tests-055","katex-tests","ss_data.yaml: LowerAccent","katex features",FALSE,"\begin{matrix}
+    \underleftarrow{AB} \quad \underrightarrow{AB} \quad \underleftrightarrow{AB} \quad \undergroup{AB} \\
+    \underlinesegment{AB} \quad \utilde{AB}  \quad \color{green}{\underrightarrow{AB}} \\
+    \underrightarrow{F} + \underrightarrow{AB} + \underrightarrow{AB}^2 + \underrightarrow{AB}_2 \\
+    \frac{\underrightarrow{AB}}{\underrightarrow{AB}} + \sqrt{\underrightarrow{AB}} + \left\lvert\underrightarrow{AB}\right\rvert \\
+    \text{\underline{text}}
+\end{matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-056","katex-tests","ss_data.yaml: Mapsfrom","katex features",FALSE,"\begin{gathered}
+    a \mapsfrom b \quad c ↤ d \quad \mapsfrom -x \\
+    x_{a \mapsfrom b} \quad x_{y_{a \mapsfrom b}}
+\end{gathered}",FALSE,FALSE,"command added to KaTeX after 0.16.9",FALSE
+"katex-tests-057","katex-tests","ss_data.yaml: MathAtom","katex features",FALSE,"a\mathrel{\mathop{=}\limits^{\blue ?}}b",TRUE,TRUE,"",FALSE
+"katex-tests-058","katex-tests","ss_data.yaml: MathAtom2","katex features",FALSE,"\mathop{\overline{\mathrm{lim}}}\limits_{x\to\infty}f(x)",TRUE,TRUE,"",FALSE
+"katex-tests-059","katex-tests","ss_data.yaml: MathChoice","katex features",FALSE,"{\displaystyle\mathchoice{D}{T}{S}{SS}} {\textstyle\mathchoice{D}{T}{S}{SS}} {\scriptstyle \mathchoice{D}{T}{S}{SS}} {\scriptscriptstyle\mathchoice{D}{T}{S}{SS}} \displaystyle X_{\mathchoice{D}{T}{S}{SS}_{\mathchoice{D}{T}{S}{SS}}}",TRUE,TRUE,"",FALSE
+"katex-tests-060","katex-tests","ss_data.yaml: MathDefaultFonts","katex features",FALSE,"Ax2k\breve{a}\omega\Omega\imath+\KaTeX",TRUE,TRUE,"",FALSE
+"katex-tests-061","katex-tests","ss_data.yaml: MathBb","katex features",FALSE,"\mathbb{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",TRUE,TRUE,"",FALSE
+"katex-tests-062","katex-tests","ss_data.yaml: MathBf","katex features",FALSE,"\mathbf{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",TRUE,TRUE,"",FALSE
+"katex-tests-063","katex-tests","ss_data.yaml: MathCal","katex features",FALSE,"\mathcal{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",TRUE,TRUE,"",FALSE
+"katex-tests-064","katex-tests","ss_data.yaml: MathFrak","katex features",FALSE,"\mathfrak{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",TRUE,TRUE,"",FALSE
+"katex-tests-065","katex-tests","ss_data.yaml: MathIt","katex features",FALSE,"\mathit{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",TRUE,TRUE,"",FALSE
+"katex-tests-066","katex-tests","ss_data.yaml: MathNormal","katex features",FALSE,"\mathnormal{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",TRUE,TRUE,"",FALSE
+"katex-tests-067","katex-tests","ss_data.yaml: MathOp","katex features",FALSE,"a\mathop+b\mathop:c\mathop{\delta}e\mathop{\textrm{and}}f\mathrel{\mathop{:}}=g\sin h",TRUE,TRUE,"",FALSE
+"katex-tests-068","katex-tests","ss_data.yaml: MathRm","katex features",FALSE,"\mathrm{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",TRUE,TRUE,"",FALSE
+"katex-tests-069","katex-tests","ss_data.yaml: MathSf","katex features",FALSE,"\mathsf{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",TRUE,TRUE,"",FALSE
+"katex-tests-070","katex-tests","ss_data.yaml: MathSfIt","katex features",FALSE,"\mathsfit{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",FALSE,FALSE,"command added to KaTeX after 0.16.9",FALSE
+"katex-tests-071","katex-tests","ss_data.yaml: MathScr","katex features",FALSE,"\mathscr{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",TRUE,TRUE,"",FALSE
+"katex-tests-072","katex-tests","ss_data.yaml: MathtoolsMatrix","katex features",FALSE,"\begin{matrix*}[l] a & -1 \\ -1 & d \end{matrix*} \; \begin{pmatrix*}[r] a & -1 \\ -1 & d \end{pmatrix*}",TRUE,TRUE,"",FALSE
+"katex-tests-073","katex-tests","ss_data.yaml: MathTt","katex features",FALSE,"\mathtt{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}",TRUE,TRUE,"",FALSE
+"katex-tests-074","katex-tests","ss_data.yaml: Mod","katex features",FALSE,"\begin{array}{cc}
+    a \bmod 2 & b \pod 3 \\
+    c \pmod{4} & d \mod{56} \\
+    \displaystyle a\bmod 2 & \displaystyle b \pod 3 \\
+    \displaystyle c\pmod{4} & \displaystyle d \mod{56}
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-075","katex-tests","ss_data.yaml: ModScript","katex features",FALSE,"\begin{array}{cc}
+    \scriptstyle a\bmod 2 & \scriptstyle b \pod 3 \\
+    \scriptstyle c\pmod{4} & \scriptstyle d \mod{56}
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-076","katex-tests","ss_data.yaml: ModSpacing","katex features",FALSE,"\begin{array}{l}
+    (a \cdot b) \bmod 257 \\
+    (a \cdot b) \mkern1mu\mathbin{\mathrm{mod}}\mkern1mu 257 \\
+    (a \cdot b) \mathbin{\mathrm{mod}} 257
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-077","katex-tests","ss_data.yaml: NegativeSpaceBetweenRel","katex features",FALSE,"A =\!= B",TRUE,TRUE,"",FALSE
+"katex-tests-078","katex-tests","ss_data.yaml: NegativeSpace","katex features",FALSE,"\boxed{\$1,\!000,\!000}\KaTeX",TRUE,TRUE,"",FALSE
+"katex-tests-079","katex-tests","ss_data.yaml: NestedFractions","katex features",FALSE,"\dfrac{\frac{a}{b}}{\frac{c}{d}}\dfrac{\dfrac{a}{b}}
+{\dfrac{c}{d}}\frac{\frac{a}{b}}{\frac{c}{d}}",TRUE,TRUE,"",FALSE
+"katex-tests-080","katex-tests","ss_data.yaml: NewLine","katex features",FALSE,"\frac{a^2+b^2}{c^2} \newline
+\frac{a^2+b^2}{c^2} \\[1ex]
+\begin{pmatrix}
+    a & b \\
+    c & d \cr
+\end{pmatrix} \\
+a+b+c+{d+\\e}+f+g",TRUE,TRUE,"",FALSE
+"katex-tests-081","katex-tests","ss_data.yaml: Not","katex features",FALSE,"\begin{array}{l}
+    \not=\not>\not\geq\not\in\not<\not\leq\not{abc} \\
+    \not xy + ab \not xy \\
+    a \neq b \notin c
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-082","katex-tests","ss_data.yaml: NullDelimiterInteraction","katex features",FALSE,"a \bigl. + 2 \quad \left. + a \right)",TRUE,TRUE,"",FALSE
+"katex-tests-083","katex-tests","ss_data.yaml: OldFont","katex features",FALSE,"\begin{matrix}
+  \rm rm & it & \it it & \bf bf & \sf sf & \tt tt \\
+  \text{\rm rm} & \text{rm} & \text{\it it} & \text{\bf bf} & \text{\sf sf} & \text{\tt tt} \\
+  i\rm r\it i & \text{r\it i\rm r}
+\end{matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-084","katex-tests","ss_data.yaml: OperatorName","katex features",FALSE,"\begin{matrix}
+    \operatorname g (z) + 5\operatorname{g}z + \operatorname{Gam-ma}(z) \\
+    \operatorname{Gam ma}(z) + \operatorname{\Gamma}(z) + \operatorname{}x \\
+    \operatorname*{asin} x + \operatorname*{asin}_y x + \operatorname*{asin}\limits_y x \\[0.3em]
+    {\displaystyle \operatorname*{asin}_y x}
+\end{matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-085","katex-tests","ss_data.yaml: OpLimits","katex features",FALSE,"\begin{matrix}
+    {\sin_2^2 \lim_2^2 \int_2^2 \sum_2^2}
+    {\displaystyle \lim_2^2 \int_2^2 \intop_2^2 \sum_2^2} \\
+    \limsup_{x \rightarrow \infty} x \stackrel{?}= \liminf_{x \rightarrow \infty} x \\
+    {\displaystyle \limsup_{x \rightarrow \infty} x\:\: \sum_{\substack{0<i<m\\0<j<n}}}
+\end{matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-086","katex-tests","ss_data.yaml: OverUnderline","katex features",FALSE,"x\underline{x}\underline{\underline{x}}\underline{x_{x_{x_x}}}\underline{x^{x^{x^x}}}\overline{x}\overline{x}\overline{x^{x^{x^x}}} \blue{\overline{\underline{x}}\underline{\overline{x}}}",TRUE,TRUE,"",FALSE
+"katex-tests-087","katex-tests","ss_data.yaml: OverUnderset","katex features",FALSE,"\begin{array}{l}
+x\overset?=1 \quad \underset{*}{x}^2 \quad \overset{a}{b}b\underset{a}{b}b \\
+{\displaystyle\lim_{t\underset{>0}\to0}}\\
+a+b+c+d\overset{b+c=0}\longrightarrow a+d\\
+\overset { x = y } { \sqrt { a b } }
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-088","katex-tests","ss_data.yaml: Phantom","katex features",FALSE,"\begin{array}{l} \dfrac{1+\phantom{x^{\blue{2}}} = x}{1+x^{\blue{2}} = x} \left(\vphantom{\int_t} zzz \right) \left( X \hphantom{\frac{\frac X X}{X}} \right)\\ \text{a \phantom{123}} b \hphantom{\frac{1}{2}}=c \vphantom{101112} d \\ \sqrt{\mathstrut a} + \sqrt{\mathstrut d} \end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-089","katex-tests","ss_data.yaml: Phase","katex features",FALSE,"120\text{V}\phase{-78.2^\circ}\;\Large\phase{78.2^\circ}",TRUE,TRUE,"",FALSE
+"katex-tests-090","katex-tests","ss_data.yaml: Pmb","katex features",FALSE,"\mu\pmb{\mu}\pmb{=}\mu\pmb{+}\mu",TRUE,TRUE,"",FALSE
+"katex-tests-091","katex-tests","ss_data.yaml: PrimeSpacing","katex features",FALSE,"f'+f_2'+f^{f'}",TRUE,TRUE,"",FALSE
+"katex-tests-092","katex-tests","ss_data.yaml: PrimeSuper","katex features",FALSE,"x'^2+x'''^2+x'^2_3+x_3'^2",TRUE,TRUE,"",FALSE
+"katex-tests-093","katex-tests","ss_data.yaml: Raisebox","katex features",FALSE,"\begin{matrix} \frac{a}{a\raisebox{0.5em}{b}} \cdot \frac{a\raisebox{-0.5em}{b}}{a} \cdot \sqrt{a\raisebox{0.5em}{b}} \cdot \sqrt{a\raisebox{-0.5em}{b}} \cdot \sqrt{a\raisebox{0.5em}{b}\raisebox{-0.5em}{b}} \\[2em] a + \left(\vcenter{\hbox{$\frac{a+b}{\dfrac{c}{d}}$}}\right) \end {matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-094","katex-tests","ss_data.yaml: ReactionArrows","katex features",FALSE,"\begin{matrix}
+    A \xrightleftarrows{} B \xrightequilibrium{} C \xleftequilibrium{} D \\
+    A \xrightleftarrows{over} B \xrightequilibrium{over} C \xleftequilibrium{over} D
+\end{matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-095","katex-tests","ss_data.yaml: Reflectbox","katex features",FALSE,"\begin{gathered}
+    a + \reflectbox{abc} = b \\
+    \reflectbox{$x^2 + \frac{a}{b}$}
+    \quad \mathreflectbox{x^2 + \frac{a}{b}} \\
+    x_{\mathreflectbox{\frac{a}{b}}} \quad x_{\frac{a}{b}}
+\end{gathered}",FALSE,FALSE,"command added to KaTeX after 0.16.9",FALSE
+"katex-tests-096","katex-tests","ss_data.yaml: RelativeUnits","katex features",FALSE,"\begin{array}{ll}
+    a\kern1emb^{a\kern1emb^{a\kern1emb}} &
+    {\footnotesize a\kern1emb^{a\kern1emb^{a\kern1emb}}} \\
+    a\mkern18mub^{a\mkern18mub^{a\mkern18mub}} &
+    {\footnotesize a\mkern18mub^{a\mkern18mub^{a\mkern18mub}}} \\
+    \rule{1em}{1em}^{\rule{1em}{1em}}\rule{18mu}{18mu}^{\rule{18mu}{18mu}} &
+    {\footnotesize\rule{1em}{1em}^{\rule{1em}{1em}}\rule{18mu}{18mu}^{\rule{18mu}{18mu}}}
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-097","katex-tests","ss_data.yaml: RlapBug","katex features",FALSE,"\frac{\mathrlap{x}}{2}",TRUE,TRUE,"",FALSE
+"katex-tests-098","katex-tests","ss_data.yaml: Rule","katex features",FALSE,"\rule{1em}{0.5em}\rule{1ex}{2ex}\rule{1em}{1ex}\rule{1em}{0.431ex}",TRUE,TRUE,"",FALSE
+"katex-tests-099","katex-tests","ss_data.yaml: SizingBaseline","katex features",FALSE,"{\tiny a+b}a+b{\Huge a+b}",TRUE,TRUE,"",FALSE
+"katex-tests-100","katex-tests","ss_data.yaml: Sizing","katex features",FALSE,"{\Huge x}{\LARGE y}{\normalsize z}{\scriptsize w}\sqrt[\small 3]{x+1}",TRUE,TRUE,"",FALSE
+"katex-tests-101","katex-tests","ss_data.yaml: Smash","katex features",FALSE,"\left( X^{\smash 2} \right) \sqrt{\smash[b]{y=}}",TRUE,TRUE,"",FALSE
+"katex-tests-102","katex-tests","ss_data.yaml: Spacing","katex features",FALSE,"\begin{matrix}
+    ^3+[-1][1-1]1=1(=1)\lvert a\rvert~b \\
+    \scriptstyle{^3+[-1][1-1]1=1(=1)\lvert a\rvert~b} \\
+    \scriptscriptstyle{^3+[-1][1-1]1=1(=1)\lvert a\rvert~b} \\
+    a : a \colon a \\
+\end{matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-103","katex-tests","ss_data.yaml: Sqrt","katex features",FALSE,"\sqrt{\sqrt{\sqrt{x}}}_{\sqrt{\sqrt{x}}}^{\sqrt{\sqrt{\sqrt{x}}}
+^{\sqrt{\sqrt{\sqrt{x}}}}} \\
+\sqrt{\frac{\frac{A}{B}}{\frac{A}{B}}} \;
+\sqrt{\frac{\frac{\frac{A}{B}}{\frac{A}{B}}}{\frac{\frac{A}{B}}{\frac{A}{B}}}}",TRUE,TRUE,"",FALSE
+"katex-tests-104","katex-tests","ss_data.yaml: SqrtRoot","katex features",FALSE,"\begin{array}{l}
+    1+\sqrt[3]{2}+\sqrt[1923^234]{2^{2^{2^{2^{2^{2^{2^{2^{2^{2^{2^2}}}}}}}}}}} \\
+    \Huge \sqrt[3]{M} + x^{\sqrt[3] a}
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-105","katex-tests","ss_data.yaml: StackRel","katex features",FALSE,"a \stackrel{?}{=} b \stackrel{\text{def}}{=} c",TRUE,TRUE,"",FALSE
+"katex-tests-106","katex-tests","ss_data.yaml: StretchyAccent","katex features",FALSE,"\begin{array}{l}
+    \overrightarrow{AB} \quad \overleftarrow{AB} \quad \Overrightarrow{AB} \quad \overleftrightarrow{AB} \quad \overgroup{AB} \\
+    \overlinesegment{AB} \quad \overleftharpoon{AB} \quad \overrightharpoon{AB} \quad \left(\underleftarrow{\frac{value}{j}}\right)  \\
+    \widecheck{AB} \quad \widehat{ABC} \quad \widetilde{AB} \quad \widetilde{ABC} \\
+    \overrightarrow{F} + \overrightarrow{AB} + \overrightarrow{F}^2 + \overrightarrow{F}_2 + \overrightarrow{F}_1^2 \\
+    \overrightarrow{AB}^2+\frac{\overrightarrow{AB}}{\overrightarrow{AB}} + \sqrt{\overrightarrow{AB}} + \left\lvert\overrightarrow{AB}\right\rvert
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-107","katex-tests","ss_data.yaml: StretchyAccentColor","katex features",FALSE,"\red{\overrightarrow{AB}} \quad \color{blue}{\overleftarrow{AB}} \quad \color{blue}{\green{\Overrightarrow{AB}}} \quad \widehat{\theta} \widetilde{A}",TRUE,TRUE,"",FALSE
+"katex-tests-108","katex-tests","ss_data.yaml: StrikeThrough","katex features",FALSE,"\begin{array}{l}
+    \cancel x \quad \cancel{2B} + \bcancel 5 +\bcancel{5ay} \\
+    \text{\sout{5ab}} + \text{\sout{5ABC}} + \xcancel{\oint_S{\vec E\cdot\hat n\,\mathrm d a}} \\[0.3em]
+    \frac{x+\cancel B}{x+\cancel x} + \frac{x+\cancel y}{x} + \cancel{B}_1^2 + \cancel{B^2} \\[0.2em]
+    \left\lvert\cancel{ac}\right\rvert
+\end{array}",FALSE,FALSE,"command added to KaTeX after 0.16.9",FALSE
+"katex-tests-109","katex-tests","ss_data.yaml: StrikeThroughColor","katex features",FALSE,"\begin{array}{l}
+    \red{\cancel x \quad \cancel{2B} + \bcancel 5 +\bcancel{5ay}} \\
+    \color{green}{\text{\sout{5ab}} + \text{\sout{5ABC}} + \xcancel{\oint_S{\vec E\cdot\hat n\,\mathrm d a}}}
+\end{array}",FALSE,FALSE,"command added to KaTeX after 0.16.9",FALSE
+"katex-tests-110","katex-tests","ss_data.yaml: StyleSpacing","katex features",FALSE,"\scriptstyle ab\;cd",TRUE,TRUE,"",FALSE
+"katex-tests-111","katex-tests","ss_data.yaml: StyleSwitching","katex features",FALSE,"a\cdot b\scriptstyle a\cdot ba\textstyle\cdot ba\scriptstyle\cdot b",TRUE,TRUE,"",FALSE
+"katex-tests-112","katex-tests","ss_data.yaml: SupSubCharacterBox","katex features",FALSE,"a_2f_2{f}_2{aa}_2{af}_2\mathbf{y}_Ay_A",TRUE,TRUE,"",FALSE
+"katex-tests-113","katex-tests","ss_data.yaml: SupSubHorizSpacing","katex features",FALSE,"x^{x^{x}}\Big|x_{x_{x_{x_{x}}}}\bigg|x^{x^{x_{x_{x_{x_{x}}}}}}\bigg|",TRUE,TRUE,"",FALSE
+"katex-tests-114","katex-tests","ss_data.yaml: SupSubLeftAlignReset","katex features",FALSE,"\omega^8_{888} \quad \frac{1}{\hat{\omega}^{8}_{888}} \quad \displaystyle\sum_{\omega^{8}_{888}}",TRUE,TRUE,"",FALSE
+"katex-tests-115","katex-tests","ss_data.yaml: SupSubOffsets","katex features",FALSE,"\displaystyle \int_{2+3}x f^{2+3}+3\lim_{2+3+4+5}f",TRUE,TRUE,"",FALSE
+"katex-tests-116","katex-tests","ss_data.yaml: SurrogatePairs","katex features",FALSE,"\begin{array}{l}
+    𝐀𝐚𝟎𝐴𝑎𝑨𝒂𝔅𝔞𝔸𝒜 \\
+    𝖠𝖺𝟢𝗔𝗮𝟬𝘈𝘢𝙰𝚊𝟶 \\
+    \text{𝐀𝐚𝟎𝐴𝑎𝑨𝒂𝔅𝔞𝔸𝒜} \\
+    \text{𝖠𝖺𝟢𝗔𝗮𝟬𝘈𝘢𝙰𝚊𝟶} \\
+    \mathrm{𝐀𝐚𝑨𝒂𝔅𝔞𝔸𝒜} \\
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-117","katex-tests","ss_data.yaml: SvgReset","katex features",FALSE,"\underbrace{\sqrt{\vec{x}} + \sqrt{\vec{\color{#f00}y}}}",TRUE,TRUE,"",FALSE
+"katex-tests-118","katex-tests","ss_data.yaml: Symbols1","katex features",FALSE,"\maltese\degree\pounds\$\minuso
+\text{\maltese\degree\pounds\textdollar}",TRUE,TRUE,"",FALSE
+"katex-tests-119","katex-tests","ss_data.yaml: Tag","katex features",TRUE,"\tag{$+$hi} \frac{x^2}{y}+x^{2^y}",TRUE,TRUE,"",FALSE
+"katex-tests-120","katex-tests","ss_data.yaml: Text","katex features",FALSE,"\frac{a}{b}\text{c~ {ab} \ e}+fg",TRUE,TRUE,"",FALSE
+"katex-tests-121","katex-tests","ss_data.yaml: TextSpace","katex features",FALSE,"\begin{array}{l} \texttt{12345678901234} \\ \texttt{A test  1~~2\ \ 3} \\ \verb|A test 1  2  3| \end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-122","katex-tests","ss_data.yaml: TextStacked","katex features",FALSE,"\begin{matrix} \textsf{abc123 \textbf{abc123} \textit{abc123}}\\ \text{abc123 \textbf{abc123} \textit{abc123}}\\ \textrm{abc123 \textbf{abc123} \textit{abc123}}\\ \textsf{\textrm{\textbf{abc123}} \textbf{abc123} \textit{abc123}}\\ \textit{abc123 \textbf{abc123} \textsf{abc123}}\\ \end{matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-123","katex-tests","ss_data.yaml: TextWithMath","katex features",FALSE,"\begin{matrix} \text{for $a < b$ and $ c < d $}. \\ \textsf{for $a < b$ and $ c < d $}. \\ \textsf{for $a < b \textbf{ and } c < d $} \\ \text{\sf for $a < b$ and $c < d$.} \end{matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-124","katex-tests","ss_data.yaml: Unicode","katex features",FALSE,"\begin{matrix}\text{ÀàÇçÉéÏïÖöÛû} \\ \text{БГДЖЗЙЛФЦШЫЮЯ} \\ \text{여보세요} \\ \text{私はバナナです} \end{matrix}",TRUE,TRUE,"",FALSE
+"katex-tests-125","katex-tests","ss_data.yaml: Units","katex features",FALSE,"\begin{array}{ll}
+  \mathrm H\kern 1em\mathrm H \text{\tiny (1em)}
+  & \mathrm H\kern 1ex\mathrm H \text{\tiny (1ex)} \\
+  \mathrm H{\scriptstyle \kern 1em}\mathrm H \text{\tiny (ss 1em)}
+  & \mathrm H{\scriptstyle \kern 1ex}\mathrm H \text{\tiny (ss 1ex)} \\
+  \mathrm H{\small \kern 1em}\mathrm H \text{\tiny (sm 1em)}
+  & \mathrm H{\small \kern 1ex}\mathrm H \text{\tiny (sm 1ex)} \\
+  \mathrm H\mkern 18mu\mathrm H \text{\tiny (18mu)}
+  & \mathrm H\kern 1cm\mathrm H \text{\tiny (1cm)} \\
+  \mathrm H{\scriptstyle \mkern 18mu}\mathrm H \text{\tiny (ss 18mu)}
+  & \mathrm H{\scriptstyle \kern 1cm}\mathrm H \text{\tiny (ss 1cm)} \\
+  \mathrm H{\small \mkern 18mu}\mathrm H \text{\tiny (sm 18mu)}
+  & \mathrm H{\small \kern 1cm}\mathrm H \text{\tiny (sm 1cm)}
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-126","katex-tests","ss_data.yaml: UnsupportedCmds","katex features",FALSE,"\err\,\frac\fracerr3\,2^\superr_\suberr\,\sqrt\sqrterr",FALSE,FALSE,"invalid commands, on purpose",FALSE
+"katex-tests-127","katex-tests","ss_data.yaml: Verb","katex features",FALSE,"\begin{array}{ll}
+  \verb \verb ,   & \verb|\verb  |, \\
+  \verb* \verb* , & \verb*|\verb* |, \\
+  \verb!<x> & </y>! & \scriptstyle\verb|ss verb| \\
+  \verb*!<x> & </y>! & \small\verb|sm verb| \\
+  \verb|``---''~|
+\end{array}",TRUE,TRUE,"",FALSE
+"katex-tests-128","katex-tests","ss_data.yaml: VerticalSpacing","katex features",FALSE,"x^{\Huge y}z",TRUE,TRUE,"",FALSE
+"matplotlib-tests-001","matplotlib-tests","test_mathtext.py: math_tests[0]","mathtext features",FALSE,"a+b+\dot s+\dot{s}+\ldots",TRUE,TRUE,"",TRUE
+"matplotlib-tests-002","matplotlib-tests","test_mathtext.py: math_tests[1]","mathtext features",FALSE,"x\hspace{-0.2}\doteq\hspace{-0.2}y",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-003","matplotlib-tests","test_mathtext.py: math_tests[2]","mathtext features",FALSE,"\alpha \_",TRUE,TRUE,"",TRUE
+"matplotlib-tests-004","matplotlib-tests","test_mathtext.py: math_tests[3]","mathtext features",FALSE,"\frac{\$100.00}{y}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-005","matplotlib-tests","test_mathtext.py: math_tests[4]","mathtext features",FALSE,"x   y",TRUE,TRUE,"",FALSE
+"matplotlib-tests-006","matplotlib-tests","test_mathtext.py: math_tests[5]","mathtext features",FALSE,"x+y\ x=y\ x<y\ x:y\ x,y\ x@y",TRUE,TRUE,"",FALSE
+"matplotlib-tests-007","matplotlib-tests","test_mathtext.py: math_tests[6]","mathtext features",FALSE,"100\%y\ x*y\ x/y x\$y",TRUE,TRUE,"",FALSE
+"matplotlib-tests-008","matplotlib-tests","test_mathtext.py: math_tests[7]","mathtext features",FALSE,"x\leftarrow y\ x\forall y\ x-y",TRUE,TRUE,"",FALSE
+"matplotlib-tests-009","matplotlib-tests","test_mathtext.py: math_tests[8]","mathtext features",FALSE,"x \sf x \bf x {\cal X} \rm x",TRUE,TRUE,"",FALSE
+"matplotlib-tests-010","matplotlib-tests","test_mathtext.py: math_tests[9]","mathtext features",FALSE,"x\ x\,x\;x\quad x\qquad x\!x\hspace{ 0.5 }y",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-011","matplotlib-tests","test_mathtext.py: math_tests[10]","mathtext features",FALSE,"\{ \rm braces \}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-012","matplotlib-tests","test_mathtext.py: math_tests[11]","mathtext features",FALSE,"\left[\left\lfloor\frac{5}{\frac{\left(3\right)}{4}} y\right)\right]",TRUE,TRUE,"",FALSE
+"matplotlib-tests-013","matplotlib-tests","test_mathtext.py: math_tests[12]","mathtext features",FALSE,"\left(x\right)",TRUE,TRUE,"",FALSE
+"matplotlib-tests-014","matplotlib-tests","test_mathtext.py: math_tests[13]","mathtext features",FALSE,"\sin(x)",TRUE,TRUE,"",FALSE
+"matplotlib-tests-015","matplotlib-tests","test_mathtext.py: math_tests[14]","mathtext features",FALSE,"x_2",TRUE,TRUE,"",FALSE
+"matplotlib-tests-016","matplotlib-tests","test_mathtext.py: math_tests[15]","mathtext features",FALSE,"x^2",TRUE,TRUE,"",FALSE
+"matplotlib-tests-017","matplotlib-tests","test_mathtext.py: math_tests[16]","mathtext features",FALSE,"x^2_y",TRUE,TRUE,"",FALSE
+"matplotlib-tests-018","matplotlib-tests","test_mathtext.py: math_tests[17]","mathtext features",FALSE,"x_y^2",TRUE,TRUE,"",FALSE
+"matplotlib-tests-019","matplotlib-tests","test_mathtext.py: math_tests[18]","mathtext features",FALSE,"\sum _{\genfrac{}{}{0}{}{0\leq i\leq m}{0<j<n}}f\left(i,j\right)\mathcal{R}\prod_{i=\alpha_{i+1}}^\infty a_i \sin(2 \pi f x_i)\sqrt[2]{\prod^\frac{x}{2\pi^2}_\infty}",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-020","matplotlib-tests","test_mathtext.py: math_tests[19]","mathtext features",FALSE,"x = \frac{x+\frac{5}{2}}{\frac{y+3}{8}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-021","matplotlib-tests","test_mathtext.py: math_tests[20]","mathtext features",FALSE,"dz/dt = \gamma x^2 + {\rm sin}(2\pi y+\phi)",TRUE,TRUE,"",FALSE
+"matplotlib-tests-022","matplotlib-tests","test_mathtext.py: math_tests[21]","mathtext features",FALSE,"\alpha_{i+1}^j = {\rm sin}(2\pi f_j t_i) e^{-5 t_i/\tau}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-023","matplotlib-tests","test_mathtext.py: math_tests[23]","mathtext features",FALSE,"i",TRUE,TRUE,"",FALSE
+"matplotlib-tests-024","matplotlib-tests","test_mathtext.py: math_tests[24]","mathtext features",FALSE,"\Delta_i^j",TRUE,TRUE,"",FALSE
+"matplotlib-tests-025","matplotlib-tests","test_mathtext.py: math_tests[25]","mathtext features",FALSE,"\Delta^j_{i+1}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-026","matplotlib-tests","test_mathtext.py: math_tests[26]","mathtext features",FALSE,"\ddot{o}\acute{e}\grave{e}\hat{O}\breve{\imath}\tilde{n}\vec{q}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-027","matplotlib-tests","test_mathtext.py: math_tests[27]","mathtext features",FALSE,"\arccos((x^i))",TRUE,TRUE,"",FALSE
+"matplotlib-tests-028","matplotlib-tests","test_mathtext.py: math_tests[28]","mathtext features",FALSE,"\gamma = \frac{x=\frac{6}{8}}{y} \delta",TRUE,TRUE,"",FALSE
+"matplotlib-tests-029","matplotlib-tests","test_mathtext.py: math_tests[29]","mathtext features",FALSE,"\limsup_{x\to\infty}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-030","matplotlib-tests","test_mathtext.py: math_tests[31]","mathtext features",FALSE,"f'\quad f'''(x)\quad ''/\mathrm{yr}",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-031","matplotlib-tests","test_mathtext.py: math_tests[32]","mathtext features",FALSE,"\frac{x_2888}{y}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-032","matplotlib-tests","test_mathtext.py: math_tests[33]","mathtext features",FALSE,"\sqrt[3]{\frac{X_2}{Y}}=5",TRUE,TRUE,"",FALSE
+"matplotlib-tests-033","matplotlib-tests","test_mathtext.py: math_tests[35]","mathtext features",FALSE,"\sqrt[3]{x}=5",TRUE,TRUE,"",FALSE
+"matplotlib-tests-034","matplotlib-tests","test_mathtext.py: math_tests[36]","mathtext features",FALSE,"\frac{X}{\frac{X}{Y}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-035","matplotlib-tests","test_mathtext.py: math_tests[37]","mathtext features",FALSE,"W^{3\beta}_{\delta_1 \rho_1 \sigma_2} = U^{3\beta}_{\delta_1 \rho_1} + \frac{1}{8 \pi 2} \int^{\alpha_2}_{\alpha_2} d \alpha^\prime_2 \left[\frac{ U^{2\beta}_{\delta_1 \rho_1} - \alpha^\prime_2U^{1\beta}_{\rho_1 \sigma_2} }{U^{0\beta}_{\rho_1 \sigma_2}}\right]",TRUE,TRUE,"",FALSE
+"matplotlib-tests-036","matplotlib-tests","test_mathtext.py: math_tests[38]","mathtext features",FALSE,"\mathcal{H} = \int d \tau \left(\epsilon E^2 + \mu H^2\right)",TRUE,TRUE,"",FALSE
+"matplotlib-tests-037","matplotlib-tests","test_mathtext.py: math_tests[39]","mathtext features",FALSE,"\widehat{abc}\widetilde{def}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-038","matplotlib-tests","test_mathtext.py: math_tests[40]","mathtext features",FALSE,"\Gamma \Delta \Theta \Lambda \Xi \Pi \Sigma \Upsilon \Phi \Psi \Omega",TRUE,TRUE,"",FALSE
+"matplotlib-tests-039","matplotlib-tests","test_mathtext.py: math_tests[41]","mathtext features",FALSE,"\alpha \beta \gamma \delta \epsilon \zeta \eta \theta \iota \lambda \mu \nu \xi \pi \kappa \rho \sigma \tau \upsilon \phi \chi \psi",TRUE,TRUE,"",FALSE
+"matplotlib-tests-040","matplotlib-tests","test_mathtext.py: math_tests[42]","mathtext features",FALSE,"{x}^{2}{y}^{2}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-041","matplotlib-tests","test_mathtext.py: math_tests[43]","mathtext features",FALSE,"{}_{2}F_{3}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-042","matplotlib-tests","test_mathtext.py: math_tests[44]","mathtext features",FALSE,"\frac{x+{y}^{2}}{k+1}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-043","matplotlib-tests","test_mathtext.py: math_tests[45]","mathtext features",FALSE,"x+{y}^{\frac{2}{k+1}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-044","matplotlib-tests","test_mathtext.py: math_tests[46]","mathtext features",FALSE,"\frac{a}{b/2}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-045","matplotlib-tests","test_mathtext.py: math_tests[47]","mathtext features",FALSE,"{a}_{0}+\frac{1}{{a}_{1}+\frac{1}{{a}_{2}+\frac{1}{{a}_{3}+\frac{1}{{a}_{4}}}}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-046","matplotlib-tests","test_mathtext.py: math_tests[48]","mathtext features",FALSE,"{a}_{0}+\dfrac{1}{{a}_{1}+\dfrac{1}{{a}_{2}+\dfrac{1}{{a}_{3}+\dfrac{1}{{a}_{4}}}}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-047","matplotlib-tests","test_mathtext.py: math_tests[49]","mathtext features",FALSE,"\binom{n}{k/2}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-048","matplotlib-tests","test_mathtext.py: math_tests[50]","mathtext features",FALSE,"\binom{p}{2}{x}^{2}{y}^{p-2}-\frac{1}{1-x}\frac{1}{1-{x}^{2}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-049","matplotlib-tests","test_mathtext.py: math_tests[51]","mathtext features",FALSE,"{x}^{2y}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-050","matplotlib-tests","test_mathtext.py: math_tests[52]","mathtext features",FALSE,"\sum _{i=1}^{p}\sum _{j=1}^{q}\sum _{k=1}^{r}{a}_{ij}{b}_{jk}{c}_{ki}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-051","matplotlib-tests","test_mathtext.py: math_tests[53]","mathtext features",FALSE,"\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+x}}}}}}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-052","matplotlib-tests","test_mathtext.py: math_tests[54]","mathtext features",FALSE,"\left(\frac{{\partial }^{2}}{\partial {x}^{2}}+\frac{{\partial }^{2}}{\partial {y}^{2}}\right){|\varphi \left(x+iy\right)|}^{2}=0",TRUE,TRUE,"",FALSE
+"matplotlib-tests-053","matplotlib-tests","test_mathtext.py: math_tests[55]","mathtext features",FALSE,"{2}^{{2}^{{2}^{x}}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-054","matplotlib-tests","test_mathtext.py: math_tests[56]","mathtext features",FALSE,"{\int }_{1}^{x}\frac{\mathrm{dt}}{t}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-055","matplotlib-tests","test_mathtext.py: math_tests[57]","mathtext features",FALSE,"\int {\int }_{D}\mathrm{dx} \mathrm{dy}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-056","matplotlib-tests","test_mathtext.py: math_tests[58]","mathtext features",FALSE,"{y}_{{x}^{2}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-057","matplotlib-tests","test_mathtext.py: math_tests[59]","mathtext features",FALSE,"{y}_{{x}_{2}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-058","matplotlib-tests","test_mathtext.py: math_tests[60]","mathtext features",FALSE,"{x}_{92}^{31415}+\pi",TRUE,TRUE,"",FALSE
+"matplotlib-tests-059","matplotlib-tests","test_mathtext.py: math_tests[61]","mathtext features",FALSE,"{x}_{{y}_{b}^{a}}^{{z}_{c}^{d}}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-060","matplotlib-tests","test_mathtext.py: math_tests[62]","mathtext features",FALSE,"{y}_{3}^{\prime \prime \prime }",TRUE,TRUE,"",FALSE
+"matplotlib-tests-061","matplotlib-tests","test_mathtext.py: math_tests[63]","mathtext features",FALSE,"\left( \xi \left( 1 - \xi \right) \right)",TRUE,TRUE,"",FALSE
+"matplotlib-tests-062","matplotlib-tests","test_mathtext.py: math_tests[64]","mathtext features",FALSE,"\left(2 \, a=b\right)",TRUE,TRUE,"",FALSE
+"matplotlib-tests-063","matplotlib-tests","test_mathtext.py: math_tests[65]","mathtext features",FALSE,"? ! &",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-064","matplotlib-tests","test_mathtext.py: math_tests[68]","mathtext features",FALSE,"\left\Vert \frac{a}{b} \right\Vert \left\vert \frac{a}{b} \right\vert \left\| \frac{a}{b}\right\| \left| \frac{a}{b} \right| \Vert a \Vert \vert b \vert \| a \| | b |",TRUE,TRUE,"",FALSE
+"matplotlib-tests-065","matplotlib-tests","test_mathtext.py: math_tests[69]","mathtext features",FALSE,"\mathring{A}  \AA",FALSE,TRUE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-066","matplotlib-tests","test_mathtext.py: math_tests[70]","mathtext features",FALSE,"M \, M \thinspace M \/ M \> M \: M \; M \ M \enspace M \quad M \qquad M \! M",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-067","matplotlib-tests","test_mathtext.py: math_tests[71] part 1","mathtext features",FALSE,"\Cap",TRUE,TRUE,"",FALSE
+"matplotlib-tests-068","matplotlib-tests","test_mathtext.py: math_tests[71] part 2","mathtext features",FALSE,"\Cup",TRUE,TRUE,"",FALSE
+"matplotlib-tests-069","matplotlib-tests","test_mathtext.py: math_tests[71] part 3","mathtext features",FALSE,"\leftharpoonup",TRUE,TRUE,"",FALSE
+"matplotlib-tests-070","matplotlib-tests","test_mathtext.py: math_tests[71] part 4","mathtext features",FALSE,"\barwedge",TRUE,TRUE,"",FALSE
+"matplotlib-tests-071","matplotlib-tests","test_mathtext.py: math_tests[71] part 5","mathtext features",FALSE,"\rightharpoonup",TRUE,TRUE,"",FALSE
+"matplotlib-tests-072","matplotlib-tests","test_mathtext.py: math_tests[72] part 1","mathtext features",FALSE,"\hspace{-0.2}\dotplus\hspace{-0.2}",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-073","matplotlib-tests","test_mathtext.py: math_tests[72] part 2","mathtext features",FALSE,"\hspace{-0.2}\doteq\hspace{-0.2}",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-074","matplotlib-tests","test_mathtext.py: math_tests[72] part 3","mathtext features",FALSE,"\hspace{-0.2}\doteqdot\hspace{-0.2}",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-075","matplotlib-tests","test_mathtext.py: math_tests[72] part 4","mathtext features",FALSE,"\ddots",TRUE,TRUE,"",FALSE
+"matplotlib-tests-076","matplotlib-tests","test_mathtext.py: math_tests[73]","mathtext features",FALSE,"xyz^kx_kx^py^{p-2} d_i^jb_jc_kd x^j_i E^0 E^0_u",TRUE,TRUE,"",FALSE
+"matplotlib-tests-077","matplotlib-tests","test_mathtext.py: math_tests[74]","mathtext features",FALSE,"{xyz}^k{x}_{k}{x}^{p}{y}^{p-2} {d}_{i}^{j}{b}_{j}{c}_{k}{d} {x}^{j}_{i}{E}^{0}{E}^0_u",TRUE,TRUE,"",FALSE
+"matplotlib-tests-078","matplotlib-tests","test_mathtext.py: math_tests[75]","mathtext features",FALSE,"{\int}_x^x x\oint_x^x x\int_{X}^{X}x\int_x x \int^x x \int_{x} x\int^{x}{\int}_{x} x{\int}^{x}_{x}x",TRUE,TRUE,"",FALSE
+"matplotlib-tests-079","matplotlib-tests","test_mathtext.py: math_tests[76]","mathtext features",FALSE,"^{123}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-080","matplotlib-tests","test_mathtext.py: math_tests[78] part 1","mathtext features",FALSE,"6-2",TRUE,TRUE,"",FALSE
+"matplotlib-tests-081","matplotlib-tests","test_mathtext.py: math_tests[78] part 2","mathtext features",FALSE,"-2",TRUE,TRUE,"",FALSE
+"matplotlib-tests-082","matplotlib-tests","test_mathtext.py: math_tests[78] part 4","mathtext features",FALSE,"{-2}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-083","matplotlib-tests","test_mathtext.py: math_tests[78] part 5","mathtext features",FALSE,"{  -2}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-084","matplotlib-tests","test_mathtext.py: math_tests[78] part 6","mathtext features",FALSE,"20^{+3}_{-2}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-085","matplotlib-tests","test_mathtext.py: math_tests[79]","mathtext features",FALSE,"\overline{\omega}^x \frac{1}{2}_0^x",TRUE,TRUE,"",FALSE
+"matplotlib-tests-086","matplotlib-tests","test_mathtext.py: math_tests[80] part 1","mathtext features",FALSE,",",TRUE,TRUE,"",FALSE
+"matplotlib-tests-087","matplotlib-tests","test_mathtext.py: math_tests[80] part 2","mathtext features",FALSE,".",TRUE,TRUE,"",FALSE
+"matplotlib-tests-088","matplotlib-tests","test_mathtext.py: math_tests[80] part 3","mathtext features",FALSE,"1{,}234{, }567{ , }890",TRUE,TRUE,"",FALSE
+"matplotlib-tests-089","matplotlib-tests","test_mathtext.py: math_tests[80] part 4","mathtext features",FALSE,"1,234,567,890",TRUE,TRUE,"",FALSE
+"matplotlib-tests-090","matplotlib-tests","test_mathtext.py: math_tests[81]","mathtext features",FALSE,"\left(X\right)_{a}^{b}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-091","matplotlib-tests","test_mathtext.py: math_tests[82]","mathtext features",FALSE,"\dfrac{\$100.00}{y}",TRUE,TRUE,"",FALSE
+"matplotlib-tests-092","matplotlib-tests","test_mathtext.py: math_tests[83]","mathtext features",FALSE,"a=-b-c",TRUE,TRUE,"",FALSE
+"classics-001","classics","https://en.wikipedia.org/wiki/Normal_distribution","statistics",TRUE,"f(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \right)",TRUE,TRUE,"",TRUE
+"classics-002","classics","https://en.wikipedia.org/wiki/Binomial_distribution","statistics",TRUE,"P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}",TRUE,TRUE,"",TRUE
+"classics-003","classics","https://en.wikipedia.org/wiki/Poisson_distribution","statistics",TRUE,"P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}",TRUE,TRUE,"",FALSE
+"classics-004","classics","https://en.wikipedia.org/wiki/Mean","statistics",TRUE,"\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i",TRUE,TRUE,"",FALSE
+"classics-005","classics","https://en.wikipedia.org/wiki/Variance","statistics",TRUE,"s^2 = \frac{1}{n-1} \sum_{i=1}^{n} \left( x_i - \bar{x} \right)^2",TRUE,TRUE,"",FALSE
+"classics-006","classics","https://en.wikipedia.org/wiki/Pearson_correlation_coefficient","statistics",TRUE,"r = \frac{\sum_{i}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i}(x_i - \bar{x})^2}\sqrt{\sum_{i}(y_i - \bar{y})^2}}",TRUE,TRUE,"",FALSE
+"classics-007","classics","https://en.wikipedia.org/wiki/Student%27s_t-test","statistics",TRUE,"t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}",TRUE,TRUE,"",FALSE
+"classics-008","classics","https://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test","statistics",TRUE,"\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}",TRUE,TRUE,"",FALSE
+"classics-009","classics","https://en.wikipedia.org/wiki/F-test","statistics",TRUE,"F = \frac{\text{SS}_\text{between} / (k - 1)}{\text{SS}_\text{within} / (N - k)}",TRUE,TRUE,"",FALSE
+"classics-010","classics","https://en.wikipedia.org/wiki/Confidence_interval","statistics",TRUE,"\bar{x} \pm z_{1-\alpha/2} \frac{\sigma}{\sqrt{n}}",TRUE,TRUE,"",FALSE
+"classics-011","classics","https://en.wikipedia.org/wiki/Bayes%27_theorem","statistics",TRUE,"P(A \mid B) = \frac{P(B \mid A)\, P(A)}{P(B)}",TRUE,TRUE,"",FALSE
+"classics-012","classics","https://en.wikipedia.org/wiki/Likelihood_function","statistics",TRUE,"\mathcal{L}(\theta \mid x) = \prod_{i=1}^{n} f(x_i \mid \theta)",TRUE,TRUE,"",FALSE
+"classics-013","classics","https://en.wikipedia.org/wiki/Maximum_likelihood_estimation","statistics",TRUE,"\hat{\theta} = \operatorname*{arg\,max}_{\theta \in \Theta} \ell(\theta \mid x)",TRUE,TRUE,"",FALSE
+"classics-014","classics","https://en.wikipedia.org/wiki/Central_limit_theorem","statistics",TRUE,"\sqrt{n}\left(\bar{X}_n - \mu\right) \xrightarrow{d} \mathcal{N}\left(0, \sigma^2\right)",TRUE,TRUE,"",FALSE
+"classics-015","classics","https://en.wikipedia.org/wiki/Expected_value","statistics",TRUE,"\operatorname{E}[X] = \int_{-\infty}^{\infty} x f(x) \, dx",TRUE,TRUE,"",FALSE
+"classics-016","classics","https://en.wikipedia.org/wiki/Coefficient_of_determination","statistics",FALSE,"R^2 = 1 - \frac{SS_\text{res}}{SS_\text{tot}}",TRUE,TRUE,"",FALSE
+"classics-017","classics","https://en.wikipedia.org/wiki/P-value","statistics",FALSE,"p < 0.001",TRUE,TRUE,"",FALSE
+"classics-018","classics","https://en.wikipedia.org/wiki/Standard_error","statistics",FALSE,"\sigma_{\bar{x}} = \sigma / \sqrt{n}",TRUE,TRUE,"",FALSE
+"classics-019","classics","https://en.wikipedia.org/wiki/Ordinary_least_squares","models",TRUE,"\hat{\boldsymbol{\beta}} = \left( \mathbf{X}^\top \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{y}",TRUE,TRUE,"",TRUE
+"classics-020","classics","https://en.wikipedia.org/wiki/Linear_regression","models",TRUE,"y_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_p x_{ip} + \varepsilon_i, \quad \varepsilon_i \sim \mathcal{N}(0, \sigma^2)",TRUE,TRUE,"",TRUE
+"classics-021","classics","https://en.wikipedia.org/wiki/Logistic_regression","models",TRUE,"\log\left( \frac{p}{1-p} \right) = \beta_0 + \beta_1 x",TRUE,TRUE,"",FALSE
+"classics-022","classics","https://en.wikipedia.org/wiki/Proportional_hazards_model","models",TRUE,"h(t \mid x) = h_0(t) \exp\left( \beta_1 x_1 + \cdots + \beta_p x_p \right)",TRUE,TRUE,"",FALSE
+"classics-023","classics","https://en.wikipedia.org/wiki/Kaplan%E2%80%93Meier_estimator","models",TRUE,"\hat{S}(t) = \prod_{i:\, t_i \le t} \left( 1 - \frac{d_i}{n_i} \right)",TRUE,TRUE,"",FALSE
+"classics-024","classics","https://en.wikipedia.org/wiki/Mixed_model","models",TRUE,"\mathbf{y} = X\boldsymbol{\beta} + Z\mathbf{u} + \boldsymbol{\epsilon}",TRUE,TRUE,"",FALSE
+"classics-025","classics","https://en.wikipedia.org/wiki/Autoregressive_model","models",TRUE,"X_t = c + \sum_{i=1}^{p} \varphi_i X_{t-i} + \varepsilon_t",TRUE,TRUE,"",FALSE
+"classics-026","classics","https://en.wikipedia.org/wiki/Ridge_regression","models",TRUE,"\hat{\beta}_\text{ridge} = \operatorname*{arg\,min}_{\beta} \left\{ \lVert y - X\beta \rVert_2^2 + \lambda \lVert \beta \rVert_2^2 \right\}",TRUE,TRUE,"",FALSE
+"classics-027","classics","https://en.wikipedia.org/wiki/Softmax_function","models",TRUE,"\sigma(\mathbf{z})_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}",TRUE,TRUE,"",FALSE
+"classics-028","classics","https://en.wikipedia.org/wiki/Taylor_series","calculus",TRUE,"f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n",TRUE,TRUE,"",TRUE
+"classics-029","classics","https://en.wikipedia.org/wiki/Fourier_transform","calculus",TRUE,"\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x)\, e^{-2\pi i x \xi} \, dx",TRUE,TRUE,"",TRUE
+"classics-030","classics","https://en.wikipedia.org/wiki/Gaussian_integral","calculus",TRUE,"\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}",TRUE,TRUE,"",FALSE
+"classics-031","classics","https://en.wikipedia.org/wiki/Limit_(mathematics)","calculus",TRUE,"\lim_{x \to 0} \frac{\sin x}{x} = 1",TRUE,TRUE,"",FALSE
+"classics-032","classics","https://en.wikipedia.org/wiki/Derivative","calculus",TRUE,"f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}",TRUE,TRUE,"",FALSE
+"classics-033","classics","https://en.wikipedia.org/wiki/Partial_derivative","calculus",TRUE,"\frac{\partial^2 f}{\partial x \, \partial y} = \frac{\partial^2 f}{\partial y \, \partial x}",TRUE,TRUE,"",FALSE
+"classics-034","classics","https://en.wikipedia.org/wiki/Stokes%27_theorem","calculus",TRUE,"\oint_{\partial \Sigma} \mathbf{F} \cdot d\mathbf{r} = \iint_{\Sigma} (\nabla \times \mathbf{F}) \cdot d\mathbf{\Sigma}",TRUE,TRUE,"",FALSE
+"classics-035","classics","https://en.wikipedia.org/wiki/Quadratic_formula","algebra",TRUE,"x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}",TRUE,TRUE,"",TRUE
+"classics-036","classics","https://en.wikipedia.org/wiki/Binomial_theorem","algebra",TRUE,"(x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k",TRUE,TRUE,"",TRUE
+"classics-037","classics","https://en.wikipedia.org/wiki/Euler%27s_identity","algebra",TRUE,"e^{i\pi} + 1 = 0",TRUE,TRUE,"",FALSE
+"classics-038","classics","https://en.wikipedia.org/wiki/Golden_ratio","algebra",TRUE,"\varphi = 1 + \cfrac{1}{1 + \cfrac{1}{1 + \cfrac{1}{1 + \cdots}}}",TRUE,TRUE,"",FALSE
+"classics-039","classics","https://en.wikipedia.org/wiki/Absolute_value","algebra",TRUE,"|x| = \begin{cases} x & \text{if } x \ge 0 \\ -x & \text{if } x < 0 \end{cases}",TRUE,TRUE,"",FALSE
+"classics-040","classics","https://en.wikipedia.org/wiki/Riemann_zeta_function","algebra",TRUE,"\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_{p \text{ prime}} \frac{1}{1 - p^{-s}}",TRUE,TRUE,"",FALSE
+"classics-041","classics","https://en.wikipedia.org/wiki/Determinant","linear algebra",TRUE,"\det\begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc",TRUE,TRUE,"",TRUE
+"classics-042","classics","https://en.wikipedia.org/wiki/Identity_matrix","linear algebra",TRUE,"I_3 = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}",TRUE,TRUE,"",TRUE
+"classics-043","classics","https://en.wikipedia.org/wiki/Matrix_(mathematics)","linear algebra",TRUE,"A = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{pmatrix}",TRUE,TRUE,"",FALSE
+"classics-044","classics","https://en.wikipedia.org/wiki/Covariance_matrix","linear algebra",TRUE,"\Sigma = \begin{pmatrix} \sigma_1^2 & \rho\sigma_1\sigma_2 \\ \rho\sigma_1\sigma_2 & \sigma_2^2 \end{pmatrix}",TRUE,TRUE,"",FALSE
+"classics-045","classics","https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors","linear algebra",TRUE,"A\mathbf{v} = \lambda \mathbf{v}",TRUE,TRUE,"",FALSE
+"classics-046","classics","https://en.wikipedia.org/wiki/Norm_(mathematics)","linear algebra",TRUE,"\lVert \mathbf{x} \rVert_p = \left( \sum_{i=1}^{n} |x_i|^p \right)^{1/p}",TRUE,TRUE,"",FALSE
+"classics-047","classics","https://en.wikipedia.org/wiki/Set-builder_notation","sets and logic",TRUE,"\{ x \in \mathbb{R} \mid x^2 < 2 \}",TRUE,TRUE,"",TRUE
+"classics-048","classics","https://en.wikipedia.org/wiki/Natural_number","sets and logic",TRUE,"\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}",TRUE,TRUE,"",TRUE
+"classics-049","classics","https://en.wikipedia.org/wiki/Epsilon-delta_definition_of_limit","sets and logic",TRUE,"\forall \varepsilon > 0,\ \exists \delta > 0 : |x - c| < \delta \implies |f(x) - L| < \varepsilon",TRUE,TRUE,"",FALSE
+"classics-050","classics","https://en.wikipedia.org/wiki/Mass%E2%80%93energy_equivalence","physics",TRUE,"E = mc^2",TRUE,TRUE,"",TRUE
+"classics-051","classics","https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation","physics",TRUE,"i\hbar \frac{\partial}{\partial t} \Psi(\mathbf{r}, t) = \left[ -\frac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r}, t) \right] \Psi(\mathbf{r}, t)",TRUE,TRUE,"",TRUE
+"classics-052","classics","https://en.wikipedia.org/wiki/Maxwell%27s_equations","physics",TRUE,"\begin{aligned} \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\ \nabla \cdot \mathbf{B} &= 0 \\ \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\ \nabla \times \mathbf{B} &= \mu_0 \left( \mathbf{J} + \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \right) \end{aligned}",TRUE,TRUE,"",FALSE
+"classics-053","classics","https://en.wikipedia.org/wiki/Ideal_gas_law","physics",TRUE,"pV = nRT",TRUE,TRUE,"",FALSE
+"classics-054","classics","https://en.wikipedia.org/wiki/Speed_of_light","physics",FALSE,"c = 299\,792\,458 \ \text{m}\,\text{s}^{-1}",TRUE,TRUE,"",FALSE
+"classics-055","classics","https://en.wikipedia.org/wiki/Chemical_equilibrium","chemistry",TRUE,"\mathrm{N_2} + 3\,\mathrm{H_2} \rightleftharpoons 2\,\mathrm{NH_3}",TRUE,TRUE,"",TRUE
+"classics-056","classics","https://en.wikipedia.org/wiki/Henderson%E2%80%93Hasselbalch_equation","chemistry",TRUE,"\mathrm{pH} = \mathrm{p}K_\mathrm{a} + \log_{10}\left( \frac{[\mathrm{A^-}]}{[\mathrm{HA}]} \right)",TRUE,TRUE,"",TRUE
+"classics-057","classics","https://en.wikipedia.org/wiki/Logistic_function","biology",TRUE,"\frac{dN}{dt} = rN\left( 1 - \frac{N}{K} \right)",TRUE,TRUE,"",TRUE
+"classics-058","classics","https://en.wikipedia.org/wiki/Michaelis%E2%80%93Menten_kinetics","biology",TRUE,"v = \frac{V_{\max} [S]}{K_\mathrm{M} + [S]}",TRUE,TRUE,"",TRUE
+"classics-059","classics","https://en.wikipedia.org/wiki/Hardy%E2%80%93Weinberg_principle","biology",TRUE,"p^2 + 2pq + q^2 = 1",TRUE,TRUE,"",FALSE
+"classics-060","classics","https://en.wikipedia.org/wiki/Net_present_value","finance",TRUE,"\mathrm{NPV} = \sum_{t=0}^{N} \frac{R_t}{(1+i)^t}",TRUE,TRUE,"",TRUE
+"classics-061","classics","https://en.wikipedia.org/wiki/Compound_interest","finance",TRUE,"A = P\left( 1 + \frac{r}{n} \right)^{nt}",TRUE,TRUE,"",TRUE
+"classics-062","classics","https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model","finance",TRUE,"C = N(d_1) S_t - N(d_2) K e^{-r(T-t)}, \qquad d_{1,2} = \frac{\ln\frac{S_t}{K} + \left( r \pm \frac{\sigma^2}{2} \right)(T-t)}{\sigma\sqrt{T-t}}",TRUE,TRUE,"",FALSE
+"classics-063","classics","https://en.wikipedia.org/wiki/Big_O_notation","computer science",TRUE,"T(n) = O(n \log n)",TRUE,TRUE,"",TRUE
+"classics-064","classics","https://en.wikipedia.org/wiki/Entropy_(information_theory)","computer science",TRUE,"H(X) = -\sum_{x \in \mathcal{X}} p(x) \log_2 p(x)",TRUE,TRUE,"",TRUE
+"classics-065","classics","https://en.wikipedia.org/wiki/Kilogram","in tables",FALSE,"9.81\ \mathrm{m\,s^{-2}}",TRUE,TRUE,"",TRUE
+"classics-066","classics","https://en.wikipedia.org/wiki/Mean_squared_error","in tables",FALSE,"\mathrm{MSE} = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2",TRUE,TRUE,"",TRUE
+"classics-067","classics","https://en.wikipedia.org/wiki/Interquartile_range","in tables",FALSE,"\mathrm{IQR} = Q_3 - Q_1",TRUE,TRUE,"",FALSE
+"classics-068","classics","https://en.wikipedia.org/wiki/Odds_ratio","in tables",FALSE,"\mathrm{OR} = \frac{a/c}{b/d} = \frac{ad}{bc}",TRUE,TRUE,"",FALSE
+"classics-069","classics","https://en.wikipedia.org/wiki/Degree_(angle)","in tables",FALSE,"45^\circ",TRUE,TRUE,"",FALSE
+"classics-070","classics","https://en.wikipedia.org/wiki/Approximation","in tables",FALSE,"\pi \approx 3.14159",TRUE,TRUE,"",FALSE
+"classics-071","classics","https://en.wikipedia.org/wiki/Plus%E2%80%93minus_sign","in tables",FALSE,"12.3 \pm 0.4",TRUE,TRUE,"",FALSE
+"classics-072","classics","https://en.wikipedia.org/wiki/Scientific_notation","in tables",FALSE,"6.022 \times 10^{23}\ \text{mol}^{-1}",TRUE,TRUE,"",FALSE
+"equatags-word-001","equatags-word","compared with Word: matrix","word comparison",TRUE,"\begin{matrix}a&b\\c&d\end{matrix}",TRUE,TRUE,"",TRUE
+"equatags-word-002","equatags-word","compared with Word: smallmatrix","word comparison",TRUE,"\begin{smallmatrix}a&b\\c&d\end{smallmatrix}",TRUE,TRUE,"",TRUE
+"equatags-word-003","equatags-word","compared with Word: pmatrix","word comparison",TRUE,"\begin{pmatrix}a&b\\c&d\end{pmatrix}",TRUE,TRUE,"",FALSE
+"equatags-word-004","equatags-word","compared with Word: substack","word comparison",TRUE,"\sum_{\substack{i<n\\j<m}} x_{ij}",TRUE,TRUE,"",FALSE
+"equatags-word-005","equatags-word","compared with Word: text_AV","word comparison",TRUE,"\text{AVAVAVAV}",TRUE,TRUE,"",FALSE
+"equatags-word-006","equatags-word","compared with Word: mathrm_AV","word comparison",TRUE,"\mathrm{AVAVAVAV}",TRUE,TRUE,"",FALSE
+"equatags-word-007","equatags-word","compared with Word: x_2prime","word comparison",TRUE,"x''",TRUE,TRUE,"",FALSE
+"equatags-word-008","equatags-word","compared with Word: f_prime","word comparison",TRUE,"f'(x)",TRUE,TRUE,"",FALSE
+"equatags-word-009","equatags-word","compared with Word: x_sup_abc","word comparison",TRUE,"x^{abcdef}",TRUE,TRUE,"",FALSE
+"equatags-word-010","equatags-word","compared with Word: e_sup","word comparison",TRUE,"e^{-x^2}",TRUE,TRUE,"",FALSE
+"equatags-word-011","equatags-word","compared with Word: x_supsup","word comparison",TRUE,"x^{2^{2}}",TRUE,TRUE,"",FALSE
