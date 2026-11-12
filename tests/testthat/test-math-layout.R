@@ -72,18 +72,20 @@ test_that("the degree of a root is placed with the kerns of the MATH table", {
   f <- stix()
   sq <- layout_equation("\\sqrt{x}", f)
   rt <- layout_equation("\\sqrt[3]{x}", f)
-  deg_w <- adv(f, "3") * f$const[["scriptScriptPercentScaleDown"]] / 100
+  # the degree is two script levels down: glyph of the script style 2
+  three <- f$ssty(f$gid("3"), 2)
+  deg_w <- f$adv[three + 1] * f$const[["scriptScriptPercentScaleDown"]] / 100
   kerns <- f$const[["radicalKernBeforeDegree"]] + deg_w + f$const[["radicalKernAfterDegree"]]
   expect_equal(rt$w, sq$w + max(kerns, 0))
   expect_equal(nrow(rt$glyphs), nrow(sq$glyphs) + 1)
   # the bottom of the degree is at radicalDegreeBottomRaisePercent of the
   # height of the radical sign
   g <- rt$glyphs
-  rad <- g[g$gid != f$gid("3") & g$gid != f$gid("\U0001d465"), ]
+  rad <- g[g$gid != three & g$gid != f$gid("\U0001d465"), ]
   ink <- f$ink(rad$gid)
   sign_bottom <- rad$y + ink[3]
   sign_height <- ink[4] - ink[3]
-  deg_y <- g$y[g$gid == f$gid("3")]
+  deg_y <- g$y[g$gid == three]
   expect_equal(
     deg_y - sign_bottom,
     f$const[["radicalDegreeBottomRaisePercent"]] / 100 * sign_height
@@ -359,4 +361,88 @@ test_that("\\utilde stretches the combining tilde below, \\widetilde the one abo
   expect_lt(b$d, layout_equation("\\underbrace{abc}", f)$d)
   expect_gt(b$d, layout_equation("abc", f)$d)
   expect_true(any(above %in% layout_equation("\\widetilde{abc}", f)$glyphs$gid))
+})
+
+# --- script style (feature 'ssty' of the 'GSUB' table) -------------------------
+
+# bytes of a 'GSUB' table, written from the OpenType specification
+u16b <- function(...) {
+  v <- c(...)
+  as.raw(rbind(v %/% 256, v %% 256))
+}
+u32b <- function(v) as.raw(c(v %/% 16777216, (v %/% 65536) %% 256, (v %/% 256) %% 256, v %% 256))
+gsub_coverage <- function(g) c(u16b(1, length(g)), u16b(g))
+gsub_single1 <- function(g, delta) c(u16b(1, 6, delta), gsub_coverage(g))
+gsub_single2 <- function(g, subs) {
+  c(u16b(2, 6 + 2 * length(subs), length(subs)), u16b(subs), gsub_coverage(g))
+}
+gsub_alternate <- function(g, alts) {
+  n <- length(alts)
+  sets <- lapply(alts, function(a) u16b(length(a), a))
+  offsets <- 6 + 2 * n + c(0, cumsum(lengths(sets)))[seq_len(n)]
+  c(u16b(1, 6 + 2 * n + sum(lengths(sets)), n), u16b(offsets), unlist(sets), gsub_coverage(g))
+}
+gsub_extension <- function(type, sub) c(u16b(1, type), u32b(8), sub)
+gsub_lookup <- function(type, sub) c(u16b(type, 0, 1, 8), sub)
+# a list of tables preceded by their count and their offsets
+gsub_list <- function(parts) {
+  offsets <- 2 + 2 * length(parts) + c(0, cumsum(lengths(parts)))[seq_along(parts)]
+  c(u16b(length(parts)), u16b(offsets), unlist(parts))
+}
+gsub_table <- function(features, lookups) {
+  tables <- lapply(features, function(i) u16b(0, length(i), i))
+  offsets <- 2 + 6 * length(features) + c(0, cumsum(lengths(tables)))[seq_along(tables)]
+  records <- unlist(Map(function(tag, o) c(charToRaw(tag), u16b(o)), names(features), offsets))
+  feature_list <- c(u16b(length(features)), records, unlist(tables))
+  lookup_list <- gsub_list(lookups)
+  c(u16b(1, 0, 0, 10, 10 + length(feature_list)), feature_list, lookup_list)
+}
+
+test_that("the script style is read from single, alternate and extension substitutions", {
+  r <- gsub_table(
+    features = list(liga = 0L, ssty = 1:5),
+    lookups = list(
+      gsub_lookup(1, gsub_single1(9, 1)), # feature liga: ignored
+      gsub_lookup(1, gsub_single1(1, 10)), # single, format 1: 1 -> 11
+      gsub_lookup(1, gsub_single2(c(2, 3), c(20, 30))), # single, format 2
+      gsub_lookup(3, gsub_alternate(c(4, 5), list(c(40, 41), 50))), # alternates
+      gsub_lookup(7, gsub_extension(3, gsub_alternate(c(6, 1), list(c(60, 61), c(99, 98)))))
+    )
+  )
+  s <- read_ssty(r, 0, 100)
+  expect_equal(s$alt1[c(1, 2, 3, 4, 5, 6) + 1], c(11, 20, 30, 40, 50, 60))
+  # level 2: second alternate, or the only one
+  expect_equal(s$alt2[c(1, 2, 3, 4, 5, 6) + 1], c(11, 20, 30, 41, 50, 61))
+  # the first substitution of a glyph is kept: glyph 1 is 11, not 99; the
+  # lookups of other features are ignored (glyph 9)
+  expect_equal(s$alt1[9 + 1], NA_integer_)
+  expect_equal(sum(!is.na(s$alt1)), 6)
+  # no 'GSUB' table
+  expect_true(all(is.na(read_ssty(r, NULL, 10)$alt1)))
+})
+
+test_that("scripts use the glyphs of the script style of the font", {
+  f <- stix()
+  x <- f$gid("\U0001d465")
+  a <- f$gid("\U0001d44e")
+  b <- f$gid("\U0001d44f")
+  expect_false(f$ssty(a, 1) == a)
+  expect_false(f$ssty(b, 2) == f$ssty(b, 1))
+  expect_equal(f$ssty(a, 0), a)
+  g <- layout_equation("x^{a^b}", f)$glyphs$gid
+  expect_equal(g, c(x, f$ssty(a, 1), f$ssty(b, 2)))
+  # the prime of x' is the prime of the script style, lower than the prime
+  # of the text style raised as a superscript
+  p <- f$gid("\u2032")
+  expect_equal(layout_equation("x'", f)$glyphs$gid, c(x, f$ssty(p, 1)))
+  expect_lt(f$ink(f$ssty(p, 1))[3], f$ink(p)[3])
+  # an accent in a script is the accent of the script style
+  acc <- f$gid("\u0302")
+  expect_true(f$ssty(acc, 1) %in% layout_equation("x^{\\hat{a}}", f)$glyphs$gid)
+})
+
+test_that("a font without script style keeps the glyphs of the text style", {
+  f <- font_with(ssty = function(g, level) g)
+  g <- layout_equation("x^{a^b}", f)$glyphs$gid
+  expect_equal(g, c(f$gid("\U0001d465"), f$gid("\U0001d44e"), f$gid("\U0001d44f")))
 })

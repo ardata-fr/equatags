@@ -63,6 +63,10 @@ height of matrices in parentheses (up to 20\%), the width of matrices in
 brackets (about 9\%), the height of names of functions with an exponent,
 such as \verb{\\sin^2 x} (about 20\%), the width of \verb{\\left( ... \\right)} around
 a fraction (up to 15\%);
+\item the size of scripts is an upper bound: Word rounds it down to a half
+point and displays equations with scripts up to about 4\% narrower;
+'Microsoft PowerPoint' does not use the script style glyphs of the font
+and displays them up to about 12\% narrower;
 \item Word uses the font 'Cambria Math' unless the document sets another math
 font: the equations are then about 5\% wider;
 \item browsers displaying the HTML output of 'KaTeX' use the fonts of 'KaTeX':

@@ -116,6 +116,9 @@
 #   scripts (the superscript of a large operator is not moved by it, its
 #   subscript is moved back), and the `mathvariant` transforms.
 #   https://w3c.github.io/mathml-core/
+# - OpenType specification, 'GSUB' table, feature 'ssty': the glyphs drawn
+#   for scripts (script level 1) and scripts of scripts (level 2); MathML
+#   Core applies it in scripts.
 # - Unicode, Mathematical Alphanumeric Symbols (U+1D400 to U+1D7FF) and the
 #   letterlike symbols filling its holes (U+210E...).
 #
@@ -358,8 +361,12 @@ mo_class <- function(ch, node = NULL) {
   if (is.na(cls)) "ord" else unname(cls)
 }
 
-# Box of one glyph: its advance width, the height and depth of its ink.
+# Box of one glyph: its advance width, the height and depth of its ink. In
+# scripts, the glyph is the one the font draws for the script level (feature
+# 'ssty' of the 'GSUB' table, as MathML Core does): wider and bolder, a prime
+# placed for a superscript.
 glyph_box <- function(f, st, gid) {
+  gid <- f$ssty(gid, st$level)
   s <- scale_of(f, st)
   ink <- f$ink(gid)
   b <- empty_box()
@@ -1469,6 +1476,8 @@ layout_accent <- function(base_node, acc_node, f, st) {
     ok <- which(!is.na(v$size) & v$size * s <= base$w * 1.1)
     if (length(ok)) g <- v$gid[max(ok)]
   }
+  # the glyph of the script level, for its attachment point and its ink
+  g <- f$ssty(g, st$level)
   acc <- glyph_box(f, st, g)
   a_acc <- f$top_accent(g)
   if (is.na(a_acc)) a_acc <- f$adv[g + 1] / 2

@@ -3,9 +3,11 @@
 # "STIX Two Math" is shipped with 'gdtools': the tests run everywhere.
 
 # advance of a character, in inches, at `size` points
-advance_in <- function(ch, size = 12, font = gdtools::stixmath_file()) {
+# advance of the glyph of a character, at the script level `level` (the
+# glyph of the feature 'ssty' in scripts), in inches at size `size`
+advance_in <- function(ch, size = 12, font = gdtools::stixmath_file(), level = 0) {
   f <- math_font(font)
-  f$adv[f$gid(ch) + 1] * size / f$upem / 72
+  f$adv[f$ssty(f$gid(ch), level) + 1] * size / f$upem / 72
 }
 
 test_that("a letter is as wide as its math italic glyph", {
@@ -50,9 +52,9 @@ test_that("styles use the mathematical letters of the font", {
 
 test_that("a fraction has the space of the null delimiters on both sides", {
   em <- 12 / 72
-  # inline style: numerator and denominator one level down (70%), the
-  # space (0.12 em) at the size of the fraction
-  w <- 0.7 * max(advance_in("\U0001D44E"), advance_in("\U0001D44F"))
+  # inline style: numerator and denominator one level down (70%, glyphs of
+  # the script style), the space (0.12 em) at the size of the fraction
+  w <- 0.7 * max(advance_in("\U0001D44E", level = 1), advance_in("\U0001D44F", level = 1))
   expect_equal(equation_size("\\frac{a}{b}")$width, w + 2 * 0.12 * em)
   # display style: numerator and denominator in text style
   w <- max(advance_in("\U0001D44E"), advance_in("\U0001D44F"))
@@ -126,7 +128,8 @@ test_that("the arrow of xrightarrow is as wide as its label, 3 em at least", {
   em <- 12 / 72
   short <- equation_size("\\xrightarrow{f}", display = TRUE)
   expect_gte(short$width, 3 * em)
-  label <- equation_size("\\text{a very long label}", display = TRUE)$width * 0.7
+  # the label at the script level
+  label <- equation_size("\\scriptstyle\\text{a very long label}", display = TRUE)$width
   long <- equation_size("\\xrightarrow{\\text{a very long label}}", display = TRUE)
   # the label is padded with 0.6 em (scripts at 70%)
   expect_equal(long$width, label + 0.6 * 0.7 * em, tolerance = 0.02)

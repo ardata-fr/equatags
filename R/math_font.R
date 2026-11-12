@@ -14,6 +14,12 @@
 #   https://learn.microsoft.com/en-us/typography/opentype/spec/chapter2
 # - OpenType specification, tables 'head', 'hhea', 'maxp', 'hmtx' and the
 #   table directory of font files and font collections.
+# - OpenType specification, 'GSUB' table: FeatureList, LookupList, single
+#   (type 1), alternate (type 3) and extension (type 7) substitutions; the
+#   feature 'ssty' (script style) gives the glyphs drawn for scripts, its
+#   alternate N for the script level N.
+#   https://learn.microsoft.com/en-us/typography/opentype/spec/gsub
+#   https://learn.microsoft.com/en-us/typography/opentype/spec/features_pt#tag-ssty
 #   https://learn.microsoft.com/en-us/typography/opentype/spec/otff
 #
 # The tables are read byte by byte from these specifications. No code was
@@ -94,6 +100,60 @@ read_variants_table <- function(r, mv, horizontal) {
     offsets <- u16v(r, mv + 10, n_vert)
   }
   list(cov = cov, offsets = offsets)
+}
+
+# Glyphs of the feature 'ssty' (script style) of a 'GSUB' table at offset
+# `o`: two integer vectors, indexed by glyph index + 1, giving the glyph to
+# use at script level 1 (`alt1`) and at script levels 2 and more (`alt2`), NA
+# when the glyph has no script style. A single substitution gives the same
+# glyph at every level; an alternate substitution gives its first alternate
+# at level 1 and its second one, if any, at level 2.
+read_ssty <- function(r, o, n_glyphs) {
+  alt1 <- alt2 <- rep(NA_integer_, n_glyphs)
+  if (is.null(o)) {
+    return(list(alt1 = alt1, alt2 = alt2))
+  }
+  fl <- o + u16(r, o + 6)
+  ll <- o + u16(r, o + 8)
+  lookups <- integer()
+  for (k in seq_len(u16(r, fl))) {
+    rec <- fl + 2 + (k - 1) * 6
+    if (sfnt_tag(r, rec) == "ssty") {
+      ft <- fl + u16(r, rec + 4)
+      lookups <- c(lookups, u16v(r, ft + 4, u16(r, ft + 2)))
+    }
+  }
+  set <- function(g, a1, a2) {
+    new <- g >= 0 & g < n_glyphs & is.na(alt1[g + 1])
+    alt1[g[new] + 1] <<- a1[new]
+    alt2[g[new] + 1] <<- a2[new]
+  }
+  for (li in unique(lookups)) {
+    lk <- ll + u16(r, ll + 2 + 2 * li)
+    type <- u16(r, lk)
+    for (st in lk + u16v(r, lk + 6, u16(r, lk + 4))) {
+      st_type <- type
+      if (type == 7) {
+        st_type <- u16(r, st + 2)
+        st <- st + u32(r, st + 4)
+      }
+      format <- u16(r, st)
+      cov <- read_coverage(r, st + u16(r, st + 2))
+      if (st_type == 1 && format == 1) {
+        a <- (cov$g + i16(r, st + 4)) %% 65536L
+        set(cov$g, a, a)
+      } else if (st_type == 1 && format == 2) {
+        a <- u16v(r, st + 6, u16(r, st + 4))[cov$i + 1]
+        set(cov$g, a, a)
+      } else if (st_type == 3) {
+        sets <- st + u16v(r, st + 6, u16(r, st + 4))[cov$i + 1]
+        a1 <- vapply(sets, function(s) u16(r, s + 2), 0L)
+        a2 <- vapply(sets, function(s) u16(r, s + 2 + 2 * (u16(r, s) > 1)), 0L)
+        set(cov$g, a1, a2)
+      }
+    }
+  }
+  list(alt1 = alt1, alt2 = alt2)
 }
 
 # A math font: its file, constants and accessors to the glyph data.
@@ -186,6 +246,8 @@ read_math_font <- function(font) {
     data.frame(gid = v[c(TRUE, FALSE)], size = v[c(FALSE, TRUE)])
   }
 
+  ssty <- read_ssty(r, tb$GSUB, n_glyphs)
+
   cache <- new.env(parent = emptyenv())
   cache$ink <- list()
   cache$gid <- list()
@@ -217,6 +279,15 @@ read_math_font <- function(font) {
       if (is.na(v)) 0 else v
     },
     top_accent = top_accent,
+    # glyph drawn for `g` at the script level `level` (feature 'ssty'): `g`
+    # itself at level 0 or when the font has no script style for it
+    ssty = function(g, level) {
+      if (level < 1) {
+        return(g)
+      }
+      a <- (if (level >= 2) ssty$alt2 else ssty$alt1)[g + 1]
+      if (is.na(a)) g else a
+    },
     variants = function(g) variants(vert, g),
     hvariants = function(g) variants(horiz, g),
     # glyph assembly: parts from bottom to top (vertical) or from left to
