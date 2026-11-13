@@ -181,8 +181,51 @@ test_that("colours are drawn and do not change the size", {
   # colours of the glyphs, as stored by glyphInfo() (#RRGGBBAA)
   cols <- g$children$glyphs$glyphInfo$glyphs$colour
   expect_setequal(unique(cols), c("#000000FF", "#0000FFFF", "#FF0000FF"))
-  expect_identical(as.character(g$children$rules$gp$fill), "blue")
+  # colours are CSS colours, converted to hexadecimal
+  expect_identical(as.character(g$children$rules$gp$fill), "#0000FF")
   expect_true("fills" %in% names(equation_grob("\\colorbox{yellow}{x}")$children))
+})
+
+test_that("colours are read as CSS colours", {
+  skip_if(getRversion() < "4.3.0")
+  glyph_colours <- function(tex) {
+    g <- equation_grob(tex)
+    unique(g$children$glyphs$glyphInfo$glyphs$colour)
+  }
+  # unknown to R
+  expect_identical(glyph_colours("\\color{teal} x"), "#008080FF")
+  # another value in R (X11 green is #00FF00)
+  expect_identical(glyph_colours("\\color{green} x"), "#008000FF")
+  # hexadecimal, with or without "#"
+  expect_identical(glyph_colours("\\color{#FF8800} x"), "#FF8800FF")
+  g <- equation_grob("\\colorbox{teal}{x}")
+  expect_identical(as.character(g$children$fills$gp$fill), "#008080")
+})
+
+test_that("\\colorbox keeps its content on the baseline", {
+  em <- 12 / 72
+  x <- equation_size("\\text{x}")
+  box <- equation_size("\\colorbox{yellow}{x}")
+  # 3pt (0.3 em) of space above and under the content
+  expect_equal(box$height, x$height + 0.3 * em)
+  expect_equal(box$depth, x$depth + 0.3 * em)
+  skip_if(getRversion() < "4.3.0")
+  g <- equation_grob("a \\colorbox{yellow}{b} c")
+  y <- g$children$glyphs$glyphInfo$glyphs$y
+  expect_equal(length(unique(y)), 1L)
+})
+
+test_that("\\fcolorbox draws its frame", {
+  em <- 12 / 72
+  t <- 0.04 * em
+  plain <- equation_size("\\colorbox{yellow}{x}")
+  framed <- equation_size("\\fcolorbox{navy}{yellow}{x}")
+  expect_equal(framed$width, plain$width + 2 * t)
+  expect_equal(framed$height, plain$height + t)
+  expect_equal(framed$depth, plain$depth + t)
+  skip_if(getRversion() < "4.3.0")
+  g <- equation_grob("\\fcolorbox{navy}{yellow}{x}")
+  expect_identical(as.character(g$children$rules$gp$fill), rep("#000080", 4))
 })
 
 test_that("middle delimiters are stretched with the spaces given by KaTeX", {

@@ -20,7 +20,8 @@ same on every machine, and close to what Word displays with the same font
 'gdtools'; another math font can be given by its name or its file.
 - Fractions, scripts, sums and integrals with their limits, roots, matrices
 and arrays, delimiters such as `\left( \right)`, accents, braces, arrows,
-frames, colours and most other constructs of 'KaTeX' are supported (see
+frames, colours (CSS colours, named or hexadecimal, as in 'KaTeX'),
+`\colorbox`, `\fcolorbox` and most other constructs of 'KaTeX' are supported (see
 `?equation_size`). An equation that can not be measured gives `NA` with a
 warning.
 

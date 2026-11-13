@@ -181,6 +181,35 @@ bind_items <- function(a, b) {
   rbind(a, b[names(a)])
 }
 
+# Colour of MathML (mathcolor, mathbackground, border of \fcolorbox), as
+# written in LaTeX: a CSS colour, named or hexadecimal. CSS names are read
+# in css_colours (R/css_colours.R): some are unknown to R ("teal") and
+# others have another value there ("green", "gray"). Returns NA, with a
+# warning, for a colour unknown to CSS and to R.
+css_colour <- function(x) {
+  if (is.na(x)) {
+    return(x)
+  }
+  x <- trimws(x)
+  key <- tolower(x)
+  if (key %in% names(css_colours)) {
+    return(unname(css_colours[key]))
+  }
+  if (grepl("^[0-9a-fA-F]{6}$", x)) {
+    # KaTeX accepts hexadecimal colours without "#"
+    x <- paste0("#", x)
+  }
+  ok <- tryCatch({
+    grDevices::col2rgb(x)
+    TRUE
+  }, error = function(e) FALSE)
+  if (!ok) {
+    warning("unknown colour \"", x, "\", it is ignored.", call. = FALSE)
+    return(NA_character_)
+  }
+  x
+}
+
 # Colour of the items of a box that have no colour yet (inner colours take
 # precedence): mathcolor of MathML (\color, \textcolor).
 paint_box <- function(b, colour) {
@@ -503,11 +532,11 @@ layout_node <- function(node, f, st) {
   nm <- xml2::xml_name(node)
   kids <- xml2::xml_children(node)
   b <- layout_element(node, nm, kids, f, st)
-  colour <- xml2::xml_attr(node, "mathcolor")
+  colour <- css_colour(xml2::xml_attr(node, "mathcolor"))
   if (!is.na(colour)) {
     b <- paint_box(b, colour)
   }
-  background <- xml2::xml_attr(node, "mathbackground")
+  background <- css_colour(xml2::xml_attr(node, "mathbackground"))
   if (!is.na(background)) {
     b <- fill_box(b, background)
   }
@@ -1267,10 +1296,17 @@ layout_table <- function(node, f, st) {
 # --- padding and accents under the base -------------------------------------------
 
 # mpadded (KaTeX writes it for the labels of \xrightarrow, \colorbox,
-# \rule, \llap, \rlap, \clap): `width` is a length in em, absolute or
-# relative to the content ("+0.6em"); `lspace` moves the content to the
-# right inside this width, by a length in em or by a multiple of the width
-# of the content ("-1width" for \llap, "-0.5width" for \clap).
+# \fcolorbox, \rule, \llap, \rlap, \clap): `width` is a length in em,
+# absolute or relative to the content ("+0.6em"); `lspace` moves the content
+# to the right inside this width, by a length in em or by a multiple of the
+# width of the content ("-1width" for \llap, "-0.5width" for \clap).
+#
+# \colorbox and \fcolorbox: KaTeX writes height="+6pt" voffset="3pt", which
+# raises the content by 3pt in MathML; KaTeX (HTML) and LaTeX keep the
+# content on the baseline, with the space of \fboxsep above and under it:
+# the voffset is added to the depth instead of moving the content. The frame
+# of \fcolorbox is written as CSS (style="border: 0.04em solid navy"): its
+# rules are drawn around the box, which grows by their thickness.
 layout_padded <- function(node, kids, f, st) {
   b <- layout_row(kids, f, st)
   content_w <- b$w
@@ -1300,9 +1336,54 @@ layout_padded <- function(node, kids, f, st) {
     em_value(ls, f, st)
   }
   voffset <- em_value(xml2::xml_attr(node, "voffset"), f, st)
+  border <- padded_border(xml2::xml_attr(node, "style"), f, st)
+  boxed <- !is.na(xml2::xml_attr(node, "mathbackground")) || !is.null(border)
+  if (boxed && voffset != 0) {
+    b$h <- b$h - voffset
+    b$d <- b$d + voffset
+    voffset <- 0
+  }
   if (lspace != 0 || voffset != 0) {
     b <- shift_box(b, lspace, voffset)
   }
+  if (!is.null(border)) {
+    b <- frame_box(b, border$thickness, border$colour)
+  }
+  b
+}
+
+# Frame of \fcolorbox, written by KaTeX in the style of the mpadded
+# ("border: 0.04em solid navy"): its thickness and its colour, or NULL.
+padded_border <- function(style, f, st) {
+  if (is.na(style)) {
+    return(NULL)
+  }
+  m <- regmatches(
+    style,
+    regexec("border:\\s*([0-9.]+(em|pt))\\s+solid\\s+([^;]+)", style)
+  )[[1]]
+  if (!length(m)) {
+    return(NULL)
+  }
+  list(thickness = em_value(m[2], f, st), colour = css_colour(trimws(m[4])))
+}
+
+# A frame of rules of thickness `t` around a box, which grows by `t` on
+# every side.
+frame_box <- function(b, t, colour) {
+  b <- shift_box(b, t, 0)
+  b$w <- b$w + 2 * t
+  b$h <- b$h + t
+  b$d <- b$d + t
+  total <- b$h + b$d
+  frame <- data.frame(
+    x = c(0, b$w - t, 0, 0),
+    y = c(-b$d, -b$d, -b$d, b$h - t),
+    w = c(t, t, b$w, b$w),
+    h = c(total, total, t, t),
+    col = colour
+  )
+  b$rules <- bind_items(b$rules, frame)
   b
 }
 
