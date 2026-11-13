@@ -314,11 +314,12 @@ test_that("the grob has the size of the equation", {
   s <- equation_size(x, size = 20)
   g <- equation_grob(x, size = 20)
   expect_s3_class(g, "equation_grob")
-  expect_equal(grid::convertWidth(grid::grobWidth(g), "in", TRUE), s$width)
-  expect_equal(
-    grid::convertHeight(grid::grobHeight(g), "in", TRUE),
-    s$height + s$depth
-  )
+  # sizes in "bigpts" (1/72 inch), read without converting them: a
+  # conversion would open a graphic device
+  expect_equal(as.numeric(grid::widthDetails(g)) / 72, s$width)
+  expect_equal(as.numeric(grid::heightDetails(g)) / 72, s$height + s$depth)
+  expect_equal(as.numeric(grid::ascentDetails(g)) / 72, s$height)
+  expect_equal(as.numeric(grid::descentDetails(g)) / 72, s$depth)
   expect_true(all(c("glyphs", "rules") %in% names(g$children)))
   expect_error(equation_grob(c("a", "b")), "single")
 })
