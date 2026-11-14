@@ -27,8 +27,6 @@ Imports:
     xslt
 Suggests: 
     testthat (>= 3.0.0)
-Remotes:
-    davidgohel/gdtools
 Config/Needs/website: flextable, ggplot2, officer, rmarkdown
 Config/roxygen2/version: 8.1.1
 Config/testthat/edition: 3
