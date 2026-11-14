@@ -29,7 +29,7 @@ Word and browsers&quot;."><meta name="robots" content="noindex"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">equatags</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.0.006</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.0.007</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,7 +143,15 @@ font: the equations are then about 5% wider;</p></li>
 the sizes differ by about 7%. The environment <code>array</code> is also 1 em
 wider in browsers (and in LaTeX), which add half the space between
 columns before its first column and after its last one; Word does not,
-and neither does this function.</p></li>
+and neither does this function;</p></li>
+<li><p>a line break (<code>\\</code> or <code>\newline</code>) in the row of the equation starts
+a new line, aligned on the left, as in the HTML output of 'KaTeX'; the
+baseline of the equation is the baseline of its first line. In a group
+(<code>{a \\ b}</code>) or a fraction, it is ignored, as in 'KaTeX'. LaTeX
+ignores these line breaks in math mode;</p></li>
+<li><p>in display style, limits asked with <code>\limits</code> in a fraction or a script
+become scripts, as the limits of <code>\sum</code>: 'KaTeX' writes both in the
+same way.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
