@@ -4,7 +4,7 @@
 
 stix <- function() math_font(gdtools::stixmath_file())
 text_style <- function(display = FALSE) {
-  list(level = 0, display = display, cramped = FALSE)
+  list(level = 0, display = display, cramped = FALSE, size = 1)
 }
 # children of a MathML fragment written without namespace
 mml_kids <- function(x) xml2::xml_children(xml2::read_xml(x))
@@ -480,4 +480,141 @@ test_that("an accent on nothing is the accent character, with its width", {
 test_that("\\label is removed: it shows nothing", {
   f <- stix()
   expect_equal(layout_equation("\\label{eq: m} y = x", f), layout_equation("y = x", f))
+})
+
+test_that("sizing commands scale the glyphs, with the factor of the normal size", {
+  f <- stix()
+  x <- layout_equation("x", f)
+  huge <- layout_equation("\\Huge x", f)
+  expect_equal(huge$w, 2.488 * x$w)
+  expect_equal(huge$h, 2.488 * x$h)
+  expect_equal(layout_equation("\\tiny x", f)$w, 0.5 * x$w)
+  # the factor of \tiny in \Huge is the one of \tiny, not 0.5 * 2.488
+  b <- layout_equation("\\Huge{a {\\tiny b}}", f)
+  expect_equal(b$w, 2.488 * layout_equation("a", f)$w + 0.5 * layout_equation("b", f)$w)
+  # scripts and scripts of scripts have the sizes of KaTeX: \huge, \LARGE
+  expect_equal(layout_equation("x^{\\Huge 2}", f)$glyphs$scale[2], 2.074)
+  expect_equal(layout_equation("x^{y^{\\Huge 2}}", f)$glyphs$scale[3], 1.728)
+})
+
+test_that("a line break starts a new line, aligned on the left", {
+  f <- stix()
+  em <- f$upem
+  a <- layout_equation("a", f)
+  b <- layout_equation("b", f)
+  ab <- layout_equation("a \\\\ b", f)
+  expect_equal(ab$w, max(a$w, b$w))
+  # baseline of the first line, next baseline 1.2 em below
+  expect_equal(ab$h, a$h)
+  expect_equal(ab$d, 1.2 * em + b$d)
+  expect_equal(ab$glyphs$x, c(0, 0))
+  expect_equal(ab$glyphs$y, c(0, -1.2 * em))
+  expect_equal(layout_equation("a \\newline b", f)$d, ab$d)
+  # tall lines are 0.1 em apart
+  fr <- layout_equation("\\dfrac{1}{2}", f)
+  two <- layout_equation("\\dfrac{1}{2} \\\\ \\dfrac{1}{2}", f)
+  expect_equal(two$d, fr$d + max(1.2 * em, fr$d + fr$h + 0.1 * em))
+})
+
+test_that("line breaks are only used in the row of the equation, as in KaTeX", {
+  f <- stix()
+  em <- f$upem
+  one_line <- layout_equation("a+{b c}+d", f)
+  # in a group or a fraction, the break is ignored
+  expect_equal(layout_equation("a+{b \\\\ c}+d", f)[c("w", "h", "d")], one_line[c("w", "h", "d")])
+  expect_equal(
+    layout_equation("\\frac{a \\\\ b}{c}", f)[c("w", "h", "d")],
+    layout_equation("\\frac{a b}{c}", f)[c("w", "h", "d")]
+  )
+  # \\[1em] adds 1 em after the line
+  ab <- layout_equation("a \\\\ b", f)
+  expect_equal(layout_equation("a \\\\[1em] b", f)$d, ab$d + em)
+})
+
+test_that("\\vcenter centers its content on the math axis", {
+  f <- stix()
+  axis <- f$const[["axisHeight"]]
+  x <- layout_equation("x", f)
+  b <- layout_equation("\\vcenter{x}", f)
+  expect_equal(b$w, x$w)
+  # x is moved up: its middle is on the axis, its depth becomes negative
+  # and the depth of the row is 0, as in TeX
+  expect_equal(b$glyphs$y, axis - (x$h - x$d) / 2)
+  expect_equal(b$h, x$h + axis - (x$h - x$d) / 2)
+  expect_equal(b$d, 0)
+  fr <- layout_equation("\\vcenter{\\frac{a}{b}}", f)
+  expect_equal((fr$h - fr$d) / 2, axis)
+})
+
+test_that("\\pmb draws the glyphs twice, moved by the text shadow of KaTeX", {
+  f <- stix()
+  em <- f$upem
+  x <- layout_equation("x+y", f)
+  b <- layout_equation("\\pmb{x+y}", f)
+  expect_equal(b[c("w", "h", "d")], x[c("w", "h", "d")])
+  n <- nrow(x$glyphs)
+  expect_equal(nrow(b$glyphs), 2 * n)
+  expect_equal(b$glyphs$gid, rep(x$glyphs$gid, 2))
+  expect_equal(b$glyphs$x[n + seq_len(n)], x$glyphs$x + 0.02 * em)
+  expect_equal(b$glyphs$y[n + seq_len(n)], x$glyphs$y - 0.01 * em)
+})
+
+test_that("large operators without limits are bigger in display style", {
+  f <- stix()
+  inline <- layout_equation("\\int x", f, display = FALSE)
+  display <- layout_equation("\\int x", f, display = TRUE)
+  expect_gte(display$h + display$d, f$const[["displayOperatorMinHeight"]])
+  expect_gt(display$h + display$d, inline$h + inline$d)
+  expect_equal(layout_equation("\\displaystyle\\int x", f, display = FALSE)$h, display$h)
+})
+
+test_that("limits written by KaTeX in display mode are scripts outside of the display style", {
+  f <- stix()
+  # the sum of the denominator has its limit as a subscript (\nolimits)
+  keep <- c("w", "h", "d")
+  expect_equal(
+    layout_equation("\\frac{1}{\\sum_{j} x}", f, display = TRUE)[keep],
+    layout_equation("\\frac{1}{\\sum\\nolimits_{j} x}", f, display = TRUE)[keep]
+  )
+  expect_equal(
+    layout_equation("\\frac{1}{\\lim_{x} y}", f, display = TRUE)[keep],
+    layout_equation("\\frac{1}{\\lim\\nolimits_{x} y}", f, display = TRUE)[keep]
+  )
+  # in the display style, limits stay below
+  expect_gt(
+    layout_equation("\\sum_{j} x", f, display = TRUE)$d,
+    layout_equation("\\sum\\nolimits_{j} x", f, display = TRUE)$d
+  )
+})
+
+test_that("\\cfrac keeps the display style in its numerator and denominator", {
+  f <- stix()
+  expect_equal(
+    layout_equation("\\cfrac{1}{1+\\cfrac{1}{x}}", f)[c("w", "h", "d")],
+    layout_equation("\\frac{\\displaystyle 1}{\\displaystyle 1+\\frac{\\displaystyle 1}{\\displaystyle x}}", f)[c("w", "h", "d")]
+  )
+})
+
+test_that("\\raisebox raises its content with its height and depth", {
+  f <- stix()
+  b <- layout_equation("\\text{b}", f)
+  r <- layout_equation("\\raisebox{0.5em}{b}", f)
+  expect_equal(r$h, b$h + 0.5 * f$upem)
+  expect_equal(r$glyphs$y, 0.5 * f$upem)
+})
+
+test_that("delimiters of binomials have at least the size of TeX", {
+  f <- stix()
+  em <- f$upem
+  d <- layout_equation("\\binom{n}{k}", f, display = TRUE)
+  expect_gte(d$h + d$d, 2.39 * em)
+  t <- layout_equation("\\binom{n}{k}", f, display = FALSE)
+  expect_gte(t$h + t$d, 1.01 * em)
+})
+
+test_that("\\big| is an ordinary atom: no space around it", {
+  f <- stix()
+  b <- layout_equation("x\\big|y", f)
+  bar <- layout_equation("\\big|", f)
+  expect_equal(b$w, layout_equation("x", f)$w + bar$w + layout_equation("y", f)$w)
 })

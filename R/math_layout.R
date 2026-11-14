@@ -65,6 +65,11 @@
 #   \quad, \hspace, \,           mspace or mtext of spaces     layout_element(), token_box()
 #   \phantom                     mphantom                      layout_element()
 #   \displaystyle, \color        mstyle                        layout_element(), layout_node()
+#   \tiny ... \Huge              mstyle mathsize               layout_element(), scale_of()
+#   \pmb                         mstyle style="text-shadow..." text_shadow()
+#   \vcenter                     mpadded class="vcenter"       layout_padded()
+#   \\, \newline in the row of   mspace linebreak="newline"    layout_row(), layout_lines()
+#   the equation
 #   \overset, \stackrel          mo around an mover            layout_element()
 #   \mathbf, \mathbb, \mathcal   mathvariant                   math_variant()
 #
@@ -132,7 +137,10 @@
 # y0, x1, y1, thickness, segments such as the strokes of \cancel).
 #
 # A style is a list: level (0 for text or display, 1 for scripts, 2 for
-# scripts of scripts), display (display style) and cramped.
+# scripts of scripts), display (display style), cramped, size (factor of
+# the sizing commands \tiny to \Huge, 1 by default), katex_display (the
+# mode given to KaTeX, for the limits it writes, see layout_underover()) and
+# top_row (the row of the equation, where line breaks are used).
 
 # The empty box is built once: its data.frames are only copied when a box
 # is changed.
@@ -262,13 +270,30 @@ with_style <- function(st, ...) {
 }
 
 # Scale of the glyphs: 1 in text and display styles, the percentages of the
-# font for scripts (x^2) and scripts of scripts (x^{2^n}).
+# font for scripts (x^2) and scripts of scripts (x^{2^n}); after a sizing
+# command (\Huge, \tiny), the sizes of KaTeX.
 scale_of <- function(f, st) {
+  if (st$size != 1) {
+    return(sized_scale(st$size, st$level))
+  }
   c(
     1,
     f$const[["scriptPercentScaleDown"]] / 100,
     f$const[["scriptScriptPercentScaleDown"]] / 100
   )[min(st$level, 2) + 1]
+}
+
+# Factors of the sizing commands of KaTeX, \tiny to \Huge, and the size of
+# their scripts and scripts of scripts (sizeStyleMap of KaTeX: \Huge has
+# scripts at the size of \huge, not at 70% of \Huge).
+sizing_factors <- c(0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.44, 1.728, 2.074, 2.488)
+sizing_scripts <- rbind(
+  c(1, 1, 1), c(2, 1, 1), c(3, 1, 1), c(4, 2, 1), c(5, 2, 1), c(6, 3, 1),
+  c(7, 4, 2), c(8, 6, 3), c(9, 7, 6), c(10, 8, 7), c(11, 10, 9)
+)
+sized_scale <- function(size, level) {
+  k <- which.min(abs(sizing_factors - size))
+  sizing_factors[sizing_scripts[k, min(level, 2) + 1]]
 }
 # A constant of the 'MATH' table at the size of the style.
 K <- function(f, st, name) f$const[[name]] * scale_of(f, st)
@@ -277,7 +302,7 @@ em_size <- function(f, st) f$upem * scale_of(f, st)
 # Style of the scripts, limits and fractions of a style: one level smaller,
 # never display.
 sub_style <- function(st, cramped = st$cramped) {
-  list(level = st$level + 1, display = FALSE, cramped = cramped)
+  with_style(st, level = st$level + 1, display = FALSE, cramped = cramped)
 }
 
 # --- characters ---------------------------------------------------------------
@@ -562,7 +587,11 @@ layout_element <- function(node, nm, kids, f, st) {
       sl <- xml2::xml_attr(node, "scriptlevel")
       if (!is.na(ds)) st$display <- ds == "true"
       if (!is.na(sl)) st$level <- as.integer(sl)
-      layout_row(kids, f, st)
+      # sizing commands (\Huge, \tiny): the factor KaTeX writes is relative
+      # to the normal size, not to the size of the parent (\Huge{a \tiny b})
+      ms <- xml2::xml_attr(node, "mathsize")
+      if (!is.na(ms) && grepl("^[0-9.]+em$", ms)) st$size <- as.numeric(sub("em$", "", ms))
+      text_shadow(layout_row(kids, f, st), xml2::xml_attr(node, "style"), f, st)
     },
     math = ,
     semantics = ,
@@ -654,6 +683,10 @@ layout_mo <- function(node, f, st) {
     # (\big)^2)
     return(stretchy_delimiter(node, f, st, 0))
   }
+  if (is_large_op(node)) {
+    # \int, \sum without limits: bigger in display style, on the axis
+    return(large_op(node, f, st))
+  }
   b <- text_box(f, st, strsplit(ch, "")[[1]])
   b$cls <- if (is_bar_delimiter(node)) "bar" else mo_class(ch, node)
   explicit_spaces(b, node, f, st)
@@ -725,6 +758,17 @@ vstack <- function(boxes, dy, dx = numeric(length(boxes))) {
   out$h <- max(mapply(function(b, y) b$h + y, boxes, dy))
   out$d <- max(mapply(function(b, y) b$d - y, boxes, dy))
   out
+}
+
+# Large operator (\sum) or name of function (\lim, \max, \operatorname*),
+# written by KaTeX as an mi followed by the invisible function application.
+has_movable_limits <- function(node) {
+  if (is_large_op(node)) {
+    return(TRUE)
+  }
+  kids <- xml2::xml_children(node)
+  xml2::xml_name(node) == "mrow" && length(kids) == 2 &&
+    xml2::xml_name(kids[[1]]) == "mi" && xml2::xml_text(kids[[2]]) == "\u2061"
 }
 
 # Base of scripts or limits: a large operator gets its size and is centered
@@ -861,6 +905,13 @@ layout_underover <- function(base_node, under_node, over_node, f, st) {
   # and below: munder and munderover are limits in every style (\limits)
   if (is_h_stretchy(base_node)) {
     return(layout_stretched_base(base_node, under_node, over_node, f, st))
+  }
+  # in display mode, KaTeX writes limits for every large operator and name
+  # of function; in a fraction or a script, the style is not display and
+  # the limits are scripts (movablelimits of MathML), as in KaTeX. \limits
+  # can not be told apart there: its limits become scripts too.
+  if (!st$display && isTRUE(st$katex_display) && has_movable_limits(base_node)) {
+    return(layout_scripts(base_node, under_node, over_node, f, st))
   }
   base <- base_box(base_node, f, st)
   ss <- sub_style(st)
@@ -1091,7 +1142,15 @@ stretchy_delimiter <- function(node, f, st, target) {
   if (hi > 0) target <- min(target, hi)
   ch <- xml2::xml_text(node)
   b <- center_on_axis(stretch_glyph(f, st, ch, target), f, st)
-  b$cls <- if (is_bar_delimiter(node)) "bar" else mo_class(ch, node)
+  b$cls <- if (is_bar_delimiter(node)) {
+    "bar"
+  } else if (is_fixed_delimiter(node) && identical(xml2::xml_attr(node, "fence"), "false")) {
+    # \big|, \Big( are ordinary atoms in TeX (\bigl, \bigr are fences);
+    # KaTeX writes \bigm| the same way: it becomes ordinary too
+    "ord"
+  } else {
+    mo_class(ch, node)
+  }
   # \middle: margins given by KaTeX
   explicit_spaces(b, node, f, st)
 }
@@ -1100,6 +1159,21 @@ stretchy_delimiter <- function(node, f, st, target) {
 # delimiters as in TeX (delimiterfactor 901, delimitershortfall of 0.5 em).
 # Delimiters of a fixed size (\big) are content of the row, as in TeX.
 layout_row <- function(kids, f, st) {
+  # line breaks are only used in the row of the equation, as in the HTML of
+  # KaTeX; elsewhere (in a group, a fraction) they are ignored, as in LaTeX
+  top <- isTRUE(st$top_row)
+  if (top && length(kids) == 1 && xml2::xml_name(kids[[1]]) == "mrow") {
+    return(layout_node(kids[[1]], f, st))
+  }
+  st$top_row <- FALSE
+  is_break <- if (top) vapply(kids, is_linebreak, TRUE) else FALSE
+  if (any(is_break)) {
+    group <- cumsum(is_break)
+    lines <- lapply(0:max(group), function(g) layout_row(kids[group == g & !is_break], f, st))
+    # \\[1ex]: more space after the line
+    extra <- vapply(kids[is_break], function(k) em_value(xml2::xml_attr(k, "height"), f, st), 0)
+    return(layout_lines(lines, extra, f, st))
+  }
   stretchy <- vapply(kids, function(k) is_stretchy(k) && !is_fixed_delimiter(k), TRUE)
   boxes <- vector("list", length(kids))
   for (i in which(!stretchy)) {
@@ -1114,6 +1188,11 @@ layout_row <- function(kids, f, st) {
       0
     }
     target <- max(2 * delta * 0.901, 2 * delta - 0.5 * em_size(f, st))
+    if (is_binom_row(kids)) {
+      # delimiters of \binom, \genfrac: at least delim1 (display style) or
+      # delim2 of TeX (The TeXbook, appendix G, rule 15e)
+      target <- max(target, (if (st$display) 2.39 else 1.01) * em_size(f, st))
+    }
     for (i in which(stretchy)) {
       boxes[[i]] <- stretchy_delimiter(kids[[i]], f, st, target)
     }
@@ -1148,7 +1227,7 @@ layout_radical <- function(kids, degree_node, f, st) {
   b <- empty_box()
   x0 <- 0
   if (!is.null(degree_node)) {
-    deg <- layout_node(degree_node, f, list(level = st$level + 2, display = FALSE, cramped = FALSE))
+    deg <- layout_node(degree_node, f, with_style(st, level = st$level + 2, display = FALSE, cramped = FALSE))
     before <- K(f, st, "radicalKernBeforeDegree")
     after <- K(f, st, "radicalKernAfterDegree")
     raise <- f$const[["radicalDegreeBottomRaisePercent"]] / 100 * (rad$h + rad$d)
@@ -1309,6 +1388,19 @@ layout_table <- function(node, f, st) {
 # rules are drawn around the box, which grows by their thickness.
 layout_padded <- function(node, kids, f, st) {
   b <- layout_row(kids, f, st)
+  if (identical(xml2::xml_attr(node, "class"), "vcenter")) {
+    # \vcenter: the box is centered on the math axis
+    return(center_on_axis(b, f, st))
+  }
+  if (identical(names(xml2::xml_attrs(node)), "voffset")) {
+    # \raisebox: the box is raised with its height and depth, as in TeX (a
+    # voffset of MathML does not change the size of the box)
+    v <- em_value(xml2::xml_attr(node, "voffset"), f, st)
+    b <- shift_box(b, 0, v)
+    b$h <- b$h + v
+    b$d <- b$d - v
+    return(b)
+  }
   content_w <- b$w
   # \rule: KaTeX raises the rule with an mpadded whose height and depth are
   # meant to be added to those of the rule (TeX raises the box), but writes
@@ -1599,15 +1691,82 @@ layout_equation <- function(tex, f, display = FALSE) {
   b
 }
 
+# \pmb (poor man's bold): KaTeX writes a text shadow in the style of an
+# mstyle ("text-shadow: 0.02em 0.01em 0.04px"). The glyphs are drawn a
+# second time, moved by the offsets of the shadow (the y offset of CSS goes
+# down); the blur is not drawn, the size of the box does not change.
+text_shadow <- function(b, style, f, st) {
+  rx <- "text-shadow:\\s*(-?[0-9.]+)em\\s+(-?[0-9.]+)em"
+  if (is.na(style) || !grepl(rx, style) || !nrow(b$glyphs)) {
+    return(b)
+  }
+  m <- regmatches(style, regexec(rx, style))[[1]]
+  em <- em_size(f, st)
+  shadow <- b$glyphs
+  shadow$x <- shadow$x + as.numeric(m[2]) * em
+  shadow$y <- shadow$y - as.numeric(m[3]) * em
+  b$glyphs <- rbind(b$glyphs, shadow)
+  b
+}
+
+# Row of \binom, \dbinom, \genfrac: a fraction without bar between two
+# fences.
+is_binom_row <- function(kids) {
+  length(kids) == 3 &&
+    identical(xml2::xml_attr(kids[[1]], "fence"), "true") &&
+    identical(xml2::xml_attr(kids[[3]], "fence"), "true") &&
+    xml2::xml_name(kids[[2]]) == "mfrac" &&
+    xml2::xml_attr(kids[[2]], "linethickness") %in% c("0", "0px", "0em")
+}
+
+# Line break of \\ or \newline outside of an environment.
+is_linebreak <- function(node) {
+  xml2::xml_name(node) == "mspace" && identical(xml2::xml_attr(node, "linebreak"), "newline")
+}
+
+# Lines of a row cut by line breaks, aligned on the left. The baseline of
+# the box is the baseline of the first line. The baselines are 1.2 em apart
+# (\baselineskip of LaTeX), or 0.1 em is left between the lines when they
+# are taller (\lineskip); `extra` is the space added after each break
+# (\\[1ex]).
+layout_lines <- function(lines, extra, f, st) {
+  em <- em_size(f, st)
+  out <- lines[[1]]
+  y <- 0
+  prev_d <- out$d
+  for (i in seq_along(lines)[-1]) {
+    b <- lines[[i]]
+    skip <- 1.2 * em
+    if (skip - prev_d - b$h < 0) {
+      skip <- prev_d + b$h + 0.1 * em
+    }
+    y <- y - skip - extra[i - 1]
+    out <- merge_items(out, b, dx = 0, dy = y)
+    out$w <- max(out$w, b$w)
+    out$h <- max(out$h, b$h + y)
+    out$d <- max(out$d, b$d - y)
+    prev_d <- b$d
+  }
+  out$cls <- "ord"
+  out$italic <- 0
+  out$is_char <- FALSE
+  out
+}
+
 # LaTeX -> MathML of KaTeX -> box. KaTeX errors (unknown commands) are
 # raised here.
 layout_tex <- function(tex, f, display) {
-  html <- fix_katex_mathml(katex_mathml(prepare_tex(tex), displayMode = display))
+  html <- fix_katex_mathml(
+    katex_mathml(prepare_tex(tex), displayMode = display, macros = katex_macros)
+  )
   doc <- xml2::read_html(html)
   math <- xml2::xml_find_first(doc, "//math")
   sem <- xml2::xml_find_first(math, "./semantics")
   node <- if (!inherits(sem, "xml_missing")) sem else math
-  b <- layout_node(node, f, list(level = 0, display = display, cramped = FALSE))
+  b <- layout_node(node, f, list(
+    level = 0, display = display, cramped = FALSE, size = 1,
+    katex_display = display, top_row = TRUE
+  ))
   # the tables of the horizontal lines are only used by layout_enclose()
   b$rules$table <- NULL
   b

@@ -73,7 +73,15 @@ font: the equations are then about 5\% wider;
 the sizes differ by about 7\%. The environment \code{array} is also 1 em
 wider in browsers (and in LaTeX), which add half the space between
 columns before its first column and after its last one; Word does not,
-and neither does this function.
+and neither does this function;
+\item a line break (\verb{\\\\} or \verb{\\newline}) in the row of the equation starts
+a new line, aligned on the left, as in the HTML output of 'KaTeX'; the
+baseline of the equation is the baseline of its first line. In a group
+(\verb{\{a \\\\ b\}}) or a fraction, it is ignored, as in 'KaTeX'. LaTeX
+ignores these line breaks in math mode;
+\item in display style, limits asked with \verb{\\limits} in a fraction or a script
+become scripts, as the limits of \verb{\\sum}: 'KaTeX' writes both in the
+same way.
 }
 }
 

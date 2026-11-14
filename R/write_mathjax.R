@@ -312,7 +312,8 @@ transform_mathjax <- function(
       "",
       displayMode = display,
       preview = FALSE,
-      strict = strict
+      strict = strict,
+      macros = katex_macros
     )
     names(info) <- NULL
     info <- gsub("</span>", "", info, fixed = TRUE)
@@ -346,6 +347,12 @@ transform_mathjax <- function(
 
 # LaTeX given to KaTeX: \label{...} is removed. It shows nothing in LaTeX and
 # KaTeX refuses it; equatiomatic::extract_eq(label = ) writes it.
+# Macros given to KaTeX. \cfrac: KaTeX writes it as \frac in MathML; its
+# numerator and denominator are in display style, as in amsmath.
+katex_macros <- list(
+  "\\cfrac" = "\\frac{\\displaystyle #1}{\\displaystyle #2}"
+)
+
 prepare_tex <- function(x) {
   gsub("\\\\label\\{[^{}]*\\}", "", x, perl = TRUE)
 }
