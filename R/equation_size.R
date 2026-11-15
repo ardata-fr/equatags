@@ -65,9 +65,10 @@
 #'   ignores these line breaks in math mode. Word centers the lines and,
 #'   in a sentence, puts the middle of the lines on the baseline of the
 #'   text;
-#' - Word ignores the sizing commands (`\tiny` to `\Huge`), `\raisebox`
-#'   and `\pmb`: the sizes given for equations using them are those of
-#'   'KaTeX', not of Word;
+#' - Word ignores the sizing commands (`\tiny` to `\Huge`), the sizes of
+#'   `\big` to `\Bigg` (their delimiters keep the size of the text),
+#'   `\raisebox` and `\pmb`: the sizes given for equations using them are
+#'   those of 'KaTeX', not of Word;
 #' - in display style, limits asked with `\limits` in a fraction or a script
 #'   become scripts, as the limits of `\sum`: 'KaTeX' writes both in the
 #'   same way.

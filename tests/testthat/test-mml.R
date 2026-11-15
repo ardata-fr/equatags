@@ -147,3 +147,31 @@ test_that("line breaks in the row of the equation are rows of an equation array"
   doc <- xml2::read_xml(omml)
   expect_length(xml2::xml_find_all(doc, "//m:e/m:r/w:rPr", ns = c(ns, w = "http://schemas.openxmlformats.org/wordprocessingml/2006/main")), 2)
 })
+
+test_that("large operators without limits are n-ary operators with hidden limits", {
+  ns <- c(m = "http://schemas.openxmlformats.org/officeDocument/2006/math")
+  nary <- function(tex) {
+    doc <- xml2::read_xml(transform_mathjax(tex, to = "mml", display = TRUE))
+    xml2::xml_find_all(doc, "//m:nary", ns = ns)
+  }
+  for (tex in c("\\int x\\,dx", "\\displaystyle\\int x\\,dx", "\\sum x", "\\bigcup A")) {
+    n <- nary(tex)
+    expect_length(n, 1)
+    pr <- xml2::xml_find_first(n[[1]], "m:naryPr", ns = ns)
+    expect_equal(xml2::xml_attr(xml2::xml_find_first(pr, "m:subHide", ns = ns), "val"), "on", label = tex)
+    expect_equal(xml2::xml_attr(xml2::xml_find_first(pr, "m:supHide", ns = ns), "val"), "on", label = tex)
+    expect_equal(xml2::xml_text(xml2::xml_find_first(n[[1]], "m:e", ns = ns)), if (tex == "\\bigcup A") "A" else "x", label = tex)
+  }
+  # limits are shown when they are given
+  pr <- xml2::xml_find_first(nary("\\int_0^1 x")[[1]], "m:naryPr", ns = ns)
+  expect_equal(xml2::xml_attr(xml2::xml_find_first(pr, "m:subHide", ns = ns), "val"), "off")
+  # without argument, the operator stays a character
+  expect_length(nary("\\iint"), 0)
+  expect_length(nary("\\int + \\oint"), 0)
+})
+
+test_that("bars of \\big| are delimiters for Word, \\mid stays a relation", {
+  omml <- transform_mathjax("x\\Big|y", to = "mml")
+  expect_match(omml, "x|y", fixed = TRUE)
+  expect_match(transform_mathjax("a \\mid b", to = "mml"), "∣", fixed = TRUE)
+})

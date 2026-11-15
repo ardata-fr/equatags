@@ -81,9 +81,10 @@ baseline of the equation is the baseline of its first line. In a group
 ignores these line breaks in math mode. Word centers the lines and,
 in a sentence, puts the middle of the lines on the baseline of the
 text;
-\item Word ignores the sizing commands (\verb{\\tiny} to \verb{\\Huge}), \verb{\\raisebox}
-and \verb{\\pmb}: the sizes given for equations using them are those of
-'KaTeX', not of Word;
+\item Word ignores the sizing commands (\verb{\\tiny} to \verb{\\Huge}), the sizes of
+\verb{\\big} to \verb{\\Bigg} (their delimiters keep the size of the text),
+\verb{\\raisebox} and \verb{\\pmb}: the sizes given for equations using them are
+those of 'KaTeX', not of Word;
 \item in display style, limits asked with \verb{\\limits} in a fraction or a script
 become scripts, as the limits of \verb{\\sum}: 'KaTeX' writes both in the
 same way.

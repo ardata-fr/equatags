@@ -29,7 +29,10 @@ larger fractions). Use `display = TRUE` to get the previous result.
   - line breaks (`\\`, `\newline`) are kept: `a + b \\ c` was displayed as
     `a + bc`;
   - `\overlinesegment` and `\underlinesegment` no longer show the word
-    "undefined".
+    "undefined";
+  - integrals and sums without limits (`\int x\,dx`, `\sum x`) are larger
+    in an equation displayed alone, as with limits;
+  - `\big|`, `\Big|`... are no longer spaced as the relation "divides".
 - Texts made of ASCII characters only, such as `\text{ab}`, no longer fail.
 - `\label{...}`, as written by `equatiomatic::extract_eq(label = )`, is
 ignored instead of causing an error.

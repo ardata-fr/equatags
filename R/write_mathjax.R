@@ -13,6 +13,7 @@ mml_to_ooml <- function(x) {
   doc <- prepare_mathml(doc)
   res <- xml_xslt(doc, mml2omml_stylesheet())
   set_line_breaks(res)
+  hide_empty_limits(res)
   ooml <- vapply(xml_children(res), function(node) as.character(xml_new_root(node)), "")
   gsub(xml_header, "", ooml, fixed = TRUE)
 }
@@ -78,9 +79,10 @@ em_to_spaces <- function(width) {
 #' @importFrom xml2 xml_remove xml_name xml_text xml_set_attrs xml_attr
 #' @importFrom xml2 xml_set_attr xml_name<- xml_text<-
 prepare_mathml <- function(doc) {
-  # line breaks (\\, \newline) in the row of the equation: a marker, a run
-  # with a manual break after the stylesheet (see set_line_breaks()); the
-  # others (in a group, a fraction) are ignored, as in equation_size()
+  # line breaks (\\, \newline) in the row of the equation: a marker, the
+  # lines become the rows of an equation array after the stylesheet (see
+  # set_line_breaks()); the others (in a group, a fraction) are ignored, as
+  # in equation_size()
   for (math in xml_find_all(doc, "//mml:math", ns = mml_ns)) {
     row <- top_row(math)
     for (node in xml_find_all(math, ".//mml:mspace[@linebreak='newline']", ns = mml_ns)) {
@@ -94,18 +96,39 @@ prepare_mathml <- function(doc) {
     }
   }
 
-  # vertical bars used as delimiters (|x|, \lvert, \left|): KaTeX writes
-  # them with the characters of the relations \mid and \parallel, that Word
-  # spaces as relations; the ASCII bar and the double vertical line are
-  # delimiters for Word. \mid and \parallel (mo without these attributes)
-  # are kept.
+  # large operators without limits (\displaystyle\int x\,dx, \sum x): Word
+  # makes them bigger in display style only as n-ary operators. They get
+  # empty limits: the stylesheet writes an m:nary, with the next element as
+  # its argument, and the empty limits are hidden (see hide_empty_limits()).
+  scripted <- "parent::mml:msub or parent::mml:msup or parent::mml:msubsup or parent::mml:munder or parent::mml:mover or parent::mml:munderover"
+  for (node in xml_find_all(doc, sprintf("//mml:mo[not(%s)]", scripted), ns = mml_ns)) {
+    if (!xml_text(node) %in% op_large) next
+    # without argument, Word would show an empty box; a binary operator, a
+    # relation or a punctuation after it is not its argument (\int + \oint)
+    nxt <- xml_find_first(node, "following-sibling::*[1]")
+    if (inherits(nxt, "xml_missing")) next
+    if (xml_name(nxt) == "mo" && mo_class(xml_text(nxt), nxt) %in% c("bin", "rel", "punct")) next
+    nary <- xml_add_sibling(node, "msubsup", .where = "before")
+    xml_add_child(nary, node)
+    xml_add_child(nary, "mrow")
+    xml_add_child(nary, "mrow")
+    xml_remove(node)
+  }
+
+  # vertical bars used as delimiters (|x|, \lvert, \left|, \big|): KaTeX
+  # writes them with the characters of the relations \mid and \parallel,
+  # that Word spaces as relations; the ASCII bar and the double vertical
+  # line are delimiters for Word. \mid and \parallel (mo without these
+  # attributes) are kept. \bigm| is written as \big|: it loses the spaces of
+  # a relation.
   bars <- c("\u2223" = "|", "\u2225" = "\u2016")
   for (node in xml_find_all(doc, "//mml:mi | //mml:mo", ns = mml_ns)) {
     ch <- xml_text(node)
     if (!ch %in% names(bars)) next
     if (xml_name(node) == "mi" ||
       identical(xml_attr(node, "stretchy"), "false") ||
-      identical(xml_attr(node, "fence"), "true")) {
+      identical(xml_attr(node, "fence"), "true") ||
+      !is.na(xml_attr(node, "minsize"))) {
       xml_text(node) <- bars[[ch]]
     }
   }
@@ -217,6 +240,22 @@ xml_ns_uri <- function(node) {
 # both, the size of the symbols of a structure (fraction bar, sum sign,
 # radical) comes from `m:ctrlPr`; PowerPoint only needs the runs.
 #' @importFrom xml2 xml_root
+# Limits of n-ary operators left empty (large operators without limits, see
+# prepare_mathml()): hidden, Word would show placeholders.
+hide_empty_limits <- function(res) {
+  for (nary in xml_find_all(res, "//m:nary", ns = omml_ns)) {
+    for (part in c("sub", "sup")) {
+      limit <- xml_find_first(nary, paste0("m:", part), ns = omml_ns)
+      # empty: no content but its properties (m:argPr, after \displaystyle)
+      content <- xml_find_all(limit, "*[not(self::m:argPr)]", ns = omml_ns)
+      if (inherits(limit, "xml_missing") || length(content)) next
+      hide <- xml_find_first(nary, paste0("m:naryPr/m:", part, "Hide"), ns = omml_ns)
+      if (!inherits(hide, "xml_missing")) xml_set_attr(hide, "m:val", "on")
+    }
+  }
+  invisible(res)
+}
+
 # Row of an equation: the semantics element of KaTeX, or the mrow that is
 # its only content (as in layout_row()).
 top_row <- function(math) {
