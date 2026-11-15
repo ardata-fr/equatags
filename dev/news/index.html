@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">equatags</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.0.009</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.0.012</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +59,10 @@
 <code>|x|</code>, <code>\lvert x \rvert</code>, <code>\left| x \right|</code> and <code>\|x\|</code> are displayed as delimiters, no longer spaced as the relation “divides”;</li>
 <li>line breaks (<code>\\</code>, <code>\newline</code>) are kept: <code>a + b \\ c</code> was displayed as <code>a + bc</code>;</li>
 <li>
-<code>\overlinesegment</code> and <code>\underlinesegment</code> no longer show the word “undefined”.</li>
+<code>\overlinesegment</code> and <code>\underlinesegment</code> no longer show the word “undefined”;</li>
+<li>integrals and sums without limits (<code>\int x\,dx</code>, <code>\sum x</code>) are larger in an equation displayed alone, as with limits;</li>
+<li>
+<code>\big|</code>, <code>\Big|</code>… are no longer spaced as the relation “divides”.</li>
 </ul></li>
 <li>Texts made of ASCII characters only, such as <code>\text{ab}</code>, no longer fail.</li>
 <li>

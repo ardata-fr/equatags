@@ -12,12 +12,12 @@ Source:
 [`DESCRIPTION`](https://github.com/ardata-fr/equatags/blob/main/DESCRIPTION)
 
 Gohel D (2026). *equatags: Convert, Measure and Draw 'LaTeX' Equations*.
-R package version 0.4.0.009, <https://ardata-fr.github.io/equatags/>.
+R package version 0.4.0.012, <https://ardata-fr.github.io/equatags/>.
 
     @Manual{,
       title = {equatags: Convert, Measure and Draw 'LaTeX' Equations},
       author = {David Gohel},
       year = {2026},
-      note = {R package version 0.4.0.009},
+      note = {R package version 0.4.0.012},
       url = {https://ardata-fr.github.io/equatags/},
     }
