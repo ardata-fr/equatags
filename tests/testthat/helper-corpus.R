@@ -4,8 +4,8 @@
 corpus_read <- function() {
   path <- testthat::test_path("fixtures", "corpus.csv")
   if (!file.exists(path)) {
-    # sourced by data-raw/corpus/build.R
-    path <- "../../tests/testthat/fixtures/corpus.csv"
+    # sourced by data-raw/corpus/build.R, run from the root of the package
+    path <- "tests/testthat/fixtures/corpus.csv"
   }
   utils::read.csv(path, stringsAsFactors = FALSE, encoding = "UTF-8")
 }

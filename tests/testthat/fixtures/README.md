@@ -1,6 +1,6 @@
 # Corpus of equations
 
-`corpus.csv`: 457 equations used by `test-corpus.R`, built by
+`corpus.csv`: 583 equations used by `test-corpus.R`, built by
 `data-raw/corpus/build.R` (scripts and downloaded sources in
 `data-raw/corpus/`, not part of the package).
 
@@ -35,11 +35,16 @@
   that gives the formula.
 - `equatags-word`: equations already compared with Microsoft Word, written
   for this corpus.
+- `equatags-probes`: constructs of KaTeX that are hard to lay out (frames,
+  stretched arrows, environments, spaces, sizes, fonts...), written for
+  this corpus and compared with the HTML output of KaTeX; each one inline
+  and in display mode.
 
 ## Expected failures
 
-19 equations: commands added to KaTeX after 0.16.9 (the version of the
-package 'katex'), macros defined by a KaTeX test, the HTML extension of
-KaTeX, invalid commands written on purpose, the mathtext dialect of
-matplotlib. When one of them starts to work (for example after an update of
-'katex'), the test says so: run `data-raw/corpus/build.R` again.
+45 equations: commands added to KaTeX after 0.16.9 (the version of the
+package 'katex') or not supported by it, macros defined by a KaTeX test,
+the HTML extension of KaTeX, environments of display mode used inline,
+invalid commands written on purpose, the mathtext dialect of matplotlib.
+When one of them starts to work (for example after an update of 'katex'),
+the test says so: run `data-raw/corpus/build.R` again.

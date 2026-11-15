@@ -2494,3 +2494,129 @@ a+b+c+d\overset{b+c=0}\longrightarrow a+d\\
 "equatags-word-009","equatags-word","compared with Word: x_sup_abc","word comparison",TRUE,"x^{abcdef}",TRUE,TRUE,"",FALSE
 "equatags-word-010","equatags-word","compared with Word: e_sup","word comparison",TRUE,"e^{-x^2}",TRUE,TRUE,"",FALSE
 "equatags-word-011","equatags-word","compared with Word: x_supsup","word comparison",TRUE,"x^{2^{2}}",TRUE,TRUE,"",FALSE
+"equatags-probes-001","equatags-probes","cancel","constructs (probes)",FALSE,"\cancel{x} \bcancel{y} \xcancel{z} \sout{abc}",TRUE,TRUE,"",TRUE
+"equatags-probes-002","equatags-probes","boxed","constructs (probes)",FALSE,"\boxed{x^2}",TRUE,TRUE,"",TRUE
+"equatags-probes-003","equatags-probes","phase","constructs (probes)",FALSE,"\phase{-78^\circ}",TRUE,TRUE,"",FALSE
+"equatags-probes-004","equatags-probes","angl","constructs (probes)",FALSE,"\angl{n}",TRUE,TRUE,"",FALSE
+"equatags-probes-005","equatags-probes","xarrows","constructs (probes)",FALSE,"\xrightarrow[under]{over} \xleftrightarrow{a} \xhookrightarrow{x}",TRUE,TRUE,"",FALSE
+"equatags-probes-006","equatags-probes","braces","constructs (probes)",FALSE,"\overbrace{a+b}^{n} \underbrace{c+d}_{m}",TRUE,TRUE,"",FALSE
+"equatags-probes-007","equatags-probes","group accents","constructs (probes)",FALSE,"\overgroup{AB} \utilde{AB} \overlinesegment{AB}",TRUE,TRUE,"",FALSE
+"equatags-probes-008","equatags-probes","aligned","constructs (probes)",FALSE,"\begin{aligned} a &= b \\ &= c \end{aligned}",TRUE,TRUE,"",FALSE
+"equatags-probes-009","equatags-probes","cases","constructs (probes)",FALSE,"\begin{cases} 1 & x>0 \\ 0 & \text{else}\end{cases}",TRUE,TRUE,"",FALSE
+"equatags-probes-010","equatags-probes","array rules","constructs (probes)",FALSE,"\begin{array}{c|c} a & b \\ \hline c & d \end{array}",TRUE,TRUE,"",FALSE
+"equatags-probes-011","equatags-probes","CD","constructs (probes)",FALSE,"\begin{CD} A @>a>> B \\ @VbVV @AAcA \\ C @= D \end{CD}",FALSE,FALSE,"environment or \tag of display mode only",FALSE
+"equatags-probes-012","equatags-probes","smallmatrix","constructs (probes)",FALSE,"\begin{smallmatrix} a&b\\c&d\end{smallmatrix}",TRUE,TRUE,"",FALSE
+"equatags-probes-013","equatags-probes","alignat","constructs (probes)",FALSE,"\begin{alignat}{2} a &= b & c &= d \end{alignat}",FALSE,FALSE,"environment or \tag of display mode only",FALSE
+"equatags-probes-014","equatags-probes","gathered","constructs (probes)",FALSE,"\begin{gathered} a \\ b \end{gathered}",TRUE,TRUE,"",FALSE
+"equatags-probes-015","equatags-probes","equation","constructs (probes)",FALSE,"\begin{equation} x \tag{1} \end{equation}",FALSE,FALSE,"environment or \tag of display mode only",FALSE
+"equatags-probes-016","equatags-probes","tag","constructs (probes)",FALSE,"x \tag{A}",FALSE,FALSE,"environment or \tag of display mode only",FALSE
+"equatags-probes-017","equatags-probes","substack","constructs (probes)",FALSE,"\substack{a \\ b} \sum_{\substack{i<n \\ j<m}} x",TRUE,TRUE,"",FALSE
+"equatags-probes-018","equatags-probes","sideset","constructs (probes)",FALSE,"\sideset{_a^b}{_c^d}\sum",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-019","equatags-probes","prescripts","constructs (probes)",FALSE,"{}_aX_b^c",TRUE,TRUE,"",FALSE
+"equatags-probes-020","equatags-probes","prescript","constructs (probes)",FALSE,"\prescript{a}{b}{X}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-021","equatags-probes","alphabets","constructs (probes)",FALSE,"\mathcal{A}\mathfrak{B}\mathbb{C}\mathscr{D}\mathsf{E}\mathtt{F}\mathit{G}\boldsymbol{\alpha}\bm{\beta}",TRUE,TRUE,"",FALSE
+"equatags-probes-022","equatags-probes","text","constructs (probes)",FALSE,"\text{é à ü 中文} \textit{it} \textbf{bf} \texttt{tt}",TRUE,TRUE,"",FALSE
+"equatags-probes-023","equatags-probes","operatorname","constructs (probes)",FALSE,"\operatorname*{argmax}_x f \operatorname{sgn} x",TRUE,TRUE,"",FALSE
+"equatags-probes-024","equatags-probes","left right middle","constructs (probes)",FALSE,"\left. \frac{a}{b} \right|_{x=0} \left\langle x \middle| y \right\rangle",TRUE,TRUE,"",FALSE
+"equatags-probes-025","equatags-probes","big delimiters","constructs (probes)",FALSE,"\big( \Big[ \bigg\{ \Bigg\lfloor x \Bigg\rfloor",TRUE,TRUE,"",FALSE
+"equatags-probes-026","equatags-probes","fractions","constructs (probes)",FALSE,"\dfrac{a}{b} \tfrac{a}{b} \cfrac{1}{1+\cfrac{1}{x}} \genfrac(]{0pt}{2}{a}{b}",TRUE,TRUE,"",FALSE
+"equatags-probes-027","equatags-probes","binomials","constructs (probes)",FALSE,"\binom{n}{k} \dbinom{n}{k} \tbinom{n}{k} {n \choose k} a \atop b {a \brace b} {a \brack b}",TRUE,TRUE,"",FALSE
+"equatags-probes-028","equatags-probes","overset","constructs (probes)",FALSE,"\overset{!}{=} \underset{x}{\lim} \stackrel{def}{=}",TRUE,TRUE,"",FALSE
+"equatags-probes-029","equatags-probes","accents","constructs (probes)",FALSE,"\vec{v} \widehat{abc} \widetilde{xyz} \overleftrightarrow{AB} \dot{x}\ddot{y} \mathring{a}",TRUE,TRUE,"",FALSE
+"equatags-probes-030","equatags-probes","spaces","constructs (probes)",FALSE,"\kern1em a \mkern18mu b \hskip2em c \mskip3mu d \, \: \; \! \enspace \qquad",TRUE,TRUE,"",FALSE
+"equatags-probes-031","equatags-probes","raisebox phantom","constructs (probes)",FALSE,"\raisebox{0.5em}{x} \vphantom{A} \hphantom{B} \smash{y}",TRUE,TRUE,"",FALSE
+"equatags-probes-032","equatags-probes","rule","constructs (probes)",FALSE,"\rule{1em}{0.5em} \rule[-0.2em]{2pt}{1em}",TRUE,TRUE,"",FALSE
+"equatags-probes-033","equatags-probes","colours","constructs (probes)",FALSE,"\colorbox{teal}{$x$} \textcolor{#228B22}{y}",TRUE,TRUE,"",FALSE
+"equatags-probes-034","equatags-probes","rgb colour","constructs (probes)",FALSE,"\color{rgb(10,20,30)} z",FALSE,FALSE,"colour not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-035","equatags-probes","sizes","constructs (probes)",FALSE,"\Huge x \tiny y \scriptsize z \normalsize w",TRUE,TRUE,"",FALSE
+"equatags-probes-036","equatags-probes","integrals","constructs (probes)",FALSE,"\displaystyle\int\limits_0^1 \iint \oint \iiint \intop",TRUE,TRUE,"",FALSE
+"equatags-probes-037","equatags-probes","limits","constructs (probes)",FALSE,"\lim\limits_{x} \max\nolimits_y \sum\nolimits_k",TRUE,TRUE,"",FALSE
+"equatags-probes-038","equatags-probes","negations","constructs (probes)",FALSE,"\not= \neq \notin \nsubseteq \nless",TRUE,TRUE,"",FALSE
+"equatags-probes-039","equatags-probes","math classes","constructs (probes)",FALSE,"\mathrel{\#} \mathbin{\star} \mathop{\Pi} \mathpunct{,} \mathinner{x} \mathopen{(} \mathclose{)}",TRUE,TRUE,"",FALSE
+"equatags-probes-040","equatags-probes","links","constructs (probes)",FALSE,"\href{https://a.b}{link} \url{https://a.b}",TRUE,TRUE,"",FALSE
+"equatags-probes-041","equatags-probes","html","constructs (probes)",FALSE,"\htmlStyle{color:red}{x} \htmlClass{c}{y}",FALSE,TRUE,"HTML extension of KaTeX, disabled",FALSE
+"equatags-probes-042","equatags-probes","char","constructs (probes)",FALSE,"\char""263a \yen \pounds",TRUE,TRUE,"",FALSE
+"equatags-probes-043","equatags-probes","euro","constructs (probes)",FALSE,"\euro",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-044","equatags-probes","unicode","constructs (probes)",FALSE,"\unicode{x263A}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-045","equatags-probes","ce","constructs (probes)",FALSE,"\ce{H2O}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-046","equatags-probes","pu","constructs (probes)",FALSE,"\pu{123 kJ/mol}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-047","equatags-probes","verb textsf","constructs (probes)",FALSE,"\verb|a&b| \textsf{sf}",TRUE,TRUE,"",FALSE
+"equatags-probes-048","equatags-probes","emph","constructs (probes)",FALSE,"\emph{em}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-049","equatags-probes","delimiters","constructs (probes)",FALSE,"\lparen x \rparen \llbracket x \rrbracket \lBrace x \rBrace",TRUE,TRUE,"",FALSE
+"equatags-probes-050","equatags-probes","laps","constructs (probes)",FALSE,"\mathllap{a} \mathrlap{b} \mathclap{c} \llap{d} \rlap{e}",TRUE,TRUE,"",FALSE
+"equatags-probes-051","equatags-probes","over","constructs (probes)",FALSE,"a \over b",TRUE,TRUE,"",FALSE
+"equatags-probes-052","equatags-probes","above","constructs (probes)",FALSE,"a \above 2pt c",TRUE,TRUE,"",FALSE
+"equatags-probes-053","equatags-probes","over above","constructs (probes)",FALSE,"a \over b \above 2pt c",FALSE,FALSE,"two generalized fractions in a group, invalid on purpose",FALSE
+"equatags-probes-054","equatags-probes","mod","constructs (probes)",FALSE,"\pmod{p} \bmod \pod{q} \mod{r}",TRUE,TRUE,"",FALSE
+"equatags-probes-055","equatags-probes","lines arrows","constructs (probes)",FALSE,"\underline{\overline{x}} \overleftarrow{AB} \underrightarrow{CD}",TRUE,TRUE,"",FALSE
+"equatags-probes-056","equatags-probes","Bmatrix*","constructs (probes)",FALSE,"\begin{Bmatrix*}[r] -1 & 2 \\ 3 & -4\end{Bmatrix*}",TRUE,TRUE,"",FALSE
+"equatags-probes-057","equatags-probes","subarray","constructs (probes)",FALSE,"\begin{subarray}{l} i \\ j \end{subarray}",TRUE,TRUE,"",FALSE
+"equatags-probes-058","equatags-probes","dots","constructs (probes)",FALSE,"\left( \begin{matrix} a \\ \vdots \\ \ddots \end{matrix} \right)",TRUE,TRUE,"",FALSE
+"equatags-probes-059","equatags-probes","hdashline","constructs (probes)",FALSE,"\begin{array}{:c:} a \\ \hdashline b \end{array}",TRUE,TRUE,"",FALSE
+"equatags-probes-060","equatags-probes","hdashline outside","constructs (probes)",FALSE,"\hdashline",FALSE,FALSE,"\hdashline outside of an array, invalid on purpose",FALSE
+"equatags-probes-061","equatags-probes","fbox","constructs (probes)",FALSE,"\fbox{abc} \boxed{\frac12}",TRUE,TRUE,"",FALSE
+"equatags-probes-062","equatags-probes","roots","constructs (probes)",FALSE,"\sqrt[3]{\frac{a}{b}} \sqrt[n+1]{x}",TRUE,TRUE,"",FALSE
+"equatags-probes-063","equatags-probes","nary","constructs (probes)",FALSE,"\int_a^b f(x)\,\mathrm{d}x \oiint \oiiint",TRUE,TRUE,"",FALSE
+"equatags-probes-064","equatags-probes","cancel","constructs (probes)",TRUE,"\cancel{x} \bcancel{y} \xcancel{z} \sout{abc}",TRUE,TRUE,"",FALSE
+"equatags-probes-065","equatags-probes","boxed","constructs (probes)",TRUE,"\boxed{x^2}",TRUE,TRUE,"",FALSE
+"equatags-probes-066","equatags-probes","phase","constructs (probes)",TRUE,"\phase{-78^\circ}",TRUE,TRUE,"",FALSE
+"equatags-probes-067","equatags-probes","angl","constructs (probes)",TRUE,"\angl{n}",TRUE,TRUE,"",FALSE
+"equatags-probes-068","equatags-probes","xarrows","constructs (probes)",TRUE,"\xrightarrow[under]{over} \xleftrightarrow{a} \xhookrightarrow{x}",TRUE,TRUE,"",FALSE
+"equatags-probes-069","equatags-probes","braces","constructs (probes)",TRUE,"\overbrace{a+b}^{n} \underbrace{c+d}_{m}",TRUE,TRUE,"",FALSE
+"equatags-probes-070","equatags-probes","group accents","constructs (probes)",TRUE,"\overgroup{AB} \utilde{AB} \overlinesegment{AB}",TRUE,TRUE,"",FALSE
+"equatags-probes-071","equatags-probes","aligned","constructs (probes)",TRUE,"\begin{aligned} a &= b \\ &= c \end{aligned}",TRUE,TRUE,"",FALSE
+"equatags-probes-072","equatags-probes","cases","constructs (probes)",TRUE,"\begin{cases} 1 & x>0 \\ 0 & \text{else}\end{cases}",TRUE,TRUE,"",FALSE
+"equatags-probes-073","equatags-probes","array rules","constructs (probes)",TRUE,"\begin{array}{c|c} a & b \\ \hline c & d \end{array}",TRUE,TRUE,"",FALSE
+"equatags-probes-074","equatags-probes","CD","constructs (probes)",TRUE,"\begin{CD} A @>a>> B \\ @VbVV @AAcA \\ C @= D \end{CD}",TRUE,TRUE,"",FALSE
+"equatags-probes-075","equatags-probes","smallmatrix","constructs (probes)",TRUE,"\begin{smallmatrix} a&b\\c&d\end{smallmatrix}",TRUE,TRUE,"",FALSE
+"equatags-probes-076","equatags-probes","alignat","constructs (probes)",TRUE,"\begin{alignat}{2} a &= b & c &= d \end{alignat}",TRUE,TRUE,"",FALSE
+"equatags-probes-077","equatags-probes","gathered","constructs (probes)",TRUE,"\begin{gathered} a \\ b \end{gathered}",TRUE,TRUE,"",FALSE
+"equatags-probes-078","equatags-probes","equation","constructs (probes)",TRUE,"\begin{equation} x \tag{1} \end{equation}",TRUE,TRUE,"",FALSE
+"equatags-probes-079","equatags-probes","tag","constructs (probes)",TRUE,"x \tag{A}",TRUE,TRUE,"",FALSE
+"equatags-probes-080","equatags-probes","substack","constructs (probes)",TRUE,"\substack{a \\ b} \sum_{\substack{i<n \\ j<m}} x",TRUE,TRUE,"",FALSE
+"equatags-probes-081","equatags-probes","sideset","constructs (probes)",TRUE,"\sideset{_a^b}{_c^d}\sum",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-082","equatags-probes","prescripts","constructs (probes)",TRUE,"{}_aX_b^c",TRUE,TRUE,"",FALSE
+"equatags-probes-083","equatags-probes","prescript","constructs (probes)",TRUE,"\prescript{a}{b}{X}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-084","equatags-probes","alphabets","constructs (probes)",TRUE,"\mathcal{A}\mathfrak{B}\mathbb{C}\mathscr{D}\mathsf{E}\mathtt{F}\mathit{G}\boldsymbol{\alpha}\bm{\beta}",TRUE,TRUE,"",FALSE
+"equatags-probes-085","equatags-probes","text","constructs (probes)",TRUE,"\text{é à ü 中文} \textit{it} \textbf{bf} \texttt{tt}",TRUE,TRUE,"",FALSE
+"equatags-probes-086","equatags-probes","operatorname","constructs (probes)",TRUE,"\operatorname*{argmax}_x f \operatorname{sgn} x",TRUE,TRUE,"",FALSE
+"equatags-probes-087","equatags-probes","left right middle","constructs (probes)",TRUE,"\left. \frac{a}{b} \right|_{x=0} \left\langle x \middle| y \right\rangle",TRUE,TRUE,"",FALSE
+"equatags-probes-088","equatags-probes","big delimiters","constructs (probes)",TRUE,"\big( \Big[ \bigg\{ \Bigg\lfloor x \Bigg\rfloor",TRUE,TRUE,"",FALSE
+"equatags-probes-089","equatags-probes","fractions","constructs (probes)",TRUE,"\dfrac{a}{b} \tfrac{a}{b} \cfrac{1}{1+\cfrac{1}{x}} \genfrac(]{0pt}{2}{a}{b}",TRUE,TRUE,"",FALSE
+"equatags-probes-090","equatags-probes","binomials","constructs (probes)",TRUE,"\binom{n}{k} \dbinom{n}{k} \tbinom{n}{k} {n \choose k} a \atop b {a \brace b} {a \brack b}",TRUE,TRUE,"",FALSE
+"equatags-probes-091","equatags-probes","overset","constructs (probes)",TRUE,"\overset{!}{=} \underset{x}{\lim} \stackrel{def}{=}",TRUE,TRUE,"",FALSE
+"equatags-probes-092","equatags-probes","accents","constructs (probes)",TRUE,"\vec{v} \widehat{abc} \widetilde{xyz} \overleftrightarrow{AB} \dot{x}\ddot{y} \mathring{a}",TRUE,TRUE,"",FALSE
+"equatags-probes-093","equatags-probes","spaces","constructs (probes)",TRUE,"\kern1em a \mkern18mu b \hskip2em c \mskip3mu d \, \: \; \! \enspace \qquad",TRUE,TRUE,"",FALSE
+"equatags-probes-094","equatags-probes","raisebox phantom","constructs (probes)",TRUE,"\raisebox{0.5em}{x} \vphantom{A} \hphantom{B} \smash{y}",TRUE,TRUE,"",FALSE
+"equatags-probes-095","equatags-probes","rule","constructs (probes)",TRUE,"\rule{1em}{0.5em} \rule[-0.2em]{2pt}{1em}",TRUE,TRUE,"",FALSE
+"equatags-probes-096","equatags-probes","colours","constructs (probes)",TRUE,"\colorbox{teal}{$x$} \textcolor{#228B22}{y}",TRUE,TRUE,"",FALSE
+"equatags-probes-097","equatags-probes","rgb colour","constructs (probes)",TRUE,"\color{rgb(10,20,30)} z",FALSE,FALSE,"colour not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-098","equatags-probes","sizes","constructs (probes)",TRUE,"\Huge x \tiny y \scriptsize z \normalsize w",TRUE,TRUE,"",FALSE
+"equatags-probes-099","equatags-probes","integrals","constructs (probes)",TRUE,"\displaystyle\int\limits_0^1 \iint \oint \iiint \intop",TRUE,TRUE,"",FALSE
+"equatags-probes-100","equatags-probes","limits","constructs (probes)",TRUE,"\lim\limits_{x} \max\nolimits_y \sum\nolimits_k",TRUE,TRUE,"",FALSE
+"equatags-probes-101","equatags-probes","negations","constructs (probes)",TRUE,"\not= \neq \notin \nsubseteq \nless",TRUE,TRUE,"",FALSE
+"equatags-probes-102","equatags-probes","math classes","constructs (probes)",TRUE,"\mathrel{\#} \mathbin{\star} \mathop{\Pi} \mathpunct{,} \mathinner{x} \mathopen{(} \mathclose{)}",TRUE,TRUE,"",FALSE
+"equatags-probes-103","equatags-probes","links","constructs (probes)",TRUE,"\href{https://a.b}{link} \url{https://a.b}",TRUE,TRUE,"",FALSE
+"equatags-probes-104","equatags-probes","html","constructs (probes)",TRUE,"\htmlStyle{color:red}{x} \htmlClass{c}{y}",FALSE,TRUE,"HTML extension of KaTeX, disabled",FALSE
+"equatags-probes-105","equatags-probes","char","constructs (probes)",TRUE,"\char""263a \yen \pounds",TRUE,TRUE,"",FALSE
+"equatags-probes-106","equatags-probes","euro","constructs (probes)",TRUE,"\euro",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-107","equatags-probes","unicode","constructs (probes)",TRUE,"\unicode{x263A}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-108","equatags-probes","ce","constructs (probes)",TRUE,"\ce{H2O}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-109","equatags-probes","pu","constructs (probes)",TRUE,"\pu{123 kJ/mol}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-110","equatags-probes","verb textsf","constructs (probes)",TRUE,"\verb|a&b| \textsf{sf}",TRUE,TRUE,"",FALSE
+"equatags-probes-111","equatags-probes","emph","constructs (probes)",TRUE,"\emph{em}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
+"equatags-probes-112","equatags-probes","delimiters","constructs (probes)",TRUE,"\lparen x \rparen \llbracket x \rrbracket \lBrace x \rBrace",TRUE,TRUE,"",FALSE
+"equatags-probes-113","equatags-probes","laps","constructs (probes)",TRUE,"\mathllap{a} \mathrlap{b} \mathclap{c} \llap{d} \rlap{e}",TRUE,TRUE,"",FALSE
+"equatags-probes-114","equatags-probes","over","constructs (probes)",TRUE,"a \over b",TRUE,TRUE,"",FALSE
+"equatags-probes-115","equatags-probes","above","constructs (probes)",TRUE,"a \above 2pt c",TRUE,TRUE,"",FALSE
+"equatags-probes-116","equatags-probes","over above","constructs (probes)",TRUE,"a \over b \above 2pt c",FALSE,FALSE,"two generalized fractions in a group, invalid on purpose",FALSE
+"equatags-probes-117","equatags-probes","mod","constructs (probes)",TRUE,"\pmod{p} \bmod \pod{q} \mod{r}",TRUE,TRUE,"",FALSE
+"equatags-probes-118","equatags-probes","lines arrows","constructs (probes)",TRUE,"\underline{\overline{x}} \overleftarrow{AB} \underrightarrow{CD}",TRUE,TRUE,"",FALSE
+"equatags-probes-119","equatags-probes","Bmatrix*","constructs (probes)",TRUE,"\begin{Bmatrix*}[r] -1 & 2 \\ 3 & -4\end{Bmatrix*}",TRUE,TRUE,"",FALSE
+"equatags-probes-120","equatags-probes","subarray","constructs (probes)",TRUE,"\begin{subarray}{l} i \\ j \end{subarray}",TRUE,TRUE,"",FALSE
+"equatags-probes-121","equatags-probes","dots","constructs (probes)",TRUE,"\left( \begin{matrix} a \\ \vdots \\ \ddots \end{matrix} \right)",TRUE,TRUE,"",FALSE
+"equatags-probes-122","equatags-probes","hdashline","constructs (probes)",TRUE,"\begin{array}{:c:} a \\ \hdashline b \end{array}",TRUE,TRUE,"",FALSE
+"equatags-probes-123","equatags-probes","hdashline outside","constructs (probes)",TRUE,"\hdashline",FALSE,FALSE,"\hdashline outside of an array, invalid on purpose",FALSE
+"equatags-probes-124","equatags-probes","fbox","constructs (probes)",TRUE,"\fbox{abc} \boxed{\frac12}",TRUE,TRUE,"",FALSE
+"equatags-probes-125","equatags-probes","roots","constructs (probes)",TRUE,"\sqrt[3]{\frac{a}{b}} \sqrt[n+1]{x}",TRUE,TRUE,"",FALSE
+"equatags-probes-126","equatags-probes","nary","constructs (probes)",TRUE,"\int_a^b f(x)\,\mathrm{d}x \oiint \oiiint",TRUE,TRUE,"",FALSE

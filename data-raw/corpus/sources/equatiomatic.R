@@ -1,10 +1,23 @@
-# Equations of equatiomatic (0.4.9, sources in ~/gitprojects/opensource/equatiomatic):
+# Equations of equatiomatic 0.4.9, read in its sources:
 # 1. the expected outputs of its tests (testthat snapshots, _snaps/*.md);
 # 2. the equations written by extract_eq() when running its vignettes and
-#    the examples of its help pages.
-# Writes sources/equatiomatic.rds: data.frame(id, source, ref, tex).
-# Run from data-raw/corpus: Rscript sources/equatiomatic.R
-src <- path.expand("~/gitprojects/opensource/equatiomatic")
+#    the examples of its help pages (equatiomatic and the packages of the
+#    models must be installed: the result depends on their versions).
+# Writes data-raw/corpus/sources/raw/equatiomatic.csv (source, ref, tex),
+# kept in git and read by build.R: this script is the record of how it was
+# made, run again only to take the equations of another version of
+# equatiomatic. Its argument is the folder of the sources of equatiomatic
+# (https://github.com/datalorax/equatiomatic).
+# Run from the root of the package:
+#   Rscript data-raw/corpus/sources/equatiomatic.R path/to/equatiomatic
+stopifnot("run from the root of the package" = file.exists("DESCRIPTION") && dir.exists("data-raw"))
+src <- commandArgs(trailingOnly = TRUE)[1]
+if (is.na(src) || !file.exists(file.path(src, "DESCRIPTION")) ||
+  !identical(read.dcf(file.path(src, "DESCRIPTION"), "Package")[[1]], "equatiomatic")) {
+  stop("give the folder of the sources of equatiomatic as argument", call. = FALSE)
+}
+# the examples draw plots: no file (Rplots.pdf) in the package
+options(device = function(...) grDevices::pdf(file = NULL))
 
 # extract_eq() writes "$$ ... $$" (display); the delimiters are removed
 strip_dollars <- function(x) {
@@ -84,4 +97,5 @@ out <- rbind(snaps, docs)
 out <- out[nzchar(out$tex), ]
 cat("snapshots:", nrow(snaps), " docs:", nrow(docs), "\n")
 print(table(out$ref[out$source == "equatiomatic-docs"]))
-saveRDS(out, "sources/equatiomatic.rds")
+utils::write.csv(out, "data-raw/corpus/sources/raw/equatiomatic.csv",
+  row.names = FALSE, fileEncoding = "UTF-8")

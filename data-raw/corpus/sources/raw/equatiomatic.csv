@@ -1,0 +1,2381 @@
+"source","ref","tex"
+"equatiomatic-tests","tests/testthat/_snaps/clm.md: colorizing works #1","\begin{aligned}
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{1} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{1} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{1}}} + {\color{#E6AB02}{\beta}}_{{\color{#7570B3}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#A6761D}{\beta}}_{{\color{#D95F02}{2}}}(\operatorname{contact}_{\operatorname{yes}}) + {\color{#666666}{\beta}}_{{\color{#1B9E77}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{2} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{2} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{2}}} + {\color{#E6AB02}{\beta}}_{{\color{#7570B3}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#A6761D}{\beta}}_{{\color{#D95F02}{2}}}(\operatorname{contact}_{\operatorname{yes}}) + {\color{#666666}{\beta}}_{{\color{#1B9E77}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{3} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{3} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{3}}} + {\color{#E6AB02}{\beta}}_{{\color{#7570B3}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#A6761D}{\beta}}_{{\color{#D95F02}{2}}}(\operatorname{contact}_{\operatorname{yes}}) + {\color{#666666}{\beta}}_{{\color{#1B9E77}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{4} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{4} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{4}}} + {\color{#E6AB02}{\beta}}_{{\color{#7570B3}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#A6761D}{\beta}}_{{\color{#D95F02}{2}}}(\operatorname{contact}_{\operatorname{yes}}) + {\color{#666666}{\beta}}_{{\color{#1B9E77}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/clm.md: Renaming Variables works #2","\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{cat}_{\operatorname{b}})\ + \\
+&\quad \beta_{2}(\operatorname{cat}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat}_{\operatorname{Don't\ look\ at\ me\ though}})\ + \\
+&\quad \beta_{4}(\operatorname{cat}_{\operatorname{e}}) + \beta_{5}(\operatorname{continuous})\ + \\
+&\quad \beta_{6}(\operatorname{cat}_{\operatorname{b}} \times \operatorname{continuous}) + \beta_{7}(\operatorname{cat}_{\operatorname{c}} \times \operatorname{continuous})\ + \\
+&\quad \beta_{8}(\operatorname{cat}_{\operatorname{Don't\ look\ at\ me\ though}} \times \operatorname{continuous}) + \beta_{9}(\operatorname{cat}_{\operatorname{e}} \times \operatorname{continuous}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{cat}_{\operatorname{b}})\ + \\
+&\quad \beta_{2}(\operatorname{cat}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat}_{\operatorname{Don't\ look\ at\ me\ though}})\ + \\
+&\quad \beta_{4}(\operatorname{cat}_{\operatorname{e}}) + \beta_{5}(\operatorname{continuous})\ + \\
+&\quad \beta_{6}(\operatorname{cat}_{\operatorname{b}} \times \operatorname{continuous}) + \beta_{7}(\operatorname{cat}_{\operatorname{c}} \times \operatorname{continuous})\ + \\
+&\quad \beta_{8}(\operatorname{cat}_{\operatorname{Don't\ look\ at\ me\ though}} \times \operatorname{continuous}) + \beta_{9}(\operatorname{cat}_{\operatorname{e}} \times \operatorname{continuous})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/clm.md: Math extraction works #3","\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\exp(continuous)}) + \beta_{5}(\operatorname{\log(continuous)}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\exp(continuous)}) + \beta_{5}(\operatorname{\log(continuous)})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/clm.md: Math extraction works #4","\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\exp(continuous)}) + \beta_{5}(\operatorname{\log(continuous)})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\exp(continuous)}) + \beta_{5}(\operatorname{\log(continuous)})]
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/clm.md: Ordered models with clm work #5","\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/clm.md: Ordered models with clm work #6","\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\quad \beta_{2}(\operatorname{continuous\_2}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\quad \beta_{2}(\operatorname{continuous\_2})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/clm.md: Ordered models with clm work #7","\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2})]
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/clm.md: Ordered models with clm work #8","\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\qquad\ \beta_{2}(\operatorname{continuous\_2})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\qquad\ \beta_{2}(\operatorname{continuous\_2})]
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/clm.md: Ordered models with clm work #9","\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= -0.81 + 0.03(\operatorname{continuous\_1}) - 0.03(\operatorname{continuous\_2}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= 0.59 + 0.03(\operatorname{continuous\_1}) - 0.03(\operatorname{continuous\_2})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lm #1","\large
+\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lm #2","\Huge
+\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lm #3","\tiny
+\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lmer #4","\scriptsize
+\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lmer #5","\Large
+\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, lmer #6","\huge
+\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, arima #7","\footnotesize
+\begin{aligned}
+(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -\delta\operatorname{t}) = (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, arima #8","\small
+\begin{aligned}
+(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -\delta\operatorname{t}) = (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/fontsize.md: font-size changes, arima #9","\LARGE
+\begin{aligned}
+(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -\delta\operatorname{t}) = (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/forecast-arima.md: Basic ARIMA model functions #1","(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -\delta\operatorname{t}) = (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}"
+"equatiomatic-tests","tests/testthat/_snaps/forecast-arima.md: Basic ARIMA model functions #2","(1 -0.004\operatorname{B} )\ (1 -0.39\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -3e-05\operatorname{t}) = (1 -1\operatorname{B} )\ (1 -0.36\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}"
+"equatiomatic-tests","tests/testthat/_snaps/forecast-arima.md: Regression w/ ARIMA Errors functions #3","\begin{alignat}{2}
+&\text{let}\quad &&y_{t} = \operatorname{y}_{\operatorname{0}} +\delta\operatorname{t} +\beta_{1}\operatorname{x1}_{\operatorname{t}} +\beta_{2}\operatorname{x2}_{\operatorname{t}} +\eta_{t} \\
+&\text{where}\quad  &&(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) \eta_{t}  \\
+& &&= (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t} \\
+&\text{where}\quad &&\varepsilon_{t} \sim{WN(0, \sigma^{2})}
+\end{alignat}"
+"equatiomatic-tests","tests/testthat/_snaps/forecast-arima.md: Regression w/ ARIMA Errors functions #4","\begin{alignat}{2}
+&\text{let}\quad &&y_{t} = \operatorname{y}_{\operatorname{0}} -1e-04\operatorname{t} -0.02\operatorname{x1}_{\operatorname{t}} -0.004\operatorname{x2}_{\operatorname{t}} +\eta_{t} \\
+&\text{where}\quad  &&(1 -0.01\operatorname{B} )\ (1 +0.78\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) \eta_{t}  \\
+& &&= (1 -1\operatorname{B} )\ (1 +0.82\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t} \\
+&\text{where}\quad &&\varepsilon_{t} \sim{WN(0, \sigma^{2})}
+\end{alignat}"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: colorizing works #1","\begin{aligned}
+\log\left[ \frac { P( {\color{#0073ff}{\operatorname{SEX}}} = {\color{#0073ff}{\operatorname{male}}} ) }{ 1 - P( {\color{#0073ff}{\operatorname{SEX}}} = {\color{#0073ff}{\operatorname{male}}} ) } \right] &= {\color{#1B9E77}{\alpha}} + {\color{#D95F02}{\beta}}_{{\color{blue}{1}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}}) + {\color{#7570B3}{\beta}}_{{\color{blue}{2}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}}) + {\color{#E7298A}{\beta}}_{{\color{blue}{3}}}(\operatorname{bill\_length\_mm})\ + \\
+&\quad {\color{#66A61E}{\beta}}_{{\color{blue}{4}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}} \times \operatorname{bill\_length\_mm}) + {\color{#E6AB02}{\beta}}_{{\color{blue}{5}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}} \times \operatorname{bill\_length\_mm})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: colorizing works #2","\begin{aligned}
+{\color{#0073ff}{\operatorname{SEX}}} &\sim Bernoulli\left(\operatorname{prob}_{{\color{#0073ff}{\operatorname{SEX}}} = {\color{#0073ff}{\operatorname{male}}}}= \hat{P}\right) \\
+ \log\left[ \frac { \hat{P} }{ 1 - \hat{P} } \right] 
+ &= {\color{#1B9E77}{\alpha}} + {\color{#D95F02}{\beta}}_{{\color{blue}{1}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}}) + {\color{#7570B3}{\beta}}_{{\color{blue}{2}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}}) + {\color{#E7298A}{\beta}}_{{\color{blue}{3}}}(\operatorname{bill\_length\_mm})\ + \\
+&\quad {\color{#66A61E}{\beta}}_{{\color{blue}{4}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}} \times \operatorname{bill\_length\_mm}) + {\color{#E6AB02}{\beta}}_{{\color{blue}{5}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}} \times \operatorname{bill\_length\_mm})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: colorizing works #3","\begin{aligned}
+P( {\color{#0073ff}{\operatorname{SEX}}} = {\color{#0073ff}{\operatorname{male}}} ) &= \Phi[{\color{#1B9E77}{\alpha}} + {\color{#D95F02}{\beta}}_{{\color{blue}{1}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}}) + {\color{#7570B3}{\beta}}_{{\color{blue}{2}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}}) + {\color{#E7298A}{\beta}}_{{\color{blue}{3}}}(\operatorname{bill\_length\_mm})\ + \\
+&\qquad\ {\color{#66A61E}{\beta}}_{{\color{blue}{4}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}} \times \operatorname{bill\_length\_mm}) + {\color{#E6AB02}{\beta}}_{{\color{blue}{5}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}} \times \operatorname{bill\_length\_mm})]
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: colorizing works #4","\begin{aligned}
+{\color{#0073ff}{\operatorname{SEX}}} &\sim Bernoulli\left(\operatorname{prob}_{{\color{#0073ff}{\operatorname{SEX}}} = {\color{#0073ff}{\operatorname{male}}}}= \hat{P}\right) \\
+ \hat{P} 
+ &= \Phi[{\color{#1B9E77}{\alpha}} + {\color{#D95F02}{\beta}}_{{\color{blue}{1}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}}) + {\color{#7570B3}{\beta}}_{{\color{blue}{2}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}}) + {\color{#E7298A}{\beta}}_{{\color{blue}{3}}}(\operatorname{bill\_length\_mm})\ + \\
+&\qquad\ {\color{#66A61E}{\beta}}_{{\color{blue}{4}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Chinstrap}}}} \times \operatorname{bill\_length\_mm}) + {\color{#E6AB02}{\beta}}_{{\color{blue}{5}}}({\color{green}{\operatorname{species}}}{\color{orange}{_{\operatorname{Gentoo}}}} \times \operatorname{bill\_length\_mm})]
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: Renaming Variables works #5","\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome} = \operatorname{1} ) }{ 1 - P( \operatorname{outcome} = \operatorname{1} ) } \right] &= \alpha + \beta_{1}(\operatorname{cat}_{\operatorname{b}})\ + \\
+&\quad \beta_{2}(\operatorname{cat}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat}_{\operatorname{dddd}})\ + \\
+&\quad \beta_{4}(\operatorname{cat}_{\operatorname{e}}) + \beta_{5}(\operatorname{Continuous\ Variable\ [1]})\ + \\
+&\quad \beta_{6}(\operatorname{continuous\_2}) + \beta_{7}(\operatorname{cat}_{\operatorname{b}} \times \operatorname{Continuous\ Variable\ [1]})\ + \\
+&\quad \beta_{8}(\operatorname{cat}_{\operatorname{c}} \times \operatorname{Continuous\ Variable\ [1]}) + \beta_{9}(\operatorname{cat}_{\operatorname{dddd}} \times \operatorname{Continuous\ Variable\ [1]})\ + \\
+&\quad \beta_{10}(\operatorname{cat}_{\operatorname{e}} \times \operatorname{Continuous\ Variable\ [1]}) + \beta_{11}(\operatorname{cat}_{\operatorname{b}} \times \operatorname{continuous\_2})\ + \\
+&\quad \beta_{12}(\operatorname{cat}_{\operatorname{c}} \times \operatorname{continuous\_2}) + \beta_{13}(\operatorname{cat}_{\operatorname{dddd}} \times \operatorname{continuous\_2})\ + \\
+&\quad \beta_{14}(\operatorname{cat}_{\operatorname{e}} \times \operatorname{continuous\_2}) + \beta_{15}(\operatorname{Continuous\ Variable\ [1]} \times \operatorname{continuous\_2})\ + \\
+&\quad \beta_{16}(\operatorname{cat}_{\operatorname{b}} \times \operatorname{Continuous\ Variable\ [1]} \times \operatorname{continuous\_2}) + \beta_{17}(\operatorname{cat}_{\operatorname{c}} \times \operatorname{Continuous\ Variable\ [1]} \times \operatorname{continuous\_2})\ + \\
+&\quad \beta_{18}(\operatorname{cat}_{\operatorname{dddd}} \times \operatorname{Continuous\ Variable\ [1]} \times \operatorname{continuous\_2}) + \beta_{19}(\operatorname{cat}_{\operatorname{e}} \times \operatorname{Continuous\ Variable\ [1]} \times \operatorname{continuous\_2})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: Math extraction works #6","\log\left[ \frac { P( \operatorname{outcome} = \operatorname{1} ) }{ 1 - P( \operatorname{outcome} = \operatorname{1} ) } \right] = \alpha + \beta_{1}(\operatorname{\log(continuous\_1)}) + \beta_{2}(\operatorname{\exp(continuous\_2)}) + \beta_{3}(\operatorname{continuous\_2}) + \beta_{4}(\operatorname{continuous\_2^2}) + \beta_{5}(\operatorname{continuous\_2^3})"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: Math extraction works #7","P( \operatorname{outcome} = \operatorname{1} ) = \Phi[\alpha + \beta_{1}(\operatorname{\log(continuous\_1)}) + \beta_{2}(\operatorname{\exp(continuous\_2)}) + \beta_{3}(\operatorname{continuous\_2}) + \beta_{4}(\operatorname{continuous\_2^2}) + \beta_{5}(\operatorname{continuous\_2^3})]"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: Logistic regression works #8","\log\left[ \frac { P( \operatorname{outcome} = \operatorname{1} ) }{ 1 - P( \operatorname{outcome} = \operatorname{1} ) } \right] = \alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: Probit regression works #9","P( \operatorname{outcome} = \operatorname{1} ) = \Phi[\alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})]"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: Probit regression works #10","E( \operatorname{mpg} ) = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp})"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: Distribution-based equations work #11","\begin{aligned}
+\operatorname{outcome} &\sim Bernoulli\left(\operatorname{prob}_{\operatorname{outcome} = \operatorname{1}}= \hat{P}\right) \\
+ \log\left[ \frac { \hat{P} }{ 1 - \hat{P} } \right] 
+ &= \alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: Distribution-based equations work #12","\begin{aligned}
+\operatorname{outcome} &\sim Bernoulli\left(\operatorname{prob}_{\operatorname{outcome} = \operatorname{1}}= \hat{P}\right) \\
+ \hat{P} 
+ &= \Phi[\alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})]
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: Distribution-based equations work #13","\begin{aligned}
+E( \operatorname{mpg} ) &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: non-binomial regression works #14","\log ({ E( \operatorname{outcome} ) })  = \alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: non-binomial regression works #15","\log ({ E( \operatorname{outcome} ) })  = \alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2})"
+"equatiomatic-tests","tests/testthat/_snaps/glm.md: non-binomial regression works #16","\log ({ E( \operatorname{outcome} ) })  = \alpha + \beta_{1}(\operatorname{categorical}_{\operatorname{b}}) + \beta_{2}(\operatorname{categorical}_{\operatorname{c}}) + \beta_{3}(\operatorname{continuous\_1}) + \beta_{4}(\operatorname{continuous\_2}) + \operatorname{offset(rep(1, 300))}"
+"equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: colorizing works #1","\begin{aligned}
+  {\color{blue}{\operatorname{Stops}}}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\alpha_{j[i]} + \beta_{1}({\color{red}{\operatorname{Ethnicity}}}{\color{purple}{_{\operatorname{hispanic}}}}) + \beta_{2}({\color{red}{\operatorname{Ethnicity}}}{\color{purple}{_{\operatorname{white}}}}) \\
+    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{Total\ Arrests}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Renaming Variables works #2","\begin{aligned}
+  \operatorname{stops}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\alpha_{j[i]} + \beta_{1}(\operatorname{Ethnicity}_{\operatorname{Hispanic/Latino}}) + \beta_{2}(\operatorname{Ethnicity}_{\operatorname{White}}) \\
+    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{Total\ Arrests}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Standard Poisson regression models work #3","\begin{aligned}
+  \operatorname{stops}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\alpha_{j[i]} + \beta_{1}(\operatorname{eth}_{\operatorname{hispanic}}) + \beta_{2}(\operatorname{eth}_{\operatorname{white}}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Standard Poisson regression models work #4","\begin{aligned}
+  \operatorname{stops}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{eth}_{\operatorname{hispanic}}) + \beta_{2j[i]}(\operatorname{eth}_{\operatorname{white}}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{total\_arrests}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{total\_arrests}) \\
+      &\gamma^{\beta_{2}}_{0} + \gamma^{\beta_{2}}_{1}(\operatorname{total\_arrests})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Poisson regression models with an offset work #5","\begin{aligned}
+  \operatorname{stops}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\log(\operatorname{arrests}) + \alpha_{j[i]} + \beta_{1}(\operatorname{eth}_{\operatorname{hispanic}}) + \beta_{2}(\operatorname{eth}_{\operatorname{white}}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Poisson regression models with an offset work #6","\begin{aligned}
+  \operatorname{stops}_{i}  &\sim \operatorname{Poisson}(\lambda_i) \\
+    \log(\lambda_i) &=\log(\operatorname{arrests}) + \alpha_{j[i]} + \beta_{1j[i]}(\operatorname{eth}_{\operatorname{hispanic}}) + \beta_{2j[i]}(\operatorname{eth}_{\operatorname{white}}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{total\_arrests}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{total\_arrests}) \\
+      &\gamma^{\beta_{2}}_{0} + \gamma^{\beta_{2}}_{1}(\operatorname{total\_arrests})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for precinct j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/glmerMod.md: Binomial Logistic Regression models work #7","\begin{aligned}
+  \operatorname{bush}_{i}  &\sim \operatorname{Binomial}(n = 1, \operatorname{prob}_{\operatorname{bush} = 1} = \widehat{P}) \\
+    \log\left[\frac{\hat{P}}{1 - \hat{P}} \right] &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{black}) + \beta_{2}(\operatorname{female}) + \beta_{3}(\operatorname{edu}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for state j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Overlapping names don't result in an error #1","\begin{aligned}
+\operatorname{\widehat{body\_mass\_g}} &= -36659.51\ + \\
+&\quad 1813.23(\operatorname{p})\ + \\
+&\quad 197.51(\operatorname{gender\_cat})\ + \\
+&\quad 7.8(\operatorname{ca})\ - \\
+&\quad 8.82(\operatorname{p} \times \operatorname{gender\_cat})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Dropping intercept notation works #2","\operatorname{bill\_depth\_mm} = \beta_{1}(\operatorname{flipper\_length\_mm}) + \beta_{2}(\operatorname{island}_{\operatorname{Biscoe}}) + \beta_{3}(\operatorname{island}_{\operatorname{Dream}}) + \beta_{4}(\operatorname{island}_{\operatorname{Torgersen}}) + \beta_{5}(\operatorname{flipper\_length\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \beta_{6}(\operatorname{flipper\_length\_mm} \times \operatorname{island}_{\operatorname{Torgersen}}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: colorizing works #3","\begin{aligned}
+{\color{#0f70f7}{\operatorname{bill\_depth\_mm}}} &= {\color{#1B9E77}{\alpha}} + {\color{#D95F02}{\beta}}_{{\color{#E6AB02}{1}}}({\color{#b22222}{\operatorname{Flipper\ Length\ (MM)}}})\ + \\
+&\quad {\color{#7570B3}{\beta}}_{{\color{#66A61E}{2}}}({\color{green}{\operatorname{ISLAND}}}{\color{cyan}{_{\operatorname{super\ dreamy}}}}) + {\color{#E7298A}{\beta}}_{{\color{#E7298A}{3}}}({\color{green}{\operatorname{ISLAND}}}{\color{cyan}{_{\operatorname{Torgersen}}}})\ + \\
+&\quad {\color{#66A61E}{\beta}}_{{\color{#7570B3}{4}}}({\color{#b22222}{\operatorname{Flipper\ Length\ (MM)}}} \times {\color{green}{\operatorname{ISLAND}}}{\color{cyan}{_{\operatorname{super\ dreamy}}}}) + {\color{#E6AB02}{\beta}}_{{\color{#D95F02}{5}}}({\color{#b22222}{\operatorname{Flipper\ Length\ (MM)}}} \times {\color{green}{\operatorname{ISLAND}}}{\color{cyan}{_{\operatorname{Torgersen}}}})\ + \\
+&\quad {\color{#A6761D}{\epsilon}}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Renaming Variables works #4","\operatorname{body\_mass\_g} = \alpha + \beta_{1}(\operatorname{Bill\ Length\ (MM)}) + \beta_{2}(\operatorname{species}_{\operatorname{chinny\ chin\ chin}}) + \beta_{3}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{4}(\operatorname{Flipper\ Length\ (MM)}) + \beta_{5}(\operatorname{SEX}_{\operatorname{Male}}) + \beta_{6}(\operatorname{Bill\ Length\ (MM)} \times \operatorname{species}_{\operatorname{chinny\ chin\ chin}}) + \beta_{7}(\operatorname{Bill\ Length\ (MM)} \times \operatorname{species}_{\operatorname{Gentoo}}) + \beta_{8}(\operatorname{Flipper\ Length\ (MM)} \times \operatorname{SEX}_{\operatorname{Male}}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Math extraction works #5","\operatorname{bill\_length\_mm} = \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{bill\_depth\_mm^2}) + \beta_{3}(\operatorname{bill\_depth\_mm^3}) + \beta_{4}(\operatorname{bill\_depth\_mm^4}) + \beta_{5}(\operatorname{bill\_depth\_mm^5}) + \beta_{6}(\operatorname{\log(flipper\_length\_mm)}) + \beta_{7}(\operatorname{\exp(bill\_length\_mm)}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Math extraction works #6","\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{hp\ >\ 150}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Math extraction works #7","\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{hp\ <\ 250}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Labeling works #8","\label{eq: mpg_mod}
+\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Simple lm models work #9","\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Simple lm models work #10","\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{gear}_{\operatorname{4}}) + \beta_{3}(\operatorname{gear}_{\operatorname{5}}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Simple lm models work #11","\operatorname{\widehat{mpg}} = 34.66 - 1.59(\operatorname{cyl}) - 0.02(\operatorname{disp})"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Interactions work #12","\operatorname{body\_mass\_g} = \alpha + \beta_{1}(\operatorname{bill\_length\_mm}) + \beta_{2}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{3}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{4}(\operatorname{bill\_length\_mm} \times \operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{5}(\operatorname{bill\_length\_mm} \times \operatorname{species}_{\operatorname{Gentoo}}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Interactions work #13","\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{hp}) + \beta_{2}(\operatorname{wt}) + \beta_{3}(\operatorname{hp} \times \operatorname{wt}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Custom Greek works #14","\operatorname{mpg} = \alpha + \hat{\beta}_{1}(\operatorname{cyl}) + \hat{\beta}_{2}(\operatorname{disp}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Custom Greek works #15","\operatorname{mpg} = \zeta + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lm.md: Hat is escaped correctly #16","\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{carb}_{\operatorname{.L}}) + \beta_{2}(\operatorname{carb}_{\operatorname{.Q}}) + \beta_{3}(\operatorname{carb}_{\operatorname{.C}}) + \beta_{4}(\operatorname{carb}_{\operatorname{\texttt{\^{}}4}}) + \beta_{5}(\operatorname{carb}_{\operatorname{\texttt{\^{}}5}}) + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: colorizing works #1","\begin{aligned}
+  {\color{#FF00CC}{\operatorname{score}}}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}({\color{blue}{\operatorname{wave}}}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{group}{\color{orange}{_{\operatorname{low}}}}) + \gamma_{2}^{\alpha}(\operatorname{group}{\color{orange}{_{\operatorname{medium}}}}) + \gamma_{3l[i]}^{\alpha}({\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) + \gamma_{4}^{\alpha}(\operatorname{group}{\color{orange}{_{\operatorname{low}}}} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) + \gamma_{5}^{\alpha}(\operatorname{group}{\color{orange}{_{\operatorname{medium}}}} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{group}{\color{orange}{_{\operatorname{low}}}}) + \gamma^{\beta_{1}}_{2}(\operatorname{group}{\color{orange}{_{\operatorname{medium}}}}) + \gamma^{\beta_{1}}_{3}({\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{4}(\operatorname{group}{\color{orange}{_{\operatorname{low}}}} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{5}(\operatorname{group}{\color{orange}{_{\operatorname{medium}}}} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{prop\_low}) + \gamma_{2}^{\alpha}(\operatorname{prop\_low} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{prop\_low}) + \gamma^{\beta_{1}}_{1}(\operatorname{prop\_low} \times {\color{red}{\operatorname{treatment}}}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Implicit ID variables are handled #2","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i]} + \beta_{1j[i],k[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid k = 1,} \dots \text{,K}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Renaming Variables works #3","\begin{aligned}
+  \operatorname{Student\ Scores}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{Wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1k[i]}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2k[i]}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3k[i],l[i]}^{\alpha}(\operatorname{treatment}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k} \\
+      &\gamma_{1k} \\
+      &\gamma_{2k} \\
+      &\gamma_{3k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1l[i]}^{\alpha}(\operatorname{P(low\ income)}) \\
+      &\mu_{\beta_{1k}} \\
+      &\mu_{\gamma_{1k}} \\
+      &\mu_{\gamma_{2k}} \\
+      &\mu_{\gamma_{3k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccccc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} & \rho_{\alpha_{k}\gamma_{1k}} & \rho_{\alpha_{k}\gamma_{2k}} & \rho_{\alpha_{k}\gamma_{3k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}} & \rho_{\beta_{1k}\gamma_{1k}} & \rho_{\beta_{1k}\gamma_{2k}} & \rho_{\beta_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{1k}\alpha_{k}} & \rho_{\gamma_{1k}\beta_{1k}} & \sigma^2_{\gamma_{1k}} & \rho_{\gamma_{1k}\gamma_{2k}} & \rho_{\gamma_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{2k}\alpha_{k}} & \rho_{\gamma_{2k}\beta_{1k}} & \rho_{\gamma_{2k}\gamma_{1k}} & \sigma^2_{\gamma_{2k}} & \rho_{\gamma_{2k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{3k}\alpha_{k}} & \rho_{\gamma_{3k}\beta_{1k}} & \rho_{\gamma_{3k}\gamma_{1k}} & \rho_{\gamma_{3k}\gamma_{2k}} & \sigma^2_{\gamma_{3k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l} \\
+      &\gamma_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}} \\
+      &\mu_{\gamma_{1l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} & \rho_{\alpha_{l}\gamma_{1l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} & \rho_{\beta_{1l}\gamma_{1l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}} & \rho_{\gamma_{3l}\gamma_{1l}} \\ 
+     \rho_{\gamma_{1l}\alpha_{l}} & \rho_{\gamma_{1l}\beta_{1l}} & \rho_{\gamma_{1l}\gamma_{3l}} & \sigma^2_{\gamma_{1l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Categorical variable level parsing works (from issue #140) #4","\begin{aligned}
+  \operatorname{error}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{brochure}_{\operatorname{standard}}) + \beta_{2}(\operatorname{disease}_{\operatorname{DS}}) + \beta_{3}(\operatorname{brochure}_{\operatorname{standard}} \times \operatorname{disease}_{\operatorname{DS}}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for ID j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unconditional lmer models work #5","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unconditional lmer models work #6","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unconditional lmer models work #7","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Level 1 predictors work #8","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{female}) + \beta_{2}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Level 1 predictors work #9","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1}(\operatorname{wave}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Mean separate works as expected #10","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\alpha_{j[i]} + \beta_{1}(\operatorname{female}) + \beta_{2}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Mean separate works as expected #11","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i],k[i],l[i]} + \beta_{1}(\operatorname{wave}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Wrapping works as expected #12","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{female})\ + \\
+&\quad \beta_{2}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unstructured variance-covariances work as expected #13","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{female}) + \beta_{2}(\operatorname{ses}) + \beta_{3j[i]}(\operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{3j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{3j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{3j}} \\ 
+     \rho_{\beta_{3j}\alpha_{j}} & \sigma^2_{\beta_{3j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unstructured variance-covariances work as expected #14","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{female}) + \beta_{2j[i]}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unstructured variance-covariances work as expected #15","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{female}) + \beta_{2j[i]}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) + \beta_{4j[i]}(\operatorname{female} \times \operatorname{ses}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j} \\
+      &\beta_{4j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}} \\
+      &\mu_{\beta_{4j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} & \rho_{\alpha_{j}\beta_{4j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} & \rho_{\beta_{1j}\beta_{4j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}} & \rho_{\beta_{2j}\beta_{4j}} \\ 
+     \rho_{\beta_{4j}\alpha_{j}} & \rho_{\beta_{4j}\beta_{1j}} & \rho_{\beta_{4j}\beta_{2j}} & \sigma^2_{\beta_{4j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unstructured variance-covariances work as expected #16","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{female}) + \beta_{2j[i]}(\operatorname{ses}) + \beta_{3j[i]}(\operatorname{minority}) + \beta_{4j[i]}(\operatorname{female} \times \operatorname{ses}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j} \\
+      &\beta_{3j} \\
+      &\beta_{4j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}} \\
+      &\mu_{\beta_{3j}} \\
+      &\mu_{\beta_{4j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} & \rho_{\alpha_{j}\beta_{3j}} & \rho_{\alpha_{j}\beta_{4j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} & \rho_{\beta_{1j}\beta_{3j}} & \rho_{\beta_{1j}\beta_{4j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}} & \rho_{\beta_{2j}\beta_{3j}} & \rho_{\beta_{2j}\beta_{4j}} \\ 
+     \rho_{\beta_{3j}\alpha_{j}} & \rho_{\beta_{3j}\beta_{1j}} & \rho_{\beta_{3j}\beta_{2j}} & \sigma^2_{\beta_{3j}} & \rho_{\beta_{3j}\beta_{4j}} \\ 
+     \rho_{\beta_{4j}\alpha_{j}} & \rho_{\beta_{4j}\beta_{1j}} & \rho_{\beta_{4j}\beta_{2j}} & \rho_{\beta_{4j}\beta_{3j}} & \sigma^2_{\beta_{4j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Unstructured variance-covariances work as expected #17","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Group-level predictors work as expected #18","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1k[i]}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2k[i]}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3k[i],l[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k} \\
+      &\gamma_{1k} \\
+      &\gamma_{2k} \\
+      &\gamma_{3k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{1k}} \\
+      &\mu_{\gamma_{1k}} \\
+      &\mu_{\gamma_{2k}} \\
+      &\mu_{\gamma_{3k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccccc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} & \rho_{\alpha_{k}\gamma_{1k}} & \rho_{\alpha_{k}\gamma_{2k}} & \rho_{\alpha_{k}\gamma_{3k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}} & \rho_{\beta_{1k}\gamma_{1k}} & \rho_{\beta_{1k}\gamma_{2k}} & \rho_{\beta_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{1k}\alpha_{k}} & \rho_{\gamma_{1k}\beta_{1k}} & \sigma^2_{\gamma_{1k}} & \rho_{\gamma_{1k}\gamma_{2k}} & \rho_{\gamma_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{2k}\alpha_{k}} & \rho_{\gamma_{2k}\beta_{1k}} & \rho_{\gamma_{2k}\gamma_{1k}} & \sigma^2_{\gamma_{2k}} & \rho_{\gamma_{2k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{3k}\alpha_{k}} & \rho_{\gamma_{3k}\beta_{1k}} & \rho_{\gamma_{3k}\gamma_{1k}} & \rho_{\gamma_{3k}\gamma_{2k}} & \sigma^2_{\gamma_{3k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Group-level predictors work as expected #19","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1k[i]}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2k[i]}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3k[i],l[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k} \\
+      &\gamma_{1k} \\
+      &\gamma_{2k} \\
+      &\gamma_{3k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1l[i]}^{\alpha}(\operatorname{prop\_low}) \\
+      &\mu_{\beta_{1k}} \\
+      &\mu_{\gamma_{1k}} \\
+      &\mu_{\gamma_{2k}} \\
+      &\mu_{\gamma_{3k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccccc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} & \rho_{\alpha_{k}\gamma_{1k}} & \rho_{\alpha_{k}\gamma_{2k}} & \rho_{\alpha_{k}\gamma_{3k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}} & \rho_{\beta_{1k}\gamma_{1k}} & \rho_{\beta_{1k}\gamma_{2k}} & \rho_{\beta_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{1k}\alpha_{k}} & \rho_{\gamma_{1k}\beta_{1k}} & \sigma^2_{\gamma_{1k}} & \rho_{\gamma_{1k}\gamma_{2k}} & \rho_{\gamma_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{2k}\alpha_{k}} & \rho_{\gamma_{2k}\beta_{1k}} & \rho_{\gamma_{2k}\gamma_{1k}} & \sigma^2_{\gamma_{2k}} & \rho_{\gamma_{2k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{3k}\alpha_{k}} & \rho_{\gamma_{3k}\beta_{1k}} & \rho_{\gamma_{3k}\gamma_{1k}} & \rho_{\gamma_{3k}\gamma_{2k}} & \sigma^2_{\gamma_{3k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l} \\
+      &\gamma_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}} \\
+      &\mu_{\gamma_{1l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} & \rho_{\alpha_{l}\gamma_{1l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} & \rho_{\beta_{1l}\gamma_{1l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}} & \rho_{\gamma_{3l}\gamma_{1l}} \\ 
+     \rho_{\gamma_{1l}\alpha_{l}} & \rho_{\gamma_{1l}\beta_{1l}} & \rho_{\gamma_{1l}\gamma_{3l}} & \sigma^2_{\gamma_{1l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Group-level predictors work as expected #20","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3k[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k} \\
+      &\gamma_{3k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{prop\_low}) \\
+      &\mu_{\beta_{1k}} \\
+      &\mu_{\gamma_{3k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} & \rho_{\alpha_{k}\gamma_{3k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}} & \rho_{\beta_{1k}\gamma_{3k}} \\ 
+     \rho_{\gamma_{3k}\alpha_{k}} & \rho_{\gamma_{3k}\beta_{1k}} & \sigma^2_{\gamma_{3k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{dist\_mean}) \\
+      &\mu_{\beta_{1l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Interactions work as expected #21","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{minority}) + \beta_{2}(\operatorname{female}) + \beta_{3}(\operatorname{female} \times \operatorname{minority}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Interactions work as expected #22","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]}, \sigma^2 \right) \\    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1k[i],l[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) + \gamma_{2l[i]}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{3l[i]}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{4l[i]}^{\alpha}(\operatorname{group}_{\operatorname{low}} \times \operatorname{treatment}_{\operatorname{1}}) + \gamma_{5l[i]}^{\alpha}(\operatorname{group}_{\operatorname{medium}} \times \operatorname{treatment}_{\operatorname{1}}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\gamma_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\gamma_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\gamma_{1k}} \\ 
+     \rho_{\gamma_{1k}\alpha_{k}} & \sigma^2_{\gamma_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\gamma_{1l} \\
+      &\gamma_{2l} \\
+      &\gamma_{3l} \\
+      &\gamma_{4l} \\
+      &\gamma_{5l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\gamma_{1l}} \\
+      &\mu_{\gamma_{2l}} \\
+      &\mu_{\gamma_{3l}} \\
+      &\mu_{\gamma_{4l}} \\
+      &\mu_{\gamma_{5l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\gamma_{1l}} & \rho_{\alpha_{l}\gamma_{2l}} & \rho_{\alpha_{l}\gamma_{3l}} & \rho_{\alpha_{l}\gamma_{4l}} & \rho_{\alpha_{l}\gamma_{5l}} \\ 
+     \rho_{\gamma_{1l}\alpha_{l}} & \sigma^2_{\gamma_{1l}} & \rho_{\gamma_{1l}\gamma_{2l}} & \rho_{\gamma_{1l}\gamma_{3l}} & \rho_{\gamma_{1l}\gamma_{4l}} & \rho_{\gamma_{1l}\gamma_{5l}} \\ 
+     \rho_{\gamma_{2l}\alpha_{l}} & \rho_{\gamma_{2l}\gamma_{1l}} & \sigma^2_{\gamma_{2l}} & \rho_{\gamma_{2l}\gamma_{3l}} & \rho_{\gamma_{2l}\gamma_{4l}} & \rho_{\gamma_{2l}\gamma_{5l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\gamma_{1l}} & \rho_{\gamma_{3l}\gamma_{2l}} & \sigma^2_{\gamma_{3l}} & \rho_{\gamma_{3l}\gamma_{4l}} & \rho_{\gamma_{3l}\gamma_{5l}} \\ 
+     \rho_{\gamma_{4l}\alpha_{l}} & \rho_{\gamma_{4l}\gamma_{1l}} & \rho_{\gamma_{4l}\gamma_{2l}} & \rho_{\gamma_{4l}\gamma_{3l}} & \sigma^2_{\gamma_{4l}} & \rho_{\gamma_{4l}\gamma_{5l}} \\ 
+     \rho_{\gamma_{5l}\alpha_{l}} & \rho_{\gamma_{5l}\gamma_{1l}} & \rho_{\gamma_{5l}\gamma_{2l}} & \rho_{\gamma_{5l}\gamma_{3l}} & \rho_{\gamma_{5l}\gamma_{4l}} & \sigma^2_{\gamma_{5l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Interactions work as expected #23","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Interactions work as expected #24","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1}(\operatorname{wave}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) + \gamma_{2}^{\alpha}(\operatorname{treatment}_{\operatorname{1}} \times \operatorname{wave}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Interactions work as expected #25","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3l[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) + \gamma_{4}^{\alpha}(\operatorname{group}_{\operatorname{low}} \times \operatorname{treatment}_{\operatorname{1}}) + \gamma_{5}^{\alpha}(\operatorname{group}_{\operatorname{medium}} \times \operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{group}_{\operatorname{low}}) + \gamma^{\beta_{1}}_{2}(\operatorname{group}_{\operatorname{medium}}) + \gamma^{\beta_{1}}_{3}(\operatorname{treatment}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{4}(\operatorname{group}_{\operatorname{low}} \times \operatorname{treatment}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{5}(\operatorname{group}_{\operatorname{medium}} \times \operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{prop\_low}) + \gamma_{2}^{\alpha}(\operatorname{prop\_low} \times \operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{2}(\operatorname{prop\_low}) + \gamma^{\beta_{1}}_{1}(\operatorname{prop\_low} \times \operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Alternate random effect VCV structures work #26","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{minority}) + \beta_{2j[i]}(\operatorname{female}) + \beta_{3j[i]}(\operatorname{female} \times \operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j} \\
+      &\beta_{3j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}} \\
+      &\mu_{\beta_{3j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{j}} & 0 & 0 & 0 \\ 
+     0 & \sigma^2_{\beta_{1j}} & 0 & 0 \\ 
+     0 & 0 & \sigma^2_{\beta_{2j}} & 0 \\ 
+     0 & 0 & 0 & \sigma^2_{\beta_{3j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Alternate random effect VCV structures work #27","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{minority}) + \beta_{2j[i]}(\operatorname{female}) + \beta_{3j[i]}(\operatorname{female} \times \operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j} \\
+      &\beta_{3j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}} \\
+      &\mu_{\beta_{3j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{j}} & 0 & 0 & 0 \\ 
+     0 & \sigma^2_{\beta_{1j}} & 0 & 0 \\ 
+     0 & 0 & \sigma^2_{\beta_{2j}} & 0 \\ 
+     0 & 0 & 0 & \sigma^2_{\beta_{3j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Alternate random effect VCV structures work #28","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i],m[i]} + \beta_{1j[i],k[i],m[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & 0 \\ 
+     0 & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for school.1 l = 1,} \dots \text{,L} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{m} \\
+      &\beta_{1m}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{m}} \\
+      &\mu_{\beta_{1m}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{m}} & 0 \\ 
+     0 & \sigma^2_{\beta_{1m}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district m = 1,} \dots \text{,M}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Nested model syntax works #29","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for school:sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for sid k = 1,} \dots \text{,K}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Nested model syntax works #30","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for school:sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for sid k = 1,} \dots \text{,K}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/lmerMod.md: Nested model syntax works #31","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for school:sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for sid k = 1,} \dots \text{,K}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/polr.md: colorizing works #1","\begin{aligned}
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{1} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{1} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{1}}} + {\color{#D95F02}{\beta}}_{{\color{#A6761D}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#7570B3}{\beta}}_{{\color{#E6AB02}{2}}}(\operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) + {\color{#E7298A}{\beta}}_{{\color{#66A61E}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{2} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{2} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{2}}} + {\color{#D95F02}{\beta}}_{{\color{#A6761D}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#7570B3}{\beta}}_{{\color{#E6AB02}{2}}}(\operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) + {\color{#E7298A}{\beta}}_{{\color{#66A61E}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{3} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{3} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{3}}} + {\color{#D95F02}{\beta}}_{{\color{#A6761D}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#7570B3}{\beta}}_{{\color{#E6AB02}{2}}}(\operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) + {\color{#E7298A}{\beta}}_{{\color{#66A61E}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{4} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{4} ) } \right] &= {\color{#1B9E77}{\alpha}}_{{\color{#666666}{4}}} + {\color{#D95F02}{\beta}}_{{\color{#A6761D}{1}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}})\ + \\
+&\quad {\color{#7570B3}{\beta}}_{{\color{#E6AB02}{2}}}(\operatorname{contact}{\color{orange}{_{\operatorname{yes}}}}) + {\color{#E7298A}{\beta}}_{{\color{#66A61E}{3}}}({\color{blue}{\operatorname{temp}}}_{\operatorname{warm}} \times \operatorname{contact}{\color{orange}{_{\operatorname{yes}}}})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/polr.md: Renaming Variables works #2","\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{catty}_{\operatorname{b}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{catty}_{\operatorname{c}}) + \beta_{3}(\operatorname{catty}_{\operatorname{do\ do\ do}})\ + \\
+&\qquad\ \beta_{4}(\operatorname{catty}_{\operatorname{e}}) + \beta_{5}(\operatorname{Cont\ Var})\ + \\
+&\qquad\ \beta_{6}(\operatorname{catty}_{\operatorname{b}} \times \operatorname{Cont\ Var}) + \beta_{7}(\operatorname{catty}_{\operatorname{c}} \times \operatorname{Cont\ Var})\ + \\
+&\qquad\ \beta_{8}(\operatorname{catty}_{\operatorname{do\ do\ do}} \times \operatorname{Cont\ Var}) + \beta_{9}(\operatorname{catty}_{\operatorname{e}} \times \operatorname{Cont\ Var})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{catty}_{\operatorname{b}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{catty}_{\operatorname{c}}) + \beta_{3}(\operatorname{catty}_{\operatorname{do\ do\ do}})\ + \\
+&\qquad\ \beta_{4}(\operatorname{catty}_{\operatorname{e}}) + \beta_{5}(\operatorname{Cont\ Var})\ + \\
+&\qquad\ \beta_{6}(\operatorname{catty}_{\operatorname{b}} \times \operatorname{Cont\ Var}) + \beta_{7}(\operatorname{catty}_{\operatorname{c}} \times \operatorname{Cont\ Var})\ + \\
+&\qquad\ \beta_{8}(\operatorname{catty}_{\operatorname{do\ do\ do}} \times \operatorname{Cont\ Var}) + \beta_{9}(\operatorname{catty}_{\operatorname{e}} \times \operatorname{Cont\ Var})]
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/polr.md: Math extraction works #3","\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\log(continuous)}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\log(continuous)})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/polr.md: Math extraction works #4","\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\log(continuous)})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{continuous}) + \beta_{2}(\operatorname{continuous^2}) + \beta_{3}(\operatorname{continuous^3}) + \beta_{4}(\operatorname{\log(continuous)})]
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/polr.md: Ordered logistic regression works #5","\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/polr.md: Ordered logistic regression works #6","\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\quad \beta_{2}(\operatorname{continuous\_2}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\quad \beta_{2}(\operatorname{continuous\_2})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/polr.md: Ordered logistic regression works #7","\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{continuous\_1}) + \beta_{2}(\operatorname{continuous\_2})]
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/polr.md: Ordered logistic regression works #8","\begin{aligned}
+P( \operatorname{outcome}  \leq  \operatorname{A} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\qquad\ \beta_{2}(\operatorname{continuous\_2})] \\
+P( \operatorname{outcome}  \leq  \operatorname{B} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{continuous\_1})\ + \\
+&\qquad\ \beta_{2}(\operatorname{continuous\_2})]
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/polr.md: Ordered logistic regression works #9","\begin{aligned}
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{A} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{A} ) } \right] &= 1.09 + 0.03(\operatorname{continuous\_1}) - 0.03(\operatorname{continuous\_2}) \\
+\log\left[ \frac { P( \operatorname{outcome}  \leq  \operatorname{B} ) }{ 1 - P( \operatorname{outcome}  \leq  \operatorname{B} ) } \right] &= 2.48 + 0.03(\operatorname{continuous\_1}) - 0.03(\operatorname{continuous\_2})
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with numeric coefficients #1","\operatorname{\widehat{disp}} = \underset{(116.748)}{67.8}  + \underset{(9.962)}{45.56(\operatorname{cyl})} - \underset{(2.952)}{5.92(\operatorname{mpg})}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with numeric coefficients #2","E( \operatorname{disp} ) = \underset{(116.748)}{\alpha} + \underset{(9.962)}{\beta_{1}(\operatorname{cyl})} + \underset{(2.952)}{\beta_{2}(\operatorname{mpg})}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with numeric coefficients #3","\log\left[ \frac { P( \operatorname{am} = \operatorname{1} ) }{ 1 - P( \operatorname{am} = \operatorname{1} ) } \right] = \underset{(12.194)}{\alpha} + \underset{(0.239)}{\beta_{1}(\operatorname{mpg})} + \underset{(2.547)}{\beta_{2}(\operatorname{wt})}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with wrapping #4","\begin{aligned}
+\operatorname{\widehat{disp}} &= \underset{(119.073)}{60.8}\  + \\
+&\quad \underset{(11.801)}{42.46(\operatorname{cyl})}\ - \\
+&\quad \underset{(3.073)}{5.56(\operatorname{mpg})}\ + \\
+&\quad \underset{(0.255)}{0.13(\operatorname{hp})}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with wrapping #5","\begin{aligned}
+\widehat{E( \operatorname{disp} )} &= \underset{(116.748)}{67.8}\  + \\
+&\quad \underset{(9.962)}{45.56(\operatorname{cyl})}\ - \\
+&\quad \underset{(2.952)}{5.92(\operatorname{mpg})}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with wrapping #6","\begin{aligned}
+\widehat{E( \operatorname{disp} )} &= \underset{(116.748)}{67.8}\  + \\
+&\quad \underset{(9.962)}{45.56(\operatorname{cyl})}\ - \\
+&\quad \underset{(2.952)}{5.92(\operatorname{mpg})}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with wrapping #7","\begin{aligned}
+\log\left[ \frac { \widehat{P( \operatorname{am} = \operatorname{1} )} }{ 1 - \widehat{P( \operatorname{am} = \operatorname{1} )} } \right] &= \underset{(12.194)}{25.89}\  - \\
+&\quad \underset{(0.239)}{0.32(\operatorname{mpg})}\ - \\
+&\quad \underset{(2.547)}{6.42(\operatorname{wt})}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with Greek letter terms #8","\operatorname{disp} = \underset{(119.073)}{\alpha} + \underset{(11.801)}{\beta_{1}(\operatorname{cyl})} + \underset{(3.073)}{\beta_{2}(\operatorname{mpg})} + \underset{(0.255)}{\beta_{3}(\operatorname{hp})} + \epsilon"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with Greek letter terms #9","\begin{aligned}
+\operatorname{disp} &= \underset{(119.073)}{\alpha}\ + \\
+&\quad \underset{(11.801)}{\beta_{1}(\operatorname{cyl})}\ + \\
+&\quad \underset{(3.073)}{\beta_{2}(\operatorname{mpg})}\ + \\
+&\quad \underset{(0.255)}{\beta_{3}(\operatorname{hp})}\ + \\
+&\quad \epsilon
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with Greek letter terms #10","\begin{aligned}
+E( \operatorname{disp} ) &= \underset{(116.748)}{\alpha}\ + \\
+&\quad \underset{(9.962)}{\beta_{1}(\operatorname{cyl})}\ + \\
+&\quad \underset{(2.952)}{\beta_{2}(\operatorname{mpg})}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with Greek letter terms #11","\begin{aligned}
+\log\left[ \frac { P( \operatorname{am} = \operatorname{1} ) }{ 1 - P( \operatorname{am} = \operatorname{1} ) } \right] &= \underset{(12.194)}{\alpha}\ + \\
+&\quad \underset{(0.239)}{\beta_{1}(\operatorname{mpg})}\ + \\
+&\quad \underset{(2.547)}{\beta_{2}(\operatorname{wt})}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with transformed variables #12","\operatorname{\widehat{disp}} = \underset{(226.662)}{481.42}  + \underset{(10.942)}{37.32(\operatorname{cyl})} - \underset{(59.243)}{165.48(\operatorname{\log(mpg)})} + \underset{(0.241)}{0.05(\operatorname{hp})}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with transformed variables #13","\begin{aligned}
+\operatorname{\widehat{disp}} &= \underset{(226.662)}{481.42}\  + \\
+&\quad \underset{(10.942)}{37.32(\operatorname{cyl})}\ - \\
+&\quad \underset{(59.243)}{165.48(\operatorname{\log(mpg)})}\ + \\
+&\quad \underset{(0.241)}{0.05(\operatorname{hp})}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with transformed variables #14","\widehat{E( \operatorname{disp} )} = \underset{(226.662)}{481.42}  + \underset{(10.942)}{37.32(\operatorname{cyl})} - \underset{(59.243)}{165.48(\operatorname{\log(mpg)})} + \underset{(0.241)}{0.05(\operatorname{hp})}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts argument works with transformed variables #15","\begin{aligned}
+\widehat{E( \operatorname{disp} )} &= \underset{(226.662)}{481.42}\  + \\
+&\quad \underset{(10.942)}{37.32(\operatorname{cyl})}\ - \\
+&\quad \underset{(59.243)}{165.48(\operatorname{\log(mpg)})}\ + \\
+&\quad \underset{(0.241)}{0.05(\operatorname{hp})}
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts works with factor variable #16","\widehat{E( \operatorname{disp} )} = \underset{(224.642)}{427.66}  + \underset{(12.253)}{21.95(\operatorname{cyl})} - \underset{(61.235)}{120.45(\operatorname{\log(mpg)})} + \underset{(0.32)}{0.38(\operatorname{hp})} - \underset{(26.627)}{58.06(\operatorname{factor(gear)}_{\operatorname{4}})} - \underset{(35.762)}{66.88(\operatorname{factor(gear)}_{\operatorname{5}})}"
+"equatiomatic-tests","tests/testthat/_snaps/se-subscripts.md: se_subscripts works with factor variable #17","E( \operatorname{disp} ) = \underset{(224.642)}{\alpha} + \underset{(12.253)}{\beta_{1}(\operatorname{cyl})} + \underset{(61.235)}{\beta_{2}(\operatorname{\log(mpg)})} + \underset{(0.32)}{\beta_{3}(\operatorname{hp})} + \underset{(26.627)}{\beta_{4}(\operatorname{factor(gear)}_{\operatorname{4}})} + \underset{(35.762)}{\beta_{5}(\operatorname{factor(gear)}_{\operatorname{5}})}"
+"equatiomatic-tests","tests/testthat/_snaps/wrapping-formatting.md: Coefficient digits work correctly #1","\operatorname{\widehat{mpg}} = 34.661 - 1.5873(\operatorname{cyl}) - 0.0206(\operatorname{disp})"
+"equatiomatic-tests","tests/testthat/_snaps/wrapping-formatting.md: Coefficient digits work correctly #2","\operatorname{\widehat{mpg}} = 34.66 + -1.59(\operatorname{cyl}) + -0.02(\operatorname{disp})"
+"equatiomatic-tests","tests/testthat/_snaps/wrapping-formatting.md: Wrapping works correctly #3","\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \beta_{3}(\operatorname{hp})\ + \\
+&\quad \beta_{4}(\operatorname{drat}) + \beta_{5}(\operatorname{wt}) + \beta_{6}(\operatorname{qsec}) + \beta_{7}(\operatorname{vs})\ + \\
+&\quad \beta_{8}(\operatorname{am}) + \beta_{9}(\operatorname{gear}) + \beta_{10}(\operatorname{carb}) + \epsilon
+\end{aligned}"
+"equatiomatic-tests","tests/testthat/_snaps/wrapping-formatting.md: Wrapping works correctly #4","\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl})\ + \\
+&\quad \beta_{2}(\operatorname{disp}) + \beta_{3}(\operatorname{hp})\ + \\
+&\quad \beta_{4}(\operatorname{drat}) + \beta_{5}(\operatorname{wt})\ + \\
+&\quad \beta_{6}(\operatorname{qsec}) + \beta_{7}(\operatorname{vs})\ + \\
+&\quad \beta_{8}(\operatorname{am}) + \beta_{9}(\operatorname{gear})\ + \\
+&\quad \beta_{10}(\operatorname{carb}) + \epsilon
+\end{aligned}"
+"equatiomatic-docs","vignettes/colors.Rmd","{\color{cornflowerblue}{\operatorname{bill\_length\_mm}}} = \alpha + \beta_{1}({\color{firebrick}{\operatorname{body\_mass\_g}}}) + \epsilon"
+"equatiomatic-docs","vignettes/colors.Rmd","{\color{cornflowerblue}{\operatorname{bill\_length\_mm}}} = {\color{#3bd100}{\alpha}} + {\color{black}{\beta}}_{1}({\color{firebrick}{\operatorname{body\_mass\_g}}}) + {\color{black}{\epsilon}}"
+"equatiomatic-docs","vignettes/colors.Rmd","{\color{cornflowerblue}{\operatorname{bill\_length\_mm}}} = {\color{#1b9e77}{\alpha}} + {\color{#d95f02}{\beta}}_{1}({\color{firebrick}{\operatorname{body\_mass\_g}}}) + {\color{#7570b3}{\epsilon}}"
+"equatiomatic-docs","vignettes/colors.Rmd","\begin{aligned}
+\operatorname{bill\_length\_mm} &= {\color{black}{\alpha}} + {\color{#3A21B3}{\beta}}_{1}({\color{#ffa91f}{\operatorname{body\_mass\_g}}}) + {\color{#58A1D9}{\beta}}_{2}({\color{#00d1ab}{\operatorname{flipper\_length\_mm}}})\ + \\
+&\quad {\color{#FF7582}{\beta}}_{3}({\color{#ffa91f}{\operatorname{body\_mass\_g}}} \times {\color{#00d1ab}{\operatorname{flipper\_length\_mm}}}) + {\color{black}{\epsilon}}
+\end{aligned}"
+"equatiomatic-docs","vignettes/colors.Rmd","\begin{aligned}
+\operatorname{bill\_length\_mm} &= {\color{black}{\alpha}} + {\color{#3A21B3}{\beta}}_{{\color{#3A21B3}{1}}}({\color{#ffa91f}{\operatorname{body\_mass\_g}}}) + {\color{#58A1D9}{\beta}}_{{\color{#58A1D9}{2}}}({\color{#00d1ab}{\operatorname{flipper\_length\_mm}}})\ + \\
+&\quad {\color{#FF7582}{\beta}}_{{\color{#FF7582}{3}}}({\color{#ffa91f}{\operatorname{body\_mass\_g}}} \times {\color{#00d1ab}{\operatorname{flipper\_length\_mm}}}) + {\color{black}{\epsilon}}
+\end{aligned}"
+"equatiomatic-docs","vignettes/colors.Rmd","\operatorname{bill\_length\_mm} = \alpha + \beta_{1}({\color{#FB2C4B}{\operatorname{species}}}{\color{#0274B2}{_{\operatorname{Chinstrap}}}}) + \beta_{2}({\color{#FB2C4B}{\operatorname{species}}}{\color{#0274B2}{_{\operatorname{Gentoo}}}}) + \beta_{3}({\color{#643B77}{\operatorname{island}}}{\color{#FBA640}{_{\operatorname{Dream}}}}) + \beta_{4}({\color{#643B77}{\operatorname{island}}}{\color{#FBA640}{_{\operatorname{Torgersen}}}}) + \epsilon"
+"equatiomatic-docs","vignettes/colors.Rmd","\begin{aligned}
+\operatorname{Bill\ Length\ [mm]} &= \alpha + \beta_{1}({\color{cornflowerblue}{\operatorname{Body\ Mass\ [g])}}}) + \beta_{2}({\color{firebrick}{\operatorname{Flipper\ Length\ [mm]}}})\ + \\
+&\quad \beta_{3}({\color{cornflowerblue}{\operatorname{Body\ Mass\ [g])}}} \times {\color{firebrick}{\operatorname{Flipper\ Length\ [mm]}}}) + \epsilon
+\end{aligned}"
+"equatiomatic-docs","vignettes/colors.Rmd","\begin{aligned}
+\operatorname{Bill\ Length\ [mm]} &= \alpha + \beta_{1}({\color{#FB2C4B}{\operatorname{Species}}}{\color{#0274B2}{_{\operatorname{little\ buddy}}}}) + \beta_{2}({\color{#FB2C4B}{\operatorname{Species}}}{\color{#0274B2}{_{\operatorname{happy\ feet}}}})\ + \\
+&\quad \beta_{3}({\color{#643B77}{\operatorname{Island}}}{\color{#FBA640}{_{\operatorname{Dream}}}}) + \beta_{4}({\color{#643B77}{\operatorname{Island}}}{\color{#FBA640}{_{\operatorname{Torgersen}}}}) + \epsilon
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\operatorname{bill\_length\_mm} = \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \epsilon"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\operatorname{bill\_length\_mm} = \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{flipper\_length\_mm}) + \epsilon"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\operatorname{bill\_length\_mm} = \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{flipper\_length\_mm}) + \epsilon"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\operatorname{bill\_length\_mm} = \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{island}_{\operatorname{Dream}}) + \beta_{3}(\operatorname{island}_{\operatorname{Torgersen}}) + \beta_{4}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \beta_{5}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}}) + \epsilon"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+\operatorname{bill\_length\_mm} &= \alpha + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{island}_{\operatorname{Dream}}) + \beta_{3}(\operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad \beta_{4}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \beta_{5}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}}) + \epsilon
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+\operatorname{bill\_length\_mm} &= \alpha + \beta_{1}(\operatorname{bill\_depth\_mm})\ + \\
+&\quad \beta_{2}(\operatorname{island}_{\operatorname{Dream}}) + \beta_{3}(\operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad \beta_{4}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \beta_{5}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad \epsilon
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+\operatorname{bill\_length\_mm} &= \beta_{0} + \beta_{1}(\operatorname{bill\_depth\_mm}) + \beta_{2}(\operatorname{island}_{\operatorname{Dream}}) + \beta_{3}(\operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad \beta_{4}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \beta_{5}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}}) + \epsilon
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+bill\_length\_mm &= \alpha + \beta_{1}(bill\_depth\_mm) + \beta_{2}(island_{Dream}) + \beta_{3}(island_{Torgersen})\ + \\
+&\quad \beta_{4}(bill\_depth\_mm \times island_{Dream}) + \beta_{5}(bill\_depth\_mm \times island_{Torgersen}) + \epsilon
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+\operatorname{bill\_length\_mm} &= \hat{\phi} + \hat{\gamma}_{1}(\operatorname{bill\_depth\_mm}) + \hat{\gamma}_{2}(\operatorname{island}_{\operatorname{Dream}}) + \hat{\gamma}_{3}(\operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad \hat{\gamma}_{4}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + \hat{\gamma}_{5}(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}}) + \epsilon
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+\operatorname{\widehat{bill\_length\_mm}} &= 63.72 - 1.16(\operatorname{bill\_depth\_mm}) - 54.12(\operatorname{island}_{\operatorname{Dream}}) - 35.13(\operatorname{island}_{\operatorname{Torgersen}})\ + \\
+&\quad 3.05(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Dream}}) + 1.73(\operatorname{bill\_depth\_mm} \times \operatorname{island}_{\operatorname{Torgersen}})
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+\log\left[ \frac { P( \operatorname{sex} = \operatorname{male} ) }{ 1 - P( \operatorname{sex} = \operatorname{male} ) } \right] &= \alpha + \beta_{1}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{2}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{3}(\operatorname{bill\_length\_mm})\ + \\
+&\quad \beta_{4}(\operatorname{species}_{\operatorname{Chinstrap}} \times \operatorname{bill\_length\_mm}) + \beta_{5}(\operatorname{species}_{\operatorname{Gentoo}} \times \operatorname{bill\_length\_mm})
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+\operatorname{sex} &\sim Bernoulli\left(\operatorname{prob}_{\operatorname{sex} = \operatorname{male}}= \hat{P}\right) \\
+ \log\left[ \frac { \hat{P} }{ 1 - \hat{P} } \right] 
+ &= \alpha + \beta_{1}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{2}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{3}(\operatorname{bill\_length\_mm})\ + \\
+&\quad \beta_{4}(\operatorname{species}_{\operatorname{Chinstrap}} \times \operatorname{bill\_length\_mm}) + \beta_{5}(\operatorname{species}_{\operatorname{Gentoo}} \times \operatorname{bill\_length\_mm})
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+P( \operatorname{sex} = \operatorname{male} ) &= \Phi[\alpha + \beta_{1}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{2}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{3}(\operatorname{bill\_length\_mm})\ + \\
+&\qquad\ \beta_{4}(\operatorname{species}_{\operatorname{Chinstrap}} \times \operatorname{bill\_length\_mm}) + \beta_{5}(\operatorname{species}_{\operatorname{Gentoo}} \times \operatorname{bill\_length\_mm})]
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+\operatorname{sex} &\sim Bernoulli\left(\operatorname{prob}_{\operatorname{sex} = \operatorname{male}}= \hat{P}\right) \\
+ \hat{P} 
+ &= \Phi[\alpha + \beta_{1}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{2}(\operatorname{species}_{\operatorname{Gentoo}}) + \beta_{3}(\operatorname{bill\_length\_mm})\ + \\
+&\qquad\ \beta_{4}(\operatorname{species}_{\operatorname{Chinstrap}} \times \operatorname{bill\_length\_mm}) + \beta_{5}(\operatorname{species}_{\operatorname{Gentoo}} \times \operatorname{bill\_length\_mm})]
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{1} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{1} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{2} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{2} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{3} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{3} ) } \right] &= \alpha_{3} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{4} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{4} ) } \right] &= \alpha_{4} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+P( \operatorname{rating}  \leq  \operatorname{1} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})] \\
+P( \operatorname{rating}  \leq  \operatorname{2} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})] \\
+P( \operatorname{rating}  \leq  \operatorname{3} ) &= \Phi[\alpha_{3} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})] \\
+P( \operatorname{rating}  \leq  \operatorname{4} ) &= \Phi[\alpha_{4} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})]
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{1} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{1} ) } \right] &= \alpha_{1} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{2} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{2} ) } \right] &= \alpha_{2} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{3} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{3} ) } \right] &= \alpha_{3} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}}) \\
+\log\left[ \frac { P( \operatorname{rating}  \leq  \operatorname{4} ) }{ 1 - P( \operatorname{rating}  \leq  \operatorname{4} ) } \right] &= \alpha_{4} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\quad \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\begin{aligned}
+P( \operatorname{rating}  \leq  \operatorname{1} ) &= \Phi[\alpha_{1} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})] \\
+P( \operatorname{rating}  \leq  \operatorname{2} ) &= \Phi[\alpha_{2} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})] \\
+P( \operatorname{rating}  \leq  \operatorname{3} ) &= \Phi[\alpha_{3} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})] \\
+P( \operatorname{rating}  \leq  \operatorname{4} ) &= \Phi[\alpha_{4} + \beta_{1}(\operatorname{temp}_{\operatorname{warm}})\ + \\
+&\qquad\ \beta_{2}(\operatorname{contact}_{\operatorname{yes}}) + \beta_{3}(\operatorname{temp}_{\operatorname{warm}} \times \operatorname{contact}_{\operatorname{yes}})]
+\end{aligned}"
+"equatiomatic-docs","vignettes/equatiomatic.Rmd","\operatorname{Sepal.Length} = \alpha + \beta_{1}(\operatorname{Sepal.Width}) + \epsilon
+\operatorname{Sepal.Length} = \alpha + \beta_{1}(\operatorname{Sepal.Width}) + \beta_{2}(\operatorname{Petal.Length}) + \epsilon
+\operatorname{Sepal.Length} = \alpha + \beta_{1}(\operatorname{Sepal.Width}) + \beta_{2}(\operatorname{Petal.Length}) + \beta_{3}(\operatorname{Sepal.Width} \times \operatorname{Petal.Length}) + \epsilon"
+"equatiomatic-docs","vignettes/forecast-arima.Rmd","(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) (y_{t} -\delta\operatorname{t}) = (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t}"
+"equatiomatic-docs","vignettes/forecast-arima.Rmd","\begin{alignat}{2}
+&\text{let}\quad &&y_{t} = \operatorname{y}_{\operatorname{0}} +\delta\operatorname{t} +\beta_{1}\operatorname{x1}_{\operatorname{t}} +\beta_{2}\operatorname{x2}_{\operatorname{t}} +\eta_{t} \\
+&\text{where}\quad  &&(1 -\phi_{1}\operatorname{B} )\ (1 -\Phi_{1}\operatorname{B}^{\operatorname{4}} )\ (1 - \operatorname{B}) \eta_{t}  \\
+& &&= (1 +\theta_{1}\operatorname{B} )\ (1 +\Theta_{1}\operatorname{B}^{\operatorname{4}} )\ \varepsilon_{t} \\
+&\text{where}\quad &&\varepsilon_{t} \sim{WN(0, \sigma^{2})}
+\end{alignat}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{female}) + \beta_{2}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\alpha_{j[i]} + \beta_{1}(\operatorname{female}) + \beta_{2}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{female})\ + \\
+&\quad \beta_{2}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1}(\operatorname{wave}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{female}) + \beta_{2}(\operatorname{ses}) + \beta_{3j[i]}(\operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{3j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{3j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{3j}} \\ 
+     \rho_{\beta_{3j}\alpha_{j}} & \sigma^2_{\beta_{3j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{female}) + \beta_{2j[i]}(\operatorname{ses}) + \beta_{3}(\operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{female}) + \beta_{2j[i]}(\operatorname{ses}) + \beta_{3j[i]}(\operatorname{minority}) + \beta_{4j[i]}(\operatorname{female} \times \operatorname{ses}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j} \\
+      &\beta_{3j} \\
+      &\beta_{4j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}} \\
+      &\mu_{\beta_{3j}} \\
+      &\mu_{\beta_{4j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} & \rho_{\alpha_{j}\beta_{3j}} & \rho_{\alpha_{j}\beta_{4j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} & \rho_{\beta_{1j}\beta_{3j}} & \rho_{\beta_{1j}\beta_{4j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}} & \rho_{\beta_{2j}\beta_{3j}} & \rho_{\beta_{2j}\beta_{4j}} \\ 
+     \rho_{\beta_{3j}\alpha_{j}} & \rho_{\beta_{3j}\beta_{1j}} & \rho_{\beta_{3j}\beta_{2j}} & \sigma^2_{\beta_{3j}} & \rho_{\beta_{3j}\beta_{4j}} \\ 
+     \rho_{\beta_{4j}\alpha_{j}} & \rho_{\beta_{4j}\beta_{1j}} & \rho_{\beta_{4j}\beta_{2j}} & \rho_{\beta_{4j}\beta_{3j}} & \sigma^2_{\beta_{4j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{prop\_low}) \\
+      &\mu_{\beta_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{dist\_mean}) \\
+      &\mu_{\beta_{1l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1}(\operatorname{minority}) + \beta_{2}(\operatorname{female}) + \beta_{3}(\operatorname{female} \times \operatorname{minority}) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\alpha_{j[i]}, \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{meanses}) + \gamma_{2}^{\alpha}(\operatorname{sector}) + \gamma_{3}^{\alpha}(\operatorname{meanses} \times \operatorname{sector}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1}(\operatorname{wave}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) + \gamma_{2}^{\alpha}(\operatorname{treatment}_{\operatorname{1}} \times \operatorname{wave}), \sigma^2_{\alpha_{j}} \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\mu_{\alpha_{k}}, \sigma^2_{\alpha_{k}} \right)
+    \text{, for school k = 1,} \dots \text{,K} \\
+    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i]} + \beta_{1j[i],k[i],l[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{group}_{\operatorname{low}}) + \gamma_{2}^{\alpha}(\operatorname{group}_{\operatorname{medium}}) + \gamma_{3l[i]}^{\alpha}(\operatorname{treatment}_{\operatorname{1}}) + \gamma_{4}^{\alpha}(\operatorname{group}_{\operatorname{low}} \times \operatorname{treatment}_{\operatorname{1}}) + \gamma_{5}^{\alpha}(\operatorname{group}_{\operatorname{medium}} \times \operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{group}_{\operatorname{low}}) + \gamma^{\beta_{1}}_{2}(\operatorname{group}_{\operatorname{medium}}) + \gamma^{\beta_{1}}_{3}(\operatorname{treatment}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{4}(\operatorname{group}_{\operatorname{low}} \times \operatorname{treatment}_{\operatorname{1}}) + \gamma^{\beta_{1}}_{5}(\operatorname{group}_{\operatorname{medium}} \times \operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{prop\_low}) + \gamma_{2}^{\alpha}(\operatorname{prop\_low} \times \operatorname{treatment}_{\operatorname{1}}) \\
+      &\gamma^{\beta_{1}}_{0} + \gamma^{\beta_{1}}_{1}(\operatorname{prop\_low}) + \gamma^{\beta_{1}}_{1}(\operatorname{prop\_low} \times \operatorname{treatment}_{\operatorname{1}})
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l} \\
+      &\gamma_{3l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{l}} \\
+      &\mu_{\beta_{1l}} \\
+      &\mu_{\gamma_{3l}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{ccc}
+     \sigma^2_{\alpha_{l}} & \rho_{\alpha_{l}\beta_{1l}} & \rho_{\alpha_{l}\gamma_{3l}} \\ 
+     \rho_{\beta_{1l}\alpha_{l}} & \sigma^2_{\beta_{1l}} & \rho_{\beta_{1l}\gamma_{3l}} \\ 
+     \rho_{\gamma_{3l}\alpha_{l}} & \rho_{\gamma_{3l}\beta_{1l}} & \sigma^2_{\gamma_{3l}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{minority}) + \beta_{2j[i]}(\operatorname{female}) + \beta_{3j[i]}(\operatorname{female} \times \operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j} \\
+      &\beta_{3j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}} \\
+      &\mu_{\beta_{3j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{j}} & 0 & 0 & 0 \\ 
+     0 & \sigma^2_{\beta_{1j}} & 0 & 0 \\ 
+     0 & 0 & \sigma^2_{\beta_{2j}} & 0 \\ 
+     0 & 0 & 0 & \sigma^2_{\beta_{3j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{math}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i],k[i]} + \beta_{1j[i]}(\operatorname{minority}) + \beta_{2k[i]}(\operatorname{female}) + \beta_{3}(\operatorname{female} \times \operatorname{minority}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{2k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{2k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{2k}} \\ 
+     \rho_{\beta_{2k}\alpha_{k}} & \sigma^2_{\beta_{2k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sch.id.1 k = 1,} \dots \text{,K}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{score}_{i}  &\sim N \left(\alpha_{j[i],k[i],l[i],m[i]} + \beta_{1j[i],k[i],m[i]}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{j}} & 0 \\ 
+     0 & \sigma^2_{\beta_{1j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{k}} \\
+      &\mu_{\beta_{1k}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{k}} & \rho_{\alpha_{k}\beta_{1k}} \\ 
+     \rho_{\beta_{1k}\alpha_{k}} & \sigma^2_{\beta_{1k}}
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    \alpha_{l}  &\sim N \left(\mu_{\alpha_{l}}, \sigma^2_{\alpha_{l}} \right)
+    \text{, for school.1 l = 1,} \dots \text{,L} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{m} \\
+      &\beta_{1m}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{m}} \\
+      &\mu_{\beta_{1m}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     \sigma^2_{\alpha_{m}} & 0 \\ 
+     0 & \sigma^2_{\beta_{1m}}
+  \end{array}
+\right)
+ \right)
+    \text{, for district m = 1,} \dots \text{,M}
+\end{aligned}"
+"equatiomatic-docs","vignettes/lme4-lmer.Rmd","\begin{aligned}
+  \operatorname{\widehat{score}}_{i}  &\sim N \left(-20.6_{\alpha_{j[i],k[i],l[i]}} + 0.17_{\beta_{1j[i],k[i],l[i]}}(\operatorname{wave}), \sigma^2 \right) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &-5.23_{\gamma_{1}^{\alpha}}(\operatorname{group}_{\operatorname{low}}) - 4.03_{\gamma_{2}^{\alpha}}(\operatorname{group}_{\operatorname{medium}}) - 1.97_{\gamma_{3}^{\alpha}}(\operatorname{treatment}_{\operatorname{1}}) \\
+      &0
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     9.29 & -0.2 \\ 
+     -0.2 & 0.29
+  \end{array}
+\right)
+ \right)
+    \text{, for sid j = 1,} \dots \text{,J} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{k} \\
+      &\beta_{1k}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &12.81_{\gamma_{1}^{\alpha}}(\operatorname{prop\_low}) \\
+      &0
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     2.84 & 1 \\ 
+     1 & 0
+  \end{array}
+\right)
+ \right)
+    \text{, for school k = 1,} \dots \text{,K} \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{l} \\
+      &\beta_{1l}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &1.21_{\gamma_{1}^{\alpha}}(\operatorname{dist\_mean}) \\
+      &0
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cc}
+     0 & -1 \\ 
+     -1 & 0
+  \end{array}
+\right)
+ \right)
+    \text{, for district l = 1,} \dots \text{,L}
+\end{aligned}"
+"equatiomatic-docs","vignettes/markdown-quarto.Rmd","\operatorname{Sepal.Length} = \alpha + \beta_{1}(\operatorname{Sepal.Width}) + \epsilon"
+"equatiomatic-docs","vignettes/plotting-integration.Rmd","\operatorname{\widehat{body\_mass\_g}} = 362.31 + 87.42(\operatorname{bill\_length\_mm})"
+"equatiomatic-docs","vignettes/plotting-integration.Rmd","\widehat{body\_mass\_g} = 362.31 + 87.42(bill\_length\_mm)"
+"equatiomatic-docs","man/extract_eq.Rd","\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon"
+"equatiomatic-docs","man/extract_eq.Rd","\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \beta_{3}(\operatorname{hp}) + \beta_{4}(\operatorname{drat}) + \beta_{5}(\operatorname{wt}) + \beta_{6}(\operatorname{qsec}) + \beta_{7}(\operatorname{vs}) + \beta_{8}(\operatorname{am}) + \beta_{9}(\operatorname{gear}) + \beta_{10}(\operatorname{carb}) + \epsilon"
+"equatiomatic-docs","man/extract_eq.Rd","\operatorname{body\_mass\_g} = \alpha + \beta_{1}(\operatorname{bill\_length\_mm}) + \beta_{2}(\operatorname{species}_{\operatorname{Chinstrap}}) + \beta_{3}(\operatorname{species}_{\operatorname{Gentoo}}) + \epsilon"
+"equatiomatic-docs","man/extract_eq.Rd","\operatorname{out} = \alpha + \beta_{1}(\operatorname{cat1}_{\operatorname{b}}) + \beta_{2}(\operatorname{cat1}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat2}_{\operatorname{B}}) + \beta_{4}(\operatorname{cat2}_{\operatorname{C}}) + \beta_{5}(\operatorname{cont1}) + \beta_{6}(\operatorname{cont2}) + \epsilon"
+"equatiomatic-docs","man/extract_eq.Rd","\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon"
+"equatiomatic-docs","man/extract_eq.Rd","\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \beta_{3}(\operatorname{hp})\ + \\
+&\quad \beta_{4}(\operatorname{drat}) + \beta_{5}(\operatorname{wt}) + \beta_{6}(\operatorname{qsec}) + \beta_{7}(\operatorname{vs})\ + \\
+&\quad \beta_{8}(\operatorname{am}) + \beta_{9}(\operatorname{gear}) + \beta_{10}(\operatorname{carb}) + \epsilon
+\end{aligned}"
+"equatiomatic-docs","man/extract_eq.Rd","\begin{aligned}
+\operatorname{mpg} &= \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \beta_{3}(\operatorname{hp})\ + \\
+&\quad \beta_{4}(\operatorname{drat}) + \beta_{5}(\operatorname{wt}) + \beta_{6}(\operatorname{qsec}) + \beta_{7}(\operatorname{vs})\ + \\
+&\quad \beta_{8}(\operatorname{am}) + \beta_{9}(\operatorname{gear}) + \beta_{10}(\operatorname{carb}) + \epsilon
+\end{aligned}"
+"equatiomatic-docs","man/extract_eq.Rd","\begin{aligned}
+\operatorname{\widehat{mpg}} &= 12.3 - 0.11(\operatorname{cyl})\ + \\
+&\quad 0.01(\operatorname{disp}) - 0.02(\operatorname{hp})\ + \\
+&\quad 0.79(\operatorname{drat}) - 3.72(\operatorname{wt})\ + \\
+&\quad 0.82(\operatorname{qsec}) + 0.32(\operatorname{vs})\ + \\
+&\quad 2.52(\operatorname{am}) + 0.66(\operatorname{gear})\ - \\
+&\quad 0.2(\operatorname{carb})
+\end{aligned}"
+"equatiomatic-docs","man/extract_eq.Rd","\begin{aligned}
+\operatorname{\widehat{mpg}} &= 12.3 + -0.11(\operatorname{cyl}) + 0.01(\operatorname{disp}) + -0.02(\operatorname{hp})\ + \\
+&\quad 0.79(\operatorname{drat}) + -3.72(\operatorname{wt}) + 0.82(\operatorname{qsec}) + 0.32(\operatorname{vs})\ + \\
+&\quad 2.52(\operatorname{am}) + 0.66(\operatorname{gear}) + -0.2(\operatorname{carb})
+\end{aligned}"
+"equatiomatic-docs","man/extract_eq.Rd","\begin{aligned}
+\operatorname{mpg} &= \alpha + \operatorname{cyl} + \operatorname{disp} + \operatorname{hp}\ + \\
+&\quad \operatorname{drat} + \operatorname{wt} + \operatorname{qsec} + \operatorname{vs}\ + \\
+&\quad \operatorname{am} + \operatorname{gear} + \operatorname{carb} + \epsilon
+\end{aligned}"
+"equatiomatic-docs","man/extract_eq.Rd","\begin{aligned}
+\log\left[ \frac { P( \operatorname{out} = \operatorname{1} ) }{ 1 - P( \operatorname{out} = \operatorname{1} ) } \right] &= \alpha + \beta_{1}(\operatorname{cat1}_{\operatorname{b}}) + \beta_{2}(\operatorname{cat1}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat2}_{\operatorname{B}})\ + \\
+&\quad \beta_{4}(\operatorname{cat2}_{\operatorname{C}}) + \beta_{5}(\operatorname{cont1}) + \beta_{6}(\operatorname{cont2})
+\end{aligned}"
+"equatiomatic-docs","man/extract_eq.Rd","\begin{aligned}
+\operatorname{logit}\left[ P(\operatorname{out}) \right] &= \alpha + \beta_{1}(\operatorname{cat1}_{\operatorname{b}}) + \beta_{2}(\operatorname{cat1}_{\operatorname{c}}) + \beta_{3}(\operatorname{cat2}_{\operatorname{B}})\ + \\
+&\quad \beta_{4}(\operatorname{cat2}_{\operatorname{C}}) + \beta_{5}(\operatorname{cont1}) + \beta_{6}(\operatorname{cont2})
+\end{aligned}"

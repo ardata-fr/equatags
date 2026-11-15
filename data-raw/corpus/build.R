@@ -5,12 +5,15 @@
 # - word_ok: transform_mathjax(to = "mml") writes a non-empty equation.
 # The result of the checks is the expected result of the tests; the
 # equations that fail have a reason. Also writes corpus.rds (all columns).
-# Run from this folder, after the sources:
-#   Rscript sources/equatiomatic.R  # sources of equatiomatic in ~/gitprojects/opensource/equatiomatic
-#   Rscript sources/classics.R
-#   python3 -I sources/matplotlib.py
-#   Rscript build.R
-pkgload::load_all("../..", quiet = TRUE)
+# Run from the root of the package, after the sources:
+#   Rscript data-raw/corpus/sources/classics.R
+#   Rscript data-raw/corpus/sources/probes.R
+#   python3 -I data-raw/corpus/sources/matplotlib.py
+#   Rscript data-raw/corpus/build.R
+# The equations of equatiomatic are read in sources/raw/equatiomatic.csv,
+# kept in git (see sources/equatiomatic.R to make it again).
+stopifnot("run from the root of the package" = file.exists("DESCRIPTION") && dir.exists("data-raw"))
+pkgload::load_all(quiet = TRUE)
 
 rows <- list()
 add <- function(source, ref, category, display, tex, license, note = "") {
@@ -20,14 +23,15 @@ add <- function(source, ref, category, display, tex, license, note = "") {
   )
 }
 
-# equatiomatic: tests and documentation (MIT) --------------------------------
-eqm <- readRDS("sources/equatiomatic.rds")
+# equatiomatic: tests and documentation (CC BY 4.0) --------------------------
+eqm <- utils::read.csv("data-raw/corpus/sources/raw/equatiomatic.csv",
+  stringsAsFactors = FALSE, encoding = "UTF-8")
 for (i in seq_len(nrow(eqm))) {
   add(eqm$source[i], eqm$ref[i], "models (equatiomatic)", TRUE, eqm$tex[i], "CC BY 4.0 (equatiomatic)")
 }
 
 # KaTeX screenshot tests (MIT) -----------------------------------------------
-ss <- yaml::read_yaml("sources/raw/katex_ss_data.yaml")
+ss <- yaml::read_yaml("data-raw/corpus/sources/raw/katex_ss_data.yaml")
 for (nm in names(ss)) {
   v <- ss[[nm]]
   if (is.character(v)) {
@@ -45,7 +49,7 @@ for (nm in names(ss)) {
 
 # matplotlib mathtext tests (matplotlib license, BSD style) ------------------
 # each $...$ of an expression (text outside is dropped); \$ is a dollar
-mpl <- utils::read.delim("sources/matplotlib.tsv", quote = "", stringsAsFactors = FALSE, encoding = "UTF-8")
+mpl <- utils::read.delim("data-raw/corpus/sources/matplotlib.tsv", quote = "", stringsAsFactors = FALSE, encoding = "UTF-8")
 for (i in seq_len(nrow(mpl))) {
   x <- gsub("\\\\\\$", "", mpl$expression[i])
   seg <- regmatches(x, gregexpr("\\$[^$]*\\$", x))[[1]]
@@ -59,7 +63,7 @@ for (i in seq_len(nrow(mpl))) {
 }
 
 # classic formulas (written for the corpus) ---------------------------------
-cl <- readRDS("sources/classics.rds")
+cl <- readRDS("data-raw/corpus/sources/classics.rds")
 for (i in seq_len(nrow(cl))) {
   add("classics", cl$ref[i], cl$category[i], cl$display[i], cl$tex[i], "written for the corpus")
 }
@@ -82,6 +86,14 @@ for (nm in names(word)) {
   add("equatags-word", paste0("compared with Word: ", nm), "word comparison", TRUE, word[[nm]], "written for the corpus")
 }
 
+# constructs compared with the HTML output of KaTeX, inline and display ---
+pr <- readRDS("data-raw/corpus/sources/probes.rds")
+for (display in c(FALSE, TRUE)) {
+  for (i in seq_len(nrow(pr))) {
+    add("equatags-probes", pr$ref[i], "constructs (probes)", display, pr$tex[i], "written for the corpus")
+  }
+}
+
 corpus <- do.call(rbind, rows)
 corpus$tex <- trimws(corpus$tex)
 corpus <- corpus[nzchar(corpus$tex), ]
@@ -90,13 +102,17 @@ corpus <- corpus[!duplicated(paste(corpus$display, corpus$tex)), ]
 corpus$id <- sprintf("%s-%03d", corpus$source, stats::ave(seq_len(nrow(corpus)), corpus$source, FUN = seq_along))
 
 # checks: the same functions as the tests ----------------------------------
-source("../../tests/testthat/helper-corpus.R")
+source("tests/testthat/helper-corpus.R")
 checks <- do.call(rbind, Map(corpus_check, corpus$tex, corpus$display))
 corpus <- cbind(corpus, checks)
 rownames(corpus) <- NULL
 
 # reasons of the expected failures
-reason_of <- function(ref, source) {
+reason_of <- function(ref, source, display) {
+  if (source == "equatags-probes") {
+    r <- pr[[if (display) "display" else "inline"]][pr$ref == ref]
+    return(if (nzchar(r)) r else "unknown")
+  }
   name <- sub("^ss_data.yaml: ", "", ref)
   if (source == "matplotlib-tests") return("mathtext dialect of matplotlib, not LaTeX")
   if (name %in% c("HorizontalBrackets", "Mapsfrom", "MathSfIt", "Reflectbox",
@@ -108,8 +124,17 @@ reason_of <- function(ref, source) {
 }
 failing <- !corpus$size_ok | !corpus$word_ok
 corpus$reason <- ""
-corpus$reason[failing] <- mapply(reason_of, corpus$ref[failing], corpus$source[failing])
-stopifnot(!any(corpus$reason == "unknown"))
+corpus$reason[failing] <- mapply(reason_of, corpus$ref[failing], corpus$source[failing], corpus$display[failing])
+if (any(corpus$reason == "unknown")) {
+  print(corpus[corpus$reason == "unknown", c("source", "ref", "display", "tex")])
+  stop("expected failures without a reason")
+}
+# a probe given a reason must fail
+probes <- corpus$source == "equatags-probes"
+expected <- mapply(function(ref, display) {
+  nzchar(pr[[if (display) "display" else "inline"]][pr$ref == ref])
+}, corpus$ref[probes], corpus$display[probes])
+stopifnot(identical(unname(expected), failing[probes]))
 
 # equations also tested on CRAN: the first two of each category that pass
 ok <- !failing
@@ -119,10 +144,10 @@ for (cat in unique(corpus$category)) {
 }
 corpus$cran[is.na(corpus$cran)] <- FALSE
 
-saveRDS(corpus, "corpus.rds")
+saveRDS(corpus, "data-raw/corpus/corpus.rds")
 fixture <- corpus[, c("id", "source", "ref", "category", "display", "tex",
   "size_ok", "word_ok", "reason", "cran")]
-utils::write.csv(fixture, "../../tests/testthat/fixtures/corpus.csv",
+utils::write.csv(fixture, "tests/testthat/fixtures/corpus.csv",
   row.names = FALSE, fileEncoding = "UTF-8")
 
 cat("equations:", nrow(corpus), " expected failures:", sum(failing),

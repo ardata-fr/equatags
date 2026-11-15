@@ -1,9 +1,10 @@
 # Expressions of the list math_tests of matplotlib (lib/matplotlib/tests/
 # test_mathtext.py), read without running the file (ast). Writes
-# sources/matplotlib.tsv: index, expression (with its $ delimiters and text).
-# Run: python3 -I sources/matplotlib.py  (from data-raw/corpus)
+# data-raw/corpus/sources/matplotlib.tsv: index, expression (with its $
+# delimiters and text).
+# Run from the root of the package: python3 -I data-raw/corpus/sources/matplotlib.py
 import ast, csv
-tree = ast.parse(open("sources/raw/matplotlib_test_mathtext.py", encoding="utf-8").read())
+tree = ast.parse(open("data-raw/corpus/sources/raw/matplotlib_test_mathtext.py", encoding="utf-8").read())
 items = None
 for node in tree.body:
     target = None
@@ -13,7 +14,7 @@ for node in tree.body:
         target = node.target.id
     if target == "math_tests":
         items = ast.literal_eval(node.value)
-with open("sources/matplotlib.tsv", "w", newline="", encoding="utf-8") as f:
+with open("data-raw/corpus/sources/matplotlib.tsv", "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f, delimiter="\t")
     w.writerow(["index", "expression"])
     for i, x in enumerate(items):

@@ -1,6 +1,6 @@
-# Regression tests on a corpus of 457 equations (fixtures/corpus.csv, see
+# Regression tests on a corpus of 583 equations (fixtures/corpus.csv, see
 # fixtures/README.md): models written by equatiomatic, tests of KaTeX and
-# matplotlib, classic formulas.
+# matplotlib, classic formulas, constructs hard to lay out.
 #
 # - robustness: each equation is measured and converted to Word, or fails,
 #   as expected (columns size_ok and word_ok); on CRAN, two equations of

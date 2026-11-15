@@ -1,7 +1,8 @@
 # Classic formulas, written for this corpus (formulas are facts, the LaTeX is
 # ours); the reference is the page that gives the formula. Writes
 # sources/classics.rds: data.frame(source, ref, category, display, tex).
-# Run from data-raw/corpus: Rscript sources/classics.R
+# Run from the root of the package: Rscript data-raw/corpus/sources/classics.R
+stopifnot("run from the root of the package" = file.exists("DESCRIPTION") && dir.exists("data-raw"))
 w <- function(page) paste0("https://en.wikipedia.org/wiki/", page)
 x <- list(
   # statistics: distributions and estimators
@@ -90,5 +91,5 @@ out <- data.frame(
   tex = vapply(x, `[[`, "", 4),
   stringsAsFactors = FALSE
 )
-saveRDS(out, "sources/classics.rds")
+saveRDS(out, "data-raw/corpus/sources/classics.rds")
 cat(nrow(out), "formulas\n")
