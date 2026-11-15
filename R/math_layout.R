@@ -1827,6 +1827,25 @@ layout_lines <- function(lines, extra, f, st) {
 
 # LaTeX -> MathML of KaTeX -> box. KaTeX errors (unknown commands) are
 # raised here.
+# KaTeX writes an equation numbered with `\tag` in a table of one row: an
+# empty cell, the equation, an empty cell and the number. The number belongs
+# to the document, not to the equation: it is neither measured nor drawn,
+# the table is replaced by the equation (modifies `node`).
+drop_equation_number <- function(node) {
+  tbl <- xml2::xml_find_first(node, "./mtable[@width='100%']")
+  if (inherits(tbl, "xml_missing")) {
+    return(invisible(node))
+  }
+  cells <- xml2::xml_find_all(tbl, "./mtr/mtd")
+  if (length(cells) != 4L) {
+    return(invisible(node))
+  }
+  eq <- cells[[2]]
+  xml2::xml_set_name(eq, "mrow")
+  xml2::xml_replace(tbl, eq)
+  invisible(node)
+}
+
 layout_tex <- function(tex, f, display) {
   html <- fix_katex_mathml(
     katex_mathml(prepare_tex(tex), displayMode = display, macros = katex_macros)
@@ -1835,6 +1854,7 @@ layout_tex <- function(tex, f, display) {
   math <- xml2::xml_find_first(doc, "//math")
   sem <- xml2::xml_find_first(math, "./semantics")
   node <- if (!inherits(sem, "xml_missing")) sem else math
+  drop_equation_number(node)
   b <- layout_node(node, f, list(
     level = 0, display = display, cramped = FALSE, size = 1,
     katex_display = display, top_row = TRUE

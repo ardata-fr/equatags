@@ -71,7 +71,10 @@
 #'   those of 'KaTeX', not of Word;
 #' - in display style, limits asked with `\limits` in a fraction or a script
 #'   become scripts, as the limits of `\sum`: 'KaTeX' writes both in the
-#'   same way.
+#'   same way;
+#' - the number given by `\tag` is neither measured nor drawn: it belongs to
+#'   the document, not to the equation. Browsers put it in the right margin,
+#'   Word after the equation.
 #' @examples
 #' equation_size(c("\\frac{a+b}{c}", "x^2 + \\sqrt{y_i}"))
 #' equation_size("\\sum_{i=1}^{n} x_i", display = TRUE)

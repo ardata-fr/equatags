@@ -87,7 +87,10 @@ text;
 those of 'KaTeX', not of Word;
 \item in display style, limits asked with \verb{\\limits} in a fraction or a script
 become scripts, as the limits of \verb{\\sum}: 'KaTeX' writes both in the
-same way.
+same way;
+\item the number given by \verb{\\tag} is neither measured nor drawn: it belongs to
+the document, not to the equation. Browsers put it in the right margin,
+Word after the equation.
 }
 }
 

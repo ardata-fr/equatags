@@ -413,6 +413,23 @@ test_that("empty cells around numbered environments take no space", {
   expect_equal(s$width[3], s$width[1], tolerance = 0.2)
 })
 
+test_that("the number of \\tag is neither measured nor drawn", {
+  eqs <- c(
+    "E = mc^2", "E = mc^2 \\tag{A.2}",
+    "\\begin{aligned} a &= b \\\\ c &= d \\end{aligned}",
+    "\\begin{aligned} a &= b \\\\ c &= d \\end{aligned} \\tag*{(2)}"
+  )
+  s <- equation_size(eqs, display = TRUE)
+  expect_equal(s[2, ], s[1, ], ignore_attr = TRUE)
+  expect_equal(s[4, ], s[3, ], ignore_attr = TRUE)
+  skip_if(getRversion() < "4.3.0")
+  glyphs <- function(tex) {
+    equation_grob(tex, display = TRUE)$children$glyphs$glyphInfo$glyphs
+  }
+  expect_gt(nrow(glyphs(eqs[1])), 0)
+  expect_identical(glyphs(eqs[2]), glyphs(eqs[1]))
+})
+
 test_that("vertical bars used as delimiters are not spaced as relations", {
   s <- equation_size(c(
     "|x|", "\\lvert x \\rvert", "\\bigl| x \\bigr|", "\\left| x \\right|",
