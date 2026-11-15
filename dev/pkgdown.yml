@@ -3,8 +3,7 @@ pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   articles/size-and-drawing: size-and-drawing.html
-  articles/word-powerpoint-html: word-powerpoint-html.html
-last_built: 2026-11-15T15:09Z
+last_built: 2026-11-15T15:17Z
 urls:
   reference: https://ardata-fr.github.io/equatags/reference
   article: https://ardata-fr.github.io/equatags/articles

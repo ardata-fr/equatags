@@ -11,11 +11,8 @@
   [`equation_grob()`](https://ardata-fr.github.io/equatags/dev/reference/equation_grob.md)
   draws them with ‘grid’.
 
-The [documentation site](https://ardata-fr.github.io/equatags/) has two
-articles: [Equations in Word, PowerPoint and
-HTML](https://ardata-fr.github.io/equatags/articles/word-powerpoint-html.html)
-(insertion with ‘officer’, inline and display styles, size and colour)
-and [Size and drawing of
+The [documentation site](https://ardata-fr.github.io/equatags/) has an
+article on the [size and drawing of
 equations](https://ardata-fr.github.io/equatags/articles/size-and-drawing.html)
 (alignment on a baseline, ‘ggplot2’, ‘flextable’).
 
