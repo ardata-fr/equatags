@@ -124,10 +124,10 @@ test_that("arrows and braces are stretched to the width of their base", {
   expect_gt(under$depth, base$depth)
 })
 
-test_that("the arrow of xrightarrow is as wide as its label, 3 em at least", {
+test_that("the arrow of xrightarrow is as wide as its label, 1.75 em at least", {
   em <- 12 / 72
   short <- equation_size("\\xrightarrow{f}", display = TRUE)
-  expect_gte(short$width, 3 * em)
+  expect_gte(short$width, 1.75 * em)
   # the label at the script level
   label <- equation_size("\\scriptstyle\\text{a very long label}", display = TRUE)$width
   long <- equation_size("\\xrightarrow{\\text{a very long label}}", display = TRUE)

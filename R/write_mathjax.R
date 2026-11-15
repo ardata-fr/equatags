@@ -12,6 +12,7 @@ mml_to_ooml <- function(x) {
   doc <- read_xml(paste0(xml_header, "<equatags>", paste0(x, collapse = ""), "</equatags>"))
   doc <- prepare_mathml(doc)
   res <- xml_xslt(doc, mml2omml_stylesheet())
+  set_line_breaks(res)
   ooml <- vapply(xml_children(res), function(node) as.character(xml_new_root(node)), "")
   gsub(xml_header, "", ooml, fixed = TRUE)
 }
@@ -77,6 +78,22 @@ em_to_spaces <- function(width) {
 #' @importFrom xml2 xml_remove xml_name xml_text xml_set_attrs xml_attr
 #' @importFrom xml2 xml_set_attr xml_name<- xml_text<-
 prepare_mathml <- function(doc) {
+  # line breaks (\\, \newline) in the row of the equation: a marker, a run
+  # with a manual break after the stylesheet (see set_line_breaks()); the
+  # others (in a group, a fraction) are ignored, as in equation_size()
+  for (math in xml_find_all(doc, "//mml:math", ns = mml_ns)) {
+    row <- top_row(math)
+    for (node in xml_find_all(math, ".//mml:mspace[@linebreak='newline']", ns = mml_ns)) {
+      if (identical(xml2::xml_parent(node), row)) {
+        xml_name(node) <- "mtext"
+        xml_set_attrs(node, c(linebreak = NULL, height = NULL))
+        xml_text(node) <- line_break_marker
+      } else {
+        xml_remove(node)
+      }
+    }
+  }
+
   # vertical bars used as delimiters (|x|, \lvert, \left|): KaTeX writes
   # them with the characters of the relations \mid and \parallel, that Word
   # spaces as relations; the ASCII bar and the double vertical line are
@@ -200,6 +217,48 @@ xml_ns_uri <- function(node) {
 # both, the size of the symbols of a structure (fraction bar, sum sign,
 # radical) comes from `m:ctrlPr`; PowerPoint only needs the runs.
 #' @importFrom xml2 xml_root
+# Row of an equation: the semantics element of KaTeX, or the mrow that is
+# its only content (as in layout_row()).
+top_row <- function(math) {
+  node <- xml_find_first(math, "mml:semantics", ns = mml_ns)
+  if (inherits(node, "xml_missing")) node <- math
+  repeat {
+    kids <- xml_children(node)
+    kids <- kids[xml_name(kids) != "annotation"]
+    if (length(kids) != 1 || xml_name(kids[[1]]) != "mrow") break
+    node <- kids[[1]]
+  }
+  node
+}
+
+# Character marking a line break in the MathML given to the stylesheet (a
+# private use character, not written by KaTeX).
+line_break_marker <- "\ue000"
+
+# Equations with line break markers: their lines in the rows of an equation
+# array (m:eqArr), displayed in both inline and display equations; Word
+# centers the rows. Word ignores the manual breaks of Office Math (m:brk) in
+# these runs, and alignment points (m:aln) at the start of the rows.
+set_line_breaks <- function(res) {
+  marker_xpath <- sprintf("m:r[m:t = '%s']", line_break_marker)
+  for (math in xml_find_all(res, sprintf("//m:oMath[%s]", marker_xpath), ns = omml_ns)) {
+    kids <- xml_children(math)
+    is_break <- vapply(kids, function(k) {
+      xml_name(k, ns = omml_ns) == "m:r" && identical(xml_text(k), line_break_marker)
+    }, TRUE)
+    lines <- split(kids[!is_break], cumsum(is_break)[!is_break])
+    arr <- xml_add_child(math, "m:eqArr")
+    for (line in lines) {
+      e <- xml_add_child(arr, "m:e")
+      for (node in line) xml_add_child(e, node)
+    }
+    xml_remove(kids)
+  }
+  # markers that are not in the row of an equation
+  xml_remove(xml_find_all(res, sprintf("//%s", marker_xpath), ns = omml_ns))
+  invisible(res)
+}
+
 set_run_properties <- function(omml, rpr) {
   props <- parse_rpr(rpr)
   doc <- read_xml(omml)

@@ -127,3 +127,23 @@ test_that("Word equations: segments are overlines, \\label is removed", {
   x <- transform_mathjax(c("\\label{eq: m} y = x", "y = x"), to = "mml")
   expect_equal(x[1], x[2])
 })
+
+test_that("line breaks in the row of the equation are rows of an equation array", {
+  ns <- c(m = "http://schemas.openxmlformats.org/officeDocument/2006/math")
+  rows <- function(tex) {
+    doc <- xml2::read_xml(transform_mathjax(tex, to = "mml", display = TRUE))
+    xml2::xml_text(xml2::xml_find_all(doc, "/m:oMath/m:eqArr/m:e", ns = ns))
+  }
+  expect_equal(rows("a + b \\\\ c = d"), c("a+b", "c=d"))
+  expect_equal(rows("a \\newline b \\\\[1ex] c"), c("a", "b", "c"))
+  expect_length(rows("\\frac{1}{2} \\\\ x"), 2)
+  # in a group, the break is ignored, as in equation_size()
+  omml <- transform_mathjax("a+{b \\\\ c}+d", to = "mml")
+  expect_no_match(omml, "eqArr", fixed = TRUE)
+  expect_match(omml, "bc", fixed = TRUE)
+  expect_no_match(omml, "", fixed = TRUE)
+  # run properties are given to every line
+  omml <- transform_mathjax("a \\\\ b", to = "mml", rpr = "<w:rPr><w:sz w:val=\"28\"/></w:rPr>")
+  doc <- xml2::read_xml(omml)
+  expect_length(xml2::xml_find_all(doc, "//m:e/m:r/w:rPr", ns = c(ns, w = "http://schemas.openxmlformats.org/wordprocessingml/2006/main")), 2)
+})

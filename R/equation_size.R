@@ -62,7 +62,12 @@
 #'   a new line, aligned on the left, as in the HTML output of 'KaTeX'; the
 #'   baseline of the equation is the baseline of its first line. In a group
 #'   (`{a \\ b}`) or a fraction, it is ignored, as in 'KaTeX'. LaTeX
-#'   ignores these line breaks in math mode;
+#'   ignores these line breaks in math mode. Word centers the lines and,
+#'   in a sentence, puts the middle of the lines on the baseline of the
+#'   text;
+#' - Word ignores the sizing commands (`\tiny` to `\Huge`), `\raisebox`
+#'   and `\pmb`: the sizes given for equations using them are those of
+#'   'KaTeX', not of Word;
 #' - in display style, limits asked with `\limits` in a fraction or a script
 #'   become scripts, as the limits of `\sum`: 'KaTeX' writes both in the
 #'   same way.

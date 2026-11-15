@@ -972,7 +972,7 @@ layout_stretched_base <- function(base_node, under_node, over_node, f, st) {
   under <- if (!is.null(under_node)) layout_node(under_node, f, with_style(ss, cramped = TRUE))
   ch <- xml2::xml_text(base_node)
   target <- max(
-    em_value(xml2::xml_attr(base_node, "minsize"), f, st),
+    xarrow_min_width(base_node, f, st),
     if (!is.null(over)) over$w else 0,
     if (!is.null(under)) under$w else 0
   )
@@ -993,6 +993,23 @@ layout_stretched_base <- function(base_node, under_node, over_node, f, st) {
   b$cls <- mo_class(ch, base_node)
   b$is_char <- FALSE
   b
+}
+
+# Minimum width of a stretched arrow (\xrightarrow). KaTeX 0.16.9 means to
+# write minsize="1.75em" for these arrows, but its test reads the first
+# character of the command ("\\") instead of "x" and it always writes
+# "3.0em": its HTML output uses the shorter arrows. The arrows of the CD
+# environment (@>>>, @=) are written the same way and are 3 em long in the
+# HTML of KaTeX: they are told apart by the table of CD, the only one with
+# these spacings.
+xarrow_min_width <- function(node, f, st) {
+  ms <- xml2::xml_attr(node, "minsize")
+  table <- xml2::xml_find_first(node, "ancestor::mtable[1]")
+  in_cd <- !inherits(table, "xml_missing") &&
+    identical(xml2::xml_attr(table, "columnspacing"), "0.5em") &&
+    identical(xml2::xml_attr(table, "rowspacing"), "0.25em")
+  if (identical(ms, "3.0em") && !in_cd) ms <- "1.75em"
+  em_value(ms, f, st)
 }
 
 # --- stretchy delimiters --------------------------------------------------------
@@ -1325,8 +1342,11 @@ layout_table <- function(node, f, st) {
   }, 0)
   # minimum height of the rows, as the strut of TeX and KaTeX (arrayskip of
   # 1.2 em, 70% above the baseline, 30% below); the space between rows is in
-  # the strut, `rowspacing` is not used
-  skip <- 1.2 * em_size(f, st)
+  # the strut, `rowspacing` is not used; smallmatrix, subarray and \substack
+  # (rowspacing of 0.1 em in the MathML of KaTeX) have an \arraystretch of
+  # 0.5, as in KaTeX
+  stretch <- if (identical(xml2::xml_attr(node, "rowspacing"), "0.1em")) 0.5 else 1
+  skip <- 1.2 * stretch * em_size(f, st)
   row_h <- vapply(cells, function(r) max(c(0.7 * skip, vapply(r, function(cell) cell$h, 0))), 0)
   row_d <- vapply(cells, function(r) max(c(0.3 * skip, vapply(r, function(cell) cell$d, 0))), 0)
   col_space <- column_spacing(node, f, st)
@@ -1505,8 +1525,8 @@ layout_accent_under <- function(base_node, acc_node, f, st) {
 fbox_sep <- 0.3
 fbox_rule <- 0.04
 
-# menclose: frames (\boxed, \fbox) and strikes (\cancel, \bcancel, \xcancel,
-# \sout). Strikes do not change the size of the content, as with the LaTeX
+# menclose: frames (\boxed, \fbox), strikes (\cancel, \bcancel, \xcancel,
+# \sout), \angl and \phase. Strikes do not change the size of the content, as with the LaTeX
 # package 'cancel'; a frame adds its space and its rule on every side.
 # Notations not listed below are ignored: the content is laid out alone.
 layout_enclose <- function(node, kids, f, st) {
@@ -1528,6 +1548,13 @@ layout_enclose <- function(node, kids, f, st) {
   }
   if ("verticalstrike" %in% notation) {
     b$rules <- bind_items(b$rules, data.frame(x = (b$w - t) / 2, y = -b$d, w = t, h = b$h + b$d))
+  }
+
+  if ("actuarial" %in% notation) {
+    b <- actuarial_box(b, f, st)
+  }
+  if ("phasorangle" %in% notation) {
+    b <- phasor_box(b, f, st)
   }
 
   # frame
@@ -1583,6 +1610,51 @@ layout_enclose <- function(node, kids, f, st) {
   }
   b$cls <- "ord"
   b$is_char <- FALSE
+  b
+}
+
+# \angl (actuarial angle): rules above and on the right of the content, as
+# in KaTeX: a rule of 0.04 em, 4 rules of space above the content, a depth
+# of at least 0.25 em, 0.03889 em of space on both sides inside the rules
+# and after them.
+actuarial_box <- function(b, f, st) {
+  s <- em_size(f, st)
+  rule <- 0.04 * s
+  above <- 4 * rule
+  below <- max(0, 0.25 * s - b$d)
+  pad <- 0.03889 * s
+  inner <- b$w + 2 * pad
+  top <- b$h + above
+  bottom <- -b$d - below
+  b <- shift_box(b, pad, 0)
+  b$rules <- bind_items(b$rules, data.frame(
+    x = c(0, inner), y = c(top, bottom), w = c(inner + rule, rule), h = c(rule, top + rule - bottom)
+  ))
+  b$w <- inner + rule + pad
+  b$h <- top + rule
+  b$d <- -bottom
+  b
+}
+
+# \phase (phasor angle): a rule below the content and a slanted rule on its
+# left, as in KaTeX: a rule of 0.6pt (0.06 em), 0.35 ex of space below the
+# content; the angle is as high as the content with this space and the rule,
+# its slanted side is half as wide.
+phasor_box <- function(b, f, st) {
+  s <- em_size(f, st)
+  rule <- 0.06 * s
+  gap <- 0.35 * 0.431 * s
+  angle_h <- b$h + b$d + rule + gap
+  dx <- angle_h / 2 + rule
+  bottom <- -(b$d + rule + gap)
+  b <- shift_box(b, dx, 0)
+  w <- b$w + dx
+  b$rules <- bind_items(b$rules, data.frame(x = 0, y = bottom, w = w, h = rule))
+  b$lines <- bind_items(b$lines, data.frame(
+    x0 = rule / 2, y0 = bottom, x1 = angle_h / 2 + rule / 2, y1 = bottom + angle_h, thickness = rule
+  ))
+  b$w <- w
+  b$d <- -bottom
   b
 }
 

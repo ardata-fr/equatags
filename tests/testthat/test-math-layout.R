@@ -329,10 +329,10 @@ test_that("hooked arrows are stretched with the assembly of the font", {
   f <- stix()
   for (tex in c("\\xhookrightarrow{f}", "\\xhookleftarrow{f}")) {
     b <- layout_equation(tex, f)
-    # the arrow is made of several parts, 3 em long (minsize) less the side
+    # the arrow is made of several parts, 1.75 em long less the side
     # bearings of its ends; with a long label, as wide as \xrightarrow
     expect_gt(nrow(b$glyphs), 2, label = tex)
-    expect_gt(b$w, 2.5 * f$upem, label = tex)
+    expect_gt(b$w, 1.5 * f$upem, label = tex)
     expect_equal(
       layout_equation(sub("f}", "abcdefghij}", tex, fixed = TRUE), f)$w,
       layout_equation(sub("hook", "", sub("f}", "abcdefghij}", tex, fixed = TRUE)), f)$w,
@@ -617,4 +617,46 @@ test_that("\\big| is an ordinary atom: no space around it", {
   b <- layout_equation("x\\big|y", f)
   bar <- layout_equation("\\big|", f)
   expect_equal(b$w, layout_equation("x", f)$w + bar$w + layout_equation("y", f)$w)
+})
+
+test_that("\\angl draws rules above and on the right, as in KaTeX", {
+  f <- stix()
+  em <- f$upem
+  n <- layout_equation("\\angl{n}", f)
+  x <- layout_equation("\\text{n}", f)
+  rule <- 0.04 * em
+  expect_equal(nrow(n$rules), 2)
+  expect_equal(n$w, x$w + 2 * 0.03889 * em + rule + 0.03889 * em)
+  expect_equal(n$h, x$h + 5 * rule)
+  expect_equal(n$d, max(x$d, 0.25 * em))
+})
+
+test_that("\\phase draws a rule below and a slanted rule on the left, as in KaTeX", {
+  f <- stix()
+  em <- f$upem
+  p <- layout_equation("\\phase{x}", f)
+  x <- layout_equation("x", f)
+  rule <- 0.06 * em
+  gap <- 0.35 * 0.431 * em
+  angle_h <- x$h + x$d + rule + gap
+  expect_equal(p$w, x$w + angle_h / 2 + rule)
+  expect_equal(p$d, x$d + rule + gap)
+  expect_equal(nrow(p$lines), 1)
+  expect_equal(p$lines$y1 - p$lines$y0, angle_h)
+})
+
+test_that("stretched arrows are at least 1.75 em wide, as in the HTML of KaTeX", {
+  f <- stix()
+  b <- layout_equation("\\xrightarrow{}", f)
+  expect_gte(b$w, 1.75 * f$upem)
+  expect_lt(b$w, 2 * f$upem)
+})
+
+test_that("rows of smallmatrix, subarray and \\substack are closer", {
+  f <- stix()
+  small <- layout_equation("\\begin{smallmatrix} a \\\\ b \\end{smallmatrix}", f)
+  sub <- layout_equation("\\begin{subarray}{c} a \\\\ b \\end{subarray}", f)
+  scripts <- layout_equation("\\scriptstyle\\begin{matrix} a \\\\ b \\end{matrix}", f)
+  expect_lt(small$h + small$d, scripts$h + scripts$d)
+  expect_equal(small$h + small$d, sub$h + sub$d)
 })
