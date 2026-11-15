@@ -2085,7 +2085,7 @@ i^{i^{\Huge x}_y}_{\Huge z} +
 "katex-tests-038","katex-tests","ss_data.yaml: GroupMacros","katex features",FALSE,"\startExp a+b\endExp",FALSE,FALSE,"macros defined by the KaTeX test",FALSE
 "katex-tests-039","katex-tests","ss_data.yaml: HorizontalBraces","katex features",FALSE,"\overbrace{\displaystyle{\oint_S{\vec E\cdot\hat n\,\mathrm d a}}}^\text{emf} = \underbrace{\frac{q_{\text{enc}}}{\varepsilon_0}}_{\text{charge}}",TRUE,TRUE,"",FALSE
 "katex-tests-040","katex-tests","ss_data.yaml: HorizontalBrackets","katex features",FALSE,"\overbracket{\displaystyle{a+b+c}}^{\text{note}} = \underbracket{x+y+z}_{\text{label}}",FALSE,FALSE,"command added to KaTeX after 0.16.9",FALSE
-"katex-tests-041","katex-tests","ss_data.yaml: HTML","katex features",FALSE,"\htmlId{a}{a+}b\htmlStyle{color:red;}{+c}",FALSE,TRUE,"HTML extension of KaTeX, disabled",FALSE
+"katex-tests-041","katex-tests","ss_data.yaml: HTML","katex features",FALSE,"\htmlId{a}{a+}b\htmlStyle{color:red;}{+c}",TRUE,TRUE,"",FALSE
 "katex-tests-042","katex-tests","ss_data.yaml: Includegraphics","katex features",FALSE,"\def\logo{\includegraphics[height=0.8em, totalheight=0.9em, width=0.9em, alt=KA logo]{../../website/static/img/khan-academy.png}}
 \def\logoB{\includegraphics[height=0.4em, totalheight=0.9em, width=0.9em, alt=KA logo]{../../website/static/img/khan-academy.png}}
 \begin{array}{l}
@@ -2383,7 +2383,7 @@ a+b+c+d\overset{b+c=0}\longrightarrow a+d\\
 "matplotlib-tests-062","matplotlib-tests","test_mathtext.py: math_tests[64]","mathtext features",FALSE,"\left(2 \, a=b\right)",TRUE,TRUE,"",FALSE
 "matplotlib-tests-063","matplotlib-tests","test_mathtext.py: math_tests[65]","mathtext features",FALSE,"? ! &",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
 "matplotlib-tests-064","matplotlib-tests","test_mathtext.py: math_tests[68]","mathtext features",FALSE,"\left\Vert \frac{a}{b} \right\Vert \left\vert \frac{a}{b} \right\vert \left\| \frac{a}{b}\right\| \left| \frac{a}{b} \right| \Vert a \Vert \vert b \vert \| a \| | b |",TRUE,TRUE,"",FALSE
-"matplotlib-tests-065","matplotlib-tests","test_mathtext.py: math_tests[69]","mathtext features",FALSE,"\mathring{A}  \AA",FALSE,TRUE,"mathtext dialect of matplotlib, not LaTeX",FALSE
+"matplotlib-tests-065","matplotlib-tests","test_mathtext.py: math_tests[69]","mathtext features",FALSE,"\mathring{A}  \AA",TRUE,TRUE,"",FALSE
 "matplotlib-tests-066","matplotlib-tests","test_mathtext.py: math_tests[70]","mathtext features",FALSE,"M \, M \thinspace M \/ M \> M \: M \; M \ M \enspace M \quad M \qquad M \! M",FALSE,FALSE,"mathtext dialect of matplotlib, not LaTeX",FALSE
 "matplotlib-tests-067","matplotlib-tests","test_mathtext.py: math_tests[71] part 1","mathtext features",FALSE,"\Cap",TRUE,TRUE,"",FALSE
 "matplotlib-tests-068","matplotlib-tests","test_mathtext.py: math_tests[71] part 2","mathtext features",FALSE,"\Cup",TRUE,TRUE,"",FALSE
@@ -2534,7 +2534,7 @@ a+b+c+d\overset{b+c=0}\longrightarrow a+d\\
 "equatags-probes-038","equatags-probes","negations","constructs (probes)",FALSE,"\not= \neq \notin \nsubseteq \nless",TRUE,TRUE,"",FALSE
 "equatags-probes-039","equatags-probes","math classes","constructs (probes)",FALSE,"\mathrel{\#} \mathbin{\star} \mathop{\Pi} \mathpunct{,} \mathinner{x} \mathopen{(} \mathclose{)}",TRUE,TRUE,"",FALSE
 "equatags-probes-040","equatags-probes","links","constructs (probes)",FALSE,"\href{https://a.b}{link} \url{https://a.b}",TRUE,TRUE,"",FALSE
-"equatags-probes-041","equatags-probes","html","constructs (probes)",FALSE,"\htmlStyle{color:red}{x} \htmlClass{c}{y}",FALSE,TRUE,"HTML extension of KaTeX, disabled",FALSE
+"equatags-probes-041","equatags-probes","html","constructs (probes)",FALSE,"\htmlStyle{color:red}{x} \htmlClass{c}{y}",TRUE,TRUE,"",FALSE
 "equatags-probes-042","equatags-probes","char","constructs (probes)",FALSE,"\char""263a \yen \pounds",TRUE,TRUE,"",FALSE
 "equatags-probes-043","equatags-probes","euro","constructs (probes)",FALSE,"\euro",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
 "equatags-probes-044","equatags-probes","unicode","constructs (probes)",FALSE,"\unicode{x263A}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
@@ -2597,7 +2597,7 @@ a+b+c+d\overset{b+c=0}\longrightarrow a+d\\
 "equatags-probes-101","equatags-probes","negations","constructs (probes)",TRUE,"\not= \neq \notin \nsubseteq \nless",TRUE,TRUE,"",FALSE
 "equatags-probes-102","equatags-probes","math classes","constructs (probes)",TRUE,"\mathrel{\#} \mathbin{\star} \mathop{\Pi} \mathpunct{,} \mathinner{x} \mathopen{(} \mathclose{)}",TRUE,TRUE,"",FALSE
 "equatags-probes-103","equatags-probes","links","constructs (probes)",TRUE,"\href{https://a.b}{link} \url{https://a.b}",TRUE,TRUE,"",FALSE
-"equatags-probes-104","equatags-probes","html","constructs (probes)",TRUE,"\htmlStyle{color:red}{x} \htmlClass{c}{y}",FALSE,TRUE,"HTML extension of KaTeX, disabled",FALSE
+"equatags-probes-104","equatags-probes","html","constructs (probes)",TRUE,"\htmlStyle{color:red}{x} \htmlClass{c}{y}",TRUE,TRUE,"",FALSE
 "equatags-probes-105","equatags-probes","char","constructs (probes)",TRUE,"\char""263a \yen \pounds",TRUE,TRUE,"",FALSE
 "equatags-probes-106","equatags-probes","euro","constructs (probes)",TRUE,"\euro",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE
 "equatags-probes-107","equatags-probes","unicode","constructs (probes)",TRUE,"\unicode{x263A}",FALSE,FALSE,"command not supported by KaTeX 0.16.9",FALSE

@@ -49,7 +49,7 @@ x <- list(
   list("negations", r"(\not= \neq \notin \nsubseteq \nless)"),
   list("math classes", r"(\mathrel{\#} \mathbin{\star} \mathop{\Pi} \mathpunct{,} \mathinner{x} \mathopen{(} \mathclose{)})"),
   list("links", r"(\href{https://a.b}{link} \url{https://a.b})"),
-  list("html", r"(\htmlStyle{color:red}{x} \htmlClass{c}{y})", "HTML extension of KaTeX, disabled"),
+  list("html", r"(\htmlStyle{color:red}{x} \htmlClass{c}{y})"),
   list("char", r"(\char"263a \yen \pounds)"),
   list("euro", r"(\euro)", unsupported),
   list("unicode", r"(\unicode{x263A})", unsupported),

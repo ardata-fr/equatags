@@ -118,7 +118,6 @@ reason_of <- function(ref, source, display) {
   if (name %in% c("HorizontalBrackets", "Mapsfrom", "MathSfIt", "Reflectbox",
                   "StrikeThrough", "StrikeThroughColor")) return("command added to KaTeX after 0.16.9")
   if (name == "GroupMacros") return("macros defined by the KaTeX test")
-  if (name == "HTML") return("HTML extension of KaTeX, disabled")
   if (name == "UnsupportedCmds") return("invalid commands, on purpose")
   "unknown"
 }

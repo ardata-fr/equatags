@@ -413,6 +413,12 @@ test_that("empty cells around numbered environments take no space", {
   expect_equal(s$width[3], s$width[1], tolerance = 0.2)
 })
 
+test_that("line breaks in display mode give no warning of KaTeX", {
+  expect_silent(equation_size("p_1 \\\\ q_1 \\newline r_1", display = TRUE))
+  skip_if(getRversion() < "4.3.0")
+  expect_silent(equation_grob("p_2 \\\\ q_2", display = TRUE))
+})
+
 test_that("the number of \\tag is neither measured nor drawn", {
   eqs <- c(
     "E = mc^2", "E = mc^2 \\tag{A.2}",

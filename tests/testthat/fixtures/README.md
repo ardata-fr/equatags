@@ -42,9 +42,9 @@
 
 ## Expected failures
 
-45 equations: commands added to KaTeX after 0.16.9 (the version of the
+41 equations: commands added to KaTeX after 0.16.9 (the version of the
 package 'katex') or not supported by it, macros defined by a KaTeX test,
-the HTML extension of KaTeX, environments of display mode used inline,
+environments of display mode used inline,
 invalid commands written on purpose, the mathtext dialect of matplotlib.
 When one of them starts to work (for example after an update of 'katex'),
 the test says so: run `data-raw/corpus/build.R` again.

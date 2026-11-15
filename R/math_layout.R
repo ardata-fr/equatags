@@ -1846,9 +1846,15 @@ drop_equation_number <- function(node) {
   invisible(node)
 }
 
+# strict = "ignore", as transform_mathjax(): no warning for the constructs
+# LaTeX does not accept but KaTeX supports, such as line breaks in display
+# mode.
 layout_tex <- function(tex, f, display) {
   html <- fix_katex_mathml(
-    katex_mathml(prepare_tex(tex), displayMode = display, macros = katex_macros)
+    katex_mathml(
+      prepare_tex(tex),
+      displayMode = display, macros = katex_macros, strict = "ignore"
+    )
   )
   doc <- xml2::read_html(html)
   math <- xml2::xml_find_first(doc, "//math")
