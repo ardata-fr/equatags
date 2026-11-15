@@ -1,4 +1,4 @@
-# equatags (development version)
+# equatags 0.4.0
 
 ## New features
 

@@ -2,7 +2,7 @@
 
 - local macOS install (R 4.6.1)
 - GitHub Actions: ubuntu-latest and windows-latest (R release)
-- win-builder (R release and devel) TODO
+- win-builder (R release and devel)
 
 ## R CMD check results
 
