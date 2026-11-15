@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">equatags</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.0.007</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.0.009</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,29 +40,34 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="equatags-development-version">equatags (development version)<a class="anchor" aria-label="anchor" href="#equatags-development-version"></a></h2>
 <div class="section level3">
-<h3 id="changes-that-can-modify-your-documents-development-version">Changes that can modify your documents<a class="anchor" aria-label="anchor" href="#changes-that-can-modify-your-documents-development-version"></a></h3>
-<ul><li>In Word and PowerPoint (<code>transform_mathjax(to = "mml")</code>), equations are now displayed inline by default, as documented: the argument <code>display</code> was ignored and every equation was displayed as a block (limits of sums above and below, larger fractions). Use <code>display = TRUE</code> to keep the previous result.</li>
-</ul></div>
-<div class="section level3">
 <h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
 <ul><li>
-<code><a href="../reference/equation_size.html">equation_size()</a></code> gives the width, height and depth of equations written in LaTeX, without drawing them and without a graphic device. Use it to size a cell, a column or an image before the document is opened. The result is the same on every machine, and close to what Word displays with the same font (see “Differences with Word and browsers” in <code><a href="../reference/equation_size.html">?equation_size</a></code>).</li>
+<code><a href="../reference/equation_size.html">equation_size()</a></code> measures equations (width, height and depth) without drawing them and without a graphic device, for example to size a table cell or an image before the document is written. The results are the same on every machine and close to what Word displays.</li>
 <li>
 <code><a href="../reference/equation_grob.html">equation_grob()</a></code> draws an equation in a ‘grid’ graphic, for example in a ‘ggplot2’ plot (R &gt;= 4.3).</li>
-<li>Both functions use the font “STIX Two Math” by default, shipped with ‘gdtools’; another math font can be given by its name or its file.</li>
-<li>Fractions, scripts, sums and integrals with their limits, roots, matrices and arrays, delimiters such as <code>\left( \right)</code>, accents, braces, arrows, frames, colours (CSS colours, named or hexadecimal, as in ‘KaTeX’), <code>\colorbox</code>, <code>\fcolorbox</code>, sizing commands (<code>\tiny</code> to <code>\Huge</code>), line breaks (<code>\\</code>, <code>\newline</code>), <code>\vcenter</code>, <code>\pmb</code>, <code>\raisebox</code>, <code>\cfrac</code> and most other constructs of ‘KaTeX’ are supported (see <code><a href="../reference/equation_size.html">?equation_size</a></code>). An equation that can not be measured gives <code>NA</code> with a warning.</li>
+<li>Both use the font “STIX Two Math”, shipped with ‘gdtools’, by default; another OpenType math font can be given by its name or its file.</li>
+<li>Most constructs of ‘KaTeX’ are supported. The known differences with Word and browsers are listed in <code><a href="../reference/equation_size.html">?equation_size</a></code>. An equation that can not be measured gives <code>NA</code> with a warning.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="changes-that-can-modify-your-documents-development-version">Changes that can modify your documents<a class="anchor" aria-label="anchor" href="#changes-that-can-modify-your-documents-development-version"></a></h3>
+<ul><li>In Word and PowerPoint, equations are now inline by default, as documented: the argument <code>display</code> of <code><a href="../reference/transform_mathjax.html">transform_mathjax()</a></code> was ignored and every equation was displayed as a block (limits above and below sums, larger fractions). Use <code>display = TRUE</code> to get the previous result.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-development-version">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
-<ul><li>In Word, vertical bars around an expression (<code>|x|</code>, <code>\lvert x \rvert</code>, <code>\left| x \right|</code>, <code>\|x\|</code>) were spaced as the relation “divides”: they are now displayed as delimiters.</li>
+<ul><li>In Word and PowerPoint:
+<ul><li>
+<code>|x|</code>, <code>\lvert x \rvert</code>, <code>\left| x \right|</code> and <code>\|x\|</code> are displayed as delimiters, no longer spaced as the relation “divides”;</li>
+<li>line breaks (<code>\\</code>, <code>\newline</code>) are kept: <code>a + b \\ c</code> was displayed as <code>a + bc</code>;</li>
 <li>
-<code>transform_mathjax(to = "mml")</code> failed on texts made of ASCII characters only, such as <code>\text{ab}</code>.</li>
-<li>Equations containing <code>\label{...}</code>, as written by <code>equatiomatic::extract_eq(label = )</code>, failed with an error: <code>\label</code> is now ignored, as it shows nothing.</li>
-<li>In Word, <code>\overlinesegment</code> and <code>\underlinesegment</code> showed the word “undefined” above or below their content: they are now displayed as <code>\overline</code> and <code>\underline</code>.</li>
+<code>\overlinesegment</code> and <code>\underlinesegment</code> no longer show the word “undefined”.</li>
+</ul></li>
+<li>Texts made of ASCII characters only, such as <code>\text{ab}</code>, no longer fail.</li>
+<li>
+<code>\label{...}</code>, as written by <code>equatiomatic::extract_eq(label = )</code>, is ignored instead of causing an error.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="performance-development-version">Performance<a class="anchor" aria-label="anchor" href="#performance-development-version"></a></h3>
-<ul><li>Documents with many equations are created faster and use much less memory: each converted equation kept about 1.7 MB of memory until the end of the R session.</li>
+<ul><li>Documents with many equations are created faster and use much less memory: each equation kept about 1.7 MB until the end of the R session.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="dependencies-development-version">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies-development-version"></a></h3>

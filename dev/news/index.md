@@ -2,57 +2,51 @@
 
 ## equatags (development version)
 
-### Changes that can modify your documents
-
-- In Word and PowerPoint (`transform_mathjax(to = "mml")`), equations
-  are now displayed inline by default, as documented: the argument
-  `display` was ignored and every equation was displayed as a block
-  (limits of sums above and below, larger fractions). Use
-  `display = TRUE` to keep the previous result.
-
 ### New features
 
 - [`equation_size()`](https://ardata-fr.github.io/equatags/dev/reference/equation_size.md)
-  gives the width, height and depth of equations written in LaTeX,
-  without drawing them and without a graphic device. Use it to size a
-  cell, a column or an image before the document is opened. The result
-  is the same on every machine, and close to what Word displays with the
-  same font (see “Differences with Word and browsers” in
-  [`?equation_size`](https://ardata-fr.github.io/equatags/dev/reference/equation_size.md)).
+  measures equations (width, height and depth) without drawing them and
+  without a graphic device, for example to size a table cell or an image
+  before the document is written. The results are the same on every
+  machine and close to what Word displays.
 - [`equation_grob()`](https://ardata-fr.github.io/equatags/dev/reference/equation_grob.md)
   draws an equation in a ‘grid’ graphic, for example in a ‘ggplot2’ plot
   (R \>= 4.3).
-- Both functions use the font “STIX Two Math” by default, shipped with
-  ‘gdtools’; another math font can be given by its name or its file.
-- Fractions, scripts, sums and integrals with their limits, roots,
-  matrices and arrays, delimiters such as `\left( \right)`, accents,
-  braces, arrows, frames, colours (CSS colours, named or hexadecimal, as
-  in ‘KaTeX’), `\colorbox`, `\fcolorbox`, sizing commands (`\tiny` to
-  `\Huge`), line breaks (`\\`, `\newline`), `\vcenter`, `\pmb`,
-  `\raisebox`, `\cfrac` and most other constructs of ‘KaTeX’ are
-  supported (see
-  [`?equation_size`](https://ardata-fr.github.io/equatags/dev/reference/equation_size.md)).
+- Both use the font “STIX Two Math”, shipped with ‘gdtools’, by default;
+  another OpenType math font can be given by its name or its file.
+- Most constructs of ‘KaTeX’ are supported. The known differences with
+  Word and browsers are listed in
+  [`?equation_size`](https://ardata-fr.github.io/equatags/dev/reference/equation_size.md).
   An equation that can not be measured gives `NA` with a warning.
+
+### Changes that can modify your documents
+
+- In Word and PowerPoint, equations are now inline by default, as
+  documented: the argument `display` of
+  [`transform_mathjax()`](https://ardata-fr.github.io/equatags/dev/reference/transform_mathjax.md)
+  was ignored and every equation was displayed as a block (limits above
+  and below sums, larger fractions). Use `display = TRUE` to get the
+  previous result.
 
 ### Bug fixes
 
-- In Word, vertical bars around an expression (`|x|`, `\lvert x \rvert`,
-  `\left| x \right|`, `\|x\|`) were spaced as the relation “divides”:
-  they are now displayed as delimiters.
-- `transform_mathjax(to = "mml")` failed on texts made of ASCII
-  characters only, such as `\text{ab}`.
-- Equations containing `\label{...}`, as written by
-  `equatiomatic::extract_eq(label = )`, failed with an error: `\label`
-  is now ignored, as it shows nothing.
-- In Word, `\overlinesegment` and `\underlinesegment` showed the word
-  “undefined” above or below their content: they are now displayed as
-  `\overline` and `\underline`.
+- In Word and PowerPoint:
+  - `|x|`, `\lvert x \rvert`, `\left| x \right|` and `\|x\|` are
+    displayed as delimiters, no longer spaced as the relation “divides”;
+  - line breaks (`\\`, `\newline`) are kept: `a + b \\ c` was displayed
+    as `a + bc`;
+  - `\overlinesegment` and `\underlinesegment` no longer show the word
+    “undefined”.
+- Texts made of ASCII characters only, such as `\text{ab}`, no longer
+  fail.
+- `\label{...}`, as written by `equatiomatic::extract_eq(label = )`, is
+  ignored instead of causing an error.
 
 ### Performance
 
 - Documents with many equations are created faster and use much less
-  memory: each converted equation kept about 1.7 MB of memory until the
-  end of the R session.
+  memory: each equation kept about 1.7 MB until the end of the R
+  session.
 
 ### Dependencies
 
